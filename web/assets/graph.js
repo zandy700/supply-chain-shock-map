@@ -192,7 +192,7 @@ export function createGraph({ svgEl, graph, events, onInspect, statusEl }) {
 
     const maxHop = d3.max(preds, (p) => p.hops) ?? 0;
     const color = (m) => (m < 0 ? "#b23a0e" : "#1b5e84");
-    const soft = (m) => (m < 0 ? "#f7d9cb" : "#d3e4ef");
+    const soft = (m) => (m < 0 ? "#f9e2d8" : "#d3e4ef");
 
     for (const p of preds) {
       const n = byId.get(p.ticker);

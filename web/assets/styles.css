@@ -29,7 +29,7 @@
   --rule: #d3d9df;
   --rule-strong: #a9b1b9;
   --neg: #b23a0e;
-  --neg-soft: #f7d9cb;
+  --neg-soft: #f9e2d8;
   --pos: #1b5e84;
   --pos-soft: #d3e4ef;
   --neutral: #8a939c;
@@ -58,10 +58,10 @@ a { color: var(--pos); text-underline-offset: 2px; }
 a:hover { color: var(--ink); }
 ::selection { background: var(--pos-soft); color: var(--ink); }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
-h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.15; margin: 0 0 .5rem; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.15; margin: 0 0 .5rem; text-wrap: balance; }
 h2 { font-size: 1.75rem; }
 h3 { font-size: 1.2rem; }
-p { margin: 0 0 .9rem; }
+p { margin: 0 0 .9rem; text-wrap: pretty; }
 code, .mono { font-family: var(--mono); font-size: .86em; }
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
@@ -97,7 +97,7 @@ code, .mono { font-family: var(--mono); font-size: .86em; }
 
 main { max-width: 1280px; margin: 0 auto; padding: 1.25rem; }
 .view[hidden] { display: none; }
-.lede { color: var(--muted); max-width: 68ch; text-wrap: pretty; }
+.lede { color: var(--muted); max-width: 62ch; text-wrap: pretty; }
 .notice {
   border: 1px solid var(--neg); background: var(--neg-soft); padding: .75rem 1rem;
   border-radius: var(--radius); margin: 0 0 1rem;
@@ -219,8 +219,9 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 /* Accuracy */
 .finding {
   border: 1px solid var(--neg); background: var(--neg-soft); border-radius: var(--radius);
-  padding: .8rem 1rem; margin-bottom: 1rem;
+  padding: .8rem 1rem; margin-bottom: 1rem; max-width: 66ch;
 }
+#view-accuracy .sub { max-width: 62ch; }
 .section-gap { margin-top: 2rem; }
 #view-accuracy > h3 { margin-top: 1.5rem; }
 .stats-table + * , #view-accuracy .chart-grid { margin-top: 1rem; }
@@ -256,7 +257,7 @@ details summary { cursor: pointer; font-weight: 600; margin-top: .6rem; }
 }
 
 /* About */
-.prose { max-width: 72ch; }
+.prose { max-width: 60ch; }
 .prose h3 { margin-top: 1.5rem; }
 .prose ul { padding-left: 1.2rem; }
 .prose code { overflow-wrap: anywhere; }
