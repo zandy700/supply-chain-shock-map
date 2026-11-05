@@ -53,13 +53,13 @@ Open <http://localhost:8000>. Serve over HTTP because browsers restrict JSON fet
 
 | Shock graph (desktop) | Shock graph (390px mobile) |
 |---|---|
-| ![RTX engine-inspection event rippling to Boeing over an SEC-documented supplier edge](docs/screenshots/graph-desktop.png) | ![Same view on a 390px phone with touch pan and zoom](docs/screenshots/graph-mobile.png) |
+| ![Apple Watch import-ban event rippling upstream to four SEC-documented Apple suppliers](docs/screenshots/graph-desktop.png) | ![Same view on a 390px phone with touch pan and zoom](docs/screenshots/graph-mobile.png) |
 
-![Accuracy dashboard: MAE versus zero and sector baselines, hit rates and predicted-vs-realized scatter](docs/screenshots/accuracy-desktop.png)
+![Accuracy dashboard: per-relation stats table, hit-rate and MAE-versus-zero forest plots with bootstrap intervals](docs/screenshots/accuracy-desktop.png)
 
 ![Ledger viewer recomputing the SHA-256 hash chain in the browser](docs/screenshots/ledger-desktop.png)
 
-Picking an event animates the shock hop by hop: color is predicted direction, node size is the magnitude of the expected abnormal return, and tapping a company or edge shows its SEC evidence sentence and filing. The ledger view recomputes every hash with Web Crypto and compares the head with the Python verifier's exported head; "Simulate tampering" edits an in-memory copy to show the chain breaking. The accuracy charts read `results.json` directly, so they always show the latest backtest numbers. Animations respect `prefers-reduced-motion`.
+Picking an event animates the shock hop by hop: color is predicted direction, muted nodes are unaffected, node size is the magnitude of the expected abnormal return, and tapping a company or edge shows its SEC evidence sentence and filing. The ledger view recomputes every hash with Web Crypto and compares the head with the Python verifier's exported head; "Simulate tampering" edits an in-memory copy to show the chain breaking. The accuracy charts read `results.json` directly, so they always show the latest backtest numbers. Animations respect `prefers-reduced-motion`.
 
 `python -m scsm --help` documents all commands. `propagate --event ID` selects an event; `ledger append --event ID` appends it once. Default `ledger append` appends all cached events with predictions. **Historical events appended now are labeled historical replays and excluded from prospective scores.** Do not interpret them as past forecasts.
 
@@ -69,28 +69,46 @@ For live ingestion run `python -m scsm ingest`. For missing price retrieval use 
 
 Only a real subset is shipped: **12 nodes and 10 reviewed edges from 14 primary 2021 SEC filings**. SEC-derived relationships, evidence sentences, filing URLs, dates and source hashes are preserved in `data/graph.json` and `data/sec/`. The provenance report explains the inclusion review and rejected keyword candidates. Filings are historical snapshots, not a complete or current map of the S&P 500. The graph intentionally excludes ambiguous matches and unverified relationships.
 
-Supplier → customer is the direction of a disruption. Base issuer shock is signed severity × 5 percentage points; each hop multiplies the prior magnitude by edge weight × 0.5, up to three hops. Missing measured exposures use an explicitly labeled heuristic weight. Extraction confidence is not a financial exposure measurement. The strongest simple path per ticker is retained, rather than summing overlapping paths. Cycles cannot amplify shocks. Filings dated after an event are excluded from its scenario. Competitor substitution is supported only for explicitly labeled competitor inputs; no competitor or supplier links are invented from shared sectors.
+A disruption at a supplier travels downstream to its customers (lost supply); a disruption at a customer travels upstream to its suppliers (lost demand). A path never changes direction, so a shock cannot zig-zag into an unrelated sibling supplier. Base issuer shock is signed severity × 5 percentage points; each hop multiplies the prior magnitude by edge weight × 0.5, up to three hops. Missing measured exposures use an explicitly labeled heuristic weight. Extraction confidence is not a financial exposure measurement. The strongest simple path per ticker is retained, rather than summing overlapping paths. Cycles cannot amplify shocks. Filings dated after an event are excluded from its scenario. Competitor substitution is supported only for explicitly labeled competitor inputs; no competitor or supplier links are invented from shared sectors.
 
 Severity, decay and magnitude are modeling choices, not estimated returns. Expected abnormal return percentages are signed and use the same scenario scale at each study horizon; no horizon calibration is claimed. Entity matching uses the cached real S&P 500 constituent list and aliases. Short and ambiguous names are handled conservatively; headline matching and keyword classification still make mistakes. News publication dates can differ from the underlying disruption date.
 
 ## Results and findings
 
-Executed on the checked-in adjusted-price caches: **8 real historical events, 10 ticker predictions per horizon (9 direct issuer, 1 downstream)**. No observations were excluded in this run. All values below are calculated by `python -m scsm backtest`, not invented. MAE units are percentage points of CAR. Brackets show the event-cluster bootstrap 95% interval for hit rate; full intervals for correlation, MAE and both baselines are in `data/results.json`.
+Executed on the checked-in adjusted-price caches with `python -m scsm backtest`: **62 real historical events** (strikes, recalls, export/import bans, plant shutdowns, cyberattacks and IT outages, supplier quality escapes, 2021-03 to 2025-10), **106 ticker predictions per horizon**: 66 direct issuer, 5 downstream, 35 upstream. Propagated predictions come from 19 of the 62 events; no observation was excluded. Every event in `data/events/historical.json` links a source (SEC filing, company or regulator release, or major news) that was fetched and found to contain the quoted text confirming the event and its date.
 
-| Trading horizon | n | Directional hit rate [95% CI] | Pearson | Spearman | Model MAE | Zero MAE | Sector control MAE |
-|---|---:|---|---:|---:|---:|---:|---:|
-| +1 | 10 | 80% [56%, 100%] | 0.857 | 0.555 | 3.215 | 3.183 | 3.145 |
-| +5 | 10 | 40% [9%, 78%] | 0.871 | 0.884 | 4.752 | 4.508 | 4.750 |
-| +20 | 10 | 70% [36%, 100%] | 0.640 | 0.507 | 4.777 | 5.410 | 6.048 |
+MAE is in percentage points of CAR. CIs are percentile intervals from 10,000 event-cluster bootstrap resamples (seed 2026). p is an exact two-sided binomial test of the hit rate against 50%. "Model − zero" is model MAE minus the MAE of always predicting 0; negative means the model beat zero.
 
-The model's +1 and +5 MAE are **worse than predicting zero**, and the +5 directional hit rate is only 40%. The +20 MAE is lower than zero on this sample, with broad uncertainty. High correlations in such a small selected cohort do not establish forecasting skill. One downstream observation cannot validate supply-chain propagation. The RTX engine-inspection example also exposes a product mismatch: an issuer-level RTX→Boeing edge does not mean an A320neo-specific issue affects Boeing's aircraft. This is a concrete model limitation, retained rather than hidden.
+| Horizon | Group | n (events) | Hit rate [95% CI] | p vs 50% | Model MAE | Zero MAE | Model − zero [95% CI] |
+|---|---|---:|---|---:|---:|---:|---|
+| +1 | All | 106 (62) | 62% [52%, 72%] | 0.015 | 2.45 | 1.79 | +0.66 [+0.27, +1.04] |
+| +1 | Direct issuer | 66 (62) | 73% [62%, 83%] | <0.001 | 3.18 | 2.29 | +0.89 [+0.29, +1.46] |
+| +1 | Downstream (lost supply) | 5 (5) | 20% [0%, 60%] | 0.375 | 2.66 | 2.21 | +0.45 [−0.30, +0.90] |
+| +1 | Upstream (lost demand) | 35 (17) | 49% [29%, 66%] | 1.000 | 1.04 | 0.80 | +0.25 [+0.01, +0.49] |
+| +5 | All | 106 (62) | 54% [43%, 65%] | 0.497 | 3.28 | 2.89 | +0.39 [−0.12, +0.89] |
+| +5 | Direct issuer | 66 (62) | 55% [42%, 67%] | 0.539 | 3.98 | 3.43 | +0.55 [−0.23, +1.31] |
+| +5 | Downstream (lost supply) | 5 (5) | 20% [0%, 60%] | 0.375 | 4.11 | 3.56 | +0.55 [−0.10, +0.95] |
+| +5 | Upstream (lost demand) | 35 (17) | 57% [37%, 81%] | 0.500 | 1.84 | 1.79 | +0.05 [−0.32, +0.36] |
+| +20 | All | 106 (62) | 63% [53%, 73%] | 0.008 | 5.63 | 5.93 | −0.30 [−0.79, +0.20] |
+| +20 | Direct issuer | 66 (62) | 68% [56%, 79%] | 0.004 | 5.82 | 6.28 | −0.46 [−1.19, +0.30] |
+| +20 | Downstream (lost supply) | 5 (5) | 20% [0%, 60%] | 0.375 | 9.08 | 8.53 | +0.55 [−0.10, +0.95] |
+| +20 | Upstream (lost demand) | 35 (17) | 60% [43%, 79%] | 0.311 | 4.77 | 4.90 | −0.13 [−0.44, +0.16] |
+
+What this says, and does not:
+
+- **Direction of the directly hit company is informative; size is not.** Direct-issuer signs were right 73% of the time at +1 day and 68% at +20 days. But at +1 day the model's MAE is *worse* than predicting zero (CI excludes 0): the fixed 5% × severity scenario overstates typical next-day moves.
+- **Supply-chain propagation is not validated.** Upstream (lost-demand) predictions are coin-flip accurate at +1 day and statistically indistinguishable from 50% and from zero error at every horizon. Only 5 downstream (lost-supply) observations exist; 1 of 5 had the right sign.
+- **No horizon shows the model beating zero on error with a CI that excludes 0.** The +20 day overall difference (−0.30 pp) has a CI spanning zero.
+- p-values assume independent predictions. Several predictions share an event, so they overstate evidence; the cluster bootstrap CIs are the more honest interval. Twelve comparisons are reported without multiple-testing correction.
+
+Caveats: the event list is a hand-selected convenience sample, not every shock in the period, and it leans toward large, well-reported disruptions. Several events overlap in time (e.g. Boeing 2023–2024 quality issues, Tesla factory halts), so windows are not independent. Event severities and edge weights are uncalibrated assumptions. The SEC graph is small (12 companies, 10 edges from 2021 10-Ks) and may be stale for 2024–2025 events. Sector peers and entity matching use the current S&P 500 list, not point-in-time membership, which adds survivorship bias. Dates are day-level; intraday disclosures lose their same-day reaction, while weekend and holiday disclosures anchor to the prior session so the first trading reaction is captured. Yahoo adjusted prices can be revised. Correlation and same-sector-control metrics remain in `data/results.json` and the Accuracy tab.
 
 Live GDELT acquisition was attempted and the request status is cached in `data/events/gdelt-*.json`; when rate-limited it contributes **no invented events**. The initial ledger is timestamped at this build and contains real historical-event replay scenarios. There are no matured prospective scores yet. Prospective performance is unavailable, not 0%.
 
 
 The historical cohort is deliberately small and curated. It cannot establish a tradable edge. See `data/results.json` for individual event/ticker/horizon observations, model fit, exclusions and uncertainty intervals. Numerical claims must be read alongside sample size and the following limits.
 
-The event study adapts EventStudy's OLS market model: fit stock return = alpha + beta × SPY return on trading days -250..-11. CAR is the sum of residuals on +1 through +1/+5/+20, excluding day 0. A weekend event anchors to the next available shared trading date. Adjusted daily close data are used; publication time and after-hours effects are not modeled. Full horizons must exist, and insufficient estimation histories are excluded. Event overlap, selection bias, current constituent survivorship, stale graph coverage and uncalibrated severities limit interpretation. Bootstrap intervals describe resampling uncertainty within this cohort, not a guarantee of future performance.
+The event study adapts EventStudy's OLS market model: fit stock return = alpha + beta × SPY return on trading days -250..-11. CAR is the sum of residuals on +1 through +1/+5/+20, excluding day 0. Day 0 is the last shared trading session on or before the disclosure date, so a weekend or holiday disclosure is first measured on the next session. Adjusted daily close data are used; publication time and after-hours effects are not modeled. Full horizons must exist, and insufficient estimation histories are excluded. Event overlap, selection bias, current constituent survivorship, stale graph coverage and uncalibrated severities limit interpretation. Bootstrap intervals describe resampling uncertainty within this cohort, not a guarantee of future performance.
 
 The zero-return baseline is deployable as a no-effect forecast. The same-sector average uses contemporaneous realized peer CARs and is labeled an **ex-post control**, not an available-at-prediction forecast. Missing peer observations must be reported rather than treated as zero. Historical replay accuracy and prospective ledger accuracy are distinct throughout the interface.
 
