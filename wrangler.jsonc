@@ -1,0 +1,12 @@
+{
+  // Static assets on a Cloudflare Worker. Deployment is performed by the owner.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "supply-chain-shock-map",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./web",
+    "binding": "ASSETS"
+  },
+  "observability": { "enabled": true }
+}
