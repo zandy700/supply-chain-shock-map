@@ -1,0 +1,1032 @@
+{
+  "generated_at": "2026-11-05T04:02:15.697553+00:00",
+  "horizons": {
+    "1": {
+      "n": 10,
+      "directional_hit_rate": 0.8,
+      "pearson": 0.8572570574662883,
+      "spearman": 0.5551983817780488,
+      "mae": 3.214669420404691,
+      "bootstrap_ci": {
+        "directional_hit_rate": [
+          0.5555555555555556,
+          1.0
+        ],
+        "pearson": [
+          -0.03572989940037759,
+          0.9787819504423955
+        ],
+        "spearman": [
+          -0.32207760009810804,
+          0.9636241116594314
+        ],
+        "mae": [
+          1.6166747111056297,
+          4.842922508849926
+        ]
+      },
+      "bootstrap_method": "1000 event-cluster percentile resamples; fixed seed 2026",
+      "event_count": 8,
+      "baselines": {
+        "zero": {
+          "n": 10,
+          "directional_hit_rate": 0.0,
+          "pearson": null,
+          "spearman": null,
+          "mae": 3.1830291475477135,
+          "bootstrap_ci": {
+            "directional_hit_rate": [
+              0.0,
+              0.0
+            ],
+            "pearson": null,
+            "spearman": null,
+            "mae": [
+              1.7168045684685618,
+              4.706393952517542
+            ]
+          },
+          "bootstrap_method": "1000 event-cluster percentile resamples; fixed seed 2026",
+          "event_count": 8
+        },
+        "same_sector": {
+          "n": 10,
+          "directional_hit_rate": 0.6,
+          "pearson": -0.06692625391206013,
+          "spearman": 0.030488371665955208,
+          "mae": 3.1450617494085256,
+          "bootstrap_ci": {
+            "directional_hit_rate": [
+              0.3325,
+              0.8888888888888888
+            ],
+            "pearson": [
+              -0.5228041114553278,
+              0.8573753274953431
+            ],
+            "spearman": [
+              -0.6156482113427812,
+              0.8917832479472467
+            ],
+            "mae": [
+              1.6711649462258007,
+              4.632532671071763
+            ]
+          },
+          "bootstrap_method": "1000 event-cluster percentile resamples; fixed seed 2026",
+          "event_count": 8
+        }
+      },
+      "propagated_n": 1,
+      "direct_n": 9
+    },
+    "5": {
+      "n": 10,
+      "directional_hit_rate": 0.4,
+      "pearson": 0.871314816041613,
+      "spearman": 0.8842048302391148,
+      "mae": 4.752466991034396,
+      "bootstrap_ci": {
+        "directional_hit_rate": [
+          0.09090909090909091,
+          0.7777777777777778
+        ],
+        "pearson": [
+          0.7944806657546085,
+          0.9821434386122948
+        ],
+        "spearman": [
+          0.5742375830552572,
+          0.9784763943482505
+        ],
+        "mae": [
+          2.957653412499138,
+          6.120293702645299
+        ]
+      },
+      "bootstrap_method": "1000 event-cluster percentile resamples; fixed seed 2026",
+      "event_count": 8,
+      "baselines": {
+        "zero": {
+          "n": 10,
+          "directional_hit_rate": 0.0,
+          "pearson": null,
+          "spearman": null,
+          "mae": 4.507868467543339,
+          "bootstrap_ci": {
+            "directional_hit_rate": [
+              0.0,
+              0.0
+            ],
+            "pearson": null,
+            "spearman": null,
+            "mae": [
+              2.817566859377317,
+              6.287549748099387
+            ]
+          },
+          "bootstrap_method": "1000 event-cluster percentile resamples; fixed seed 2026",
+          "event_count": 8
+        },
+        "same_sector": {
+          "n": 10,
+          "directional_hit_rate": 0.4,
+          "pearson": 0.2921783566057591,
+          "spearman": 0.3475674369918894,
+          "mae": 4.7498690362566744,
+          "bootstrap_ci": {
+            "directional_hit_rate": [
+              0.1,
+              0.7777777777777778
+            ],
+            "pearson": [
+              -0.42384634860896747,
+              0.8396060303957422
+            ],
+            "spearman": [
+              -0.42982792654297186,
+              0.9746835443037977
+            ],
+            "mae": [
+              3.628693133494864,
+              5.6973605440860045
+            ]
+          },
+          "bootstrap_method": "1000 event-cluster percentile resamples; fixed seed 2026",
+          "event_count": 8
+        }
+      },
+      "propagated_n": 1,
+      "direct_n": 9
+    },
+    "20": {
+      "n": 10,
+      "directional_hit_rate": 0.7,
+      "pearson": 0.6402964491122117,
+      "spearman": 0.50721827471081,
+      "mae": 4.777216743411458,
+      "bootstrap_ci": {
+        "directional_hit_rate": [
+          0.36363636363636365,
+          1.0
+        ],
+        "pearson": [
+          -0.3971750804334937,
+          0.8989730882646259
+        ],
+        "spearman": [
+          -0.3521611079552841,
+          0.9043097175268656
+        ],
+        "mae": [
+          2.663538057588914,
+          6.877065890458102
+        ]
+      },
+      "bootstrap_method": "1000 event-cluster percentile resamples; fixed seed 2026",
+      "event_count": 8,
+      "baselines": {
+        "zero": {
+          "n": 10,
+          "directional_hit_rate": 0.0,
+          "pearson": null,
+          "spearman": null,
+          "mae": 5.409532225212514,
+          "bootstrap_ci": {
+            "directional_hit_rate": [
+              0.0,
+              0.0
+            ],
+            "pearson": null,
+            "spearman": null,
+            "mae": [
+              3.3000646992187144,
+              8.29122264016269
+            ]
+          },
+          "bootstrap_method": "1000 event-cluster percentile resamples; fixed seed 2026",
+          "event_count": 8
+        },
+        "same_sector": {
+          "n": 10,
+          "directional_hit_rate": 0.6,
+          "pearson": 0.040900189484472126,
+          "spearman": 0.07926976633148354,
+          "mae": 6.0482394394683485,
+          "bootstrap_ci": {
+            "directional_hit_rate": [
+              0.2727272727272727,
+              0.9090909090909091
+            ],
+            "pearson": [
+              -0.5080536886271455,
+              0.670748340711145
+            ],
+            "spearman": [
+              -0.6335666201360471,
+              0.7378186521789225
+            ],
+            "mae": [
+              3.6595528080890625,
+              8.730582817837822
+            ]
+          },
+          "bootstrap_method": "1000 event-cluster percentile resamples; fixed seed 2026",
+          "event_count": 8
+        }
+      },
+      "propagated_n": 1,
+      "direct_n": 9
+    }
+  },
+  "samples": [
+    {
+      "event_id": "4d71da07a7881cf3702c",
+      "event_date": "2024-09-13",
+      "ticker": "BA",
+      "predicted": -3.0,
+      "actual": -0.7534685357191737,
+      "horizon": 1,
+      "path": [
+        "BA"
+      ],
+      "hops": 0,
+      "sector_baseline": 0.7428150081377013,
+      "sector_peer_n": 3,
+      "car_pct": -0.7534685357191737,
+      "alpha": -0.0014142067654563599,
+      "beta": 0.7900727804380518,
+      "estimation_n": 240,
+      "event_trading_date": "2024-09-13",
+      "estimation_start": "2023-09-15",
+      "estimation_end": "2024-08-28",
+      "window_start": "2024-09-16",
+      "window_end": "2024-09-16",
+      "end_date": "2024-09-16"
+    },
+    {
+      "event_id": "4d71da07a7881cf3702c",
+      "event_date": "2024-09-13",
+      "ticker": "BA",
+      "predicted": -3.0,
+      "actual": -2.652007382544718,
+      "horizon": 5,
+      "path": [
+        "BA"
+      ],
+      "hops": 0,
+      "sector_baseline": 2.1610371661557513,
+      "sector_peer_n": 3,
+      "car_pct": -2.652007382544718,
+      "alpha": -0.0014142067654563599,
+      "beta": 0.7900727804380518,
+      "estimation_n": 240,
+      "event_trading_date": "2024-09-13",
+      "estimation_start": "2023-09-15",
+      "estimation_end": "2024-08-28",
+      "window_start": "2024-09-16",
+      "window_end": "2024-09-20",
+      "end_date": "2024-09-20"
+    },
+    {
+      "event_id": "4d71da07a7881cf3702c",
+      "event_date": "2024-09-13",
+      "ticker": "BA",
+      "predicted": -3.0,
+      "actual": -3.302955989409935,
+      "horizon": 20,
+      "path": [
+        "BA"
+      ],
+      "hops": 0,
+      "sector_baseline": 5.256298450869492,
+      "sector_peer_n": 3,
+      "car_pct": -3.302955989409935,
+      "alpha": -0.0014142067654563599,
+      "beta": 0.7900727804380518,
+      "estimation_n": 240,
+      "event_trading_date": "2024-09-13",
+      "estimation_start": "2023-09-15",
+      "estimation_end": "2024-08-28",
+      "window_start": "2024-09-16",
+      "window_end": "2024-10-11",
+      "end_date": "2024-10-11"
+    },
+    {
+      "event_id": "e73e67e50681c98b3c55",
+      "event_date": "2023-12-13",
+      "ticker": "TSLA",
+      "predicted": -3.0,
+      "actual": 4.092242890557788,
+      "horizon": 1,
+      "path": [
+        "TSLA"
+      ],
+      "hops": 0,
+      "sector_baseline": -0.5102106859062195,
+      "sector_peer_n": 3,
+      "car_pct": 4.092242890557788,
+      "alpha": 0.0010713647170023071,
+      "beta": 2.228294679952628,
+      "estimation_n": 240,
+      "event_trading_date": "2023-12-13",
+      "estimation_start": "2022-12-14",
+      "estimation_end": "2023-11-28",
+      "window_start": "2023-12-14",
+      "window_end": "2023-12-14",
+      "end_date": "2023-12-14"
+    },
+    {
+      "event_id": "e73e67e50681c98b3c55",
+      "event_date": "2023-12-13",
+      "ticker": "TSLA",
+      "predicted": -3.0,
+      "actual": 3.0458767965797477,
+      "horizon": 5,
+      "path": [
+        "TSLA"
+      ],
+      "hops": 0,
+      "sector_baseline": 0.4785576297783553,
+      "sector_peer_n": 3,
+      "car_pct": 3.0458767965797477,
+      "alpha": 0.0010713647170023071,
+      "beta": 2.228294679952628,
+      "estimation_n": 240,
+      "event_trading_date": "2023-12-13",
+      "estimation_start": "2022-12-14",
+      "estimation_end": "2023-11-28",
+      "window_start": "2023-12-14",
+      "window_end": "2023-12-20",
+      "end_date": "2023-12-20"
+    },
+    {
+      "event_id": "e73e67e50681c98b3c55",
+      "event_date": "2023-12-13",
+      "ticker": "TSLA",
+      "predicted": -3.0,
+      "actual": -14.348861741466662,
+      "horizon": 20,
+      "path": [
+        "TSLA"
+      ],
+      "hops": 0,
+      "sector_baseline": 0.2252400748451314,
+      "sector_peer_n": 3,
+      "car_pct": -14.348861741466662,
+      "alpha": 0.0010713647170023071,
+      "beta": 2.228294679952628,
+      "estimation_n": 240,
+      "event_trading_date": "2023-12-13",
+      "estimation_start": "2022-12-14",
+      "estimation_end": "2023-11-28",
+      "window_start": "2023-12-14",
+      "window_end": "2024-01-12",
+      "end_date": "2024-01-12"
+    },
+    {
+      "event_id": "c6d95b637e99c9d791d6",
+      "event_date": "2023-09-15",
+      "ticker": "F",
+      "predicted": -3.0,
+      "actual": -2.1012625202098154,
+      "horizon": 1,
+      "path": [
+        "F"
+      ],
+      "hops": 0,
+      "sector_baseline": -0.6478084375324692,
+      "sector_peer_n": 3,
+      "car_pct": -2.1012625202098154,
+      "alpha": -0.0012288028390623547,
+      "beta": 1.4153099979483796,
+      "estimation_n": 240,
+      "event_trading_date": "2023-09-15",
+      "estimation_start": "2022-09-16",
+      "estimation_end": "2023-08-30",
+      "window_start": "2023-09-18",
+      "window_end": "2023-09-18",
+      "end_date": "2023-09-18"
+    },
+    {
+      "event_id": "c6d95b637e99c9d791d6",
+      "event_date": "2023-09-15",
+      "ticker": "F",
+      "predicted": -3.0,
+      "actual": 3.4236539324647755,
+      "horizon": 5,
+      "path": [
+        "F"
+      ],
+      "hops": 0,
+      "sector_baseline": -2.2468888994067933,
+      "sector_peer_n": 3,
+      "car_pct": 3.4236539324647755,
+      "alpha": -0.0012288028390623547,
+      "beta": 1.4153099979483796,
+      "estimation_n": 240,
+      "event_trading_date": "2023-09-15",
+      "estimation_start": "2022-09-16",
+      "estimation_end": "2023-08-30",
+      "window_start": "2023-09-18",
+      "window_end": "2023-09-22",
+      "end_date": "2023-09-22"
+    },
+    {
+      "event_id": "c6d95b637e99c9d791d6",
+      "event_date": "2023-09-15",
+      "ticker": "F",
+      "predicted": -3.0,
+      "actual": -0.15642099644391635,
+      "horizon": 20,
+      "path": [
+        "F"
+      ],
+      "hops": 0,
+      "sector_baseline": -6.853503534580852,
+      "sector_peer_n": 3,
+      "car_pct": -0.15642099644391635,
+      "alpha": -0.0012288028390623547,
+      "beta": 1.4153099979483796,
+      "estimation_n": 240,
+      "event_trading_date": "2023-09-15",
+      "estimation_start": "2022-09-16",
+      "estimation_end": "2023-08-30",
+      "window_start": "2023-09-18",
+      "window_end": "2023-10-13",
+      "end_date": "2023-10-13"
+    },
+    {
+      "event_id": "c6d95b637e99c9d791d6",
+      "event_date": "2023-09-15",
+      "ticker": "GM",
+      "predicted": -3.0,
+      "actual": -1.7237914725444263,
+      "horizon": 1,
+      "path": [
+        "GM"
+      ],
+      "hops": 0,
+      "sector_baseline": -0.6478084375324692,
+      "sector_peer_n": 3,
+      "car_pct": -1.7237914725444263,
+      "alpha": -0.0015397938128957813,
+      "beta": 1.3815182813236857,
+      "estimation_n": 240,
+      "event_trading_date": "2023-09-15",
+      "estimation_start": "2022-09-16",
+      "estimation_end": "2023-08-30",
+      "window_start": "2023-09-18",
+      "window_end": "2023-09-18",
+      "end_date": "2023-09-18"
+    },
+    {
+      "event_id": "c6d95b637e99c9d791d6",
+      "event_date": "2023-09-15",
+      "ticker": "GM",
+      "predicted": -3.0,
+      "actual": 0.7911557138159938,
+      "horizon": 5,
+      "path": [
+        "GM"
+      ],
+      "hops": 0,
+      "sector_baseline": -2.2468888994067933,
+      "sector_peer_n": 3,
+      "car_pct": 0.7911557138159938,
+      "alpha": -0.0015397938128957813,
+      "beta": 1.3815182813236857,
+      "estimation_n": 240,
+      "event_trading_date": "2023-09-15",
+      "estimation_start": "2022-09-16",
+      "estimation_end": "2023-08-30",
+      "window_start": "2023-09-18",
+      "window_end": "2023-09-22",
+      "end_date": "2023-09-22"
+    },
+    {
+      "event_id": "c6d95b637e99c9d791d6",
+      "event_date": "2023-09-15",
+      "ticker": "GM",
+      "predicted": -3.0,
+      "actual": -6.422312165384319,
+      "horizon": 20,
+      "path": [
+        "GM"
+      ],
+      "hops": 0,
+      "sector_baseline": -6.853503534580852,
+      "sector_peer_n": 3,
+      "car_pct": -6.422312165384319,
+      "alpha": -0.0015397938128957813,
+      "beta": 1.3815182813236857,
+      "estimation_n": 240,
+      "event_trading_date": "2023-09-15",
+      "estimation_start": "2022-09-16",
+      "estimation_end": "2023-08-30",
+      "window_start": "2023-09-18",
+      "window_end": "2023-10-13",
+      "end_date": "2023-10-13"
+    },
+    {
+      "event_id": "e4b8924786635812fc7f",
+      "event_date": "2023-09-12",
+      "ticker": "MGM",
+      "predicted": -3.5,
+      "actual": -1.4295145662034672,
+      "horizon": 1,
+      "path": [
+        "MGM"
+      ],
+      "hops": 0,
+      "sector_baseline": 0.8224280215615538,
+      "sector_peer_n": 3,
+      "car_pct": -1.4295145662034672,
+      "alpha": 0.0003868234964740464,
+      "beta": 1.3074487677531816,
+      "estimation_n": 240,
+      "event_trading_date": "2023-09-12",
+      "estimation_start": "2022-09-13",
+      "estimation_end": "2023-08-25",
+      "window_start": "2023-09-13",
+      "window_end": "2023-09-13",
+      "end_date": "2023-09-13"
+    },
+    {
+      "event_id": "e4b8924786635812fc7f",
+      "event_date": "2023-09-12",
+      "ticker": "MGM",
+      "predicted": -3.5,
+      "actual": -6.507557177642882,
+      "horizon": 5,
+      "path": [
+        "MGM"
+      ],
+      "hops": 0,
+      "sector_baseline": -1.9509057933651943,
+      "sector_peer_n": 3,
+      "car_pct": -6.507557177642882,
+      "alpha": 0.0003868234964740464,
+      "beta": 1.3074487677531816,
+      "estimation_n": 240,
+      "event_trading_date": "2023-09-12",
+      "estimation_start": "2022-09-13",
+      "estimation_end": "2023-08-25",
+      "window_start": "2023-09-13",
+      "window_end": "2023-09-19",
+      "end_date": "2023-09-19"
+    },
+    {
+      "event_id": "e4b8924786635812fc7f",
+      "event_date": "2023-09-12",
+      "ticker": "MGM",
+      "predicted": -3.5,
+      "actual": -9.126631561776836,
+      "horizon": 20,
+      "path": [
+        "MGM"
+      ],
+      "hops": 0,
+      "sector_baseline": -7.0306627462238795,
+      "sector_peer_n": 3,
+      "car_pct": -9.126631561776836,
+      "alpha": 0.0003868234964740464,
+      "beta": 1.3074487677531816,
+      "estimation_n": 240,
+      "event_trading_date": "2023-09-12",
+      "estimation_start": "2022-09-13",
+      "estimation_end": "2023-08-25",
+      "window_start": "2023-09-13",
+      "window_end": "2023-10-10",
+      "end_date": "2023-10-10"
+    },
+    {
+      "event_id": "d7ac25ec9d4827a682ee",
+      "event_date": "2023-08-14",
+      "ticker": "CLX",
+      "predicted": -3.5,
+      "actual": -1.0599732150902552,
+      "horizon": 1,
+      "path": [
+        "CLX"
+      ],
+      "hops": 0,
+      "sector_baseline": -0.2881853829876258,
+      "sector_peer_n": 3,
+      "car_pct": -1.0599732150902552,
+      "alpha": 0.0002151573593090705,
+      "beta": 0.48060261069980614,
+      "estimation_n": 240,
+      "event_trading_date": "2023-08-14",
+      "estimation_start": "2022-08-15",
+      "estimation_end": "2023-07-28",
+      "window_start": "2023-08-15",
+      "window_end": "2023-08-15",
+      "end_date": "2023-08-15"
+    },
+    {
+      "event_id": "d7ac25ec9d4827a682ee",
+      "event_date": "2023-08-14",
+      "ticker": "CLX",
+      "predicted": -3.5,
+      "actual": -5.61869614853374,
+      "horizon": 5,
+      "path": [
+        "CLX"
+      ],
+      "hops": 0,
+      "sector_baseline": -1.4118343249264829,
+      "sector_peer_n": 3,
+      "car_pct": -5.61869614853374,
+      "alpha": 0.0002151573593090705,
+      "beta": 0.48060261069980614,
+      "estimation_n": 240,
+      "event_trading_date": "2023-08-14",
+      "estimation_start": "2022-08-15",
+      "estimation_end": "2023-07-28",
+      "window_start": "2023-08-15",
+      "window_end": "2023-08-21",
+      "end_date": "2023-08-21"
+    },
+    {
+      "event_id": "d7ac25ec9d4827a682ee",
+      "event_date": "2023-08-14",
+      "ticker": "CLX",
+      "predicted": -3.5,
+      "actual": -6.894297273698151,
+      "horizon": 20,
+      "path": [
+        "CLX"
+      ],
+      "hops": 0,
+      "sector_baseline": -2.981602022570911,
+      "sector_peer_n": 3,
+      "car_pct": -6.894297273698151,
+      "alpha": 0.0002151573593090705,
+      "beta": 0.48060261069980614,
+      "estimation_n": 240,
+      "event_trading_date": "2023-08-14",
+      "estimation_start": "2022-08-15",
+      "estimation_end": "2023-07-28",
+      "window_start": "2023-08-15",
+      "window_end": "2023-09-12",
+      "end_date": "2023-09-12"
+    },
+    {
+      "event_id": "20fa1bef09db94251ef2",
+      "event_date": "2023-07-25",
+      "ticker": "RTX",
+      "predicted": -3.0,
+      "actual": -0.9220647168373644,
+      "horizon": 1,
+      "path": [
+        "RTX"
+      ],
+      "hops": 0,
+      "sector_baseline": -1.5409389087622412,
+      "sector_peer_n": 3,
+      "car_pct": -0.9220647168373644,
+      "alpha": -6.601517004565854e-05,
+      "beta": 0.6626029771078403,
+      "estimation_n": 240,
+      "event_trading_date": "2023-07-25",
+      "estimation_start": "2022-07-26",
+      "estimation_end": "2023-07-10",
+      "window_start": "2023-07-26",
+      "window_end": "2023-07-26",
+      "end_date": "2023-07-26"
+    },
+    {
+      "event_id": "20fa1bef09db94251ef2",
+      "event_date": "2023-07-25",
+      "ticker": "RTX",
+      "predicted": -3.0,
+      "actual": 0.9178556844502564,
+      "horizon": 5,
+      "path": [
+        "RTX"
+      ],
+      "hops": 0,
+      "sector_baseline": -1.267695570981432,
+      "sector_peer_n": 3,
+      "car_pct": 0.9178556844502564,
+      "alpha": -6.601517004565854e-05,
+      "beta": 0.6626029771078403,
+      "estimation_n": 240,
+      "event_trading_date": "2023-07-25",
+      "estimation_start": "2022-07-26",
+      "estimation_end": "2023-07-10",
+      "window_start": "2023-07-26",
+      "window_end": "2023-08-01",
+      "end_date": "2023-08-01"
+    },
+    {
+      "event_id": "20fa1bef09db94251ef2",
+      "event_date": "2023-07-25",
+      "ticker": "RTX",
+      "predicted": -3.0,
+      "actual": 1.46113136054211,
+      "horizon": 20,
+      "path": [
+        "RTX"
+      ],
+      "hops": 0,
+      "sector_baseline": -3.258391921872285,
+      "sector_peer_n": 3,
+      "car_pct": 1.46113136054211,
+      "alpha": -6.601517004565854e-05,
+      "beta": 0.6626029771078403,
+      "estimation_n": 240,
+      "event_trading_date": "2023-07-25",
+      "estimation_start": "2022-07-26",
+      "estimation_end": "2023-07-10",
+      "window_start": "2023-07-26",
+      "window_end": "2023-08-22",
+      "end_date": "2023-08-22"
+    },
+    {
+      "event_id": "20fa1bef09db94251ef2",
+      "event_date": "2023-07-25",
+      "ticker": "BA",
+      "predicted": -0.75,
+      "actual": 8.616198681901215,
+      "horizon": 1,
+      "path": [
+        "RTX",
+        "BA"
+      ],
+      "hops": 1,
+      "sector_baseline": -1.5409389087622412,
+      "sector_peer_n": 3,
+      "car_pct": 8.616198681901215,
+      "alpha": 0.0009188438243901623,
+      "beta": 1.0402699552929764,
+      "estimation_n": 240,
+      "event_trading_date": "2023-07-25",
+      "estimation_start": "2022-07-26",
+      "estimation_end": "2023-07-10",
+      "window_start": "2023-07-26",
+      "window_end": "2023-07-26",
+      "end_date": "2023-07-26"
+    },
+    {
+      "event_id": "20fa1bef09db94251ef2",
+      "event_date": "2023-07-25",
+      "ticker": "BA",
+      "predicted": -0.75,
+      "actual": 10.256309304613398,
+      "horizon": 5,
+      "path": [
+        "RTX",
+        "BA"
+      ],
+      "hops": 1,
+      "sector_baseline": -1.267695570981432,
+      "sector_peer_n": 3,
+      "car_pct": 10.256309304613398,
+      "alpha": 0.0009188438243901623,
+      "beta": 1.0402699552929764,
+      "estimation_n": 240,
+      "event_trading_date": "2023-07-25",
+      "estimation_start": "2022-07-26",
+      "estimation_end": "2023-07-10",
+      "window_start": "2023-07-26",
+      "window_end": "2023-08-01",
+      "end_date": "2023-08-01"
+    },
+    {
+      "event_id": "20fa1bef09db94251ef2",
+      "event_date": "2023-07-25",
+      "ticker": "BA",
+      "predicted": -0.75,
+      "actual": 9.865794414257174,
+      "horizon": 20,
+      "path": [
+        "RTX",
+        "BA"
+      ],
+      "hops": 1,
+      "sector_baseline": -3.258391921872285,
+      "sector_peer_n": 3,
+      "car_pct": 9.865794414257174,
+      "alpha": 0.0009188438243901623,
+      "beta": 1.0402699552929764,
+      "estimation_n": 240,
+      "event_trading_date": "2023-07-25",
+      "estimation_start": "2022-07-26",
+      "estimation_end": "2023-07-10",
+      "window_start": "2023-07-26",
+      "window_end": "2023-08-22",
+      "end_date": "2023-08-22"
+    },
+    {
+      "event_id": "d866fd7ae33d0250a8fc",
+      "event_date": "2022-08-31",
+      "ticker": "NVDA",
+      "predicted": -4.0,
+      "actual": -8.405051267303019,
+      "horizon": 1,
+      "path": [
+        "NVDA"
+      ],
+      "hops": 0,
+      "sector_baseline": -1.5041434068340986,
+      "sector_peer_n": 3,
+      "car_pct": -8.405051267303019,
+      "alpha": 0.00014960780900328806,
+      "beta": 2.309920678711288,
+      "estimation_n": 240,
+      "event_trading_date": "2022-08-31",
+      "estimation_start": "2021-09-02",
+      "estimation_end": "2022-08-16",
+      "window_start": "2022-09-01",
+      "window_end": "2022-09-01",
+      "end_date": "2022-09-01"
+    },
+    {
+      "event_id": "d866fd7ae33d0250a8fc",
+      "event_date": "2022-08-31",
+      "ticker": "NVDA",
+      "predicted": -4.0,
+      "actual": -10.339627238999565,
+      "horizon": 5,
+      "path": [
+        "NVDA"
+      ],
+      "hops": 0,
+      "sector_baseline": -3.9915773113432214,
+      "sector_peer_n": 3,
+      "car_pct": -10.339627238999565,
+      "alpha": 0.00014960780900328806,
+      "beta": 2.309920678711288,
+      "estimation_n": 240,
+      "event_trading_date": "2022-08-31",
+      "estimation_start": "2021-09-02",
+      "estimation_end": "2022-08-16",
+      "window_start": "2022-09-01",
+      "window_end": "2022-09-08",
+      "end_date": "2022-09-08"
+    },
+    {
+      "event_id": "d866fd7ae33d0250a8fc",
+      "event_date": "2022-08-31",
+      "ticker": "NVDA",
+      "predicted": -4.0,
+      "actual": -1.8801564125613661,
+      "horizon": 20,
+      "path": [
+        "NVDA"
+      ],
+      "hops": 0,
+      "sector_baseline": -3.9585811919388996,
+      "sector_peer_n": 3,
+      "car_pct": -1.8801564125613661,
+      "alpha": 0.00014960780900328806,
+      "beta": 2.309920678711288,
+      "estimation_n": 240,
+      "event_trading_date": "2022-08-31",
+      "estimation_start": "2021-09-02",
+      "estimation_end": "2022-08-16",
+      "window_start": "2022-09-01",
+      "window_end": "2022-09-29",
+      "end_date": "2022-09-29"
+    },
+    {
+      "event_id": "c5c27b27a2cefe01ee22",
+      "event_date": "2022-02-17",
+      "ticker": "ABT",
+      "predicted": -3.0,
+      "actual": -2.726723609110614,
+      "horizon": 1,
+      "path": [
+        "ABT"
+      ],
+      "hops": 0,
+      "sector_baseline": -0.6049304159604498,
+      "sector_peer_n": 3,
+      "car_pct": -2.726723609110614,
+      "alpha": -9.624680173473582e-05,
+      "beta": 0.6282254387489868,
+      "estimation_n": 240,
+      "event_trading_date": "2022-02-17",
+      "estimation_start": "2021-02-23",
+      "estimation_end": "2022-02-02",
+      "window_start": "2022-02-18",
+      "window_end": "2022-02-18",
+      "end_date": "2022-02-18"
+    },
+    {
+      "event_id": "c5c27b27a2cefe01ee22",
+      "event_date": "2022-02-17",
+      "ticker": "ABT",
+      "predicted": -3.0,
+      "actual": 1.52594529578832,
+      "horizon": 5,
+      "path": [
+        "ABT"
+      ],
+      "hops": 0,
+      "sector_baseline": -1.06267463961439,
+      "sector_peer_n": 3,
+      "car_pct": 1.52594529578832,
+      "alpha": -9.624680173473582e-05,
+      "beta": 0.6282254387489868,
+      "estimation_n": 240,
+      "event_trading_date": "2022-02-17",
+      "estimation_start": "2021-02-23",
+      "estimation_end": "2022-02-02",
+      "window_start": "2022-02-18",
+      "window_end": "2022-02-25",
+      "end_date": "2022-02-25"
+    },
+    {
+      "event_id": "c5c27b27a2cefe01ee22",
+      "event_date": "2022-02-17",
+      "ticker": "ABT",
+      "predicted": -3.0,
+      "actual": 0.636760336584674,
+      "horizon": 20,
+      "path": [
+        "ABT"
+      ],
+      "hops": 0,
+      "sector_baseline": 4.926726102741885,
+      "sector_peer_n": 3,
+      "car_pct": 0.636760336584674,
+      "alpha": -9.624680173473582e-05,
+      "beta": 0.6282254387489868,
+      "estimation_n": 240,
+      "event_trading_date": "2022-02-17",
+      "estimation_start": "2021-02-23",
+      "estimation_end": "2022-02-02",
+      "window_start": "2022-02-18",
+      "window_end": "2022-03-18",
+      "end_date": "2022-03-18"
+    }
+  ],
+  "exclusions": [],
+  "historical_events_n": 8,
+  "methodology": {
+    "market": "SPY",
+    "estimation_window": [
+      -250,
+      -11
+    ],
+    "estimation_n": 240,
+    "car_window": "+1 through +h trading days, event day excluded",
+    "predictions": "Uncalibrated heuristic percentage-point magnitudes; same magnitude at every horizon.",
+    "sector_baseline": "Ex-post mean market-model CAR of fixed cached same-sector peers, excluding target. Control comparison, not a forecast.",
+    "sector_peer_panel": {
+      "Information Technology": [
+        "AAPL",
+        "AMD",
+        "MSFT"
+      ],
+      "Industrials": [
+        "CAT",
+        "HON",
+        "GE"
+      ],
+      "Consumer Staples": [
+        "KO",
+        "PEP",
+        "PG"
+      ],
+      "Health Care": [
+        "JNJ",
+        "MRK",
+        "PFE"
+      ],
+      "Consumer Discretionary": [
+        "AMZN",
+        "HD",
+        "MCD"
+      ],
+      "Communication Services": [
+        "GOOG",
+        "META",
+        "DIS"
+      ],
+      "Energy": [
+        "XOM",
+        "CVX",
+        "COP"
+      ],
+      "Financials": [
+        "JPM",
+        "BAC",
+        "WFC"
+      ]
+    }
+  },
+  "limitations": [
+    "Small, hand-selected historical demonstration; selection and survivorship bias.",
+    "Graph edges restricted to filed_date <= event date; graph remains a sparse subset.",
+    "Date-only alignment ignores publication time and excludes event-day reaction.",
+    "Adjusted Yahoo prices can be revised; historical replay is not a prospective record.",
+    "Magnitudes, weights and severities are assumptions, not calibrated expected returns.",
+    "Sector baseline uses realized peer returns and is not a tradable predictor.",
+    "Bootstrap intervals are unstable with few events; no investment-performance claim.",
+    "Issuer-level graph ignores product specificity: RTX A320neo issue also reaches Boeing."
+  ]
+}

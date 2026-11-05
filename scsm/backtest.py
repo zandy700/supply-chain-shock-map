@@ -1,0 +1,318 @@
+"""EventStudy's OLS market-model approach, adapted to cached adjusted yfinance prices.
+
+Reference implementation: vendor/EventStudy/return_calculator.py (MIT, Rongxin).
+Uses exact trading-day windows, rather than upstream calendar approximations.
+"""
+
+from __future__ import annotations
+
+import json
+import warnings
+from datetime import date, datetime, timedelta, timezone
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+from scipy.stats import spearmanr
+
+ROOT = Path(__file__).resolve().parents[1]
+DATA = ROOT / "data"
+_REFRESHED = set()
+
+PEERS = {
+    "Information Technology": ["AAPL", "AMD", "MSFT"],
+    "Industrials": ["CAT", "HON", "GE"],
+    "Consumer Staples": ["KO", "PEP", "PG"],
+    "Health Care": ["JNJ", "MRK", "PFE"],
+    "Consumer Discretionary": ["AMZN", "HD", "MCD"],
+    "Communication Services": ["GOOG", "META", "DIS"],
+    "Energy": ["XOM", "CVX", "COP"],
+    "Financials": ["JPM", "BAC", "WFC"],
+}
+
+
+def market_model(stock_returns, market_returns):
+    """OLS r_stock = alpha + beta*r_SPY; units are fractional daily returns."""
+    stock, market = np.asarray(stock_returns, float), np.asarray(market_returns, float)
+    finite = np.isfinite(stock) & np.isfinite(market)
+    stock, market = stock[finite], market[finite]
+    if len(stock) < 3 or np.std(market) < 1e-12:
+        raise ValueError("insufficient or singular estimation observations")
+    alpha, beta = np.linalg.lstsq(
+        np.column_stack([np.ones(len(market)), market]), stock, rcond=None
+    )[0]
+    return float(alpha), float(beta)
+
+
+def load_prices(ticker, offline=True):
+    path = DATA / "prices" / f"{ticker}.csv"
+    if not path.exists() and offline:
+        raise ValueError(f"no cached prices for {ticker}")
+    refresh_key = (str(DATA), ticker, date.today().isoformat())
+    if not offline and refresh_key not in _REFRESHED:
+        _REFRESHED.add(refresh_key)
+        try:
+            # Refresh once per ticker/process, including an existing cache. Yahoo may
+            # revise adjusted history, so a coherent full download is intentional.
+            fetch_prices(ticker)
+        except Exception as exc:
+            if not path.exists():
+                raise ValueError(f"prices unavailable for {ticker}: {exc}") from exc
+            warnings.warn(
+                f"Keeping cached {ticker} prices after refresh failure: {exc}",
+                RuntimeWarning,
+                stacklevel=2,
+            )
+    frame = pd.read_csv(path, parse_dates=["date"])
+    prices = frame.set_index("date")["adjusted_close"].sort_index()
+    return prices.loc[~prices.index.duplicated()]
+
+
+def fetch_prices(ticker, start="2021-01-01", end=None):
+    import yfinance as yf
+
+    end = end or (date.today() + timedelta(days=1)).isoformat()
+    frame = yf.download(
+        ticker.replace(".", "-"),
+        start=start,
+        end=end,
+        auto_adjust=True,
+        progress=False,
+        threads=False,
+        timeout=25,
+    )
+    if frame.empty:
+        raise ValueError(f"yfinance returned no prices for {ticker}")
+    close = frame["Close"]
+    if isinstance(close, pd.DataFrame):
+        close = close.iloc[:, 0]
+    close = close.dropna()
+    close.index = pd.DatetimeIndex(close.index).tz_localize(None)
+    directory = DATA / "prices"
+    directory.mkdir(parents=True, exist_ok=True)
+    pd.DataFrame({"date": close.index.strftime("%Y-%m-%d"), "adjusted_close": close.values}).to_csv(
+        directory / f"{ticker}.csv", index=False
+    )
+    metadata = {
+        "ticker": ticker,
+        "source": "Yahoo Finance via yfinance",
+        "auto_adjust": True,
+        "retrieved_at": datetime.now(timezone.utc).isoformat(),
+        "requested_start": start,
+        "requested_end_exclusive": end,
+        "n": len(close),
+        "warning": "Retrospectively adjusted prices; vendor revisions possible.",
+    }
+    (directory / f"{ticker}.meta.json").write_text(json.dumps(metadata, indent=2) + "\n")
+    return close
+
+
+def study_prices(stock, market, event_date, horizon):
+    if horizon not in (1, 5, 20):
+        raise ValueError("horizon must be 1, 5, or 20 trading days")
+    joined = (
+        pd.concat([stock.rename("stock"), market.rename("market")], axis=1).dropna().sort_index()
+    )
+    returns = joined.pct_change(fill_method=None)
+    target = pd.Timestamp(event_date)
+    positions = np.flatnonzero(joined.index >= target)
+    if not len(positions):
+        raise ValueError("event date beyond price cache")
+    day0 = int(positions[0])
+    if day0 < 251:
+        raise ValueError("insufficient estimation history: require full -250..-11 window")
+    if day0 + horizon >= len(returns):
+        raise ValueError("incomplete matured horizon")
+    estimation = returns.iloc[day0 - 250 : day0 - 10].dropna()
+    if len(estimation) != 240:
+        raise ValueError("incomplete estimation window")
+    alpha, beta = market_model(estimation["stock"], estimation["market"])
+    window = returns.iloc[day0 + 1 : day0 + horizon + 1]
+    if len(window) != horizon or window.isna().any().any():
+        raise ValueError("incomplete horizon returns")
+    abnormal = window["stock"] - alpha - beta * window["market"]
+    return {
+        "car_pct": float(abnormal.sum() * 100),
+        "alpha": alpha,
+        "beta": beta,
+        "estimation_n": len(estimation),
+        "event_trading_date": joined.index[day0].date().isoformat(),
+        "estimation_start": estimation.index[0].date().isoformat(),
+        "estimation_end": estimation.index[-1].date().isoformat(),
+        "window_start": window.index[0].date().isoformat(),
+        "window_end": window.index[-1].date().isoformat(),
+        "end_date": window.index[-1].date().isoformat(),
+        "horizon": horizon,
+    }
+
+
+def event_study(ticker, event_date, horizon, offline=True):
+    return study_prices(
+        load_prices(ticker, offline), load_prices("SPY", offline), event_date, horizon
+    )
+
+
+def _metrics(rows):
+    if not rows:
+        return {
+            "n": 0,
+            "directional_hit_rate": None,
+            "pearson": None,
+            "spearman": None,
+            "mae": None,
+        }
+    predicted = np.array([r["predicted"] for r in rows], float)
+    actual = np.array([r["actual"] for r in rows], float)
+    corr, rank = None, None
+    if len(rows) >= 3 and np.std(predicted) > 1e-12 and np.std(actual) > 1e-12:
+        corr = float(np.corrcoef(predicted, actual)[0, 1])
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            rank = float(spearmanr(predicted, actual).statistic)
+    return {
+        "n": len(rows),
+        "directional_hit_rate": float(np.mean(np.sign(predicted) == np.sign(actual))),
+        "pearson": corr,
+        "spearman": rank,
+        "mae": float(np.mean(np.abs(predicted - actual))),
+    }
+
+
+def summarize(rows, bootstrap_n=1000):
+    result = _metrics(rows)
+    result["bootstrap_ci"] = {
+        key: None for key in ["directional_hit_rate", "pearson", "spearman", "mae"]
+    }
+    if not rows:
+        return result
+    # Event-cluster resampling preserves dependence between predictions from one shock.
+    groups = {}
+    for row in rows:
+        groups.setdefault(row["event_id"], []).append(row)
+    identifiers = list(groups)
+    rng = np.random.default_rng(2026)
+    bootstrap = []
+    for _ in range(bootstrap_n):
+        sampled = rng.choice(identifiers, size=len(identifiers), replace=True)
+        bootstrap.append(_metrics([row for event in sampled for row in groups[event]]))
+    for key in result["bootstrap_ci"]:
+        values = [
+            sample[key]
+            for sample in bootstrap
+            if sample[key] is not None and np.isfinite(sample[key])
+        ]
+        if values:
+            result["bootstrap_ci"][key] = [float(x) for x in np.quantile(values, [0.025, 0.975])]
+    result["bootstrap_method"] = "1000 event-cluster percentile resamples; fixed seed 2026"
+    result["event_count"] = len(groups)
+    return result
+
+
+def run_backtest(offline=True):
+    from scsm.news import load_companies, load_events
+    from scsm.propagate import propagate
+
+    graph_path = DATA / "graph.json"
+    graph = (
+        json.loads(graph_path.read_text()) if graph_path.exists() else {"nodes": [], "edges": []}
+    )
+    sectors = {c["ticker"]: c["sector"] for c in load_companies()}
+    samples, exclusions = [], []
+    # Historical curated events only. GDELT candidates await review and maturation.
+    events = [event for event in load_events() if event.get("source") == "curated_primary_source"]
+    for event in events:
+        historical_graph = {
+            **graph,
+            "edges": [
+                edge
+                for edge in graph.get("edges", [])
+                if edge.get("filed_date") and edge["filed_date"] <= event["date"]
+            ],
+        }
+        predictions = propagate(event, historical_graph)
+        for prediction in predictions:
+            ticker = prediction["ticker"]
+            for horizon in (1, 5, 20):
+                try:
+                    study = event_study(ticker, event["date"], horizon, offline)
+                    peers = []
+                    for peer in PEERS.get(sectors.get(ticker), []):
+                        if peer != ticker:
+                            try:
+                                peers.append(
+                                    event_study(peer, event["date"], horizon, offline)["car_pct"]
+                                )
+                            except ValueError:
+                                pass
+                    samples.append(
+                        {
+                            "event_id": event["id"],
+                            "event_date": event["date"],
+                            "ticker": ticker,
+                            "predicted": prediction["magnitude"],
+                            "actual": study["car_pct"],
+                            "horizon": horizon,
+                            "path": prediction["path"],
+                            "hops": prediction.get("hops", len(prediction["path"]) - 1),
+                            "sector_baseline": float(np.mean(peers)) if peers else None,
+                            "sector_peer_n": len(peers),
+                            **study,
+                        }
+                    )
+                except (ValueError, OSError) as exc:
+                    exclusions.append(
+                        {
+                            "event_id": event["id"],
+                            "ticker": ticker,
+                            "horizon": horizon,
+                            "reason": str(exc),
+                        }
+                    )
+    horizons = {}
+    for horizon in (1, 5, 20):
+        rows = [row for row in samples if row["horizon"] == horizon]
+        metrics = summarize(rows)
+        zero = [{**row, "predicted": 0.0} for row in rows]
+        sector = [
+            {**row, "predicted": row["sector_baseline"]}
+            for row in rows
+            if row["sector_baseline"] is not None
+        ]
+        metrics["baselines"] = {"zero": summarize(zero), "same_sector": summarize(sector)}
+        metrics["propagated_n"] = sum(row["hops"] > 0 for row in rows)
+        metrics["direct_n"] = sum(row["hops"] == 0 for row in rows)
+        horizons[str(horizon)] = metrics
+    result = {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "horizons": horizons,
+        "samples": samples,
+        "exclusions": exclusions,
+        "historical_events_n": len(events),
+        "methodology": {
+            "market": "SPY",
+            "estimation_window": [-250, -11],
+            "estimation_n": 240,
+            "car_window": "+1 through +h trading days, event day excluded",
+            "predictions": (
+                "Uncalibrated heuristic percentage-point magnitudes; "
+                "same magnitude at every horizon."
+            ),
+            "sector_baseline": (
+                "Ex-post mean market-model CAR of fixed cached same-sector "
+                "peers, excluding target. Control comparison, not a forecast."
+            ),
+            "sector_peer_panel": PEERS,
+        },
+        "limitations": [
+            "Small, hand-selected historical demonstration; selection and survivorship bias.",
+            "Graph edges restricted to filed_date <= event date; graph remains a sparse subset.",
+            "Date-only alignment ignores publication time and excludes event-day reaction.",
+            "Adjusted Yahoo prices can be revised; historical replay is not a prospective record.",
+            "Magnitudes, weights and severities are assumptions, not calibrated expected returns.",
+            "Sector baseline uses realized peer returns and is not a tradable predictor.",
+            "Bootstrap intervals are unstable with few events; no investment-performance claim.",
+            "Issuer graph ignores product specificity: RTX A320neo issue also reaches Boeing.",
+        ],
+    }
+    (DATA / "results.json").write_text(json.dumps(result, indent=2, allow_nan=False) + "\n")
+    return result

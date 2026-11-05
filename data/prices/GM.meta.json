@@ -1,0 +1,10 @@
+{
+  "ticker": "GM",
+  "source": "Yahoo Finance via yfinance",
+  "auto_adjust": true,
+  "retrieved_at": "2026-11-05T04:01:33.462047+00:00",
+  "requested_start": "2021-01-01",
+  "requested_end_exclusive": "2026-11-05",
+  "n": 1467,
+  "warning": "Retrospectively adjusted prices; vendor revisions possible."
+}
