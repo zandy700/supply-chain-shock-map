@@ -52,37 +52,39 @@ Severity, decay and magnitude are modeling choices, not estimated returns. Expec
 
 ## Results and findings
 
-Executed with `python -m scsm backtest` on the refreshed Yahoo adjusted-price caches: **83 verified historical scenarios: 20 positive and 63 negative**, from March 2021 through **November 2, 2026**. New recent disclosures include Boeing's October 1 certification delay, Apple's October 28 MacBook Pro launch, and Apple's November 2 earnings growth release. All 21 additions have a fetched `source_url`, short `source_quote`, and publication-date quote; the 20 Apple responses are also preserved with SHA256 hashes under `data/events/sources/`. The older 62 records retain their original evidence notes. Positive means an assumed favorable catalyst, not a label selected from realized returns; launches do not guarantee gains. Earnings growth is not presented as an analyst-expectations beat.
+Executed with `python -m scsm backtest` on the existing Yahoo adjusted-price caches: **88 verified historical scenarios: 25 positive and 63 negative**, from March 2021 through **November 2, 2026**. Phase 2b adds **5 non-Apple positive events from 5 distinct issuers**: AMD (1), AVGO (1), MU (1), ABT (1), NVDA (1). AAPL retains 20 (19 launches and one earnings-growth disclosure); no prior event was removed or relabeled.
 
-Prices were refreshed only with `python scripts/fetch_data.py --refresh`; all 58 tickers succeeded, with caches through November 4, 2026. No ticker was dropped. There are 203, 198 and 193 ticker predictions at +1/+5/+20 respectively, with 15 explicitly reported exclusions for immature +5/+20 windows. The November 2 event has a completed +1 window; its longer windows are not scored. The 12-node, 10-edge SEC graph is unchanged.
+The additions cover **three required non-Apple categories**: major contract wins (AMD/OpenAI, October 6, 2025; AVGO/Apple, May 23, 2023), supplier expansion (MU Boise fab groundbreaking, September 12, 2022), and a guidance raise (ABT higher full-year guidance midpoints, April 17, 2024). NVDA's March 18, 2024 Blackwell announcement adds a non-Apple product launch. Every addition has a fetched primary `source_url`, short verbatim `source_quote`, disclosure-date quote, retrieval timestamp and SHA256-checked compressed HTML snapshot under `data/events/sources/`. Micron's blocked investor-release URL was dropped in favor of its fetchable corporate press kit; AMD uses its current newsroom URL. Broadcom's contract is disclosed by customer Apple, so it diversifies issuer exposure but is still Apple-related. Positive means an assumed favorable catalyst, not a realized-return label. Abbott narrowed its guidance ranges with higher midpoints; no consensus earnings beat is claimed. Micron's groundbreaking is not completed capacity, and AMD's agreement has future delivery and warrant terms.
+
+Prices remain the caches produced by the existing `python scripts/fetch_data.py --refresh` pipeline in Phase 2, through November 4, 2026. All five added issuers already had prices; all five have complete +1/+5/+20 study windows with 240 estimation observations. No price download, substitute series, or ticker drop was needed in Phase 2b. There are **210, 205 and 200** ticker predictions at +1/+5/+20, with the same **15** immature-window exclusions. The November 2 event has only a completed +1 window. The 12-node, 10-edge SEC graph, UI and hashed ledger are unchanged.
 
 MAE is in percentage points of CAR. CIs use 10,000 event-cluster percentile bootstrap resamples (seed 2026). “Model − zero” is model MAE minus always-predict-zero MAE; negative favors the model. The positive/negative groups split **predicted sign**, across all relation types. Exact binomial p-values remain in `data/results.json`; they assume independent predictions and can overstate evidence when predictions share events.
 
 | Horizon | Group | n (events) | Hit rate [95% CI] | Model MAE | Zero MAE | Model − zero [95% CI] |
 |---|---|---:|---|---:|---:|---|
-| +1 | overall | 203 (83) | 58.6% [50.3%, 67.0%] | 2.05 | 1.51 | +0.54 [+0.33, +0.77] |
-| +1 | direct | 87 (83) | 66.7% [56.5%, 76.4%] | 3.08 | 1.97 | +1.11 [+0.64, +1.57] |
-| +1 | downstream | 5 (5) | 20.0% [0.0%, 60.0%] | 2.66 | 2.21 | +0.45 [-0.30, +0.90] |
+| +1 | overall | 210 (88) | 57.6% [49.3%, 65.7%] | 2.06 | 1.49 | +0.56 [+0.35, +0.78] |
+| +1 | direct | 92 (88) | 64.1% [53.9%, 73.6%] | 3.07 | 1.93 | +1.14 [+0.68, +1.57] |
+| +1 | downstream | 7 (7) | 28.6% [0.0%, 57.1%] | 2.13 | 1.81 | +0.32 [-0.25, +0.82] |
 | +1 | upstream | 111 (38) | 54.1% [42.4%, 64.7%] | 1.22 | 1.11 | +0.10 [-0.04, +0.25] |
-| +1 | positive | 94 (20) | 54.3% [40.0%, 68.0%] | 1.64 | 1.22 | +0.41 [+0.21, +0.62] |
+| +1 | positive | 101 (25) | 52.5% [38.9%, 65.7%] | 1.68 | 1.22 | +0.46 [+0.25, +0.69] |
 | +1 | negative | 109 (63) | 62.4% [52.4%, 72.0%] | 2.41 | 1.75 | +0.65 [+0.28, +1.02] |
-| +5 | overall | 198 (82) | 57.1% [48.4%, 65.8%] | 2.97 | 2.70 | +0.27 [-0.02, +0.57] |
-| +5 | direct | 86 (82) | 57.0% [46.3%, 67.4%] | 3.65 | 3.04 | +0.61 [-0.01, +1.23] |
-| +5 | downstream | 5 (5) | 20.0% [0.0%, 60.0%] | 4.11 | 3.56 | +0.55 [-0.10, +0.95] |
+| +5 | overall | 205 (87) | 57.6% [49.0%, 65.9%] | 3.02 | 2.78 | +0.24 [-0.05, +0.54] |
+| +5 | direct | 91 (87) | 58.2% [47.8%, 68.4%] | 3.75 | 3.22 | +0.53 [-0.09, +1.14] |
+| +5 | downstream | 7 (7) | 28.6% [0.0%, 57.1%] | 3.45 | 3.05 | +0.39 [-0.11, +0.89] |
 | +5 | upstream | 107 (37) | 58.9% [47.1%, 70.9%] | 2.37 | 2.39 | -0.01 [-0.17, +0.14] |
-| +5 | positive | 89 (19) | 59.6% [45.7%, 73.3%] | 2.64 | 2.46 | +0.18 [-0.05, +0.42] |
+| +5 | positive | 96 (24) | 60.4% [47.5%, 73.4%] | 2.77 | 2.65 | +0.13 [-0.13, +0.38] |
 | +5 | negative | 109 (63) | 55.0% [44.0%, 66.3%] | 3.24 | 2.89 | +0.35 [-0.16, +0.85] |
-| +20 | overall | 193 (81) | 59.6% [52.1%, 67.0%] | 5.36 | 5.51 | -0.15 [-0.45, +0.15] |
-| +20 | direct | 85 (81) | 62.4% [51.7%, 72.6%] | 5.56 | 5.82 | -0.26 [-0.90, +0.39] |
-| +20 | downstream | 5 (5) | 20.0% [0.0%, 60.0%] | 9.08 | 8.53 | +0.55 [-0.10, +0.95] |
+| +20 | overall | 200 (86) | 59.5% [52.2%, 66.8%] | 5.45 | 5.61 | -0.16 [-0.46, +0.14] |
+| +20 | direct | 90 (86) | 62.2% [51.7%, 72.2%] | 5.81 | 6.10 | -0.28 [-0.90, +0.35] |
+| +20 | downstream | 7 (7) | 28.6% [0.0%, 57.1%] | 7.32 | 6.75 | +0.56 [+0.10, +0.89] |
 | +20 | upstream | 103 (36) | 59.2% [49.0%, 69.9%] | 5.01 | 5.11 | -0.10 [-0.25, +0.04] |
-| +20 | positive | 84 (18) | 54.8% [43.7%, 64.4%] | 4.92 | 4.87 | +0.05 [-0.20, +0.32] |
+| +20 | positive | 91 (23) | 54.9% [44.3%, 64.9%] | 5.16 | 5.14 | +0.03 [-0.24, +0.30] |
 | +20 | negative | 109 (63) | 63.3% [53.4%, 73.3%] | 5.70 | 6.01 | -0.31 [-0.79, +0.18] |
 
-- **Upstream remains consistent with a coin flip** at every horizon: all hit-rate CIs include 50%. Downstream remains just 1 correct sign in 5 cases. Supply-chain propagation is not validated.
-- Positive signs are also consistent with a coin flip at every horizon. **All 20 positive events are Apple releases (19 product announcements and one earnings-growth disclosure)**; 94 +1 positive predictions are not 94 independent events. This narrow issuer sample cannot validate other positive catalyst categories or broad market performance.
-- Direct signs are 66.7% correct at +1, but magnitude error is worse than zero. No overall horizon beats the zero baseline on MAE with a CI excluding zero. Positive scenarios do not repair the uncalibrated 5% severity scale.
-- This is a hand-selected convenience sample with overlapping windows and historical replay, not prospective forecasting. Current constituent survivorship, day-level timing, exclusion of day 0, retrospectively adjusted prices, stale 2021 relationships and assumed exposures limit interpretation. Many reported comparisons have no multiple-testing correction. The Apple launch cohort was selected by disclosed catalyst type rather than realized price direction, but still has severe selection bias.
+- **Upstream remains consistent with a coin flip** at every horizon: all hit-rate CIs include 50%. Downstream remains just **2 correct signs in 7 cases** at every horizon; its +20 magnitude error is worse than zero with a CI excluding zero. Supply-chain propagation is not validated. The additions create only two new downstream observations per horizon and no new upstream observations.
+- Positive signs are also consistent with a coin flip at every horizon (52.5%, 60.4%, 54.9% at +1/+5/+20). **Apple is still 20/25 positive events (80%)**. The five non-Apple events are single examples per issuer, not independent category validation; contract wins remain concentrated in technology. NVDA, MU and ABT have no edges in the sparse shipped graph and contribute direct observations only. Earnings beats against analyst consensus and rate-cut relief still lack non-Apple examples here.
+- Direct signs are 64.1% correct at +1, but magnitude error is worse than zero. No overall horizon beats the zero baseline on MAE with a CI excluding zero. Positive scenarios do not repair the uncalibrated 5% severity scale.
+- This is a hand-selected convenience sample with overlapping windows and historical replay, not prospective forecasting. Current constituent survivorship, day-level timing, exclusion of day 0, retrospectively adjusted prices, stale 2021 relationships and assumed exposures limit interpretation. Many reported comparisons have no multiple-testing correction. Events were selected by disclosed catalyst type rather than realized price direction, but still have severe selection bias; issuer diversity does not establish a tradable edge.
 
 Live GDELT acquisition was attempted and the request status is cached in `data/events/gdelt-*.json`; when rate-limited it contributes **no invented events**. The initial ledger is timestamped at this build and contains real historical-event replay scenarios. There are no matured prospective scores yet. Prospective performance is unavailable, not 0%.
 

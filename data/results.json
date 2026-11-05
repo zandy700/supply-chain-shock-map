@@ -1,39 +1,39 @@
 {
-  "generated_at": "2026-11-05T07:05:59.959897+00:00",
+  "generated_at": "2026-11-05T07:40:14.667273+00:00",
   "horizons": {
     "1": {
-      "n": 203,
-      "directional_hit_rate": 0.5862068965517241,
-      "pearson": 0.24017322614441197,
-      "spearman": 0.2688948016964082,
-      "mae": 2.0501091973870964,
+      "n": 210,
+      "directional_hit_rate": 0.5761904761904761,
+      "pearson": 0.24474882435911638,
+      "spearman": 0.2628226580517788,
+      "mae": 2.0577259049242107,
       "bootstrap_ci": {
         "directional_hit_rate": [
-          0.5025113250983984,
-          0.6703538359788359
+          0.4975603748648324,
+          0.6610215800685376
         ],
         "pearson": [
-          0.11301877492661207,
-          0.3625039777028471
+          0.10621536178986501,
+          0.36807476925796057
         ],
         "spearman": [
-          0.12920283673770042,
-          0.4186786265285298
+          0.10584360267060744,
+          0.41075928620393853
         ],
         "mae": [
-          1.78394493014749,
-          2.326432570666932
+          1.7907587803590141,
+          2.332221273221734
         ]
       },
       "bootstrap_method": "1000 event-cluster percentile resamples; fixed seed 2026",
-      "event_count": 83,
+      "event_count": 88,
       "baselines": {
         "zero": {
-          "n": 203,
+          "n": 210,
           "directional_hit_rate": 0.0,
           "pearson": null,
           "spearman": null,
-          "mae": 1.5073359892362284,
+          "mae": 1.4949498989498,
           "bootstrap_ci": {
             "directional_hit_rate": [
               0.0,
@@ -42,275 +42,275 @@
             "pearson": null,
             "spearman": null,
             "mae": [
-              1.2580181422077525,
-              1.810478630094874
+              1.2337492150335683,
+              1.7959528208282691
+            ]
+          },
+          "bootstrap_method": "1000 event-cluster percentile resamples; fixed seed 2026",
+          "event_count": 88
+        },
+        "same_sector": {
+          "n": 206,
+          "directional_hit_rate": 0.5048543689320388,
+          "pearson": 0.05758734279803216,
+          "spearman": 0.07995719307962618,
+          "mae": 1.6160952196117309,
+          "bootstrap_ci": {
+            "directional_hit_rate": [
+              0.4264705882352941,
+              0.5833439086294416
+            ],
+            "pearson": [
+              -0.10412416382623975,
+              0.2046178184037813
+            ],
+            "spearman": [
+              -0.07614925209463405,
+              0.2175070991738468
+            ],
+            "mae": [
+              1.3658625191557436,
+              1.887063173551825
+            ]
+          },
+          "bootstrap_method": "1000 event-cluster percentile resamples; fixed seed 2026",
+          "event_count": 85
+        }
+      },
+      "propagated_n": 118,
+      "direct_n": 92
+    },
+    "5": {
+      "n": 205,
+      "directional_hit_rate": 0.5756097560975609,
+      "pearson": 0.24292610405768894,
+      "spearman": 0.19685557116887806,
+      "mae": 3.0213054697383206,
+      "bootstrap_ci": {
+        "directional_hit_rate": [
+          0.49517361111111113,
+          0.6614173567977916
+        ],
+        "pearson": [
+          0.07614900329565125,
+          0.39015897656486026
+        ],
+        "spearman": [
+          0.03889031817981186,
+          0.3491807838365908
+        ],
+        "mae": [
+          2.6691645923685843,
+          3.4484937651303382
+        ]
+      },
+      "bootstrap_method": "1000 event-cluster percentile resamples; fixed seed 2026",
+      "event_count": 87,
+      "baselines": {
+        "zero": {
+          "n": 205,
+          "directional_hit_rate": 0.0,
+          "pearson": null,
+          "spearman": null,
+          "mae": 2.7777407597579296,
+          "bootstrap_ci": {
+            "directional_hit_rate": [
+              0.0,
+              0.0
+            ],
+            "pearson": null,
+            "spearman": null,
+            "mae": [
+              2.4101951917967757,
+              3.2267398153572566
+            ]
+          },
+          "bootstrap_method": "1000 event-cluster percentile resamples; fixed seed 2026",
+          "event_count": 87
+        },
+        "same_sector": {
+          "n": 201,
+          "directional_hit_rate": 0.5223880597014925,
+          "pearson": 0.2707859585700502,
+          "spearman": 0.19665399352658533,
+          "mae": 2.9305145262424253,
+          "bootstrap_ci": {
+            "directional_hit_rate": [
+              0.4368062200956938,
+              0.6274509803921569
+            ],
+            "pearson": [
+              0.11216905771142442,
+              0.4063695683869499
+            ],
+            "spearman": [
+              0.02418874981668617,
+              0.3563114279033189
+            ],
+            "mae": [
+              2.569822952938687,
+              3.317295763538968
+            ]
+          },
+          "bootstrap_method": "1000 event-cluster percentile resamples; fixed seed 2026",
+          "event_count": 84
+        }
+      },
+      "propagated_n": 114,
+      "direct_n": 91
+    },
+    "20": {
+      "n": 200,
+      "directional_hit_rate": 0.595,
+      "pearson": 0.22701910519517227,
+      "spearman": 0.20771764175503366,
+      "mae": 5.454426655999597,
+      "bootstrap_ci": {
+        "directional_hit_rate": [
+          0.5201824065901736,
+          0.6684491978609626
+        ],
+        "pearson": [
+          0.06804413432325099,
+          0.37703580207133647
+        ],
+        "spearman": [
+          0.052959770243953194,
+          0.36094215155689713
+        ],
+        "mae": [
+          4.732638258422046,
+          6.255577593970371
+        ]
+      },
+      "bootstrap_method": "1000 event-cluster percentile resamples; fixed seed 2026",
+      "event_count": 86,
+      "baselines": {
+        "zero": {
+          "n": 200,
+          "directional_hit_rate": 0.0,
+          "pearson": null,
+          "spearman": null,
+          "mae": 5.612531287896059,
+          "bootstrap_ci": {
+            "directional_hit_rate": [
+              0.0,
+              0.0
+            ],
+            "pearson": null,
+            "spearman": null,
+            "mae": [
+              4.884304124928862,
+              6.4030483006658345
+            ]
+          },
+          "bootstrap_method": "1000 event-cluster percentile resamples; fixed seed 2026",
+          "event_count": 86
+        },
+        "same_sector": {
+          "n": 196,
+          "directional_hit_rate": 0.5459183673469388,
+          "pearson": 0.23583650182017563,
+          "spearman": 0.22074734819340164,
+          "mae": 6.392470799820812,
+          "bootstrap_ci": {
+            "directional_hit_rate": [
+              0.46464646464646464,
+              0.6181897004729374
+            ],
+            "pearson": [
+              0.08537059514616177,
+              0.37402174483990025
+            ],
+            "spearman": [
+              0.066274859840964,
+              0.34846490069832153
+            ],
+            "mae": [
+              5.5871654777184805,
+              7.2869704658582535
             ]
           },
           "bootstrap_method": "1000 event-cluster percentile resamples; fixed seed 2026",
           "event_count": 83
-        },
-        "same_sector": {
-          "n": 199,
-          "directional_hit_rate": 0.507537688442211,
-          "pearson": 0.06330931534277967,
-          "spearman": 0.08219265777124833,
-          "mae": 1.61491914715784,
-          "bootstrap_ci": {
-            "directional_hit_rate": [
-              0.42580231596360624,
-              0.581831550802139
-            ],
-            "pearson": [
-              -0.12280077604252758,
-              0.2310425910078073
-            ],
-            "spearman": [
-              -0.08355262348189221,
-              0.2224289778878783
-            ],
-            "mae": [
-              1.3712371640389773,
-              1.898613440071698
-            ]
-          },
-          "bootstrap_method": "1000 event-cluster percentile resamples; fixed seed 2026",
-          "event_count": 80
         }
       },
-      "propagated_n": 116,
-      "direct_n": 87
-    },
-    "5": {
-      "n": 198,
-      "directional_hit_rate": 0.5707070707070707,
-      "pearson": 0.1986027577575327,
-      "spearman": 0.17266350546895526,
-      "mae": 2.971811528372573,
-      "bootstrap_ci": {
-        "directional_hit_rate": [
-          0.4857059314954052,
-          0.6548223350253807
-        ],
-        "pearson": [
-          0.020981402638279835,
-          0.34609501506155393
-        ],
-        "spearman": [
-          0.009049277878288362,
-          0.3281801927453591
-        ],
-        "mae": [
-          2.6135470691758886,
-          3.4200627121651714
-        ]
-      },
-      "bootstrap_method": "1000 event-cluster percentile resamples; fixed seed 2026",
-      "event_count": 82,
-      "baselines": {
-        "zero": {
-          "n": 198,
-          "directional_hit_rate": 0.0,
-          "pearson": null,
-          "spearman": null,
-          "mae": 2.6990318338864756,
-          "bootstrap_ci": {
-            "directional_hit_rate": [
-              0.0,
-              0.0
-            ],
-            "pearson": null,
-            "spearman": null,
-            "mae": [
-              2.3460294166115054,
-              3.1392647792405217
-            ]
-          },
-          "bootstrap_method": "1000 event-cluster percentile resamples; fixed seed 2026",
-          "event_count": 82
-        },
-        "same_sector": {
-          "n": 194,
-          "directional_hit_rate": 0.520618556701031,
-          "pearson": 0.2768197954465868,
-          "spearman": 0.2120532826774633,
-          "mae": 2.8104098766699184,
-          "bootstrap_ci": {
-            "directional_hit_rate": [
-              0.43296896855411077,
-              0.6195271835399918
-            ],
-            "pearson": [
-              0.13078256941951047,
-              0.41364805540093524
-            ],
-            "spearman": [
-              0.041058911491538036,
-              0.37519312991045006
-            ],
-            "mae": [
-              2.431128190450032,
-              3.2096485803654162
-            ]
-          },
-          "bootstrap_method": "1000 event-cluster percentile resamples; fixed seed 2026",
-          "event_count": 79
-        }
-      },
-      "propagated_n": 112,
-      "direct_n": 86
-    },
-    "20": {
-      "n": 193,
-      "directional_hit_rate": 0.5958549222797928,
-      "pearson": 0.18891573413134752,
-      "spearman": 0.19368539530252832,
-      "mae": 5.359735048681444,
-      "bootstrap_ci": {
-        "directional_hit_rate": [
-          0.5164167324388319,
-          0.6684491978609626
-        ],
-        "pearson": [
-          0.034492675839029346,
-          0.3263484300444245
-        ],
-        "spearman": [
-          0.041709811714435475,
-          0.3370773445573609
-        ],
-        "mae": [
-          4.6411855671557,
-          6.1516918999554955
-        ]
-      },
-      "bootstrap_method": "1000 event-cluster percentile resamples; fixed seed 2026",
-      "event_count": 81,
-      "baselines": {
-        "zero": {
-          "n": 193,
-          "directional_hit_rate": 0.0,
-          "pearson": null,
-          "spearman": null,
-          "mae": 5.514255640615743,
-          "bootstrap_ci": {
-            "directional_hit_rate": [
-              0.0,
-              0.0
-            ],
-            "pearson": null,
-            "spearman": null,
-            "mae": [
-              4.752347206503528,
-              6.261962910180948
-            ]
-          },
-          "bootstrap_method": "1000 event-cluster percentile resamples; fixed seed 2026",
-          "event_count": 81
-        },
-        "same_sector": {
-          "n": 189,
-          "directional_hit_rate": 0.5608465608465608,
-          "pearson": 0.2792011418049834,
-          "spearman": 0.25997114076698113,
-          "mae": 6.1576398762869715,
-          "bootstrap_ci": {
-            "directional_hit_rate": [
-              0.48663101604278075,
-              0.6408839779005525
-            ],
-            "pearson": [
-              0.13026935431751074,
-              0.4181983246842049
-            ],
-            "spearman": [
-              0.10863295026381632,
-              0.39001317453610335
-            ],
-            "mae": [
-              5.3678900410723465,
-              7.124820531287358
-            ]
-          },
-          "bootstrap_method": "1000 event-cluster percentile resamples; fixed seed 2026",
-          "event_count": 78
-        }
-      },
-      "propagated_n": 108,
-      "direct_n": 85
+      "propagated_n": 110,
+      "direct_n": 90
     }
   },
   "evaluation": {
     "1": {
       "overall": {
-        "n": 203,
-        "events": 83,
-        "hits": 119,
-        "hit_rate": 0.5862068965517241,
+        "n": 210,
+        "events": 88,
+        "hits": 121,
+        "hit_rate": 0.5761904761904761,
         "hit_rate_ci95": [
-          0.5025906735751295,
-          0.6698113207547169
+          0.49288929454182634,
+          0.6567229260673376
         ],
-        "binomial_p_two_sided": 0.01680372624037291,
-        "mae_model": 2.0501091973870964,
-        "mae_zero": 1.5073359892362284,
-        "mae_diff": 0.542773208150868,
+        "binomial_p_two_sided": 0.03217260969957707,
+        "mae_model": 2.0577259049242107,
+        "mae_zero": 1.4949498989498,
+        "mae_diff": 0.5627760059744107,
         "mae_diff_ci95": [
-          0.3264897064972201,
-          0.7686998233869685
+          0.3504875523199964,
+          0.7839010106185197
         ]
       },
       "direct": {
-        "n": 87,
-        "events": 83,
-        "hits": 58,
-        "hit_rate": 0.6666666666666666,
+        "n": 92,
+        "events": 88,
+        "hits": 59,
+        "hit_rate": 0.6413043478260869,
         "hit_rate_ci95": [
-          0.5647058823529412,
-          0.7640449438202247
+          0.5393258426966292,
+          0.7362637362637363
         ],
-        "binomial_p_two_sided": 0.002479419793816073,
-        "mae_model": 3.0790457443835315,
-        "mae_zero": 1.9707373797828152,
-        "mae_diff": 1.1083083646007164,
+        "binomial_p_two_sided": 0.008780930806975229,
+        "mae_model": 3.067701661524704,
+        "mae_zero": 1.9326709254348977,
+        "mae_diff": 1.1350307360898062,
         "mae_diff_ci95": [
-          0.6359065114180784,
-          1.5678770636774135
+          0.6788759115545282,
+          1.5724078487352082
         ]
       },
       "propagated": {
-        "n": 116,
-        "events": 40,
-        "hits": 61,
-        "hit_rate": 0.5258620689655172,
+        "n": 118,
+        "events": 42,
+        "hits": 62,
+        "hit_rate": 0.5254237288135594,
         "hit_rate_ci95": [
-          0.4107142857142857,
-          0.6349206349206349
+          0.4083333333333333,
+          0.6323529411764706
         ],
-        "binomial_p_two_sided": 0.6426674253796113,
-        "mae_model": 1.2784067871397706,
-        "mae_zero": 1.1597849463262877,
-        "mae_diff": 0.11862184081348293,
+        "binomial_p_two_sided": 0.6454967635578218,
+        "mae_model": 1.2702871794390798,
+        "mae_zero": 1.1536758783004017,
+        "mae_diff": 0.11661130113867801,
         "mae_diff_ci95": [
-          -0.026638368360899063,
-          0.2662605355212395
+          -0.024897945525954514,
+          0.26601159387544093
         ]
       },
       "downstream": {
-        "n": 5,
-        "events": 5,
-        "hits": 1,
-        "hit_rate": 0.2,
+        "n": 7,
+        "events": 7,
+        "hits": 2,
+        "hit_rate": 0.2857142857142857,
         "hit_rate_ci95": [
           0.0,
-          0.6
+          0.5714285714285714
         ],
-        "binomial_p_two_sided": 0.375,
-        "mae_model": 2.662417789751166,
-        "mae_zero": 2.2124177897511657,
-        "mae_diff": 0.4500000000000002,
+        "binomial_p_two_sided": 0.453125,
+        "mae_model": 2.130112687764833,
+        "mae_zero": 1.8086841163362617,
+        "mae_diff": 0.3214285714285714,
         "mae_diff_ci95": [
-          -0.3,
-          0.9
+          -0.25,
+          0.8214285714285714
         ]
       },
       "upstream": {
@@ -332,21 +332,21 @@
         ]
       },
       "positive": {
-        "n": 94,
-        "events": 20,
-        "hits": 51,
-        "hit_rate": 0.5425531914893617,
+        "n": 101,
+        "events": 25,
+        "hits": 53,
+        "hit_rate": 0.5247524752475248,
         "hit_rate_ci95": [
-          0.4,
-          0.6804123711340206
+          0.3888888888888889,
+          0.6568627450980392
         ],
-        "binomial_p_two_sided": 0.4704921148903706,
-        "mae_model": 1.636472377317171,
-        "mae_zero": 1.2222666017137165,
-        "mae_diff": 0.4142057756034545,
+        "binomial_p_two_sided": 0.6908264239959597,
+        "mae_model": 1.6809769943793829,
+        "mae_zero": 1.216270628966267,
+        "mae_diff": 0.46470636541311583,
         "mae_diff_ci95": [
-          0.21244491926277942,
-          0.6197338533772208
+          0.2509511331659104,
+          0.6873406553237223
         ]
       },
       "negative": {
@@ -370,75 +370,75 @@
     },
     "5": {
       "overall": {
-        "n": 198,
-        "events": 82,
-        "hits": 113,
-        "hit_rate": 0.5707070707070707,
+        "n": 205,
+        "events": 87,
+        "hits": 118,
+        "hit_rate": 0.5756097560975609,
         "hit_rate_ci95": [
-          0.4842105263157895,
-          0.6578947368421053
+          0.49009653465346537,
+          0.6587677725118484
         ],
-        "binomial_p_two_sided": 0.05473387935217155,
-        "mae_model": 2.971811528372573,
-        "mae_zero": 2.6990318338864756,
-        "mae_diff": 0.2727796944860974,
+        "binomial_p_two_sided": 0.03588773130337708,
+        "mae_model": 3.0213054697383206,
+        "mae_zero": 2.7777407597579296,
+        "mae_diff": 0.24356470998039104,
         "mae_diff_ci95": [
-          -0.02092321934360244,
-          0.5717495040758269
+          -0.0523260146747379,
+          0.54044673550668
         ]
       },
       "direct": {
-        "n": 86,
-        "events": 82,
-        "hits": 49,
-        "hit_rate": 0.5697674418604651,
+        "n": 91,
+        "events": 87,
+        "hits": 53,
+        "hit_rate": 0.5824175824175825,
         "hit_rate_ci95": [
-          0.4634146341463415,
-          0.6744186046511628
+          0.4777777777777778,
+          0.6842105263157895
         ],
-        "binomial_p_two_sided": 0.2353798622110552,
-        "mae_model": 3.650306653853573,
-        "mae_zero": 3.03746485511265,
-        "mae_diff": 0.6128417987409231,
+        "binomial_p_two_sided": 0.14179337454474714,
+        "mae_model": 3.7504093122326667,
+        "mae_zero": 3.2160710624584654,
+        "mae_diff": 0.5343382497742013,
         "mae_diff_ci95": [
-          -0.011233846875652289,
-          1.2316519173124396
+          -0.08709551699846467,
+          1.144279780790389
         ]
       },
       "propagated": {
-        "n": 112,
-        "events": 39,
-        "hits": 64,
-        "hit_rate": 0.5714285714285714,
+        "n": 114,
+        "events": 41,
+        "hits": 65,
+        "hit_rate": 0.5701754385964912,
         "hit_rate_ci95": [
-          0.45535714285714285,
-          0.6864513781886661
+          0.45714285714285713,
+          0.6842105263157895
         ],
-        "binomial_p_two_sided": 0.15606630199376736,
-        "mae_model": 2.4508241998782334,
-        "mae_zero": 2.439163621159234,
-        "mae_diff": 0.011660578718999393,
+        "binomial_p_two_sided": 0.15976150778501852,
+        "mae_model": 2.439301525291079,
+        "mae_zero": 2.427845518128554,
+        "mae_diff": 0.01145600716252515,
         "mae_diff_ci95": [
-          -0.1343274888480734,
-          0.16262876771820367
+          -0.13757949948700432,
+          0.16008892165732322
         ]
       },
       "downstream": {
-        "n": 5,
-        "events": 5,
-        "hits": 1,
-        "hit_rate": 0.2,
+        "n": 7,
+        "events": 7,
+        "hits": 2,
+        "hit_rate": 0.2857142857142857,
         "hit_rate_ci95": [
           0.0,
-          0.6
+          0.5714285714285714
         ],
-        "binomial_p_two_sided": 0.375,
-        "mae_model": 4.105773087442908,
-        "mae_zero": 3.5557730874429083,
-        "mae_diff": 0.5499999999999998,
+        "binomial_p_two_sided": 0.453125,
+        "mae_model": 3.445275562005073,
+        "mae_zero": 3.05241841914793,
+        "mae_diff": 0.3928571428571428,
         "mae_diff_ci95": [
-          -0.10000000000000002,
-          0.95
+          -0.10714285714285714,
+          0.8928571428571429
         ]
       },
       "upstream": {
@@ -460,21 +460,21 @@
         ]
       },
       "positive": {
-        "n": 89,
-        "events": 19,
-        "hits": 53,
-        "hit_rate": 0.5955056179775281,
+        "n": 96,
+        "events": 24,
+        "hits": 58,
+        "hit_rate": 0.6041666666666666,
         "hit_rate_ci95": [
-          0.45652173913043476,
-          0.7325581395348837
+          0.47474747474747475,
+          0.7340425531914894
         ],
-        "binomial_p_two_sided": 0.08932073673118937,
-        "mae_model": 2.642267852190096,
-        "mae_zero": 2.461233205686678,
-        "mae_diff": 0.18103464650341827,
+        "binomial_p_two_sided": 0.05191052214883844,
+        "mae_model": 2.771987265869843,
+        "mae_zero": 2.6466490411142476,
+        "mae_diff": 0.1253382247555952,
         "mae_diff_ci95": [
-          -0.05214811026790917,
-          0.42072305026727363
+          -0.13383971186081578,
+          0.37970846525691704
         ]
       },
       "negative": {
@@ -498,75 +498,75 @@
     },
     "20": {
       "overall": {
-        "n": 193,
-        "events": 81,
-        "hits": 115,
-        "hit_rate": 0.5958549222797928,
+        "n": 200,
+        "events": 86,
+        "hits": 119,
+        "hit_rate": 0.595,
         "hit_rate_ci95": [
-          0.5210071453731193,
-          0.6699041082787317
+          0.521978021978022,
+          0.6684797874938935
         ],
-        "binomial_p_two_sided": 0.009382073714845333,
-        "mae_model": 5.359735048681444,
-        "mae_zero": 5.514255640615743,
-        "mae_diff": -0.15452059193429868,
+        "binomial_p_two_sided": 0.00872250124744714,
+        "mae_model": 5.454426655999597,
+        "mae_zero": 5.612531287896059,
+        "mae_diff": -0.15810463189646207,
         "mae_diff_ci95": [
-          -0.4537288840006136,
-          0.1505360272481251
+          -0.4579827116293347,
+          0.13970195996139567
         ]
       },
       "direct": {
-        "n": 85,
-        "events": 81,
-        "hits": 53,
-        "hit_rate": 0.6235294117647059,
+        "n": 90,
+        "events": 86,
+        "hits": 56,
+        "hit_rate": 0.6222222222222222,
         "hit_rate_ci95": [
-          0.5172413793103449,
-          0.7261904761904762
+          0.5168539325842697,
+          0.7222222222222222
         ],
-        "binomial_p_two_sided": 0.029456361785778883,
-        "mae_model": 5.559763860307821,
-        "mae_zero": 5.822971662562742,
-        "mae_diff": -0.2632078022549216,
+        "binomial_p_two_sided": 0.026301665131122268,
+        "mae_model": 5.813773839640293,
+        "mae_zero": 6.095692319547717,
+        "mae_diff": -0.28191847990742414,
         "mae_diff_ci95": [
-          -0.899215238333246,
-          0.3880526651892083
+          -0.8995157229440025,
+          0.34750854687134564
         ]
       },
       "propagated": {
-        "n": 108,
-        "events": 38,
-        "hits": 62,
-        "hit_rate": 0.5740740740740741,
+        "n": 110,
+        "events": 40,
+        "hits": 63,
+        "hit_rate": 0.5727272727272728,
         "hit_rate_ci95": [
-          0.47058823529411764,
-          0.676775568181818
+          0.47115384615384615,
+          0.6727315208156329
         ],
-        "binomial_p_two_sided": 0.1485763476105622,
-        "mae_model": 5.202304965456982,
-        "mae_zero": 5.271284697416717,
-        "mae_diff": -0.06897973195973517,
+        "binomial_p_two_sided": 0.15233780606025285,
+        "mae_model": 5.160415323929937,
+        "mae_zero": 5.2172177165447025,
+        "mae_diff": -0.05680239261476583,
         "mae_diff_ci95": [
-          -0.2138373219920135,
-          0.07778794265440979
+          -0.19719169669017414,
+          0.08752254226683205
         ]
       },
       "downstream": {
-        "n": 5,
-        "events": 5,
-        "hits": 1,
-        "hit_rate": 0.2,
+        "n": 7,
+        "events": 7,
+        "hits": 2,
+        "hit_rate": 0.2857142857142857,
         "hit_rate_ci95": [
           0.0,
-          0.6
+          0.5714285714285714
         ],
-        "binomial_p_two_sided": 0.375,
-        "mae_model": 9.082962509943854,
-        "mae_zero": 8.532962509943854,
-        "mae_diff": 0.5500000000000007,
+        "binomial_p_two_sided": 0.453125,
+        "mae_model": 7.315937416094075,
+        "mae_zero": 6.751430578375876,
+        "mae_diff": 0.5645068377181985,
         "mae_diff_ci95": [
-          -0.1,
-          0.95
+          0.1002211234324841,
+          0.8928571428571429
         ]
       },
       "upstream": {
@@ -588,21 +588,21 @@
         ]
       },
       "positive": {
-        "n": 84,
-        "events": 18,
-        "hits": 46,
-        "hit_rate": 0.5476190476190477,
+        "n": 91,
+        "events": 23,
+        "hits": 50,
+        "hit_rate": 0.5494505494505495,
         "hit_rate_ci95": [
-          0.4367816091954023,
-          0.6444444444444445
+          0.4431818181818182,
+          0.6494845360824743
         ],
-        "binomial_p_two_sided": 0.4452046690465761,
-        "mae_model": 4.92226524442552,
-        "mae_zero": 4.871003609588523,
-        "mae_diff": 0.051261634836997416,
+        "binomial_p_two_sided": 0.40181279606987985,
+        "mae_model": 5.164030190507081,
+        "mae_zero": 5.136474968635265,
+        "mae_diff": 0.027555221871815583,
         "mae_diff_ci95": [
-          -0.19838341051097994,
-          0.32068600712604667
+          -0.23846653630527137,
+          0.3038008523399491
         ]
       },
       "negative": {
@@ -2245,6 +2245,159 @@
       "window_start": "2025-10-08",
       "window_end": "2025-11-04",
       "end_date": "2025-11-04"
+    },
+    {
+      "event_id": "c77a4bb9a8a57d06c01c",
+      "event_date": "2025-10-06",
+      "ticker": "AMD",
+      "predicted": 3.0,
+      "actual": 4.637055463233066,
+      "horizon": 1,
+      "path": [
+        "AMD"
+      ],
+      "hops": 0,
+      "relation": "origin",
+      "sector_baseline": -0.07165938127440805,
+      "sector_peer_n": 2,
+      "car_pct": 4.637055463233066,
+      "alpha": -0.0010808349783345457,
+      "beta": 1.8880622000114256,
+      "estimation_n": 240,
+      "event_trading_date": "2025-10-06",
+      "estimation_start": "2024-10-04",
+      "estimation_end": "2025-09-19",
+      "window_start": "2025-10-07",
+      "window_end": "2025-10-07",
+      "end_date": "2025-10-07"
+    },
+    {
+      "event_id": "c77a4bb9a8a57d06c01c",
+      "event_date": "2025-10-06",
+      "ticker": "AMD",
+      "predicted": 3.0,
+      "actual": 9.916253727957097,
+      "horizon": 5,
+      "path": [
+        "AMD"
+      ],
+      "hops": 0,
+      "relation": "origin",
+      "sector_baseline": -1.783120484598307,
+      "sector_peer_n": 2,
+      "car_pct": 9.916253727957097,
+      "alpha": -0.0010808349783345457,
+      "beta": 1.8880622000114256,
+      "estimation_n": 240,
+      "event_trading_date": "2025-10-06",
+      "estimation_start": "2024-10-04",
+      "estimation_end": "2025-09-19",
+      "window_start": "2025-10-07",
+      "window_end": "2025-10-13",
+      "end_date": "2025-10-13"
+    },
+    {
+      "event_id": "c77a4bb9a8a57d06c01c",
+      "event_date": "2025-10-06",
+      "ticker": "AMD",
+      "predicted": 3.0,
+      "actual": 24.984784126639976,
+      "horizon": 20,
+      "path": [
+        "AMD"
+      ],
+      "hops": 0,
+      "relation": "origin",
+      "sector_baseline": -0.4964669696507391,
+      "sector_peer_n": 2,
+      "car_pct": 24.984784126639976,
+      "alpha": -0.0010808349783345457,
+      "beta": 1.8880622000114256,
+      "estimation_n": 240,
+      "event_trading_date": "2025-10-06",
+      "estimation_start": "2024-10-04",
+      "estimation_end": "2025-09-19",
+      "window_start": "2025-10-07",
+      "window_end": "2025-11-03",
+      "end_date": "2025-11-03"
+    },
+    {
+      "event_id": "c77a4bb9a8a57d06c01c",
+      "event_date": "2025-10-06",
+      "ticker": "MSFT",
+      "predicted": 0.75,
+      "actual": -0.5628480205029226,
+      "horizon": 1,
+      "path": [
+        "AMD",
+        "MSFT"
+      ],
+      "hops": 1,
+      "relation": "downstream",
+      "sector_baseline": 2.5282923605935865,
+      "sector_peer_n": 2,
+      "car_pct": -0.5628480205029226,
+      "alpha": 0.0003484209368238194,
+      "beta": 0.918066609753695,
+      "estimation_n": 240,
+      "event_trading_date": "2025-10-06",
+      "estimation_start": "2024-10-04",
+      "estimation_end": "2025-09-19",
+      "window_start": "2025-10-07",
+      "window_end": "2025-10-07",
+      "end_date": "2025-10-07"
+    },
+    {
+      "event_id": "c77a4bb9a8a57d06c01c",
+      "event_date": "2025-10-06",
+      "ticker": "MSFT",
+      "predicted": 0.75,
+      "actual": -1.7969635236083166,
+      "horizon": 5,
+      "path": [
+        "AMD",
+        "MSFT"
+      ],
+      "hops": 1,
+      "relation": "downstream",
+      "sector_baseline": 4.0734881411843995,
+      "sector_peer_n": 2,
+      "car_pct": -1.7969635236083166,
+      "alpha": 0.0003484209368238194,
+      "beta": 0.918066609753695,
+      "estimation_n": 240,
+      "event_trading_date": "2025-10-06",
+      "estimation_start": "2024-10-04",
+      "estimation_end": "2025-09-19",
+      "window_start": "2025-10-07",
+      "window_end": "2025-10-13",
+      "end_date": "2025-10-13"
+    },
+    {
+      "event_id": "c77a4bb9a8a57d06c01c",
+      "event_date": "2025-10-06",
+      "ticker": "MSFT",
+      "predicted": 0.75,
+      "actual": -4.445975430925558,
+      "horizon": 20,
+      "path": [
+        "AMD",
+        "MSFT"
+      ],
+      "hops": 1,
+      "relation": "downstream",
+      "sector_baseline": 14.218912809132028,
+      "sector_peer_n": 2,
+      "car_pct": -4.445975430925558,
+      "alpha": 0.0003484209368238194,
+      "beta": 0.918066609753695,
+      "estimation_n": 240,
+      "event_trading_date": "2025-10-06",
+      "estimation_start": "2024-10-04",
+      "estimation_end": "2025-09-19",
+      "window_start": "2025-10-07",
+      "window_end": "2025-11-03",
+      "end_date": "2025-11-03"
     },
     {
       "event_id": "6599f9e42345d67d0def",
@@ -5772,6 +5925,81 @@
       "end_date": "2024-05-17"
     },
     {
+      "event_id": "8105fb928d4c74566433",
+      "event_date": "2024-04-17",
+      "ticker": "ABT",
+      "predicted": 3.0,
+      "actual": -0.5119943973073405,
+      "horizon": 1,
+      "path": [
+        "ABT"
+      ],
+      "hops": 0,
+      "relation": "origin",
+      "sector_baseline": 0.25384095218562824,
+      "sector_peer_n": 3,
+      "car_pct": -0.5119943973073405,
+      "alpha": 1.8986620032729424e-05,
+      "beta": 0.4120867664159206,
+      "estimation_n": 240,
+      "event_trading_date": "2024-04-17",
+      "estimation_start": "2023-04-19",
+      "estimation_end": "2024-04-02",
+      "window_start": "2024-04-18",
+      "window_end": "2024-04-18",
+      "end_date": "2024-04-18"
+    },
+    {
+      "event_id": "8105fb928d4c74566433",
+      "event_date": "2024-04-17",
+      "ticker": "ABT",
+      "predicted": 3.0,
+      "actual": 0.5398069811335403,
+      "horizon": 5,
+      "path": [
+        "ABT"
+      ],
+      "hops": 0,
+      "relation": "origin",
+      "sector_baseline": 2.3475989305440894,
+      "sector_peer_n": 3,
+      "car_pct": 0.5398069811335403,
+      "alpha": 1.8986620032729424e-05,
+      "beta": 0.4120867664159206,
+      "estimation_n": 240,
+      "event_trading_date": "2024-04-17",
+      "estimation_start": "2023-04-19",
+      "estimation_end": "2024-04-02",
+      "window_start": "2024-04-18",
+      "window_end": "2024-04-24",
+      "end_date": "2024-04-24"
+    },
+    {
+      "event_id": "8105fb928d4c74566433",
+      "event_date": "2024-04-17",
+      "ticker": "ABT",
+      "predicted": 3.0,
+      "actual": -3.600164957069424,
+      "horizon": 20,
+      "path": [
+        "ABT"
+      ],
+      "hops": 0,
+      "relation": "origin",
+      "sector_baseline": 7.575717238000636,
+      "sector_peer_n": 3,
+      "car_pct": -3.600164957069424,
+      "alpha": 1.8986620032729424e-05,
+      "beta": 0.4120867664159206,
+      "estimation_n": 240,
+      "event_trading_date": "2024-04-17",
+      "estimation_start": "2023-04-19",
+      "estimation_end": "2024-04-02",
+      "window_start": "2024-04-18",
+      "window_end": "2024-05-15",
+      "end_date": "2024-05-15"
+    },
+    {
       "event_id": "ad736e35146613db32f1",
       "event_date": "2024-04-03",
       "ticker": "MU",
@@ -5845,6 +6073,81 @@
       "window_start": "2024-04-04",
       "window_end": "2024-05-01",
       "end_date": "2024-05-01"
+    },
+    {
+      "event_id": "f6106d498f3cd3e731d2",
+      "event_date": "2024-03-18",
+      "ticker": "NVDA",
+      "predicted": 2.5,
+      "actual": -0.3739644535851943,
+      "horizon": 1,
+      "path": [
+        "NVDA"
+      ],
+      "hops": 0,
+      "relation": "origin",
+      "sector_baseline": -1.644746714727307,
+      "sector_peer_n": 3,
+      "car_pct": -0.3739644535851943,
+      "alpha": 0.0027055664447395433,
+      "beta": 2.1044744389810894,
+      "estimation_n": 240,
+      "event_trading_date": "2024-03-18",
+      "estimation_start": "2023-03-20",
+      "estimation_end": "2024-03-01",
+      "window_start": "2024-03-19",
+      "window_end": "2024-03-19",
+      "end_date": "2024-03-19"
+    },
+    {
+      "event_id": "f6106d498f3cd3e731d2",
+      "event_date": "2024-03-18",
+      "ticker": "NVDA",
+      "predicted": 2.5,
+      "actual": 3.0255264573869645,
+      "horizon": 5,
+      "path": [
+        "NVDA"
+      ],
+      "hops": 0,
+      "relation": "origin",
+      "sector_baseline": -4.231794371557217,
+      "sector_peer_n": 3,
+      "car_pct": 3.0255264573869645,
+      "alpha": 0.0027055664447395433,
+      "beta": 2.1044744389810894,
+      "estimation_n": 240,
+      "event_trading_date": "2024-03-18",
+      "estimation_start": "2023-03-20",
+      "estimation_end": "2024-03-01",
+      "window_start": "2024-03-19",
+      "window_end": "2024-03-25",
+      "end_date": "2024-03-25"
+    },
+    {
+      "event_id": "f6106d498f3cd3e731d2",
+      "event_date": "2024-03-18",
+      "ticker": "NVDA",
+      "predicted": 2.5,
+      "actual": -2.398622025641722,
+      "horizon": 20,
+      "path": [
+        "NVDA"
+      ],
+      "hops": 0,
+      "relation": "origin",
+      "sector_baseline": -3.8483166842659178,
+      "sector_peer_n": 3,
+      "car_pct": -2.398622025641722,
+      "alpha": 0.0027055664447395433,
+      "beta": 2.1044744389810894,
+      "estimation_n": 240,
+      "event_trading_date": "2024-03-18",
+      "estimation_start": "2023-03-20",
+      "estimation_end": "2024-03-01",
+      "window_start": "2024-03-19",
+      "window_end": "2024-04-16",
+      "end_date": "2024-04-16"
     },
     {
       "event_id": "f35874a459ddcd322aa5",
@@ -10836,6 +11139,159 @@
       "end_date": "2023-07-05"
     },
     {
+      "event_id": "4bfceff1a7a3f32f1248",
+      "event_date": "2023-05-23",
+      "ticker": "AVGO",
+      "predicted": 3.0,
+      "actual": -0.18507993771193326,
+      "horizon": 1,
+      "path": [
+        "AVGO"
+      ],
+      "hops": 0,
+      "relation": "origin",
+      "sector_baseline": 0.9832677292357709,
+      "sector_peer_n": 3,
+      "car_pct": -0.18507993771193326,
+      "alpha": 0.0006754981358822294,
+      "beta": 1.2391744674156695,
+      "estimation_n": 240,
+      "event_trading_date": "2023-05-23",
+      "estimation_start": "2022-05-24",
+      "estimation_end": "2023-05-08",
+      "window_start": "2023-05-24",
+      "window_end": "2023-05-24",
+      "end_date": "2023-05-24"
+    },
+    {
+      "event_id": "4bfceff1a7a3f32f1248",
+      "event_date": "2023-05-23",
+      "ticker": "AVGO",
+      "predicted": 3.0,
+      "actual": 15.693221604228071,
+      "horizon": 5,
+      "path": [
+        "AVGO"
+      ],
+      "hops": 0,
+      "relation": "origin",
+      "sector_baseline": 4.213805708267256,
+      "sector_peer_n": 3,
+      "car_pct": 15.693221604228071,
+      "alpha": 0.0006754981358822294,
+      "beta": 1.2391744674156695,
+      "estimation_n": 240,
+      "event_trading_date": "2023-05-23",
+      "estimation_start": "2022-05-24",
+      "estimation_end": "2023-05-08",
+      "window_start": "2023-05-24",
+      "window_end": "2023-05-31",
+      "end_date": "2023-05-31"
+    },
+    {
+      "event_id": "4bfceff1a7a3f32f1248",
+      "event_date": "2023-05-23",
+      "ticker": "AVGO",
+      "predicted": 3.0,
+      "actual": 13.874455689591587,
+      "horizon": 20,
+      "path": [
+        "AVGO"
+      ],
+      "hops": 0,
+      "relation": "origin",
+      "sector_baseline": -2.331276600336946,
+      "sector_peer_n": 3,
+      "car_pct": 13.874455689591587,
+      "alpha": 0.0006754981358822294,
+      "beta": 1.2391744674156695,
+      "estimation_n": 240,
+      "event_trading_date": "2023-05-23",
+      "estimation_start": "2022-05-24",
+      "estimation_end": "2023-05-08",
+      "window_start": "2023-05-24",
+      "window_end": "2023-06-22",
+      "end_date": "2023-06-22"
+    },
+    {
+      "event_id": "4bfceff1a7a3f32f1248",
+      "event_date": "2023-05-23",
+      "ticker": "AAPL",
+      "predicted": 0.75,
+      "actual": 1.0358518450950807,
+      "horizon": 1,
+      "path": [
+        "AVGO",
+        "AAPL"
+      ],
+      "hops": 1,
+      "relation": "downstream",
+      "sector_baseline": 0.9569756713061159,
+      "sector_peer_n": 2,
+      "car_pct": 1.0358518450950807,
+      "alpha": 0.0006080186483851958,
+      "beta": 1.2884419399467433,
+      "estimation_n": 240,
+      "event_trading_date": "2023-05-23",
+      "estimation_start": "2022-05-24",
+      "estimation_end": "2023-05-08",
+      "window_start": "2023-05-24",
+      "window_end": "2023-05-24",
+      "end_date": "2023-05-24"
+    },
+    {
+      "event_id": "4bfceff1a7a3f32f1248",
+      "event_date": "2023-05-23",
+      "ticker": "AAPL",
+      "predicted": 0.75,
+      "actual": 1.7910999732126496,
+      "horizon": 5,
+      "path": [
+        "AVGO",
+        "AAPL"
+      ],
+      "hops": 1,
+      "relation": "downstream",
+      "sector_baseline": 5.425158575794559,
+      "sector_peer_n": 2,
+      "car_pct": 1.7910999732126496,
+      "alpha": 0.0006080186483851958,
+      "beta": 1.2884419399467433,
+      "estimation_n": 240,
+      "event_trading_date": "2023-05-23",
+      "estimation_start": "2022-05-24",
+      "estimation_end": "2023-05-08",
+      "window_start": "2023-05-24",
+      "window_end": "2023-05-31",
+      "end_date": "2023-05-31"
+    },
+    {
+      "event_id": "4bfceff1a7a3f32f1248",
+      "event_date": "2023-05-23",
+      "ticker": "AAPL",
+      "predicted": 0.75,
+      "actual": 0.1492260679863057,
+      "horizon": 20,
+      "path": [
+        "AVGO",
+        "AAPL"
+      ],
+      "hops": 1,
+      "relation": "downstream",
+      "sector_baseline": -3.571527934498572,
+      "sector_peer_n": 2,
+      "car_pct": 0.1492260679863057,
+      "alpha": 0.0006080186483851958,
+      "beta": 1.2884419399467433,
+      "estimation_n": 240,
+      "event_trading_date": "2023-05-23",
+      "estimation_start": "2022-05-24",
+      "estimation_end": "2023-05-08",
+      "window_start": "2023-05-24",
+      "window_end": "2023-06-22",
+      "end_date": "2023-06-22"
+    },
+    {
       "event_id": "ca7b69d7a105aa496f48",
       "event_date": "2023-05-21",
       "ticker": "MU",
@@ -12832,6 +13288,81 @@
       "window_start": "2022-10-13",
       "window_end": "2022-11-09",
       "end_date": "2022-11-09"
+    },
+    {
+      "event_id": "d6fadec1f284997b7b74",
+      "event_date": "2022-09-12",
+      "ticker": "MU",
+      "predicted": 2.5,
+      "actual": -0.6434788470680839,
+      "horizon": 1,
+      "path": [
+        "MU"
+      ],
+      "hops": 0,
+      "relation": "origin",
+      "sector_baseline": -0.18047056843744036,
+      "sector_peer_n": 3,
+      "car_pct": -0.6434788470680839,
+      "alpha": -0.0001933268002567234,
+      "beta": 1.5622749145540544,
+      "estimation_n": 240,
+      "event_trading_date": "2022-09-12",
+      "estimation_start": "2021-09-14",
+      "estimation_end": "2022-08-25",
+      "window_start": "2022-09-13",
+      "window_end": "2022-09-13",
+      "end_date": "2022-09-13"
+    },
+    {
+      "event_id": "d6fadec1f284997b7b74",
+      "event_date": "2022-09-12",
+      "ticker": "MU",
+      "predicted": 2.5,
+      "actual": -2.2656803733267687,
+      "horizon": 5,
+      "path": [
+        "MU"
+      ],
+      "hops": 0,
+      "relation": "origin",
+      "sector_baseline": -0.20018982680915412,
+      "sector_peer_n": 3,
+      "car_pct": -2.2656803733267687,
+      "alpha": -0.0001933268002567234,
+      "beta": 1.5622749145540544,
+      "estimation_n": 240,
+      "event_trading_date": "2022-09-12",
+      "estimation_start": "2021-09-14",
+      "estimation_end": "2022-08-25",
+      "window_start": "2022-09-13",
+      "window_end": "2022-09-19",
+      "end_date": "2022-09-19"
+    },
+    {
+      "event_id": "d6fadec1f284997b7b74",
+      "event_date": "2022-09-12",
+      "ticker": "MU",
+      "predicted": 2.5,
+      "actual": 8.801690642518649,
+      "horizon": 20,
+      "path": [
+        "MU"
+      ],
+      "hops": 0,
+      "relation": "origin",
+      "sector_baseline": -3.6304470216670075,
+      "sector_peer_n": 3,
+      "car_pct": 8.801690642518649,
+      "alpha": -0.0001933268002567234,
+      "beta": 1.5622749145540544,
+      "estimation_n": 240,
+      "event_trading_date": "2022-09-12",
+      "estimation_start": "2021-09-14",
+      "estimation_end": "2022-08-25",
+      "window_start": "2022-09-13",
+      "window_end": "2022-10-10",
+      "end_date": "2022-10-10"
     },
     {
       "event_id": "94f99e83a2391f448b29",
@@ -15905,7 +16436,7 @@
       "reason": "incomplete matured horizon"
     }
   ],
-  "historical_events_n": 83,
+  "historical_events_n": 88,
   "methodology": {
     "market": "SPY",
     "estimation_window": [
