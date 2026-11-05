@@ -1,5 +1,9 @@
 """Bounded shock scenarios over evidence-backed supplier -> customer edges.
 
+A supplier shock travels downstream (supplier -> customer: lost supply). A customer
+shock travels upstream (customer -> supplier: lost demand). A path never changes
+direction, so a shock cannot zig-zag into an unrelated sibling supplier.
+
 5 percentage points at severity 1 is an explicit uncalibrated assumption.
 Weights reflect model assumptions unless a filing reports exposure; confidence
 is not an exposure estimate. Never use these scenarios as calibrated forecasts.
@@ -16,9 +20,10 @@ DEFAULT_WEIGHT = 0.5
 MAX_HOPS = 3
 
 
-def propagate(event, graph=None, *, decay=DECAY, max_hops=MAX_HOPS):
+def propagate(event, graph=None, *, decay=DECAY, max_hops=MAX_HOPS, upstream=True):
     """Return strongest simple path per ticker; no repeated/cyclic amplification.
 
+    ``relation`` on each prediction is origin, downstream, upstream or competitor.
     Competitor links must be explicitly supplied and labeled. The shipped SEC
     graph does not manufacture competitors by sector membership.
     """
@@ -30,6 +35,7 @@ def propagate(event, graph=None, *, decay=DECAY, max_hops=MAX_HOPS):
     if sign not in (-1, 0, 1) or not 0 <= decay <= 1 or not 0 <= max_hops <= 10:
         raise ValueError("invalid sign, decay, or maximum hops")
     adjacency = defaultdict(list)
+    reverse = defaultdict(list)
     event_date = event.get("date")
     for edge in graph.get("edges", []):
         # Do not use future filings in historical scenarios.
@@ -39,13 +45,15 @@ def propagate(event, graph=None, *, decay=DECAY, max_hops=MAX_HOPS):
         if not math.isfinite(weight) or not 0 <= weight <= 1:
             raise ValueError("edge weights must be finite fractions between 0 and 1")
         adjacency[edge["source"]].append((edge, weight))
+        if upstream and edge.get("relation", "supplies_to") != "competitor":
+            reverse[edge["target"]].append((edge, weight))
     queue = deque(
-        (ticker, sign * severity * BASE_SHOCK_PCT, [ticker], False, None)
+        (ticker, sign * severity * BASE_SHOCK_PCT, [ticker], False, None, "origin")
         for ticker in sorted(set(event.get("tickers", [])))
     )
     best = {}
     while queue:
-        ticker, magnitude, path, assumed, scenario = queue.popleft()
+        ticker, magnitude, path, assumed, scenario, relation = queue.popleft()
         candidate = {
             "ticker": ticker,
             "direction": "positive"
@@ -56,6 +64,7 @@ def propagate(event, graph=None, *, decay=DECAY, max_hops=MAX_HOPS):
             "magnitude": round(magnitude, 6),
             "path": path,
             "hops": len(path) - 1,
+            "relation": relation,
             "weight_assumption": assumed,
             "model": "uncalibrated 5% × severity × edge weights × 0.5 per hop",
         }
@@ -65,14 +74,22 @@ def propagate(event, graph=None, *, decay=DECAY, max_hops=MAX_HOPS):
             best[ticker] = candidate
         if len(path) - 1 >= max_hops:
             continue
-        for edge, weight in adjacency[ticker]:
-            target = edge["target"]
+        # A substitution benefit is a terminal scenario, not a supply path.
+        if scenario:
+            continue
+        steps = []
+        if relation in ("origin", "downstream"):
+            steps += [
+                (edge, weight, edge["target"], "downstream") for edge, weight in adjacency[ticker]
+            ]
+        if relation in ("origin", "upstream"):
+            steps += [
+                (edge, weight, edge["source"], "upstream") for edge, weight in reverse[ticker]
+            ]
+        for edge, weight, target, step in steps:
             if target in path:
                 continue
             competitor = edge.get("relation") == "competitor"
-            # A substitution benefit is a terminal scenario, not a supply path.
-            if scenario:
-                continue
             next_magnitude = magnitude * decay * weight * (-1 if competitor else 1)
             queue.append(
                 (
@@ -81,6 +98,7 @@ def propagate(event, graph=None, *, decay=DECAY, max_hops=MAX_HOPS):
                     path + [target],
                     assumed or "weight" not in edge or edge.get("weight_is_assumption", False),
                     "competitor substitution (heuristic)" if competitor else None,
+                    "competitor" if competitor else step,
                 )
             )
     return sorted(best.values(), key=lambda p: (p["hops"], p["ticker"]))
