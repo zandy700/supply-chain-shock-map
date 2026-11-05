@@ -27,7 +27,9 @@ async function main() {
     box.textContent = `Could not load data (${err.message}). Serve this folder over HTTP, e.g. python -m http.server --directory web.`;
     return;
   }
-  state.eventId = state.data.events[0]?.id;
+  // Open on the most recent event whose shock actually travels along a documented edge.
+  const events = state.data.events;
+  state.eventId = (events.find((e) => (e.predictions || []).some((p) => p.hops > 0)) || events[0])?.id;
   setupGraphControls();
   renderFeed();
   renderAbout();
@@ -101,9 +103,16 @@ function renderEventDetail(ev) {
     <p class="small"><strong>Predicted abnormal returns</strong> (uncalibrated scenario):</p>
     <ul class="pred-list">${preds.map((p) => `
       <li><span class="tick">${esc(p.ticker)}</span>
-        <span class="path">${p.hops === 0 ? "origin" : esc(p.path.join(" → "))} ${p.hops ? `(${p.hops} hop${p.hops > 1 ? "s" : ""})` : ""}</span>
+        <span class="path">${pathText(p)}</span>
         <span class="mag ${p.magnitude < 0 ? "neg-text" : "pos-text"}">${fmtPct(p.magnitude)}</span></li>`).join("")}
     </ul>`;
+}
+
+const RELATION = { downstream: "lost supply", upstream: "lost demand", competitor: "substitution" };
+function pathText(p) {
+  if (p.hops === 0) return "origin";
+  const why = RELATION[p.relation] || "supply link";
+  return `${esc(p.path.join(" → "))} <span class="nowrap">(${why}, ${p.hops} hop${p.hops > 1 ? "s" : ""})</span>`;
 }
 
 function inspect(item) {
@@ -122,7 +131,7 @@ function inspect(item) {
   const edges = state.graph.edgesOf(n.id);
   box.innerHTML = `<h3>${esc(n.ticker)}${n.name && n.name !== n.ticker ? ` <span class="muted small">${esc(n.name)}</span>` : ""}</h3>
     ${n.sector ? `<p class="small muted">${esc(n.sector)}</p>` : ""}
-    ${pred ? `<p>${dirBadge(pred.magnitude)} ${fmtPct(pred.magnitude)} in this scenario via ${esc(pred.path.join(" → "))}</p>` : '<p class="small muted">Not affected by the selected event.</p>'}
+    ${pred ? `<p>${dirBadge(pred.magnitude)} ${fmtPct(pred.magnitude)} in this scenario via ${pathText(pred)}</p>` : '<p class="small muted">Not affected by the selected event.</p>'}
     ${n.outside ? '<p class="small muted">No reviewed SEC supply edge for this company in the shipped graph, so only its direct effect is modeled.</p>' : ""}
     ${edges.length ? `<p class="small"><strong>Documented relationships</strong></p><ul class="small">${edges.map((e) =>
       `<li>${esc(e.source.id)} &rarr; ${esc(e.target.id)}: ${link(e.source_url, `filed ${esc(e.filed_date)}`)}</li>`).join("")}</ul>` : ""}`;
@@ -298,7 +307,7 @@ function renderAbout() {
     <p>${esc(meta.counts.nodes)} companies and ${esc(meta.counts.edges)} reviewed supplier &rarr; customer edges from ${esc(cov.filings_fetched)} primary SEC filings (${esc(cov.source)}). Discovery: <code>${esc(cov.discovery)}</code>; extraction: <code>${esc(cov.extractor)}</code>; graph: <code>${esc(cov.graph_builder)}</code>. No relationship is hand-invented; each edge carries its evidence sentence and filing link.</p>
     ${li(cov.limitations)}
     <h3>Shock propagation</h3>
-    <p>The issuer's base shock is signed severity &times; 5 percentage points. Each hop from supplier to customer multiplies the prior magnitude by edge weight &times; 0.5, for up to three hops. The strongest simple path per ticker is kept; cycles cannot amplify. Filings dated after an event are excluded from that event's scenario. These magnitudes are modeling choices, not calibrated expected returns.</p>
+    <p>The issuer's base shock is signed severity &times; 5 percentage points. A shock at a supplier travels downstream to its customers (lost supply); a shock at a customer travels upstream to its suppliers (lost demand). A path never changes direction. Each hop multiplies the prior magnitude by edge weight &times; 0.5, for up to three hops. The strongest simple path per ticker is kept; cycles cannot amplify. Filings dated after an event are excluded from that event's scenario. These magnitudes are modeling choices, not calibrated expected returns.</p>
     <h3>Event study</h3>
     <p>Market model against ${esc(results.methodology.market)}: stock return = &alpha; + &beta; &times; market return fitted on trading days ${esc(results.methodology.estimation_window.join(" to "))}. CAR window: ${esc(results.methodology.car_window)}. ${esc(results.methodology.predictions)} ${esc(results.methodology.sector_baseline)}</p>
     ${li(results.limitations)}

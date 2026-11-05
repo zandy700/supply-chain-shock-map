@@ -31,14 +31,21 @@ export function createGraph({ svgEl, graph, events, onInspect, statusEl }) {
   const height = () => svgEl.clientHeight || 600;
 
   const defs = svg.append("defs");
-  for (const [id, color] of [["idle", "#b9b09b"], ["active", "#1b1c1e"]]) {
+  for (const [id, color] of [["idle", "#a9b1b9"], ["active", "#1b1d21"]]) {
     defs.append("marker").attr("id", `arrow-${id}`).attr("viewBox", "0 -5 10 10")
       .attr("refX", 10).attr("refY", 0).attr("markerWidth", 7).attr("markerHeight", 7)
       .attr("orient", "auto").append("path").attr("d", "M0,-5L10,0L0,5").attr("fill", color);
   }
 
   const root = svg.append("g").attr("class", "graph-root");
-  const zoom = d3.zoom().scaleExtent([0.3, 4]).on("zoom", (e) => root.attr("transform", e.transform));
+  // When zoomed out to fit a dense graph on a phone, keep nodes and labels near their
+  // natural screen size instead of shrinking them to illegibility.
+  let nodeScale = 1;
+  const zoom = d3.zoom().scaleExtent([0.25, 4]).on("zoom", (e) => {
+    root.attr("transform", e.transform);
+    const next = e.transform.k < 1 ? Math.pow(e.transform.k, -0.75) : 1;
+    if (Math.abs(next - nodeScale) > 1e-3) { nodeScale = next; draw(); }
+  });
   svg.call(zoom).on("dblclick.zoom", null);
 
   // Pre-position radially (as upstream) to reduce initial chaos, then tick to rest.
@@ -53,8 +60,9 @@ export function createGraph({ svgEl, graph, events, onInspect, statusEl }) {
     .force("link", d3.forceLink(edges).id((d) => d.id).distance(95).strength(0.7))
     .force("charge", d3.forceManyBody().strength(-380).distanceMax(380))
     .force("center", d3.forceCenter(W / 2, H / 2))
-    .force("x", d3.forceX(W / 2).strength(0.06))
-    .force("y", d3.forceY(H / 2).strength(0.08))
+    // Aspect-aware gravity: a tall phone canvas gets a tall layout, not a squashed wide one.
+    .force("x", d3.forceX(W / 2).strength(0.07 * Math.max(0.6, Math.min(2.5, H / W))))
+    .force("y", d3.forceY(H / 2).strength(0.07 * Math.max(0.6, Math.min(2.5, W / H))))
     .force("collision", d3.forceCollide(34).strength(0.9))
     .stop();
   for (let i = 0; i < 400; i++) sim.tick();
@@ -91,7 +99,7 @@ export function createGraph({ svgEl, graph, events, onInspect, statusEl }) {
     // Stop the line at the circle edge so arrowheads stay visible.
     const s = d.source, t = d.target;
     const dx = t.x - s.x, dy = t.y - s.y, len = Math.hypot(dx, dy) || 1;
-    const rs = (s._r || 13) + 2, rt = (t._r || 13) + 4;
+    const rs = ((s._r || 13) + 2) * nodeScale, rt = ((t._r || 13) + 4) * nodeScale;
     return end === "s"
       ? [s.x + (dx / len) * rs, s.y + (dy / len) * rs]
       : [t.x - (dx / len) * rt, t.y - (dy / len) * rt];
@@ -101,21 +109,34 @@ export function createGraph({ svgEl, graph, events, onInspect, statusEl }) {
       sel.attr("x1", (d) => endpoint(d, "s")[0]).attr("y1", (d) => endpoint(d, "s")[1])
         .attr("x2", (d) => endpoint(d, "t")[0]).attr("y2", (d) => endpoint(d, "t")[1]);
     }
-    node.attr("transform", (d) => `translate(${d.x},${d.y})`);
+    node.attr("transform", (d) => `translate(${d.x},${d.y})${nodeScale !== 1 ? ` scale(${nodeScale})` : ""}`);
   }
   draw();
   sim.on("tick", draw);
 
-  function fitTo(subset, animate = true) {
-    const pts = subset && subset.length ? subset : nodes;
-    const [x0, x1] = d3.extent(pts, (d) => d.x), [y0, y1] = d3.extent(pts, (d) => d.y);
-    const pad = 70, w = width(), h = height();
-    const bw = Math.max(x1 - x0, 60) + pad * 2, bh = Math.max(y1 - y0, 60) + pad * 2;
-    const k = Math.max(0.3, Math.min(w / bw, h / bh, pts.length < 3 ? 1.3 : 2));
-    const t = d3.zoomIdentity.translate(w / 2 - k * (x0 + x1) / 2, h / 2 - k * (y0 + y1) / 2).scale(k);
+  // Fit every node with room for its label (below) and the zoom toolbar (top right).
+  // Padding is in screen pixels so nothing is clipped at any viewport size.
+  function fitTo(animate = true) {
+    const [x0, x1] = d3.extent(nodes, (d) => d.x), [y0, y1] = d3.extent(nodes, (d) => d.y);
+    const w = width(), h = height();
+    const pad = { l: 44, r: 44, t: 60, b: 58 };
+    let k = Math.min(2, (w - pad.l - pad.r) / Math.max(x1 - x0, 1), (h - pad.t - pad.b) / Math.max(y1 - y0, 1));
+    k = Math.max(0.25, Math.min(k, 1.6));
+    // Node glyphs are counter-scaled when zoomed out, so they need extra margin.
+    const s = k < 1 ? Math.pow(k, -0.75) : 1;
+    const extra = (s - 1) * 30;
+    k = Math.max(0.25, Math.min(k, (w - pad.l - pad.r - 2 * extra) / Math.max(x1 - x0, 1),
+      (h - pad.t - pad.b - 2 * extra) / Math.max(y1 - y0, 1)));
+    const cx = (pad.l - pad.r) / 2 + w / 2, cy = (pad.t - pad.b) / 2 + h / 2;
+    const t = d3.zoomIdentity.translate(cx - k * (x0 + x1) / 2, cy - k * (y0 + y1) / 2).scale(k);
     (animate && !reducedMotion() ? svg.transition().duration(650) : svg).call(zoom.transform, t);
   }
-  fitTo(null, false);
+  fitTo(false);
+  let lastSize = `${width()}x${height()}`;
+  new ResizeObserver(() => {
+    const size = `${width()}x${height()}`;
+    if (size !== lastSize && width() > 0) { lastSize = size; fitTo(false); }
+  }).observe(svgEl);
 
   let runId = 0;
   function reset() {
@@ -127,8 +148,8 @@ export function createGraph({ svgEl, graph, events, onInspect, statusEl }) {
     node.select("circle.ripple").attr("r", 0).attr("opacity", 0);
     node.select("text.mag").text("").attr("dy", 40);
     node.select("text.tick").attr("dy", 27);
-    node.attr("opacity", 1);
-    link.classed("active", false).attr("marker-end", "url(#arrow-idle)").attr("opacity", 1);
+    node.classed("dim", false).classed("hit", false);
+    link.classed("active", false).classed("dim", false).attr("marker-end", "url(#arrow-idle)");
     draw();
   }
 
@@ -143,13 +164,13 @@ export function createGraph({ svgEl, graph, events, onInspect, statusEl }) {
     const preds = ev.predictions || [];
     const affected = new Set(preds.map((p) => p.ticker));
     const instant = reducedMotion();
-    node.attr("opacity", (d) => (affected.has(d.id) ? 1 : 0.35));
-    link.attr("opacity", 0.35);
-    fitTo(nodes.filter((n) => affected.has(n.id)));
+    // Unaffected companies stay legible (muted label, light outline) rather than faded.
+    node.classed("dim", (d) => !affected.has(d.id)).classed("hit", (d) => affected.has(d.id));
+    link.classed("dim", true);
 
     const maxHop = d3.max(preds, (p) => p.hops) ?? 0;
     const color = (m) => (m < 0 ? "#b23a0e" : "#1b5e84");
-    const soft = (m) => (m < 0 ? "#f6dccf" : "#d5e6f0");
+    const soft = (m) => (m < 0 ? "#f7d9cb" : "#d3e4ef");
 
     for (const p of preds) {
       const n = byId.get(p.ticker);
@@ -161,8 +182,8 @@ export function createGraph({ svgEl, graph, events, onInspect, statusEl }) {
         if (!e) continue;
         const ls = link.filter((d) => d === e);
         const start = instant ? 0 : i * HOP_MS + 200 + HOP_MS * 0.35;
-        ls.transition().delay(start).duration(instant ? 0 : 300).attr("opacity", 1)
-          .on("start", function () { d3.select(this).classed("active", true).attr("marker-end", "url(#arrow-active)"); });
+        ls.transition().delay(start).duration(0)
+          .on("start", function () { d3.select(this).classed("dim", false).classed("active", true).attr("marker-end", "url(#arrow-active)"); });
         if (!instant) {
           const from = byId.get(p.path[i]), to = byId.get(p.path[i + 1]);
           pulseG.append("circle").attr("class", "pulse").attr("r", 5).attr("fill", color(p.magnitude))
@@ -194,7 +215,7 @@ export function createGraph({ svgEl, graph, events, onInspect, statusEl }) {
       if (id !== runId) return;
       const at = preds.filter((p) => p.hops === h);
       const label = h === 0 ? "Origin" : `Hop ${h}`;
-      statusEl.textContent = `${label} of ${maxHop}: ` + at.map((p) => `${p.ticker} ${fmtPct(p.magnitude)}`).join(", ");
+      statusEl.textContent = `${label}${maxHop ? ` of ${maxHop}` : ""}: ` + at.map((p) => `${p.ticker} ${fmtPct(p.magnitude)}`).join(", ");
     };
     if (instant) narrate(maxHop);
     else for (let h = 0; h <= maxHop; h++) setTimeout(() => narrate(h), h * HOP_MS + 200);
@@ -202,15 +223,15 @@ export function createGraph({ svgEl, graph, events, onInspect, statusEl }) {
       setTimeout(() => {
         if (id !== runId) return;
         statusEl.textContent = preds.length > 1
-          ? `Shock reached ${preds.length} companies across ${maxHop} hop${maxHop === 1 ? "" : "s"}.`
-          : "No documented supplier/customer edge from this company: direct effect only.";
+          ? `Shock reached ${preds.length} companies across ${maxHop} hop${maxHop === 1 ? "" : "s"}. Highlighted links carry it; muted companies are unaffected.`
+          : "No documented supplier or customer edge for this company, so only its direct effect is modeled.";
       }, maxHop * HOP_MS + 1600);
     }
   }
 
   return {
     play,
-    fit: () => fitTo(null),
+    fit: () => fitTo(),
     zoomBy: (k) => svg.transition().duration(reducedMotion() ? 0 : 250).call(zoom.scaleBy, k),
     edgesOf: (id) => edges.filter((e) => e.source.id === id || e.target.id === id),
     describeEdge: (e) => `${esc(e.source.id)} &rarr; ${esc(e.target.id)}`,

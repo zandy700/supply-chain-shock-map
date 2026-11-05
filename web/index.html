@@ -34,7 +34,7 @@
           <div class="card event-picker">
             <label for="event-select">Pick a disruption event</label>
             <select id="event-select"></select>
-            <div class="btn-row" style="margin-top:.6rem">
+            <div class="btn-row">
               <button type="button" class="btn" id="replay-btn">Replay ripple</button>
             </div>
           </div>
@@ -49,17 +49,17 @@
               <button type="button" class="btn" id="zoom-out" aria-label="Zoom out">&minus;</button>
               <button type="button" class="btn" id="zoom-fit">Fit</button>
             </div>
-            <p class="hop-status" id="hop-status" aria-live="polite"></p>
           </div>
+          <p class="hop-status" id="hop-status" aria-live="polite"></p>
           <div class="legend" aria-label="Legend">
             <span><i class="swatch neg"></i>Predicted negative</span>
             <span><i class="swatch pos"></i>Predicted positive</span>
-            <span><i class="swatch idle"></i>In SEC graph, unaffected</span>
-            <span><i class="swatch out"></i>Event company outside graph</span>
-            <span>Size = |expected abnormal return|</span>
+            <span><i class="swatch idle"></i>Unaffected by this event</span>
+            <span><i class="swatch out"></i>No reviewed SEC edge</span>
+            <span>Size = |scenario return|</span>
             <span>Arrow = supplier &rarr; customer</span>
           </div>
-          <p class="small muted" style="margin-top:.4rem">Drag to pan, pinch or scroll to zoom, tap a company or link for its SEC evidence.</p>
+          <p class="small muted hint">Drag to pan, pinch or scroll to zoom, tap a company or link for its SEC evidence.</p>
         </div>
       </div>
     </section>
