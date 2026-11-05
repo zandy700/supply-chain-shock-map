@@ -49,14 +49,18 @@ export function createGraph({ svgEl, graph, events, onInspect, statusEl }) {
   svg.call(zoom).on("dblclick.zoom", null);
 
   // Pre-position radially (as upstream) to reduce initial chaos, then tick to rest.
+  // Only SEC-graph companies take part in the layout. Event companies without a
+  // reviewed edge are shown on demand, parked beside the graph, when their event is picked.
   const W = width(), H = height();
-  nodes.forEach((n, i) => {
-    const a = (2 * Math.PI * i) / nodes.length;
-    const r = Math.min(W, H) * (n.outside ? 0.42 : 0.25);
+  const inGraph = nodes.filter((n) => !n.outside);
+  inGraph.forEach((n, i) => {
+    const a = (2 * Math.PI * i) / inGraph.length;
+    const r = Math.min(W, H) * 0.25;
     n.x = W / 2 + Math.cos(a) * r;
     n.y = H / 2 + Math.sin(a) * r;
   });
-  const sim = d3.forceSimulation(nodes)
+  nodes.forEach((n) => { if (n.outside) { n.x = W / 2; n.y = H / 2; } });
+  const sim = d3.forceSimulation(inGraph)
     .force("link", d3.forceLink(edges).id((d) => d.id).distance(95).strength(0.7))
     .force("charge", d3.forceManyBody().strength(-380).distanceMax(380))
     .force("center", d3.forceCenter(W / 2, H / 2))
@@ -86,12 +90,13 @@ export function createGraph({ svgEl, graph, events, onInspect, statusEl }) {
     })
     .call(d3.drag()
       .on("start", (e, d) => { if (!e.active) sim.alphaTarget(0.12).restart(); d.fx = d.x; d.fy = d.y; })
-      .on("drag", (e, d) => { d.fx = e.x; d.fy = e.y; })
+      .on("drag", (e, d) => { d.fx = e.x; d.fy = e.y; if (d.outside) { d.x = e.x; d.y = e.y; draw(); } })
       .on("end", (e, d) => { if (!e.active) sim.alphaTarget(0); d.fx = null; d.fy = null; }));
   node.append("circle").attr("class", "ripple").attr("r", 0).attr("opacity", 0);
   node.append("circle").attr("class", "body").attr("r", 13);
   node.append("text").attr("class", "tick").attr("text-anchor", "middle").attr("dy", 27).text((d) => d.ticker);
   node.append("text").attr("class", "mag").attr("text-anchor", "middle").attr("dy", 40);
+  node.style("display", (d) => (d.outside ? "none" : null));
 
   const radius = (m) => 13 + Math.sqrt(Math.abs(m)) * 7;
 
@@ -116,12 +121,22 @@ export function createGraph({ svgEl, graph, events, onInspect, statusEl }) {
 
   // Fit every node with room for its label (below) and the zoom toolbar (top right).
   // Padding is in screen pixels so nothing is clipped at any viewport size.
+  let shown = new Set();
+  const visible = () => nodes.filter((n) => !n.outside || shown.has(n.id));
+  // Park off-graph event companies in a row above the graph, clear of every node.
+  function park(ids) {
+    const [gx0, gx1] = d3.extent(inGraph, (d) => d.x), gy0 = d3.min(inGraph, (d) => d.y);
+    const list = nodes.filter((n) => n.outside && ids.has(n.id));
+    const step = 80, mid = (gx0 + gx1) / 2;
+    list.forEach((n, i) => { n.x = mid + (i - (list.length - 1) / 2) * step; n.y = gy0 - 90; });
+  }
   function fitTo(animate = true) {
-    const [x0, x1] = d3.extent(nodes, (d) => d.x), [y0, y1] = d3.extent(nodes, (d) => d.y);
+    const pts = visible();
+    const [x0, x1] = d3.extent(pts, (d) => d.x), [y0, y1] = d3.extent(pts, (d) => d.y);
     const w = width(), h = height();
     const pad = { l: 44, r: 44, t: 60, b: 58 };
     let k = Math.min(2, (w - pad.l - pad.r) / Math.max(x1 - x0, 1), (h - pad.t - pad.b) / Math.max(y1 - y0, 1));
-    k = Math.max(0.25, Math.min(k, 1.6));
+    k = Math.max(0.25, Math.min(k, 1.25));
     // Node glyphs are counter-scaled when zoomed out, so they need extra margin.
     const s = k < 1 ? Math.pow(k, -0.75) : 1;
     const extra = (s - 1) * 30;
@@ -149,6 +164,8 @@ export function createGraph({ svgEl, graph, events, onInspect, statusEl }) {
     node.select("text.mag").text("").attr("dy", 40);
     node.select("text.tick").attr("dy", 27);
     node.classed("dim", false).classed("hit", false);
+    shown = new Set();
+    node.style("display", (d) => (d.outside ? "none" : null));
     link.classed("active", false).classed("dim", false).attr("marker-end", "url(#arrow-idle)");
     draw();
   }
@@ -167,6 +184,11 @@ export function createGraph({ svgEl, graph, events, onInspect, statusEl }) {
     // Unaffected companies stay legible (muted label, light outline) rather than faded.
     node.classed("dim", (d) => !affected.has(d.id)).classed("hit", (d) => affected.has(d.id));
     link.classed("dim", true);
+    shown = new Set(nodes.filter((n) => n.outside && affected.has(n.id)).map((n) => n.id));
+    park(shown);
+    node.style("display", (d) => (d.outside && !shown.has(d.id) ? "none" : null));
+    draw();
+    fitTo();
 
     const maxHop = d3.max(preds, (p) => p.hops) ?? 0;
     const color = (m) => (m < 0 ? "#b23a0e" : "#1b5e84");

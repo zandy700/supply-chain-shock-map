@@ -14,7 +14,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"October 20\". Timing: pre-market Monday.",
+    "source_note": "Source: \"While the event started at 11:48 PM PDT on October 19 and ended at 2:20 PM PDT on October 20\". Timing: pre-market Monday.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -59,7 +59,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"a fire at a key supplier\". Timing: WSJ report; fire itself 2025-09-16.",
+    "source_note": "Source: \"a fire at a key supplier\". Timing: WSJ report; fire itself 2025-09-16.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -91,7 +91,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"RTX Pro 6000D\". Timing: pre-market (FT report).",
+    "source_note": "Source: \"to cancel their orders for and to stop testing NVIDIA's RTX Pro 6000D\". Timing: pre-market (FT report).",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -123,7 +123,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"walked out on strike\". Timing: pre-market.",
+    "source_note": "Source: \"walked out on strike\". Timing: pre-market.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -168,7 +168,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"began striking at midnight\". Timing: Sunday; strike from midnight.",
+    "source_note": "Source: \"began striking at midnight\". Timing: Sunday; strike from midnight.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -226,7 +226,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "8-K date of report 2025-05-13; incident disclosed in that filing. Verified source quote: \"halted certain production operations\". Timing: pre-market (8-K).",
+    "source_note": "8-K date of report 2025-05-13; incident disclosed in that filing. Source: \"halted certain production operations\". Timing: pre-market (8-K).",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -258,7 +258,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"went on strike early Monday\". Timing: pre-market Monday.",
+    "source_note": "Source: \"went on strike early Monday\". Timing: pre-market Monday.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -316,7 +316,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"recall of nearly 600,000 vehicles\". Timing: intraday.",
+    "source_note": "Source: \"recall of nearly 600,000 vehicles\". Timing: intraday.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -348,7 +348,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"MI308\". Timing: pre-market (8-K).",
+    "source_note": "Source: \"The Export Control applies to the Company's MI308 products.\". Timing: pre-market (8-K).",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -393,7 +393,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"approximately $5.5 billion\". Timing: after close (8-K).",
+    "source_note": "Source: \"First quarter results are expected to include up to approximately $5.5 billion of charges\". Timing: after close (8-K).",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -425,7 +425,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"currently closed for production\". Timing: Sunday.",
+    "source_note": "Source: \"currently closed for production\". Timing: Sunday.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -457,7 +457,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"began Day 1 of their strike on Monday\". Timing: Monday, strike day 1.",
+    "source_note": "Source: \"began Day 1 of their strike on Monday\". Timing: Monday, strike day 1.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -547,7 +547,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"experienced a cyberattack on Wednesday\". Timing: Wednesday.",
+    "source_note": "Source: \"experienced a cyberattack on Wednesday\". Timing: Wednesday.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -579,7 +579,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"operating at less than normal levels\". Timing: after close (8-K).",
+    "source_note": "Source: \"operating at less than normal levels\". Timing: after close (8-K).",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -611,7 +611,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"resulted in outages\". Timing: pre-market Friday.",
+    "source_note": "Source: \"released a sensor configuration update for our Falcon sensor software that resulted in outages\". Timing: pre-market Friday.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -644,7 +644,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"revoking the Company\". Timing: press reports May 7; 8-Ks May 8-9.",
+    "source_note": "Source: \"On May 7, 2024, the U.S. Department of Commerce informed QUALCOMM Incorporated it was revoking the Company's license to export 4G and certain other integrated circuit products\". Timing: press reports May 7; 8-Ks May 8-9.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -701,7 +701,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"recalling nearly 3,900\". Timing: intraday.",
+    "source_note": "Source: \"recalling nearly 3,900\". Timing: intraday.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -733,7 +733,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Hualien earthquake struck 2024-04-03 local time (evening of 2024-04-02 ET). Source is Micron's 8-K dated 2024-04-10 quantifying the DRAM impact. Verified source quote: \"not yet at full DRAM production\". Timing: quake after US close Apr 2; Micron statement Apr 3.",
+    "source_note": "Hualien earthquake struck 2024-04-03 local time (evening of 2024-04-02 ET). Source is Micron's 8-K dated 2024-04-10 quantifying the DRAM impact. Source: \"not yet at full DRAM production\". Timing: quake after US close Apr 2; Micron statement Apr 3.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -765,7 +765,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"halted production\". Timing: pre-market.",
+    "source_note": "Source: \"Tesla's European Gigafactory near Berlin halted production and was left without power after suspected arson\". Timing: pre-market.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -797,7 +797,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"Change Healthcare information technology systems\". Timing: outage public intraday; 8-K Feb 22.",
+    "source_note": "Source: \"had gained access to some of the Change Healthcare information technology systems\". Timing: outage public intraday; 8-K Feb 22.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -829,7 +829,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"temporarily paused sales\". Timing: likely after close.",
+    "source_note": "Source: \"General Motors said Tuesday it has temporarily paused sales of 2024 model year Chevrolet Colorado and GMC Canyon\". Timing: likely after close.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -861,7 +861,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"about 50 undelivered 737 Max\". Timing: Sunday.",
+    "source_note": "Source: \"about 50 undelivered 737 Max\". Timing: Sunday.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -919,7 +919,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"suspend vehicle production at the Gigafactory Berlin\". Timing: Thursday, likely late.",
+    "source_note": "Source: \"suspend vehicle production at the Gigafactory Berlin\". Timing: Thursday, likely late.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -952,7 +952,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"made an emergency landing in Oregon on Friday\". Timing: Friday 7:52pm ET, after close.",
+    "source_note": "Source: \"made an emergency landing in Oregon on Friday\". Timing: Friday 7:52pm ET, after close.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -1022,7 +1022,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"stop-sale\". Timing: late Friday; next session Dec 26.",
+    "source_note": "Source: \"the stop-sale order was issued late Friday\". Timing: late Friday; next session Dec 26.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -1054,7 +1054,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"pausing sales of the Apple Watch Series 9\". Timing: Monday.",
+    "source_note": "Source: \"pausing sales of the Apple Watch Series 9\". Timing: Monday.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -1138,7 +1138,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"recall of specific granola bars\". Timing: Friday.",
+    "source_note": "Source: \"recall of specific granola bars\". Timing: Friday.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -1202,7 +1202,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"suspension\". Timing: intraday.",
+    "source_note": "Source: \"The California Department of Motor Vehicles today issued the following statement on the immediate suspension\". Timing: intraday.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -1234,7 +1234,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"additional licensing requirements\". Timing: BIS rule intraday; NVIDIA 8-K after close.",
+    "source_note": "Source: \"imposes additional licensing requirements for exports to China and Country Groups D1, D4, and D5\". Timing: BIS rule intraday; NVIDIA 8-K after close.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -1266,7 +1266,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"disruption to parts of the Company\". Timing: after close (8-K).",
+    "source_note": "Source: \"disruption to parts of the Company\". Timing: after close (8-K).",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -1375,7 +1375,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"halt sales of the iPhone 12\". Timing: Tuesday, European day.",
+    "source_note": "Source: \"halt sales of the iPhone 12\". Timing: Tuesday, European day.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -1459,7 +1459,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"approximately $3 billion\". Timing: Monday.",
+    "source_note": "Source: \"RTX will record a pre-tax operating profit charge in the third quarter of 2023 of approximately $3 billion.\". Timing: Monday.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -1517,7 +1517,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"elongated fastener holes\". Timing: pre-market at latest.",
+    "source_note": "Source: \"elongated fastener holes\". Timing: pre-market at latest.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -1665,7 +1665,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"failed its network security review\". Timing: Sunday.",
+    "source_note": "Source: \"failed its network security review\". Timing: Sunday.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -1697,7 +1697,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"non-standard manufacturing process\". Timing: Thursday, after close.",
+    "source_note": "Source: \"non-standard manufacturing process\". Timing: Thursday, after close.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -1755,7 +1755,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"stopped deliveries of its 787\". Timing: likely after close.",
+    "source_note": "Source: \"stopped deliveries of its 787\". Timing: likely after close.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -1813,7 +1813,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"362,758\". Timing: intraday.",
+    "source_note": "Source: \"Tesla is recalling every vehicle equipped with its Full Self-Driving Beta (FSD Beta) software, some 362,758 in all\". Timing: intraday.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -1845,7 +1845,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"paused production and shipments of its electric F-150 Lightning\". Timing: intraday.",
+    "source_note": "Source: \"paused production and shipments of its electric F-150 Lightning\". Timing: intraday.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -1877,7 +1877,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"derailed 38\". Timing: Friday 8:54pm ET, after close.",
+    "source_note": "Source: \"On February 3, 2023, about 8:54 p.m., eastbound Norfolk Southern Railway (NS) train 32N derailed 38 mixed freight railcars\". Timing: Friday 8:54pm ET, after close.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -1909,7 +1909,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"temporarily reduced iPhone 14\". Timing: Sunday.",
+    "source_note": "Source: \"Apple said in a statement on Sunday that it has temporarily reduced iPhone 14 production because of Covid-19 restrictions\". Timing: Sunday.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -1993,7 +1993,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"reduce its fourth-quarter net sales by approximately $400 million\". Timing: after close (8-K).",
+    "source_note": "Source: \"reduce its fourth-quarter net sales by approximately $400 million\". Timing: after close (8-K).",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -2026,7 +2026,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"Chinese-sourced alloy\". Timing: time of day unknown.",
+    "source_note": "Source: \"Honeywell told it about the Chinese-sourced alloy in late August.\". Timing: time of day unknown.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -2102,7 +2102,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"stop delivering Mustang Mach-E\". Timing: intraday.",
+    "source_note": "Source: \"stop delivering Mustang Mach-E\". Timing: intraday.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -2134,7 +2134,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"suspending production at its Shanghai factory\". Timing: Sunday.",
+    "source_note": "Source: \"suspending production at its Shanghai factory\". Timing: Sunday.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -2166,7 +2166,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"we shut down most of our operating systems globally\". Timing: Sunday; first session 2022-02-22.",
+    "source_note": "Source: \"we shut down most of our operating systems globally\". Timing: Sunday; first session 2022-02-22.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -2230,7 +2230,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"The fire broke out at around 1 a.m.\". Timing: fire about 1am local, pre-market.",
+    "source_note": "Source: \"The fire broke out at around 1 a.m.\". Timing: fire about 1am local, pre-market.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -2262,7 +2262,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"14 facilities\". Timing: pre-market; strike began at midnight.",
+    "source_note": "Source: \"affecting more than 10,000 workers at 14 facilities across the United States.\". Timing: pre-market; strike began at midnight.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -2294,7 +2294,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"is recalling all Chevrolet Bolt electric vehicles\". Timing: Friday.",
+    "source_note": "Source: \"is recalling all Chevrolet Bolt electric vehicles\". Timing: Friday.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -2326,7 +2326,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"walked out on Aug. 10\". Timing: time of day not verified.",
+    "source_note": "Source: \"after union members walked out on Aug. 10 following the breakdown of contract negotiations\". Timing: time of day not verified.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -2358,7 +2358,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"acetic acid leak occurred\". Timing: Tuesday evening, after close.",
+    "source_note": "Source: \"an acetic acid leak occurred in the facility located at 1515 Miller Cut-Off Road at about 7:35 p.m. Tuesday\". Timing: Tuesday evening, after close.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -2390,7 +2390,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"is voluntarily recalling all lots of five\". Timing: time of day not verified.",
+    "source_note": "Source: \"is voluntarily recalling all lots of five\". Timing: time of day not verified.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -2422,7 +2422,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"Boeing has again halted deliveries of its 787 jetliner\". Timing: Friday, likely after close.",
+    "source_note": "Source: \"Boeing has again halted deliveries of its 787 jetliner\". Timing: Friday, likely after close.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -2480,7 +2480,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"Boeing said Friday that the issue affected planes used by 16 airlines\". Timing: pre-market Friday.",
+    "source_note": "Source: \"Boeing said Friday that the issue affected planes used by 16 airlines\". Timing: pre-market Friday.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {
@@ -2538,7 +2538,7 @@
     "retrieved_at": "2026-11-05T05:48:41+00:00",
     "review_status": "documented_historical_example",
     "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
-    "source_note": "Verified source quote: \"that it will go on strike beginning on Tuesday, March 30\". Timing: Friday; strike to begin Tue 2021-03-30.",
+    "source_note": "Source: \"that it will go on strike beginning on Tuesday, March 30\". Timing: Friday; strike to begin Tue 2021-03-30.",
     "classification_method": "Manually curated event type; heuristic severity, not measured",
     "predictions": [
       {

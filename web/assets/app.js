@@ -27,9 +27,11 @@ async function main() {
     box.textContent = `Could not load data (${err.message}). Serve this folder over HTTP, e.g. python -m http.server --directory web.`;
     return;
   }
-  // Open on the most recent event whose shock actually travels along a documented edge.
+  // Open on the event whose shock travels furthest along documented edges (most recent on ties).
   const events = state.data.events;
-  state.eventId = (events.find((e) => (e.predictions || []).some((p) => p.hops > 0)) || events[0])?.id;
+  const reach = (e) => (e.predictions || []).filter((p) => p.hops > 0).length;
+  const best = events.reduce((a, e) => (reach(e) > reach(a) ? e : a), events[0]);
+  state.eventId = best?.id;
   setupGraphControls();
   renderFeed();
   renderAbout();
