@@ -1,0 +1,54 @@
+Supply Chain Shock Map
+Copyright (c) 2026 Xingjian Zhang
+
+This project incorporates or adapts MIT-licensed open-source software:
+
+alphasig — Copyright (c) 2026 Sushaan Kandukoori
+https://github.com/sushaan-k/alphasig
+Vendored Python package source under vendor/alphasig/src/alphasig/.
+EDGAR ingestion, original supply-chain engine and NetworkX graph implementation
+are preserved. Runtime uses its EDGAR ingestion, models and graph builder.
+The supply-chain LLM extractor is retained for provenance but is not invoked;
+stock-relation's existing deterministic extraction is used without API keys.
+The package initializer is a lightweight import shim; original initializer is
+preserved as __init__.upstream.txt. No filing parser is authored by this project.
+
+sigint — Copyright (c) 2026 Sushaan Kandukoori
+https://github.com/aaryapatel09/sigint
+Credited predecessor of alphasig; no separate sigint implementation copied.
+License text preserved as requested.
+
+stock-relation — Copyright (c) 2026 Supat Roongpraiwan
+https://github.com/supat-roong/stock-relation
+Vendored ingestion source and SQLite helper; deterministic keyword fallback
+extracts SEC evidence. Optional transformers import moved into an opt-in branch.
+D3 frontend force graph, zoom and drag patterns adapted for the static interface.
+Original frontend source and LICENSE are retained under vendor/stock-relation/.
+
+GDELT DOC API client (gdelt-doc-api) — Copyright (c) 2020 Alex Whitehead-Smith
+https://github.com/alex9smith/gdelt-doc-api
+Python GDELT DOC 2.0 client used for news fetching. See project dependency
+and vendor attribution for the exact runtime/source arrangement.
+
+EventStudy — Copyright (c) 2020 Rongxin
+https://github.com/zrxbeijing/EventStudy
+Market-model return calculation/OLS estimation/abnormal-return approach adapted
+with trading-session alignment and local yfinance caches. Original reference
+source retained under vendor/EventStudy/.
+
+Complete original license texts are in THIRD_PARTY_LICENSES/<repo>.txt and in
+vendored source directories. Pinned source revisions: vendor/upstream-revisions.json.
+
+bottleneck_indicators (https://github.com/Seungukeeee/bottleneck_indicators)
+has no license. Conceptual inspiration/citation only; no code is copied.
+
+SEC filings and news/price data retain their original source attribution.
+Software MIT licensing does not grant rights over third-party news articles.
+
+Bundled web assets (web/vendor/), each with its license alongside and in
+THIRD_PARTY_LICENSES/:
+- D3 v7.9.0, Copyright 2010-2023 Mike Bostock, ISC License (d3.txt).
+- IBM Plex Sans, SIL Open Font License 1.1 (ibm-plex-sans.txt).
+- Newsreader, SIL Open Font License 1.1 (newsreader.txt).
+web/assets/graph.js adapts stock-relation's renderGraph force layout, pre-tick,
+zoom-to-fit, arrow markers and drag handling (credited in the file header).

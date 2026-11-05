@@ -1,0 +1,582 @@
+"""Command-line interface for alphasig.
+
+Usage::
+
+    alphasig extract --tickers AAPL MSFT --lookback 3
+    alphasig serve --port 8080 --db alphasig.duckdb
+    alphasig query --ticker AAPL --type risk_change
+"""
+
+from __future__ import annotations
+
+import asyncio
+from collections.abc import Iterable
+from datetime import UTC, datetime
+from pathlib import Path
+from typing import TYPE_CHECKING, Any
+
+import click
+from rich.console import Console
+from rich.table import Table
+
+from alphasig._logging import configure_logging
+from alphasig.exceptions import ConfigurationError
+from alphasig.llm import DEFAULT_MODEL
+from alphasig.models import FilingType
+
+if TYPE_CHECKING:
+    from alphasig.signals import SignalCollection
+
+console = Console()
+
+_ENGINES = ("supply_chain", "risk_differ", "m_and_a", "tone")
+
+
+@click.group()
+@click.version_option(package_name="alphasig")
+@click.option(
+    "-v",
+    "--verbose",
+    count=True,
+    help="Increase verbosity (-v for INFO, -vv for DEBUG).",
+)
+@click.option(
+    "--json-logs",
+    is_flag=True,
+    default=False,
+    help="Emit structured JSON logs.",
+)
+def main(verbose: int, json_logs: bool) -> None:
+    """alphasig -- Causal signal extraction from SEC filings."""
+    configure_logging(verbosity=verbose, json=json_logs)
+
+
+@main.command()
+@click.argument("extra_tickers", nargs=-1, metavar="[TICKER]...")
+@click.option(
+    "--tickers",
+    "-t",
+    multiple=True,
+    help=(
+        "Ticker symbols to analyse: '--tickers AAPL MSFT', "
+        "'--tickers AAPL,MSFT' or repeated '-t AAPL -t MSFT'."
+    ),
+)
+@click.option(
+    "--filing-types",
+    "-f",
+    multiple=True,
+    type=click.Choice([ft.value for ft in FilingType], case_sensitive=False),
+    default=["10-K", "10-Q"],
+    show_default=True,
+    help="SEC filing types to process.",
+)
+@click.option(
+    "--lookback",
+    "-l",
+    default=3,
+    type=int,
+    help="Years of filings to fetch.",
+)
+@click.option(
+    "--engines",
+    "-e",
+    multiple=True,
+    type=click.Choice(_ENGINES),
+    default=_ENGINES,
+    show_default=True,
+    help="Extraction engines to run.",
+)
+@click.option(
+    "--model",
+    "-m",
+    default=DEFAULT_MODEL,
+    show_default=True,
+    help="Anthropic model to use (or set ALPHASIG_MODEL).",
+)
+@click.option(
+    "--user-agent",
+    envvar="ALPHASIG_USER_AGENT",
+    default=None,
+    help=(
+        "EDGAR User-Agent identifying you, 'Name email@domain' (SEC policy). "
+        "Defaults to $ALPHASIG_USER_AGENT."
+    ),
+)
+@click.option(
+    "--cache-dir",
+    default="./edgar_cache",
+    help="EDGAR filing cache directory.",
+)
+@click.option(
+    "--db",
+    default="alphasig.duckdb",
+    help="DuckDB database path.",
+)
+@click.option(
+    "--output",
+    "-o",
+    default=None,
+    help="Export signals to file (Parquet or CSV based on extension).",
+)
+@click.option(
+    "--calibrate",
+    is_flag=True,
+    help=(
+        "Re-score confidence with Jev's calibrated probabilities "
+        "(needs alphasig[jev] and TYPESAFE_API_KEY)."
+    ),
+)
+@click.option(
+    "--drop-below",
+    type=click.FloatRange(0.0, 1.0),
+    default=None,
+    help="With --calibrate, drop signals whose calibrated confidence is lower.",
+)
+@click.option(
+    "--incremental",
+    is_flag=True,
+    help=(
+        "Skip (filing, engine) jobs already recorded in --db, so a re-run "
+        "resumes after a crash or picks up only new filings."
+    ),
+)
+@click.option(
+    "--llm-cache-dir",
+    default=None,
+    help=(
+        "Cache LLM responses here, keyed by model, prompt and parameters; "
+        "re-runs reuse them instead of calling the API again."
+    ),
+)
+@click.option(
+    "--llm-concurrency",
+    type=click.IntRange(min=1),
+    default=8,
+    show_default=True,
+    help="Maximum in-flight LLM requests.",
+)
+def extract(
+    extra_tickers: tuple[str, ...],
+    tickers: tuple[str, ...],
+    filing_types: tuple[str, ...],
+    lookback: int,
+    engines: tuple[str, ...],
+    model: str,
+    user_agent: str | None,
+    cache_dir: str,
+    db: str,
+    output: str | None,
+    calibrate: bool,
+    drop_below: float | None,
+    incremental: bool,
+    llm_cache_dir: str | None,
+    llm_concurrency: int,
+) -> None:
+    """Extract causal signals from SEC filings for TICKER(s)."""
+    from alphasig.jev import JevCalibrator
+    from alphasig.pipeline import Pipeline
+
+    if drop_below is not None and not calibrate:
+        raise click.UsageError("--drop-below requires --calibrate")
+
+    symbols = list(
+        dict.fromkeys(
+            part.strip().upper()
+            for raw in (*tickers, *extra_tickers)
+            for part in raw.split(",")
+            if part.strip()
+        )
+    )
+    if not symbols:
+        raise click.UsageError("Provide at least one ticker, e.g. --tickers AAPL MSFT")
+
+    console.print(
+        f"[bold blue]alphasig[/] extracting signals for {', '.join(symbols)}",
+    )
+
+    calibrator = JevCalibrator(min_confidence=drop_below) if calibrate else None
+    pipeline = Pipeline(
+        model=model,
+        user_agent=user_agent,
+        cache_dir=cache_dir,
+        db_path=db,
+        calibrator=calibrator,
+        llm_concurrency=llm_concurrency,
+        llm_cache_dir=llm_cache_dir,
+    )
+
+    async def _run() -> SignalCollection:
+        try:
+            return await pipeline.extract(
+                tickers=symbols,
+                filing_types=list(filing_types),
+                lookback_years=lookback,
+                engines=list(engines),
+                incremental=incremental,
+            )
+        finally:
+            if calibrator is not None:
+                await calibrator.aclose()
+
+    try:
+        collection = asyncio.run(_run())
+    except ConfigurationError as exc:
+        raise click.ClickException(str(exc)) from exc
+
+    # Display results
+    _print_signal_table(collection)
+
+    if output:
+        if output.endswith(".parquet"):
+            path = collection.to_parquet(output)
+        elif output.endswith(".csv"):
+            path = collection.to_csv(output)
+        else:
+            path = collection.to_parquet(output)
+        console.print(f"\n[green]Exported to {path}[/]")
+
+
+@main.command()
+@click.option("--db", default="alphasig.duckdb", help="DuckDB database path.")
+@click.option("--ticker", default=None, help="Filter by ticker.")
+@click.option("--type", "signal_type", default=None, help="Filter by signal type.")
+@click.option(
+    "--min-strength", default=None, type=float, help="Minimum signal strength."
+)
+@click.option("--limit", default=50, type=int, help="Maximum results.")
+def query(
+    db: str,
+    ticker: str | None,
+    signal_type: str | None,
+    min_strength: float | None,
+    limit: int,
+) -> None:
+    """Query stored signals from DuckDB."""
+    from alphasig.signals import SignalCollection
+    from alphasig.storage import SignalStore
+
+    store = SignalStore(db)
+    try:
+        signals = store.query(
+            ticker=ticker,
+            signal_type=signal_type,
+            min_strength=min_strength,
+            limit=limit,
+        )
+    finally:
+        store.close()
+
+    collection = SignalCollection(signals)
+    _print_signal_table(collection)
+
+
+@main.command()
+@click.option("--db", default="alphasig.duckdb", help="DuckDB database path.")
+@click.option("--limit", default=25, type=int, help="Maximum tickers to display.")
+@click.option(
+    "--min-confidence",
+    default=None,
+    type=float,
+    help="Only score signals at or above this confidence.",
+)
+@click.option(
+    "--as-of",
+    "as_of_raw",
+    default=None,
+    help=(
+        "Score as of this ISO timestamp: later signals are excluded and "
+        "strengths are decayed to it."
+    ),
+)
+@click.option(
+    "--half-life",
+    "half_life",
+    default=None,
+    type=click.FloatRange(min=0, min_open=True),
+    help="Decay every signal with this half-life in days (implies --as-of now).",
+)
+@click.option(
+    "--format",
+    "output_format",
+    type=click.Choice(["table", "json", "markdown"]),
+    default="table",
+    show_default=True,
+    help="Output format.",
+)
+@click.option("--output", "-o", default=None, help="Write report to a file.")
+def rank(
+    db: str,
+    limit: int,
+    min_confidence: float | None,
+    as_of_raw: str | None,
+    half_life: float | None,
+    output_format: str,
+    output: str | None,
+) -> None:
+    """Rank tickers by confidence-weighted signal exposure."""
+    from alphasig.reporting import rank_signals
+    from alphasig.storage import SignalStore
+
+    as_of = _parse_cli_datetime(as_of_raw) if as_of_raw else None
+    store = SignalStore(db)
+    try:
+        signals = store.query(
+            min_confidence=min_confidence,
+            limit=100_000,
+        )
+    finally:
+        store.close()
+
+    report = rank_signals(signals, as_of=as_of, limit=limit, half_life_days=half_life)
+    if output_format == "json":
+        rendered = report.to_json() + "\n"
+    elif output_format == "markdown":
+        rendered = report.to_markdown()
+    else:
+        rendered = ""
+        _print_ranking_table(report.tickers)
+
+    if output:
+        if output_format == "table":
+            rendered = report.to_markdown()
+        output_path = Path(output)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_text(rendered, encoding="utf-8")
+        console.print(f"[green]Wrote ranking report to {output}[/]")
+    elif rendered:
+        console.print(rendered, end="")
+
+
+@main.command()
+@click.option("--db", default="alphasig.duckdb", help="DuckDB database path.")
+@click.option("--limit", default=None, type=int, help="Maximum sectors to display.")
+@click.option(
+    "--min-confidence",
+    default=None,
+    type=float,
+    help="Only score signals at or above this confidence.",
+)
+@click.option(
+    "--as-of",
+    "as_of_raw",
+    default=None,
+    help=(
+        "Score as of this ISO timestamp: later signals are excluded and "
+        "strengths are decayed to it."
+    ),
+)
+@click.option(
+    "--half-life",
+    "half_life",
+    default=None,
+    type=click.FloatRange(min=0, min_open=True),
+    help="Decay every signal with this half-life in days (implies --as-of now).",
+)
+@click.option(
+    "--format",
+    "output_format",
+    type=click.Choice(["table", "json", "markdown"]),
+    default="table",
+    show_default=True,
+    help="Output format.",
+)
+@click.option(
+    "--include-unknown/--exclude-unknown",
+    default=True,
+    show_default=True,
+    help="Include tickers missing from the built-in sector map.",
+)
+@click.option("--output", "-o", default=None, help="Write report to a file.")
+def sectors(
+    db: str,
+    limit: int | None,
+    min_confidence: float | None,
+    as_of_raw: str | None,
+    half_life: float | None,
+    output_format: str,
+    include_unknown: bool,
+    output: str | None,
+) -> None:
+    """Summarize portfolio signal exposure by sector."""
+    from alphasig.reporting import summarize_sector_exposure
+    from alphasig.storage import SignalStore
+
+    as_of = _parse_cli_datetime(as_of_raw) if as_of_raw else None
+    store = SignalStore(db)
+    try:
+        signals = store.query(
+            min_confidence=min_confidence,
+            limit=100_000,
+        )
+    finally:
+        store.close()
+
+    report = summarize_sector_exposure(
+        signals,
+        as_of=as_of,
+        limit=limit,
+        include_unknown=include_unknown,
+        half_life_days=half_life,
+    )
+    if output_format == "json":
+        rendered = report.to_json() + "\n"
+    elif output_format == "markdown":
+        rendered = report.to_markdown()
+    else:
+        rendered = ""
+        _print_sector_table(report.sectors)
+
+    if output:
+        if output_format == "table":
+            rendered = report.to_markdown()
+        output_path = Path(output)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_text(rendered, encoding="utf-8")
+        console.print(f"[green]Wrote sector exposure report to {output}[/]")
+    elif rendered:
+        console.print(rendered, end="")
+
+
+@main.command()
+@click.option("--db", default="alphasig.duckdb", help="DuckDB database path.")
+@click.option("--host", default="127.0.0.1", help="Bind address.")
+@click.option("--port", default=8080, type=int, help="Bind port.")
+def serve(db: str, host: str, port: int) -> None:
+    """Launch REST API server for stored signals."""
+    from alphasig.output.api import serve_signals
+    from alphasig.storage import SignalStore
+
+    store = SignalStore(db)
+    try:
+        signals = store.query(limit=100_000)
+    finally:
+        store.close()
+
+    console.print(
+        f"[bold blue]alphasig[/] serving {len(signals)} signals on {host}:{port}",
+    )
+    try:
+        serve_signals(signals, host=host, port=port)
+    except ImportError as exc:
+        raise click.ClickException(str(exc)) from exc
+
+
+def _parse_cli_datetime(value: str) -> datetime:
+    """Parse an ISO datetime from CLI input."""
+    raw = value.strip()
+    if raw.endswith("Z"):
+        raw = f"{raw[:-1]}+00:00"
+    try:
+        parsed = datetime.fromisoformat(raw)
+    except ValueError as exc:
+        raise click.ClickException(f"Invalid --as-of timestamp: {value}") from exc
+    if parsed.tzinfo is None:
+        return parsed.replace(tzinfo=UTC)
+    return parsed.astimezone(UTC)
+
+
+def _print_signal_table(collection: Iterable[Any]) -> None:
+    """Render a Rich table of signals."""
+    table = Table(title="Extracted Signals", show_lines=True)
+    table.add_column("Ticker", style="cyan", width=8)
+    table.add_column("Type", style="magenta", width=14)
+    table.add_column("Direction", width=10)
+    table.add_column("Strength", justify="right", width=10)
+    table.add_column("Confidence", justify="right", width=10)
+    table.add_column("Context", max_width=50)
+
+    direction_style = {
+        "bullish": "[green]BULLISH[/]",
+        "bearish": "[red]BEARISH[/]",
+        "neutral": "[dim]NEUTRAL[/]",
+    }
+
+    count = 0
+    for signal in collection:
+        table.add_row(
+            signal.ticker,
+            signal.signal_type.value,
+            direction_style.get(signal.direction.value, signal.direction.value),
+            f"{signal.strength:.2f}",
+            f"{signal.confidence:.2f}",
+            signal.context[:80],
+        )
+        count += 1
+
+    console.print(table)
+    console.print(f"\n[bold]Total signals:[/] {count}")
+
+
+def _print_ranking_table(tickers: Iterable[Any]) -> None:
+    """Render a Rich table of ranked ticker scores."""
+    table = Table(title="Signal Ranking", show_lines=True)
+    table.add_column("Rank", justify="right", width=5)
+    table.add_column("Ticker", style="cyan", width=8)
+    table.add_column("Direction", width=10)
+    table.add_column("Score", justify="right", width=10)
+    table.add_column("Gross", justify="right", width=10)
+    table.add_column("Signals", justify="right", width=8)
+    table.add_column("Avg Conf", justify="right", width=9)
+    table.add_column("Latest", width=12)
+    table.add_column("Top Context", max_width=48)
+
+    direction_style = {
+        "bullish": "[green]bullish[/]",
+        "bearish": "[red]bearish[/]",
+        "neutral": "[dim]neutral[/]",
+    }
+
+    count = 0
+    for count, ticker in enumerate(tickers, start=1):
+        table.add_row(
+            str(count),
+            ticker.ticker,
+            direction_style.get(ticker.direction, ticker.direction),
+            f"{ticker.score:.4f}",
+            f"{ticker.gross_score:.4f}",
+            str(ticker.signal_count),
+            f"{ticker.avg_confidence:.2f}",
+            ticker.latest_timestamp.date().isoformat(),
+            ticker.top_contexts[0][:80] if ticker.top_contexts else "",
+        )
+
+    console.print(table)
+    console.print(f"\n[bold]Ranked tickers:[/] {count}")
+
+
+def _print_sector_table(sectors: Iterable[Any]) -> None:
+    """Render a Rich table of sector exposure scores."""
+    table = Table(title="Sector Exposure", show_lines=True)
+    table.add_column("Rank", justify="right", width=5)
+    table.add_column("Sector", style="cyan", width=24)
+    table.add_column("Direction", width=10)
+    table.add_column("Score", justify="right", width=10)
+    table.add_column("Gross", justify="right", width=10)
+    table.add_column("Tickers", justify="right", width=8)
+    table.add_column("Signals", justify="right", width=8)
+    table.add_column("Latest", width=12)
+    table.add_column("Top Tickers", max_width=32)
+
+    direction_style = {
+        "bullish": "[green]bullish[/]",
+        "bearish": "[red]bearish[/]",
+        "neutral": "[dim]neutral[/]",
+    }
+
+    count = 0
+    for count, sector in enumerate(sectors, start=1):
+        table.add_row(
+            str(count),
+            sector.sector,
+            direction_style.get(sector.direction, sector.direction),
+            f"{sector.score:.4f}",
+            f"{sector.gross_score:.4f}",
+            str(sector.ticker_count),
+            str(sector.signal_count),
+            sector.latest_timestamp.date().isoformat(),
+            ", ".join(sector.top_tickers),
+        )
+
+    console.print(table)
+    console.print(f"\n[bold]Ranked sectors:[/] {count}")
