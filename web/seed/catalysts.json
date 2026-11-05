@@ -1,0 +1,66 @@
+{
+  "events": [
+    {
+      "day": "05",
+      "month": "NOV",
+      "time": "After close \u00b7 Illustrative",
+      "type": "Earnings",
+      "title": "TSMC supplier outlook",
+      "affected": [
+        "NVDA",
+        "AAPL"
+      ],
+      "direction": "positive",
+      "confidence": "Medium",
+      "reason": "A stronger capacity outlook could ease chip supply constraints."
+    },
+    {
+      "day": "06",
+      "month": "NOV",
+      "time": "8:30 AM ET \u00b7 Illustrative",
+      "type": "Jobs report",
+      "title": "US employment report",
+      "affected": [
+        "AAPL",
+        "META",
+        "NVDA",
+        "TSLA"
+      ],
+      "direction": "negative",
+      "confidence": "Medium",
+      "reason": "A strong jobs scenario could keep rates elevated and pressure valuations."
+    },
+    {
+      "day": "10",
+      "month": "NOV",
+      "time": "8:30 AM ET \u00b7 Illustrative",
+      "type": "CPI",
+      "title": "Consumer inflation release",
+      "affected": [
+        "AAPL",
+        "META",
+        "NVDA",
+        "TSLA"
+      ],
+      "direction": "positive",
+      "confidence": "Low",
+      "reason": "A cooler inflation scenario could support rate-sensitive growth stocks."
+    },
+    {
+      "day": "12",
+      "month": "NOV",
+      "time": "2:00 PM ET \u00b7 Illustrative",
+      "type": "Fed meeting",
+      "title": "Federal Reserve rate decision",
+      "affected": [
+        "AAPL",
+        "META",
+        "NVDA",
+        "TSLA"
+      ],
+      "direction": "negative",
+      "confidence": "Low",
+      "reason": "A hawkish policy scenario could increase financing costs."
+    }
+  ]
+}

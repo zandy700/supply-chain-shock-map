@@ -1,0 +1,82 @@
+{
+  "entries": [
+    {
+      "id": "DEMO-001",
+      "logged": "Nov 4, 2026 \u00b7 08:00 ET",
+      "status": "Awaiting outcome",
+      "title": "TSMC capacity expansion",
+      "affected": [
+        "NVDA",
+        "AAPL"
+      ],
+      "direction": "positive",
+      "reason": "More advanced-chip capacity could ease production constraints.",
+      "confidence": "High"
+    },
+    {
+      "id": "DEMO-002",
+      "logged": "Nov 4, 2026 \u00b7 08:00 ET",
+      "status": "Awaiting outcome",
+      "title": "Cloud spending accelerates",
+      "affected": [
+        "NVDA",
+        "META"
+      ],
+      "direction": "positive",
+      "reason": "A stronger infrastructure budget could support AI hardware demand.",
+      "confidence": "Medium"
+    },
+    {
+      "id": "DEMO-003",
+      "logged": "Nov 4, 2026 \u00b7 08:00 ET",
+      "status": "Awaiting outcome",
+      "title": "Borrowing costs rise",
+      "affected": [
+        "TSLA",
+        "AAPL",
+        "META",
+        "NVDA"
+      ],
+      "direction": "negative",
+      "reason": "Higher discount rates could pressure growth-stock valuations.",
+      "confidence": "High"
+    },
+    {
+      "id": "DEMO-004",
+      "logged": "Nov 4, 2026 \u00b7 08:00 ET",
+      "status": "Awaiting outcome",
+      "title": "Battery material costs climb",
+      "affected": [
+        "TSLA"
+      ],
+      "direction": "negative",
+      "reason": "Higher input costs could squeeze vehicle margins.",
+      "confidence": "Medium"
+    },
+    {
+      "id": "DEMO-005",
+      "logged": "Nov 4, 2026 \u00b7 08:00 ET",
+      "status": "Awaiting outcome",
+      "title": "Ad budgets recover",
+      "affected": [
+        "META"
+      ],
+      "direction": "positive",
+      "reason": "Stronger customer spending could lift advertising demand.",
+      "confidence": "Medium"
+    },
+    {
+      "id": "DEMO-006",
+      "logged": "Nov 4, 2026 \u00b7 08:00 ET",
+      "status": "Awaiting outcome",
+      "title": "Consumer spending softens",
+      "affected": [
+        "AAPL",
+        "TSLA"
+      ],
+      "direction": "negative",
+      "reason": "Lower discretionary spending could weaken device and vehicle demand.",
+      "confidence": "Medium"
+    }
+  ]
+}

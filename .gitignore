@@ -7,3 +7,6 @@ __pycache__/
 graphify-out/
 .DS_Store
 *.egg-info/
+
+# Legacy research exports; Watchlist Pulse uses web/seed only.
+/web/data/

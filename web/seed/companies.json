@@ -1,0 +1,66 @@
+{
+  "AAPL": {
+    "name": "Apple",
+    "sector": "Consumer technology",
+    "suppliers": [
+      "TSMC",
+      "Foxconn"
+    ],
+    "customers": [
+      "Consumers",
+      "Enterprise buyers"
+    ],
+    "competitors": [
+      "Samsung",
+      "Google"
+    ]
+  },
+  "META": {
+    "name": "Meta",
+    "sector": "Digital advertising",
+    "suppliers": [
+      "NVIDIA",
+      "Broadcom"
+    ],
+    "customers": [
+      "Advertisers",
+      "Agencies"
+    ],
+    "competitors": [
+      "Google",
+      "TikTok"
+    ]
+  },
+  "NVDA": {
+    "name": "NVIDIA",
+    "sector": "AI computing",
+    "suppliers": [
+      "TSMC",
+      "SK hynix"
+    ],
+    "customers": [
+      "Microsoft",
+      "Amazon"
+    ],
+    "competitors": [
+      "AMD",
+      "Intel"
+    ]
+  },
+  "TSLA": {
+    "name": "Tesla",
+    "sector": "Electric vehicles",
+    "suppliers": [
+      "Panasonic",
+      "CATL"
+    ],
+    "customers": [
+      "Consumers",
+      "Fleet operators"
+    ],
+    "competitors": [
+      "BYD",
+      "Rivian"
+    ]
+  }
+}

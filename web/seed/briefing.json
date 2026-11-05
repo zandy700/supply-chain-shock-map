@@ -1,0 +1,101 @@
+{
+  "date": "Wednesday, November 4",
+  "summary": "In this sample scenario, broad indexes edge higher as technology leads and defensive sectors lag. Treasury yields rise, keeping pressure on rate-sensitive stocks. Your watchlist has a mixed outlook: improving AI and advertising demand meets higher financing and input costs.",
+  "market": [
+    {
+      "label": "S&P 500",
+      "value": "+0.4%",
+      "direction": "positive"
+    },
+    {
+      "label": "Nasdaq",
+      "value": "+0.7%",
+      "direction": "positive"
+    },
+    {
+      "label": "10Y Treasury",
+      "value": "+4 bps",
+      "direction": "negative"
+    }
+  ],
+  "impacts": [
+    {
+      "id": "P001",
+      "title": "TSMC capacity expansion",
+      "source": "TSMC",
+      "direction": "positive",
+      "affected": [
+        "NVDA",
+        "AAPL"
+      ],
+      "reason": "More advanced-chip capacity could ease production constraints.",
+      "confidence": "High",
+      "category": "Supplier capacity"
+    },
+    {
+      "id": "P002",
+      "title": "Cloud spending accelerates",
+      "source": "Cloud customers",
+      "direction": "positive",
+      "affected": [
+        "NVDA",
+        "META"
+      ],
+      "reason": "A stronger infrastructure budget could support AI hardware demand.",
+      "confidence": "Medium",
+      "category": "Customer demand"
+    },
+    {
+      "id": "P003",
+      "title": "Borrowing costs rise",
+      "source": "Interest rates",
+      "direction": "negative",
+      "affected": [
+        "TSLA",
+        "AAPL",
+        "META",
+        "NVDA"
+      ],
+      "reason": "Higher discount rates could pressure growth-stock valuations.",
+      "confidence": "High",
+      "category": "Macro conditions"
+    },
+    {
+      "id": "P004",
+      "title": "Battery material costs climb",
+      "source": "Lithium suppliers",
+      "direction": "negative",
+      "affected": [
+        "TSLA"
+      ],
+      "reason": "Higher input costs could squeeze vehicle margins.",
+      "confidence": "Medium",
+      "category": "Supplier costs"
+    },
+    {
+      "id": "P005",
+      "title": "Ad budgets recover",
+      "source": "Advertising customers",
+      "direction": "positive",
+      "affected": [
+        "META"
+      ],
+      "reason": "Stronger customer spending could lift advertising demand.",
+      "confidence": "Medium",
+      "category": "Customer demand"
+    },
+    {
+      "id": "P006",
+      "title": "Consumer spending softens",
+      "source": "Consumer economy",
+      "direction": "negative",
+      "affected": [
+        "AAPL",
+        "TSLA"
+      ],
+      "reason": "Lower discretionary spending could weaken device and vehicle demand.",
+      "confidence": "Medium",
+      "category": "Macro conditions"
+    }
+  ]
+}
