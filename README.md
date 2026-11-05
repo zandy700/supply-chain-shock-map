@@ -1,69 +1,40 @@
-# Supply Chain Shock Map
+# Watchlist Pulse
 
-**Live demo:** <https://supply-chain-shock-map.xingjianzhang700.workers.dev>
+Phase 1 is a mobile-first UI shell with **seeded sample data only**. Follow companies, read a daily briefing of indirect impacts, explore catalysts and company relationships, and review a demonstration prediction ledger. Nothing in the UI is live news, a verified relationship claim, or a real forecast.
 
-A research observatory connecting documented supply relationships, disruption news, and measured abnormal stock returns. Built by **Xingjian Zhang**, VP of his school's stock club.
+Built by **Xingjian Zhang**, VP of his school's stock club. The Python research engine, data, append-only ledger, vendored sources, and CI remain separate and unchanged. Their attribution and historical findings are retained below.
 
-A factory disruption can matter beyond the company in the headline. This project makes the proposed route visible, keeps its evidence attached, and checks the idea against actual market returns. Its predictions are **uncalibrated research scenarios**, not investment recommendations.
-
-## What's new and what's reused
-
-New work: company matching and disruption classification, bounded shock propagation, cached event-study evaluation, an append-only prediction ledger, separate outcome scoring, static exports, and the integrated interface. Existing SEC ingestion/extraction, graph construction, D3 visualization patterns, GDELT client and market-model methodology are reused as credited below. No new SEC filing parser or relationship extractor is implemented here.
-
-```mermaid
-flowchart LR
-  SEC[Real SEC 10-K filings] --> BASE[Alphasig EDGAR + stock-relation fallback]
-  BASE --> GRAPH[Evidence-backed cached graph]
-  GDELT[GDELT DOC via gdelt-doc-api] --> EVENTS[Matched and classified events]
-  CURATED[Documented historical events] --> EVENTS
-  EVENTS --> PROP[Weighted, decaying propagation]
-  GRAPH --> PROP
-  PROP --> LEDGER[SHA256 chained predictions]
-  PRICES[Adjusted yfinance prices + SPY] --> STUDY[EventStudy adapted market model]
-  PROP --> STUDY
-  STUDY --> RESULTS[Historical results + bootstrap intervals]
-  LEDGER --> SCORE[Separate matured scores]
-  PRICES --> SCORE
-  GRAPH --> EXPORT[scsm export]
-  EVENTS --> EXPORT
-  RESULTS --> EXPORT
-  LEDGER --> EXPORT
-  SCORE --> EXPORT
-  EXPORT --> WEB[Static D3 observatory]
-```
-
-## Setup and offline demo
-
-Python 3.11 or newer; tested with the versions recorded in the validation notes. Run from the repository checkout so the CLI can locate `data/`, `vendor/`, and `ledger/` (this is a source-checkout application).
+## Run the UI
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -e '.[dev]'
-python -m scsm ingest --offline
-python -m scsm propagate
-python -m scsm backtest
-python -m scsm ledger verify
-python -m scsm score
-python -m scsm export
 python -m http.server 8000 --directory web
 ```
 
-Open <http://localhost:8000>. Serve over HTTP because browsers restrict JSON fetching from `file://`. Every visualization asset is local and every asset URL relative; the demo needs no API key and no live data request. Graph, event feed, ledger, accuracy and methodology are separate views (`web/index.html`, `web/assets/*.js`, `web/assets/styles.css`; D3 and fonts are vendored in `web/vendor/`, so the page makes no external requests).
+Open <http://localhost:8000>. First-time users start with an empty watchlist. Enter comma-separated tickers or company names; edit them anytime in Watchlist. The watchlist is stored only in this browser under `watchlist-pulse`. Use <http://localhost:8000/?seed=demo> to load AAPL, META, NVDA and TSLA for development.
 
-| Shock graph (desktop) | Shock graph (390px mobile) |
-|---|---|
-| ![Apple Watch import-ban event rippling upstream to four SEC-documented Apple suppliers](docs/screenshots/graph-desktop.png) | ![Same view on a 390px phone with touch pan and zoom](docs/screenshots/graph-mobile.png) |
+The app uses vanilla JavaScript and hash routes: `#/briefing`, `#/catalysts`, `#/watchlist`, `#/company/NVDA`, and `#/ledger`. Serve over HTTP for JSON loading. Inter loads from Google Fonts; a sans-serif fallback works if it is unavailable. Mobile uses fixed bottom tabs; desktop uses top navigation.
 
-![Accuracy dashboard: per-relation stats table, hit-rate and MAE-versus-zero forest plots with bootstrap intervals](docs/screenshots/accuracy-desktop.png)
+Sample content lives in `web/seed/{briefing,catalysts,companies,ledger}.json`. Cards and catalysts filter to the saved watchlist. Unsupported names can be saved and show a clear lack of sample coverage. Confidence labels are illustrative, not calibrated probabilities. The demonstration ledger never reads or writes the research ledger.
 
-![Ledger viewer recomputing the SHA-256 hash chain in the browser](docs/screenshots/ledger-desktop.png)
+Not financial advice. Predictions are logged before outcomes; scores come later.
 
-Picking an event animates the shock hop by hop: color is predicted direction, muted nodes are unaffected, node size is the magnitude of the expected abnormal return, and tapping a company or edge shows its SEC evidence sentence and filing. The ledger view recomputes every hash with Web Crypto and compares the head with the Python verifier's exported head; "Simulate tampering" edits an in-memory copy to show the chain breaking. The accuracy charts read `results.json` directly, so they always show the latest backtest numbers. Animations respect `prefers-reduced-motion`.
+## Phase 1 screenshots
 
-`python -m scsm --help` documents all commands. `propagate --event ID` selects an event; `ledger append --event ID` appends it once. Default `ledger append` appends all cached events with predictions. **Historical events appended now are labeled historical replays and excluded from prospective scores.** Do not interpret them as past forecasts.
+| Screen | Desktop | Mobile |
+| --- | --- | --- |
+| Onboarding | [Screenshot](docs/screenshots/scsm-pulse-phase1-onboarding-desktop.png) | [Screenshot](docs/screenshots/scsm-pulse-phase1-onboarding-mobile.png) |
+| Briefing | [Screenshot](docs/screenshots/scsm-pulse-phase1-briefing-desktop.png) | [Screenshot](docs/screenshots/scsm-pulse-phase1-briefing-mobile.png) |
+| Catalysts | [Screenshot](docs/screenshots/scsm-pulse-phase1-catalysts-desktop.png) | [Screenshot](docs/screenshots/scsm-pulse-phase1-catalysts-mobile.png) |
+| Company | [Screenshot](docs/screenshots/scsm-pulse-phase1-company-desktop.png) | [Screenshot](docs/screenshots/scsm-pulse-phase1-company-mobile.png) |
+| Ledger | [Screenshot](docs/screenshots/scsm-pulse-phase1-ledger-desktop.png) | [Screenshot](docs/screenshots/scsm-pulse-phase1-ledger-mobile.png) |
 
-For live ingestion run `python -m scsm ingest`. For missing price retrieval use `python -m scsm backtest --online` or `python -m scsm score --online`. Network failures and incomplete future windows never become fabricated observations. Keep event and price caches in version control for reproducibility. Source acquisition details and SEC graph rebuild instructions are in [graph provenance](docs/graph-provenance.md); `scripts/fetch_data.py` documents historical event and price acquisition.
+## Research engine (retained)
+
+The following documents the underlying Supply Chain Shock Map research, not the Phase 1 sample UI. The previously deployed demo may still show the earlier interface; this phase has not been deployed.
+
+Python 3.11+; install with `pip install -e '.[dev]'`. Commands include `python -m scsm ingest --offline`, `python -m scsm propagate`, `python -m scsm backtest`, `python -m scsm ledger verify`, and `python -m scsm score`. Run from the checkout so cached data and vendored sources resolve. `python -m scsm export` still generates legacy research exports into `web/data/`; that directory is ignored and unused by the new UI. Python CI remains unchanged.
+
+New research work includes company matching, disruption classification, bounded shock propagation, event-study evaluation, the append-only prediction ledger and separate outcome scoring. Existing SEC ingestion/extraction, graph construction, GDELT client and market-model methodology are reused as credited below. No new SEC filing parser or relationship extractor is implemented here. See [graph provenance](docs/graph-provenance.md) for acquisition and rebuild instructions. Historical replays are not prospective forecasts.
 
 ## Graph coverage and assumptions
 

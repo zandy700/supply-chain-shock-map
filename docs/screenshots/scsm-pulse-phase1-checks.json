@@ -1,0 +1,82 @@
+[
+  {
+    "screen": "onboarding",
+    "size": "desktop",
+    "width": 1440,
+    "document": 1440
+  },
+  {
+    "screen": "briefing",
+    "size": "desktop",
+    "width": 1440,
+    "document": 1440
+  },
+  {
+    "screen": "catalysts",
+    "size": "desktop",
+    "width": 1440,
+    "document": 1440
+  },
+  {
+    "screen": "company",
+    "size": "desktop",
+    "width": 1440,
+    "document": 1440
+  },
+  {
+    "screen": "ledger",
+    "size": "desktop",
+    "width": 1440,
+    "document": 1440
+  },
+  {
+    "size": "desktop",
+    "consoleErrors": 0,
+    "watchlistEdit": "passed",
+    "navigation": "passed",
+    "nav": {
+      "position": "static",
+      "bottom": 54.1875
+    }
+  },
+  {
+    "screen": "onboarding",
+    "size": "mobile",
+    "width": 390,
+    "document": 390
+  },
+  {
+    "screen": "briefing",
+    "size": "mobile",
+    "width": 390,
+    "document": 390
+  },
+  {
+    "screen": "catalysts",
+    "size": "mobile",
+    "width": 390,
+    "document": 390
+  },
+  {
+    "screen": "company",
+    "size": "mobile",
+    "width": 390,
+    "document": 390
+  },
+  {
+    "screen": "ledger",
+    "size": "mobile",
+    "width": 390,
+    "document": 390
+  },
+  {
+    "size": "mobile",
+    "consoleErrors": 0,
+    "watchlistEdit": "passed",
+    "navigation": "passed",
+    "nav": {
+      "position": "fixed",
+      "bottom": 844
+    }
+  }
+]
