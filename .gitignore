@@ -10,3 +10,6 @@ graphify-out/
 
 # Legacy research exports; Watchlist Pulse uses web/seed only.
 /web/data/
+.dev.vars
+node_modules/
+.wrangler/

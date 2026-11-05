@@ -1,0 +1,76 @@
+{
+  "RULES": [
+    [
+      "factory_fire",
+      "\\b(?:factory|plant|warehouse)\\b.{0,45}\\bfire\\b|\\bfire\\b.{0,45}\\b(?:factory|plant|warehouse)\\b",
+      0.8
+    ],
+    [
+      "explosion",
+      "\\bexplosion\\b",
+      0.9
+    ],
+    [
+      "cyberattack",
+      "\\b(?:cyberattack|cyber.attack|ransomware|data breach|cybersecurity (?:incident|issue))\\b",
+      0.7
+    ],
+    [
+      "export_ban",
+      "\\bexport (?:ban|restrictions?|controls?|license|licensing)\\b",
+      0.8
+    ],
+    [
+      "sanctions",
+      "\\bsanctions?\\b",
+      0.8
+    ],
+    [
+      "recall",
+      "\\brecalls?|recalled\\b",
+      0.6
+    ],
+    [
+      "strike",
+      "\\b(?:strikes?|work stoppage)\\b",
+      0.6
+    ],
+    [
+      "lawsuit",
+      "\\b(?:lawsuits?|litigation|sued)\\b",
+      0.4
+    ]
+  ],
+  "POSITIVE_RULES": [
+    [
+      "earnings_beat",
+      "\\bearnings (?:beat|beats)\\b",
+      0.6
+    ],
+    [
+      "product_launch",
+      "\\b(?:launches? (?:a |the )?new product|product launch)\\b",
+      0.5
+    ],
+    [
+      "guidance_raise",
+      "\\b(?:raises? guidance|guidance raise)\\b",
+      0.6
+    ],
+    [
+      "major_win",
+      "\\b(?:wins? (?:a )?major contract|major contract win)\\b",
+      0.6
+    ],
+    [
+      "rate_cut_relief",
+      "\\brate[- ]cut(?:s| relief)?\\b",
+      0.4
+    ],
+    [
+      "supplier_expansion",
+      "\\b(?:supplier|capacity) expansion\\b",
+      0.5
+    ]
+  ]
+}
