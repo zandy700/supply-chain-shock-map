@@ -1,5 +1,10 @@
 'use strict';
 const KEY = 'watchlist-pulse';
+const sampleMode = new URLSearchParams(location.search).get('seed') === 'demo';
+let live = null;
+let liveError = '';
+let liveLoading = false;
+let requestVersion = 0;
 const demo = ['AAPL', 'META', 'NVDA', 'TSLA'];
 const main = document.querySelector('main');
 const escapeHTML = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[c]));
@@ -9,7 +14,7 @@ let storageAvailable = true;
 try {
   const stored = JSON.parse(localStorage.getItem(KEY) || '[]');
   watchlist = Array.isArray(stored) ? stored.filter(x => typeof x === 'string') : [];
-  if (new URLSearchParams(location.search).get('seed') === 'demo') {
+  if (sampleMode) {
     watchlist = demo;
     localStorage.setItem(KEY, JSON.stringify(watchlist));
   }
@@ -24,32 +29,52 @@ function impacts(items) {
   return items.length ? `<div class="panel">${items.map(item => `<article class="impact">${direction(item)}<div><div class="eyebrow">${item.category || item.id}</div><h3>${item.title}</h3><p>${item.reason}</p><div class="meta">${tickers(affected(item))}<span class="small ${item.direction}">${item.direction === 'positive' ? 'Positive' : 'Negative'} impact</span></div>${item.logged ? `<div class="hint">Logged ${item.logged} · ${item.status}</div>` : ''}</div>${confidence(item)}</article>`).join('')}</div>` : '<div class="panel empty">No sample predictions cover these names. Edit your watchlist to explore AAPL, META, NVDA or TSLA.</div>';
 }
 function editor(onboarding = false) {
-  return `<form class="${onboarding ? '' : 'panel editor'}" id="watchlist-form"><label for="companies">${onboarding ? 'Tickers or company names' : 'Your companies'}</label><input id="companies" name="companies" autocomplete="off" placeholder="e.g. Apple, NVDA, Tesla" value="${escapeHTML(watchlist.join(', '))}" required maxlength="500"><div class="hint">Separate names with commas. Sample coverage: AAPL, META, NVDA, TSLA.</div><div id="form-error" class="error" role="alert"></div><button class="button" type="submit">${onboarding ? 'Create watchlist' : 'Save watchlist'}</button></form>`;
+  return `<form class="${onboarding ? '' : 'panel editor'}" id="watchlist-form"><label for="companies">${onboarding ? 'Tickers or company names' : 'Your companies'}</label><input id="companies" name="companies" autocomplete="off" placeholder="e.g. Apple, NVDA, Tesla" value="${escapeHTML(watchlist.join(', '))}" required maxlength="500"><div class="hint">Separate names with commas. Up to 12 US tickers or company names. Live mode resolves names through Finnhub.</div><div id="form-error" class="error" role="alert"></div><button class="button" type="submit">${onboarding ? 'Create watchlist' : 'Save watchlist'}</button></form>`;
 }
 function bindForm() {
-  document.querySelector('form')?.addEventListener('submit', event => {
+  document.querySelector('form')?.addEventListener('submit', async event => {
     event.preventDefault();
     const aliases = {APPLE:'AAPL','APPLE INC':'AAPL',META:'META',FACEBOOK:'META',NVIDIA:'NVDA',TESLA:'TSLA'};
-    const values = [...new Set(document.querySelector('input').value.split(/[,;\n]+/).map(x => x.trim().toUpperCase()).filter(Boolean).map(x => aliases[x] || x))];
+    let values = [...new Set(document.querySelector('input').value.split(/[,;\n]+/).map(x => x.trim().toUpperCase()).filter(Boolean).map(x => aliases[x] || x))];
     const error = document.querySelector('#form-error');
-    if (!values.length || values.some(x => !/^[A-Z0-9 .&-]{1,60}$/.test(x)) || values.length > 30) {
-      error.textContent = 'Enter 1–30 tickers or company names, separated by commas (up to 60 characters each).';
+    if (!values.length || values.some(x => !/^[A-Z0-9 .&'’()-]{1,60}$/.test(x)) || values.length > 12) {
+      error.textContent = 'Enter 1–12 tickers or company names, separated by commas (up to 60 characters each).';
       return;
+    }
+    if (!sampleMode) {
+      const button = event.target.querySelector('button');
+      button.disabled = true; button.textContent = 'Resolving…';
+      try {
+        const resolved = await api('/api/resolve?q=' + encodeURIComponent(values.join(',')));
+        if (resolved.unresolved.length || resolved.errors.length) throw new Error('Could not resolve: ' + resolved.unresolved.join(', ') + '. ' + Object.entries(resolved.suggestions || {}).map(([name,options]) => options.length ? name + ': try ' + options.map(x=>x.ticker).join(' or ') + '.' : '').join(' ') + ' Check the names or try again if the provider is unavailable.');
+        values = resolved.tickers;
+      } catch (failure) {
+        error.textContent = failure.message;
+        button.disabled = false; button.textContent = 'Save watchlist'; return;
+      }
     }
     try { localStorage.setItem(KEY, JSON.stringify(values)); storageAvailable = true; }
     catch { error.textContent = 'Browser storage is unavailable. Enable local storage to save your watchlist.'; return; }
     watchlist = values;
+    live = null; liveError = '';
+    if (!sampleMode) loadLive();
     if (location.hash === '#/briefing') render(); else location.hash = '/briefing';
   });
 }
 function render() {
   if (!data) return;
+  document.querySelector('.sample').textContent = sampleMode ? 'Sample data' : 'Live · Finnhub';
+  document.querySelector('footer').innerHTML = sampleMode
+    ? 'Illustrative scenarios only. <a class="link" href="/#/briefing">Switch to Live</a>'
+    : 'Headline heuristics are unreviewed scenarios, not financial advice or verified supply-chain effects. <a class="link" href="?seed=demo#/briefing">Explore Sample mode</a>';
   let [page = 'briefing', symbol] = location.hash.replace(/^#\/?/, '').split('/');
   if (!['briefing','catalysts','watchlist','ledger','company'].includes(page)) page = 'briefing';
   const onboarding = !watchlist.length;
   document.querySelector('nav').innerHTML = onboarding ? '' : navItems.map(name => `<a href="#/${name.toLowerCase()}" ${page === name.toLowerCase() || (page === 'company' && name === 'Watchlist') ? 'class="active" aria-current="page"' : ''}>${name}</a>`).join('');
   if (onboarding) {
-    main.innerHTML = `<section class="onboarding"><div class="panel"><span class="brand-mark">⌁</span><h1>A little context.<br>A clearer watchlist.</h1><p>See how other companies and the wider market could affect the names you follow.</p>${editor(true)}<div class="hint">${storageAvailable ? 'Saved on this device. No account needed.' : 'Enable browser storage to save your watchlist.'}</div></div><div class="hint" style="text-align:center;margin-top:20px">Sample data only. Explore illustrative scenarios.</div></section>`;
+    main.innerHTML = `<section class="onboarding"><div class="panel"><span class="brand-mark">⌁</span><h1>A little context.<br>A clearer watchlist.</h1><p>See how other companies and the wider market could affect the names you follow.</p>${editor(true)}<div class="hint">${storageAvailable ? 'Saved on this device. No account needed.' : 'Enable browser storage to save your watchlist.'}</div></div><div class="hint" style="text-align:center;margin-top:20px">${sampleMode ? 'Sample data only. Explore illustrative scenarios.' : 'Live news via Finnhub. Sample mode is available from the footer.'}</div></section>`;
+  } else if (!sampleMode && ['briefing','catalysts','company'].includes(page)) {
+    renderLive(page,symbol);
   } else if (page === 'briefing') {
     const items = data.briefing.impacts.filter(i => affected(i).length);
     main.innerHTML = heading('Daily briefing', 'The developments beyond your watchlist that could move it.', data.briefing.date + ' · Sample edition') + `<section class="summary panel"><div><h2>The market in a minute</h2><p>${data.briefing.summary}</p></div><div class="market">${data.briefing.market.map(x => `<div><span>${x.label}</span><strong class="${x.direction}">${x.value}</strong></div>`).join('')}<div class="muted">Illustrative moves, not live quotes</div></div></section><div class="section-head"><h2>What could move your watchlist</h2><span class="muted small">${items.length} sample signals</span></div>${impacts(items)}<aside class="panel callout"><div><h3>Next on the calendar</h3><p class="muted small">Earnings, inflation and the Fed. See what could matter.</p></div><a class="link" href="#/catalysts">View catalysts</a></aside>`;
@@ -57,7 +82,7 @@ function render() {
     const events = data.catalysts.events.filter(i => affected(i).length);
     main.innerHTML = heading('Upcoming catalysts', 'A look ahead at events that could affect your companies.') + `<div class="panel notice">Sample calendar. Dates, expectations and scenarios are illustrative, not a real event schedule.</div>` + (events.length ? `<div class="panel">${events.map(item => `<article class="impact event"><div class="datebox"><span>${item.month}</span><strong>${item.day}</strong></div><div><div class="eyebrow">${item.type} · ${item.time}</div><h3>${item.title}</h3><p>${item.reason}</p><div class="meta">${tickers(affected(item))}<span class="small ${item.direction}">${item.direction === 'positive' ? '+' : '−'} ${item.direction} scenario</span></div></div>${confidence(item)}</article>`).join('')}</div>` : '<div class="panel empty">No sample catalysts cover your watchlist yet.</div>');
   } else if (page === 'watchlist') {
-    main.innerHTML = heading('Your watchlist', 'Follow the companies you care about. Saved on this device.') + editor() + `<div class="section-head"><h2>Following</h2><span class="muted small">${watchlist.length} companies</span></div><div class="panel">${watchlist.map(t => `<a class="watch-row" href="#/company/${encodeURIComponent(t)}"><div><strong>${escapeHTML(t)}</strong><div class="muted small">${escapeHTML(data.companies[t]?.name || 'No sample company coverage')}</div></div><span class="muted small">View company ›</span></a>`).join('')}</div>`;
+    main.innerHTML = heading('Your watchlist', 'Follow the companies you care about. Saved on this device.') + editor() + `<div class="section-head"><h2>Following</h2><span class="muted small">${watchlist.length} companies</span></div><div class="panel">${watchlist.map(t => `<a class="watch-row" href="#/company/${encodeURIComponent(t)}"><div><strong>${escapeHTML(t)}</strong><div class="muted small">${escapeHTML((sampleMode ? data.companies[t]?.name : live?.companies.find(c => c.ticker === t)?.name) || t)}</div></div><span class="muted small">View company ›</span></a>`).join('')}</div>`;
   } else if (page === 'company') {
     try { symbol = decodeURIComponent(symbol || ''); } catch { symbol = ''; }
     const company = Object.hasOwn(data.companies, symbol) ? data.companies[symbol] : null;
@@ -68,11 +93,71 @@ function render() {
   document.title = `${onboarding ? 'Create your watchlist' : page === 'company' ? symbol : navItems.find(x => x.toLowerCase() === page) || 'Briefing'} · Watchlist Pulse`;
   bindForm();
 }
+async function api(path) {
+  const response = await fetch(path, {signal:AbortSignal.timeout(90000)});
+  const payload = await response.json();
+  if (!response.ok) throw new Error(payload.error || 'Live briefing unavailable. Try again shortly.');
+  return payload;
+}
+async function loadLive(extraSymbol) {
+  const version = ++requestVersion;
+  liveLoading = true; liveError = ''; render();
+  try {
+    const names = [...new Set([...watchlist, ...(extraSymbol ? [extraSymbol] : [])])];
+    if (names.length > 12) throw new Error('This company is outside your 12-name watchlist. Edit your watchlist to include it.');
+    const query = '?tickers=' + encodeURIComponent(names.join(','));
+    const [briefing,catalysts] = await Promise.all([api('/api/briefing'+query),api('/api/catalysts'+query)]);
+    if (version !== requestVersion) return;
+    live = {...briefing, events:catalysts.events, errors:[...new Map([...briefing.errors,...catalysts.errors].map(x=>[JSON.stringify(x),x])).values()]};
+  } catch (error) { if (version === requestVersion) liveError = error.name === 'TimeoutError' ? 'Live request timed out. Try again shortly.' : error.message; }
+  finally { if (version === requestVersion) { liveLoading = false; render(); } }
+}
+function liveImpacts(items) {
+  if (!items.length) return '<div class="panel empty">No classified headlines for these names in the recent seven-day window. Unclassified company news appears on company pages.</div>';
+  return '<div class="panel">' + items.map(item => `<article class="impact">${direction(item)}<div><div class="small muted">${escapeHTML(item.category)} · ${escapeHTML(item.date.slice(0,10))}</div><h3><a class="article-link" href="${escapeHTML(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(item.title)}</a></h3><p>${escapeHTML(item.reason)}</p><div class="meta">${tickers(item.affected)}<span class="small muted">${escapeHTML(item.source)} · ${item.sign > 0 ? 'Positive' : 'Negative'} scenario</span></div></div><span class="confidence">Low confidence</span></article>`).join('') + '</div>';
+}
+function quoteRows(quotes) {
+  return quotes.length ? '<div class="panel quote-strip">' + quotes.map(q=>`<div><strong>${escapeHTML(q.ticker)}</strong><span>$${Number(q.price).toFixed(2)} <span class="${q.change_percent >= 0 ? 'positive' : 'negative'}">${q.change_percent == null ? '' : Number(q.change_percent).toFixed(2)+'%'}</span></span><span class="hint">Quote as of ${escapeHTML(new Date(q.as_of).toLocaleString())}</span></div>`).join('') + '</div>' : '';
+}
+function renderLive(page,rawSymbol) {
+  let symbol = '';
+  try { symbol = decodeURIComponent(rawSymbol || '').toUpperCase(); } catch { /* invalid route */ }
+  const title = page === 'company' ? (live?.companies.find(c=>c.ticker===symbol)?.name || symbol || 'Company') : page === 'catalysts' ? 'Watchlist catalysts' : 'Daily briefing';
+  main.innerHTML = heading(escapeHTML(title), page === 'catalysts' ? 'Recent headline catalysts for the companies you follow.' : page === 'company' ? escapeHTML(symbol) + ' · Company news and context' : 'Recent developments from your companies’ news feeds, without inferred propagation.', 'Live · Finnhub');
+  if (liveLoading) { main.innerHTML += '<div class="panel notice" role="status">Loading live news and quotes…</div>'; return; }
+  if (liveError) { main.innerHTML += `<div class="panel notice" role="alert">${escapeHTML(liveError)} <button class="button secondary" id="retry-live">Try again</button></div>`; document.querySelector('#retry-live').onclick=()=>loadLive(page==='company'?symbol:undefined); return; }
+  if (!live) { main.innerHTML += '<div class="panel empty">Live briefing is loading…</div>'; return; }
+  main.innerHTML += `<div class="panel notice live-notice"><strong>Live news · Finnhub</strong><span>Seven-day window · Retrieved ${escapeHTML(new Date(live.as_of).toLocaleString())}. Keyword scenarios are unreviewed, not forecasts.</span></div>`;
+  if (live.notice) main.innerHTML += `<div class="panel notice">${escapeHTML(live.notice)} <a class="link" href="?seed=demo#/briefing">Explore Sample mode</a></div>`;
+  if (live.unresolved.length) main.innerHTML += `<div class="panel notice error" role="alert">Unresolved: ${escapeHTML(live.unresolved.join(', '))}. <a class="link" href="#/watchlist">Edit watchlist</a></div>`;
+  if (live.errors.length) main.innerHTML += `<div class="panel notice" role="alert">Some live data is unavailable: ${live.errors.map(e=>escapeHTML((e.ticker||e.input) + ' ' + (e.resource||'resolution') + ': ' + e.code.replaceAll('_',' '))).join('; ')}. Available results are shown. <button class="button secondary" id="retry-live">Retry</button></div>`;
+  const items = (page === 'catalysts' ? live.events : live.impacts).filter(i=>page!=='company' || i.affected.includes(symbol));
+  main.innerHTML += quoteRows(live.quotes.filter(q=>page!=='company'||q.ticker===symbol));
+  if (page === 'company') {
+    const mapped = data.graph.nodes.some(n=>n.ticker===symbol);
+    if (!mapped) main.innerHTML += '<div class="panel notice">No SEC relationship map for this name in the 12-node graph. Live company news can still appear below.</div>';
+    else {
+      const edges = data.graph.edges.filter(e=>e.source===symbol || e.target===symbol);
+      main.innerHTML += '<div class="panel notice"><strong>Illustrative relationship context · 12-node SEC graph</strong><p>Existing research relationships; not live evidence or verified propagation from these headlines.</p>' + (edges.length ? '<p>'+edges.map(e=>escapeHTML(e.source+' → '+e.target)).join(' · ')+'</p>' : '<p>No relationships recorded for this node.</p>') + '</div>';
+    }
+  }
+  main.innerHTML += `<div class="section-head"><h2>${page==='catalysts'?'Recent catalysts':'Classified headlines'}</h2><span class="muted small">${items.length} live scenarios</span></div>` + (page === 'company' && !items.length ? '<div class="panel notice">No classified headlines for this name in the recent seven-day window.</div>' : liveImpacts(items));
+  if (page==='catalysts') main.innerHTML += '<aside class="panel notice" style="margin-top:20px"><strong>Calendar coverage</strong><p>These are recent news catalysts, not scheduled future events. No live Fed, CPI or earnings calendar is supplied. The Sample calendar contains fictional scenarios.</p></aside>';
+  if (page==='company') {
+    const news=live.news.filter(n=>n.affected.includes(symbol) && !n.sign).slice(0,12);
+    main.innerHTML += '<div class="section-head"><h2>More company news</h2><span class="muted small">Unclassified mentions</span></div>' + (news.length ? '<div class="panel">'+news.map(n=>`<article class="news-row"><h3><a class="article-link" href="${escapeHTML(n.url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(n.title)}</a></h3><p class="hint">${escapeHTML(n.source)} · ${escapeHTML(n.date.slice(0,10))} · No impact classification</p></article>`).join('')+'</div>' : '<div class="panel empty">No additional news available for this name.</div>');
+    if (!live.tickers.includes(symbol) && !live.unresolved.includes(symbol) && /^[A-Z]{1,5}(?:[.-][A-Z])?$/.test(symbol)) {
+      main.innerHTML += '<button class="button secondary" id="load-company">Load this company’s live news</button>';
+      document.querySelector('#load-company').onclick=()=>loadLive(symbol);
+    }
+  }
+  document.querySelector('#retry-live')?.addEventListener('click',()=>loadLive(page==='company'?symbol:undefined));
+}
 window.addEventListener('hashchange', () => { render(); window.scrollTo(0,0); main.focus({preventScroll:true}); });
-Promise.all(['briefing','catalysts','companies','ledger'].map(async name => {
-  const response = await fetch(`seed/${name}.json`);
+Promise.all(['briefing','catalysts','companies','ledger','graph'].map(async name => {
+  const response = await fetch(name === 'graph' ? 'seed/graph.json' : `seed/${name}.json`);
   if (!response.ok) throw new Error('Sample data unavailable');
   return [name, await response.json()];
-})).then(entries => { data = Object.fromEntries(entries); render(); }).catch(() => {
+})).then(entries => { data = Object.fromEntries(entries); render(); if (!sampleMode && watchlist.length) loadLive(); }).catch(() => {
   main.innerHTML = '<div class="panel empty"><h1>Sample data could not load</h1><p>Check your connection and reload this page.</p><button class="button" onclick="location.reload()">Reload</button></div>';
 });
