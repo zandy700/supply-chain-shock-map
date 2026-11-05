@@ -1,0 +1,330 @@
+[
+  {
+    "event": {
+      "classification_method": "Manually curated event type; heuristic severity, not measured",
+      "date": "2024-09-13",
+      "date_basis": "Public disclosure date; day-only alignment",
+      "event_type": "strike",
+      "id": "4d71da07a7881cf3702c",
+      "retrieved_at": "2026-11-05T04:01:28.138786+00:00",
+      "review_status": "documented_historical_example",
+      "severity": 0.6,
+      "sign": -1,
+      "source": "curated_primary_source",
+      "source_note": "SEC quarterly filing confirms strike began September 13, 2024.",
+      "tickers": [
+        "BA"
+      ],
+      "title": "Boeing machinists begin strike",
+      "url": "https://www.sec.gov/Archives/edgar/data/12927/000001292724000082/ba-20240930.htm"
+    },
+    "hash": "472edf651b67e84315e7e3d58031eb0d9b81f404170c3616726669b88921f89c",
+    "mode": "historical_replay",
+    "model_version": "0.1.0",
+    "predictions": [
+      {
+        "direction": "negative",
+        "hops": 0,
+        "magnitude": -3,
+        "model": "uncalibrated 5% × severity × edge weights × 0.5 per hop",
+        "path": [
+          "BA"
+        ],
+        "ticker": "BA",
+        "weight_assumption": false
+      }
+    ],
+    "prev_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "timestamp_utc": "2026-11-05T04:15:37Z"
+  },
+  {
+    "event": {
+      "classification_method": "Manually curated event type; heuristic severity, not measured",
+      "date": "2023-12-13",
+      "date_basis": "Public disclosure date; day-only alignment",
+      "event_type": "recall",
+      "id": "e73e67e50681c98b3c55",
+      "retrieved_at": "2026-11-05T04:01:28.138786+00:00",
+      "review_status": "documented_historical_example",
+      "severity": 0.6,
+      "sign": -1,
+      "source": "curated_primary_source",
+      "source_note": "NHTSA primary letter dated December 12; broad public disclosure December 13. Date sensitivity remains.",
+      "tickers": [
+        "TSLA"
+      ],
+      "title": "Tesla Autopilot recall becomes public",
+      "url": "https://s.wsj.net/public/resources/documents/nhtsa-tesla-safety-recall-december-12.pdf"
+    },
+    "hash": "d79763830a9155bdcfa8918529ac7982f77e8295a5f33353023df2b5cfef0210",
+    "mode": "historical_replay",
+    "model_version": "0.1.0",
+    "predictions": [
+      {
+        "direction": "negative",
+        "hops": 0,
+        "magnitude": -3,
+        "model": "uncalibrated 5% × severity × edge weights × 0.5 per hop",
+        "path": [
+          "TSLA"
+        ],
+        "ticker": "TSLA",
+        "weight_assumption": false
+      }
+    ],
+    "prev_hash": "472edf651b67e84315e7e3d58031eb0d9b81f404170c3616726669b88921f89c",
+    "timestamp_utc": "2026-11-05T04:15:37Z"
+  },
+  {
+    "event": {
+      "classification_method": "Manually curated event type; heuristic severity, not measured",
+      "date": "2023-09-15",
+      "date_basis": "Public disclosure date; day-only alignment",
+      "event_type": "strike",
+      "id": "c6d95b637e99c9d791d6",
+      "retrieved_at": "2026-11-05T04:01:28.138786+00:00",
+      "review_status": "documented_historical_example",
+      "severity": 0.6,
+      "sign": -1,
+      "source": "curated_primary_source",
+      "source_note": "Union primary statement: strike began at midnight September 15.",
+      "tickers": [
+        "F",
+        "GM"
+      ],
+      "title": "General Motors and Ford workers begin UAW strike",
+      "url": "https://uaw-newsroom.prgloo.com/press-release/uaw-launches-historic-stand-up-strike-against-big-three-automakers"
+    },
+    "hash": "015ebb2b1a516a22ed0006dedf46839af9c7184e75cc93f9c067ff247fd3f71b",
+    "mode": "historical_replay",
+    "model_version": "0.1.0",
+    "predictions": [
+      {
+        "direction": "negative",
+        "hops": 0,
+        "magnitude": -3,
+        "model": "uncalibrated 5% × severity × edge weights × 0.5 per hop",
+        "path": [
+          "F"
+        ],
+        "ticker": "F",
+        "weight_assumption": false
+      },
+      {
+        "direction": "negative",
+        "hops": 0,
+        "magnitude": -3,
+        "model": "uncalibrated 5% × severity × edge weights × 0.5 per hop",
+        "path": [
+          "GM"
+        ],
+        "ticker": "GM",
+        "weight_assumption": false
+      }
+    ],
+    "prev_hash": "d79763830a9155bdcfa8918529ac7982f77e8295a5f33353023df2b5cfef0210",
+    "timestamp_utc": "2026-11-05T04:15:37Z"
+  },
+  {
+    "event": {
+      "classification_method": "Manually curated event type; heuristic severity, not measured",
+      "date": "2023-09-12",
+      "date_basis": "Public disclosure date; day-only alignment",
+      "event_type": "cyberattack",
+      "id": "e4b8924786635812fc7f",
+      "retrieved_at": "2026-11-05T04:01:28.138786+00:00",
+      "review_status": "documented_historical_example",
+      "severity": 0.7,
+      "sign": -1,
+      "source": "curated_primary_source",
+      "source_note": "Dated company statement September 12; public reports began September 11. This study uses statement date, with timing uncertainty.",
+      "tickers": [
+        "MGM"
+      ],
+      "title": "MGM Resorts issues statement on cybersecurity disruption",
+      "url": "https://d18rn0p25nwr6d.cloudfront.net/CIK-0000789570/a390c443-0c40-4025-aba2-74505ab3c9e3.pdf"
+    },
+    "hash": "2440788ca0acd1dd5514e920b5c38927cc301ab7ca3a03d5da04b9a87bcea212",
+    "mode": "historical_replay",
+    "model_version": "0.1.0",
+    "predictions": [
+      {
+        "direction": "negative",
+        "hops": 0,
+        "magnitude": -3.5,
+        "model": "uncalibrated 5% × severity × edge weights × 0.5 per hop",
+        "path": [
+          "MGM"
+        ],
+        "ticker": "MGM",
+        "weight_assumption": false
+      }
+    ],
+    "prev_hash": "015ebb2b1a516a22ed0006dedf46839af9c7184e75cc93f9c067ff247fd3f71b",
+    "timestamp_utc": "2026-11-05T04:15:37Z"
+  },
+  {
+    "event": {
+      "classification_method": "Manually curated event type; heuristic severity, not measured",
+      "date": "2023-08-14",
+      "date_basis": "Public disclosure date; day-only alignment",
+      "event_type": "cyberattack",
+      "id": "d7ac25ec9d4827a682ee",
+      "retrieved_at": "2026-11-05T04:01:28.138786+00:00",
+      "review_status": "documented_historical_example",
+      "severity": 0.7,
+      "sign": -1,
+      "source": "curated_primary_source",
+      "source_note": "Retrospective SEC filing explicitly confirms August 14 public disclosure; activity began August 11.",
+      "tickers": [
+        "CLX"
+      ],
+      "title": "Clorox discloses cybersecurity incident and takes systems offline",
+      "url": "https://www.sec.gov/Archives/edgar/data/21076/000155278124000563/e24323_clx-def14a.htm"
+    },
+    "hash": "b576511b324a2dea551d67e7469d6ebb84771a8adb961e4746e389de2f1e09ca",
+    "mode": "historical_replay",
+    "model_version": "0.1.0",
+    "predictions": [
+      {
+        "direction": "negative",
+        "hops": 0,
+        "magnitude": -3.5,
+        "model": "uncalibrated 5% × severity × edge weights × 0.5 per hop",
+        "path": [
+          "CLX"
+        ],
+        "ticker": "CLX",
+        "weight_assumption": false
+      }
+    ],
+    "prev_hash": "2440788ca0acd1dd5514e920b5c38927cc301ab7ca3a03d5da04b9a87bcea212",
+    "timestamp_utc": "2026-11-05T04:15:37Z"
+  },
+  {
+    "event": {
+      "classification_method": "Manually curated event type; heuristic severity, not measured",
+      "date": "2023-07-25",
+      "date_basis": "Public disclosure date; day-only alignment",
+      "event_type": "recall",
+      "id": "20fa1bef09db94251ef2",
+      "retrieved_at": "2026-11-05T04:01:28.138786+00:00",
+      "review_status": "documented_historical_example",
+      "severity": 0.6,
+      "sign": -1,
+      "source": "curated_primary_source",
+      "source_note": "Inspection/removal disruption classified as recall. A320neo engine issue; issuer-level graph cannot distinguish unaffected Boeing products.",
+      "tickers": [
+        "RTX"
+      ],
+      "title": "RTX accelerates Pratt & Whitney engine inspections after powder-metal issue",
+      "url": "https://www.sec.gov/Archives/edgar/data/101829/000010182923000030/a2023-07x258xkerexhibit991.htm"
+    },
+    "hash": "4d356f9f85238b0e7c44c49f7195fa4edc20f328cb28b821134d8c56cf15b567",
+    "mode": "historical_replay",
+    "model_version": "0.1.0",
+    "predictions": [
+      {
+        "direction": "negative",
+        "hops": 0,
+        "magnitude": -3,
+        "model": "uncalibrated 5% × severity × edge weights × 0.5 per hop",
+        "path": [
+          "RTX"
+        ],
+        "ticker": "RTX",
+        "weight_assumption": false
+      },
+      {
+        "direction": "negative",
+        "hops": 1,
+        "magnitude": -0.75,
+        "model": "uncalibrated 5% × severity × edge weights × 0.5 per hop",
+        "path": [
+          "RTX",
+          "BA"
+        ],
+        "ticker": "BA",
+        "weight_assumption": true
+      }
+    ],
+    "prev_hash": "b576511b324a2dea551d67e7469d6ebb84771a8adb961e4746e389de2f1e09ca",
+    "timestamp_utc": "2026-11-05T04:15:37Z"
+  },
+  {
+    "event": {
+      "classification_method": "Manually curated event type; heuristic severity, not measured",
+      "date": "2022-08-31",
+      "date_basis": "Public disclosure date; day-only alignment",
+      "event_type": "export_ban",
+      "id": "d866fd7ae33d0250a8fc",
+      "retrieved_at": "2026-11-05T04:01:28.138786+00:00",
+      "review_status": "documented_historical_example",
+      "severity": 0.8,
+      "sign": -1,
+      "source": "curated_primary_source",
+      "source_note": "Public filing dated August 31; government notification was August 26. Date is disclosure, not private notification.",
+      "tickers": [
+        "NVDA"
+      ],
+      "title": "NVIDIA discloses export license restrictions for A100 and H100",
+      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581022000146/nvda-20220826.htm"
+    },
+    "hash": "ebbcb47b1cbdb25b6c75fa58a33090bacec3fcf04f7d76eb4db99a1ec5f97b34",
+    "mode": "historical_replay",
+    "model_version": "0.1.0",
+    "predictions": [
+      {
+        "direction": "negative",
+        "hops": 0,
+        "magnitude": -4,
+        "model": "uncalibrated 5% × severity × edge weights × 0.5 per hop",
+        "path": [
+          "NVDA"
+        ],
+        "ticker": "NVDA",
+        "weight_assumption": false
+      }
+    ],
+    "prev_hash": "4d356f9f85238b0e7c44c49f7195fa4edc20f328cb28b821134d8c56cf15b567",
+    "timestamp_utc": "2026-11-05T04:15:37Z"
+  },
+  {
+    "event": {
+      "classification_method": "Manually curated event type; heuristic severity, not measured",
+      "date": "2022-02-17",
+      "date_basis": "Public disclosure date; day-only alignment",
+      "event_type": "recall",
+      "id": "c5c27b27a2cefe01ee22",
+      "retrieved_at": "2026-11-05T04:01:28.138786+00:00",
+      "review_status": "documented_historical_example",
+      "severity": 0.6,
+      "sign": -1,
+      "source": "curated_primary_source",
+      "source_note": "FDA company announcement dated February 17, 2022.",
+      "tickers": [
+        "ABT"
+      ],
+      "title": "Abbott recalls powdered infant formula",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/abbott-voluntarily-recalls-powder-formulas-manufactured-one-plant"
+    },
+    "hash": "a203565cdf38fc84309149c104c12e880bd3398d3e819f4af8ac577db7369df5",
+    "mode": "historical_replay",
+    "model_version": "0.1.0",
+    "predictions": [
+      {
+        "direction": "negative",
+        "hops": 0,
+        "magnitude": -3,
+        "model": "uncalibrated 5% × severity × edge weights × 0.5 per hop",
+        "path": [
+          "ABT"
+        ],
+        "ticker": "ABT",
+        "weight_assumption": false
+      }
+    ],
+    "prev_hash": "ebbcb47b1cbdb25b6c75fa58a33090bacec3fcf04f7d76eb4db99a1ec5f97b34",
+    "timestamp_utc": "2026-11-05T04:15:37Z"
+  }
+]

@@ -1,0 +1,58 @@
+{
+  "version": "0.1.0",
+  "ledger": {
+    "valid": true,
+    "count": 8,
+    "head": "a203565cdf38fc84309149c104c12e880bd3398d3e819f4af8ac577db7369df5"
+  },
+  "counts": {
+    "nodes": 12,
+    "edges": 10,
+    "events": 8,
+    "predictions": 8,
+    "scores": 0
+  },
+  "coverage": {
+    "source": "SEC EDGAR primary 2021 10-K filings",
+    "discovery": "alphasig.EdgarClient.get_filings/fetch_filing_html",
+    "extractor": "stock-relation.SupplyChainIngester.ingest deterministic keyword fallback",
+    "graph_builder": "alphasig.SupplyChainGraph",
+    "candidate_edges": 14,
+    "reviewed_edges": 10,
+    "graph_edge_count": 10,
+    "filings_fetched": 14,
+    "filers_requested": [
+      "SWKS",
+      "QRVO",
+      "AVGO",
+      "QCOM",
+      "MU",
+      "AMD",
+      "RTX",
+      "TXT",
+      "SPR",
+      "HWM",
+      "TDG",
+      "GE",
+      "HON",
+      "APH",
+      "ON",
+      "ALB"
+    ],
+    "limitations": [
+      "Small disclosed supplier sample, not full S&P 500 coverage.",
+      "Keyword extraction is noisy; published candidates are manually evidence-reviewed.",
+      "Manual review removes false candidates only; every retained edge and evidence sentence is upstream output.",
+      "Confidence 0.8 is the upstream keyword fallback constant, not a measured probability.",
+      "Uniform weight 0.5 is a modeling assumption, not measured economic exposure.",
+      "Only dated edges public before an event may be used for historical propagation.",
+      "2021 relationships may have changed; refresh and review before live use."
+    ]
+  },
+  "limitations": [
+    "Uncalibrated heuristic return magnitudes; not financial advice.",
+    "Curated historical backtests are not prospective performance.",
+    "Hash integrity requires a trusted saved head; timestamps are self-reported.",
+    "Current S&P 500 membership introduces survivorship bias."
+  ]
+}
