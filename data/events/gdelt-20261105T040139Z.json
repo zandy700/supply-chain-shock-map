@@ -1,0 +1,8 @@
+{
+  "retrieved_at": "2026-11-05T04:01:39.337875+00:00",
+  "source": "GDELT DOC 2.0 via gdelt-doc-api",
+  "query": "\"(fire OR explosion OR strike OR lawsuit OR recall OR \"export ban\" OR sanctions OR cyberattack)\" sourcecountry:US &timespan=1w&maxrecords=250",
+  "events": [],
+  "status": "unavailable",
+  "error": "RateLimitError: "
+}

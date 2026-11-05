@@ -1,0 +1,2389 @@
+{
+  "retrieved_at": "2026-11-05T04:14:29.389824+00:00",
+  "source": "GDELT DOC 2.0 via gdelt-doc-api",
+  "query": "(fire OR explosion OR strike OR lawsuit OR recall OR \"export ban\" OR sanctions OR cyberattack) sourcecountry:US &timespan=1w&maxrecords=250",
+  "events": [],
+  "status": "ok",
+  "raw_articles": [
+    {
+      "url": "https://www.bostonherald.com/2026/11/03/mississippi-police-fire/",
+      "url_mobile": "",
+      "title": "Activist charged with setting fire to embattled Mississippi police department",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://www.bostonherald.com/wp-content/uploads/2026/11/Mississippi_Police_Fire_3_159_835f1f.jpg",
+      "domain": "bostonherald.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://news.bigmir.net/ua/ukraine/10459584-na-rivnenschini-rosiyani-poshkodili-pidstantsiyu-ukrenergo",
+      "url_mobile": "https://news.bigmir.net/ua/amp-page/ukraine/10459584-na-rivnenschini-rosiyani-poshkodili-pidstantsiyu-ukrenergo",
+      "title": "\u041d\u0430 \u0420\u0456\u0432\u043d\u0435\u043d\u0449\u0438\u043d\u0456 \u0440\u043e\u0441\u0456\u044f\u043d\u0438 \u043f\u043e\u0448\u043a\u043e\u0434\u0438\u043b\u0438 \u043f\u0456\u0434\u0441\u0442\u0430\u043d\u0446\u0456\u044e \u0423\u043a\u0440\u0435\u043d\u0435\u0440\u0433\u043e",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://news.bigmir.net/i/10/45/95/84/10459584/415abcae4241e3395afe15051ccdb1ea-resize_crop_1Xquality_100Xallow_enlarge_0Xw_1200Xh_630.jpg",
+      "domain": "news.bigmir.net",
+      "language": "Ukrainian",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.sandiegouniontribune.com/2026/11/02/trump-triumphal-arch-deadlines/",
+      "url_mobile": "",
+      "title": "Judge complicates construction timeline on Trump memorial arch project with multiple deadlines",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://www.sandiegouniontribune.com/wp-content/uploads/2026/11/Trump_Judges_Construction_Projects_41879.jpg",
+      "domain": "sandiegouniontribune.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wpxi.com/news/local/there-are-dangers-here-public-urged-avoid-westmoreland-county-property-with-underground-fire/LDUXN2ICCNABJIGK3W6T4FXA4Q/",
+      "url_mobile": "https://www.wpxi.com/news/local/there-are-dangers-here-public-urged-avoid-westmoreland-county-property-with-underground-fire/LDUXN2ICCNABJIGK3W6T4FXA4Q/?outputType=amp",
+      "title": "Public urged to avoid Hempfield Township property with active underground fire",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://cmg-cmg-tv-10080-prod.cdn.arcpublishing.com/resizer/v2/https%3A%2F%2Fcloudfront-us-east-1.images.arcpublishing.com%2Fcmg%2FE74GZJDWTFFTJIXKUOOKUSFKY4.jpg?auth=51a3924981bbaf07757e548481350df5da1d8a65cf24d3c63681badb682e4e65&smart=true",
+      "domain": "wpxi.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://news.bigmir.net/ua/ukraine/10459607-kombinovanij-udar-po-ukrayini-vidomo-scho-zbila-ppo",
+      "url_mobile": "https://news.bigmir.net/ua/amp-page/ukraine/10459607-kombinovanij-udar-po-ukrayini-vidomo-scho-zbila-ppo",
+      "title": "\u041a\u043e\u043c\u0431\u0456\u043d\u043e\u0432\u0430\u043d\u0438\u0439 \u0443\u0434\u0430\u0440 \u043f\u043e \u0423\u043a\u0440\u0430\u0457\u043d\u0456 : \u0432\u0456\u0434\u043e\u043c\u043e , \u0449\u043e \u0437\u0431\u0438\u043b\u0430 \u041f\u041f\u041e",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://news.bigmir.net/i/10/45/96/07/10459607/7c143ad6a1d32d9dc68a7c663bc7da9c-resize_crop_1Xquality_100Xallow_enlarge_0Xw_1200Xh_630.jpg",
+      "domain": "news.bigmir.net",
+      "language": "Ukrainian",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://abc11.com/story/judge-allows-class-action-mcrib-lawsuit-mcdonalds-proceed/20008618/",
+      "url_mobile": "",
+      "title": "Judge allows class action McRib lawsuit against McDonald to proceed",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://cdn.abcotvs.com/dip/images/20007816_110226-wpvi-mcrib-lawsuit-730a-vo-video-vid.jpg",
+      "domain": "abc11.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://1190kex.iheart.com/content/2026-11-03-judge-dismisses-trump-suit-over-harvard-admissions-records/",
+      "url_mobile": "",
+      "title": "Judge Dismisses Trump Suit Over Harvard Admissions Records",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://i.iheart.com/v3/re/assets.getty/6ae97cb8a079d731c06006dd?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "1190kex.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wflaorlando.iheart.com/content/2026-11-03-judge-dismisses-trump-suit-over-harvard-admissions-records/",
+      "url_mobile": "",
+      "title": "Judge Dismisses Trump Suit Over Harvard Admissions Records",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://i.iheart.com/v3/re/assets.getty/6ae97cb8a079d731c06006dd?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "wflaorlando.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wflanews.iheart.com/content/2026-11-03-judge-dismisses-trump-suit-over-harvard-admissions-records/",
+      "url_mobile": "",
+      "title": "Judge Dismisses Trump Suit Over Harvard Admissions Records",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://i.iheart.com/v3/re/assets.getty/6ae97cb8a079d731c06006dd?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "wflanews.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://1019bigwaax.iheart.com/content/2026-11-03-judge-dismisses-trump-suit-over-harvard-admissions-records/",
+      "url_mobile": "",
+      "title": "Judge Dismisses Trump Suit Over Harvard Admissions Records | News Radio 101 . 9 Big WAAX",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://i.iheart.com/v3/re/assets.getty/6ae97cb8a079d731c06006dd?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "1019bigwaax.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://abc30.com/story/judge-allows-class-action-mcrib-lawsuit-mcdonalds-proceed/20008618/",
+      "url_mobile": "",
+      "title": "Judge allows class action McRib lawsuit against McDonald to proceed",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://cdn.abcotvs.com/dip/images/20007816_110226-wpvi-mcrib-lawsuit-730a-vo-video-vid.jpg",
+      "domain": "abc30.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.denverpost.com/2026/11/02/phil-weiser-opposition-amendment-87-taxes/",
+      "url_mobile": "",
+      "title": "Phil Weiser opposition to Amendment 87 deepens Democratic divide",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://www.denverpost.com/wp-content/uploads/2026/10/TDP-L-GovCandidateForum-20261008-TH-23.jpg",
+      "domain": "denverpost.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wnyc.org/browse/shows/episode/simplecast/a5888f92-3e6d-4928-8591-f0e540aa2631",
+      "url_mobile": "",
+      "title": "When Police Take Your Things , Whose Job Is It to Give Them Back ? ",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://wnyc.org/browse/shows/episode/simplecast/[object%20Object]",
+      "domain": "wnyc.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.sandiegouniontribune.com/2026/11/02/west-point-abortion-assault/",
+      "url_mobile": "",
+      "title": "A West Point cadet drugged his girlfriend to force an unwanted abortion . Then he went to grad school",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://www.sandiegouniontribune.com/wp-content/uploads/2026/11/West_Point_Abortion_Assault_99523.jpg",
+      "domain": "sandiegouniontribune.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wxii12.com/article/west-point-cadet-girlfriend-unwanted-abortion/74317072",
+      "url_mobile": "",
+      "title": "West Point cadet drugged his girlfriend to force an abortion",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://kubrick.htvapps.com/htv-prod-media.s3.amazonaws.com/images/cadet-chapel-west-point-getty-1516566905.jpg?crop=1.00xw%3A0.847xh%3B0%2C0",
+      "domain": "wxii12.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://truthout.org/articles/pentagon-sued-over-hegseths-new-future-of-warfare-committee-led-by-musk/",
+      "url_mobile": "",
+      "title": "Pentagon Sued Over Hegseth New  Future of Warfare  Committee Led by Musk",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://truthout.org/app/uploads/2026/11/2026_11-03-hegseth-speaking.jpg",
+      "domain": "truthout.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.sandiegouniontribune.com/2026/11/02/education-trump-harvard-admissions-data/",
+      "url_mobile": "",
+      "title": "Federal judge dismisses lawsuit against Harvard over federal demand for admissions data",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://www.sandiegouniontribune.com/wp-content/uploads/2026/11/Education_Trump_Harvard_8311_.jpg",
+      "domain": "sandiegouniontribune.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.aljazeera.com/news/2026/11/3/at-least-73-injured-as-russia-bombs-ukrainian-hospital-and-power-plants",
+      "url_mobile": "https://www.aljazeera.com/amp/news/2026/11/3/at-least-73-injured-as-russia-bombs-ukrainian-hospital-and-power-plants",
+      "title": "At least 73 injured as Russia bombs Ukrainian hospital and power plants",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://www.aljazeera.com/wp-content/uploads/2026/11/reuters_6ae9a305-1793696517.jpg",
+      "domain": "aljazeera.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.mainlinemedianews.com/2026/11/03/mississippi-police-fire/",
+      "url_mobile": "",
+      "title": "Activist charged with setting fire to embattled Mississippi police department",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://www.mainlinemedianews.com/wp-content/uploads/2026/11/Mississippi_Police_Fire_3_159_835f1f.jpg",
+      "domain": "mainlinemedianews.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.bozemandailychronicle.com/wire/news/activist-charged-with-setting-fire-to-embattled-mississippi-police-department/article_a5200c1d-017d-5aa0-b3cb-3db1742e8a2c.html",
+      "url_mobile": "",
+      "title": "Activist charged with setting fire to embattled Mississippi police department",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://bloximages.chicago2.vip.townnews.com/bozemandailychronicle.com/content/tncms/assets/v3/editorial/6/d6/6d693431-bd1f-5985-876d-55052cd70133/6aea79fa7adc5.image.jpg?crop=1763%2C926%2C0%2C124",
+      "domain": "bozemandailychronicle.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wizard106.iheart.com/content/2026-11-02-organic-baby-food-company-recalls-soft-baked-bars-due-to-choking-hazard/",
+      "url_mobile": "",
+      "title": "Organic Baby Food Company Recalls Soft - Baked Bars Due To Choking Hazard",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.iheart.com/v3/re/new_assets/6ae90411e67fe1dda6dfcbd1?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "wizard106.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://kcjb910.iheart.com/content/2026-11-02-organic-baby-food-company-recalls-soft-baked-bars-due-to-choking-hazard/",
+      "url_mobile": "",
+      "title": "Organic Baby Food Company Recalls Soft - Baked Bars Due To Choking Hazard",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.iheart.com/v3/re/new_assets/6ae90411e67fe1dda6dfcbd1?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "kcjb910.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://997thefox.iheart.com/content/2026-11-02-organic-baby-food-company-recalls-soft-baked-bars-due-to-choking-hazard/",
+      "url_mobile": "",
+      "title": "Organic Baby Food Company Recalls Soft - Baked Bars Due To Choking Hazard",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.iheart.com/v3/re/new_assets/6ae90411e67fe1dda6dfcbd1?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "997thefox.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://mix1047.iheart.com/content/2026-11-02-organic-baby-food-company-recalls-soft-baked-bars-due-to-choking-hazard/",
+      "url_mobile": "",
+      "title": "Organic Baby Food Company Recalls Soft - Baked Bars Due To Choking Hazard",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.iheart.com/v3/re/new_assets/6ae90411e67fe1dda6dfcbd1?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "mix1047.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://realradio.iheart.com/content/2026-11-02-organic-baby-food-company-recalls-soft-baked-bars-due-to-choking-hazard/",
+      "url_mobile": "",
+      "title": "Organic Baby Food Company Recalls Soft - Baked Bars Due To Choking Hazard",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.iheart.com/v3/re/new_assets/6ae90411e67fe1dda6dfcbd1?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "realradio.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://979kissfm.iheart.com/content/2026-11-02-organic-baby-food-company-recalls-soft-baked-bars-due-to-choking-hazard/",
+      "url_mobile": "",
+      "title": "Organic Baby Food Company Recalls Soft - Baked Bars Due To Choking Hazard",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.iheart.com/v3/re/new_assets/6ae90411e67fe1dda6dfcbd1?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "979kissfm.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://790waeb.iheart.com/content/2026-11-02-organic-baby-food-company-recalls-soft-baked-bars-due-to-choking-hazard/",
+      "url_mobile": "",
+      "title": "Organic Baby Food Company Recalls Soft - Baked Bars Due To Choking Hazard",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.iheart.com/v3/re/new_assets/6ae90411e67fe1dda6dfcbd1?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "790waeb.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://955thebull.iheart.com/content/2026-11-02-organic-baby-food-company-recalls-soft-baked-bars-due-to-choking-hazard/",
+      "url_mobile": "",
+      "title": "Organic Baby Food Company Recalls Soft - Baked Bars Due To Choking Hazard",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.iheart.com/v3/re/new_assets/6ae90411e67fe1dda6dfcbd1?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "955thebull.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://buckeyecountry1037.iheart.com/content/2026-11-02-organic-baby-food-company-recalls-soft-baked-bars-due-to-choking-hazard/",
+      "url_mobile": "",
+      "title": "Organic Baby Food Company Recalls Soft - Baked Bars Due To Choking Hazard",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.iheart.com/v3/re/new_assets/6ae90411e67fe1dda6dfcbd1?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "buckeyecountry1037.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://mymagic97.iheart.com/content/2026-11-02-organic-baby-food-company-recalls-soft-baked-bars-due-to-choking-hazard/",
+      "url_mobile": "",
+      "title": "Organic Baby Food Company Recalls Soft - Baked Bars Due To Choking Hazard",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.iheart.com/v3/re/new_assets/6ae90411e67fe1dda6dfcbd1?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "mymagic97.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wmmbam.iheart.com/content/2026-11-02-organic-baby-food-company-recalls-soft-baked-bars-due-to-choking-hazard/",
+      "url_mobile": "",
+      "title": "Organic Baby Food Company Recalls Soft - Baked Bars Due To Choking Hazard",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.iheart.com/v3/re/new_assets/6ae90411e67fe1dda6dfcbd1?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "wmmbam.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://alice955.iheart.com/content/2026-11-02-organic-baby-food-company-recalls-soft-baked-bars-due-to-choking-hazard/",
+      "url_mobile": "",
+      "title": "Organic Baby Food Company Recalls Soft - Baked Bars Due To Choking Hazard",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.iheart.com/v3/re/new_assets/6ae90411e67fe1dda6dfcbd1?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "alice955.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://1073rocks.iheart.com/content/2026-11-02-organic-baby-food-company-recalls-soft-baked-bars-due-to-choking-hazard/",
+      "url_mobile": "",
+      "title": "Organic Baby Food Company Recalls Soft - Baked Bars Due To Choking Hazard",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.iheart.com/v3/re/new_assets/6ae90411e67fe1dda6dfcbd1?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "1073rocks.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://933fmthewolf.iheart.com/content/2026-11-02-organic-baby-food-company-recalls-soft-baked-bars-due-to-choking-hazard/",
+      "url_mobile": "",
+      "title": "Organic Baby Food Company Recalls Soft - Baked Bars Due To Choking Hazard",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.iheart.com/v3/re/new_assets/6ae90411e67fe1dda6dfcbd1?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "933fmthewolf.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://975online.iheart.com/content/2026-11-02-organic-baby-food-company-recalls-soft-baked-bars-due-to-choking-hazard/",
+      "url_mobile": "",
+      "title": "Organic Baby Food Company Recalls Soft - Baked Bars Due To Choking Hazard",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.iheart.com/v3/re/new_assets/6ae90411e67fe1dda6dfcbd1?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "975online.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wmanfm.iheart.com/content/2026-11-02-organic-baby-food-company-recalls-soft-baked-bars-due-to-choking-hazard/",
+      "url_mobile": "",
+      "title": "Organic Baby Food Company Recalls Soft - Baked Bars Due To Choking Hazard",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.iheart.com/v3/re/new_assets/6ae90411e67fe1dda6dfcbd1?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "wmanfm.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://b939country.iheart.com/content/2026-11-02-organic-baby-food-company-recalls-soft-baked-bars-due-to-choking-hazard/",
+      "url_mobile": "",
+      "title": "Organic Baby Food Company Recalls Soft - Baked Bars Due To Choking Hazard",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.iheart.com/v3/re/new_assets/6ae90411e67fe1dda6dfcbd1?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "b939country.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://sportsradio957.iheart.com/content/2026-11-02-organic-baby-food-company-recalls-soft-baked-bars-due-to-choking-hazard/",
+      "url_mobile": "",
+      "title": "Organic Baby Food Company Recalls Soft - Baked Bars Due To Choking Hazard",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.iheart.com/v3/re/new_assets/6ae90411e67fe1dda6dfcbd1?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "sportsradio957.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://newstalk1230.iheart.com/content/2026-11-02-organic-baby-food-company-recalls-soft-baked-bars-due-to-choking-hazard/",
+      "url_mobile": "",
+      "title": "Organic Baby Food Company Recalls Soft - Baked Bars Due To Choking Hazard",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.iheart.com/v3/re/new_assets/6ae90411e67fe1dda6dfcbd1?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "newstalk1230.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://alt1073.iheart.com/content/2026-11-02-organic-baby-food-company-recalls-soft-baked-bars-due-to-choking-hazard/",
+      "url_mobile": "",
+      "title": "Organic Baby Food Company Recalls Soft - Baked Bars Due To Choking Hazard",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.iheart.com/v3/re/new_assets/6ae90411e67fe1dda6dfcbd1?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "alt1073.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://star1043.iheart.com/content/2026-11-02-organic-baby-food-company-recalls-soft-baked-bars-due-to-choking-hazard/",
+      "url_mobile": "",
+      "title": "Organic Baby Food Company Recalls Soft - Baked Bars Due To Choking Hazard",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.iheart.com/v3/re/new_assets/6ae90411e67fe1dda6dfcbd1?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "star1043.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://hot1025.iheart.com/content/2026-11-02-organic-baby-food-company-recalls-soft-baked-bars-due-to-choking-hazard/",
+      "url_mobile": "",
+      "title": "Organic Baby Food Company Recalls Soft - Baked Bars Due To Choking Hazard",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.iheart.com/v3/re/new_assets/6ae90411e67fe1dda6dfcbd1?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "hot1025.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://983try.iheart.com/content/2026-11-02-organic-baby-food-company-recalls-soft-baked-bars-due-to-choking-hazard/",
+      "url_mobile": "",
+      "title": "Organic Baby Food Company Recalls Soft - Baked Bars Due To Choking Hazard",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.iheart.com/v3/re/new_assets/6ae90411e67fe1dda6dfcbd1?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "983try.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wynkcountry.iheart.com/content/2026-11-02-organic-baby-food-company-recalls-soft-baked-bars-due-to-choking-hazard/",
+      "url_mobile": "",
+      "title": "Organic Baby Food Company Recalls Soft - Baked Bars Due To Choking Hazard",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.iheart.com/v3/re/new_assets/6ae90411e67fe1dda6dfcbd1?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "wynkcountry.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://jamn1075.iheart.com/content/2026-11-02-organic-baby-food-company-recalls-soft-baked-bars-due-to-choking-hazard/",
+      "url_mobile": "",
+      "title": "Organic Baby Food Company Recalls Soft - Baked Bars Due To Choking Hazard",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.iheart.com/v3/re/new_assets/6ae90411e67fe1dda6dfcbd1?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "jamn1075.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://971zht.iheart.com/content/2026-11-02-organic-baby-food-company-recalls-soft-baked-bars-due-to-choking-hazard/",
+      "url_mobile": "",
+      "title": "Organic Baby Food Company Recalls Soft - Baked Bars Due To Choking Hazard",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.iheart.com/v3/re/new_assets/6ae90411e67fe1dda6dfcbd1?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "971zht.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wdov.iheart.com/content/2026-11-03-us-carries-out-defensive-strike-on-iranian-island/",
+      "url_mobile": "",
+      "title": "U . S . Carries Out Defensive Strike On Iranian Island",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://i.iheart.com/v3/re/assets.getty/6ae987844c50680fd8624eca?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "wdov.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://1019bigwaax.iheart.com/content/2026-11-03-us-carries-out-defensive-strike-on-iranian-island/",
+      "url_mobile": "",
+      "title": "U . S . Carries Out Defensive Strike On Iranian Island | News Radio 101 . 9 Big WAAX",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://i.iheart.com/v3/re/assets.getty/6ae987844c50680fd8624eca?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "1019bigwaax.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://1190kex.iheart.com/content/2026-11-03-us-carries-out-defensive-strike-on-iranian-island/",
+      "url_mobile": "",
+      "title": "U . S . Carries Out Defensive Strike On Iranian Island",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://i.iheart.com/v3/re/assets.getty/6ae987844c50680fd8624eca?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "1190kex.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wflaorlando.iheart.com/content/2026-11-03-us-carries-out-defensive-strike-on-iranian-island/",
+      "url_mobile": "",
+      "title": "U . S . Carries Out Defensive Strike On Iranian Island | Newsradio WFLA Orlando",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://i.iheart.com/v3/re/assets.getty/6ae987844c50680fd8624eca?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "wflaorlando.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wflanews.iheart.com/content/2026-11-03-us-carries-out-defensive-strike-on-iranian-island/",
+      "url_mobile": "",
+      "title": "U . S . Carries Out Defensive Strike On Iranian Island",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://i.iheart.com/v3/re/assets.getty/6ae987844c50680fd8624eca?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "wflanews.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://koacolorado.iheart.com/content/2026-11-03-us-carries-out-defensive-strike-on-iranian-island/",
+      "url_mobile": "",
+      "title": "U . S . Carries Out Defensive Strike On Iranian Island",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://i.iheart.com/v3/re/assets.getty/6ae987844c50680fd8624eca?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "koacolorado.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://newsradio540.iheart.com/content/2026-11-03-us-carries-out-defensive-strike-on-iranian-island/",
+      "url_mobile": "",
+      "title": "U . S . Carries Out Defensive Strike On Iranian Island",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://i.iheart.com/v3/re/assets.getty/6ae987844c50680fd8624eca?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "newsradio540.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://woodradio.iheart.com/content/2026-11-03-us-carries-out-defensive-strike-on-iranian-island/",
+      "url_mobile": "",
+      "title": "U . S . Carries Out Defensive Strike On Iranian Island | Newsradio WOOD 1300 and 106 . 9 FM",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://i.iheart.com/v3/re/assets.getty/6ae987844c50680fd8624eca?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "woodradio.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://55krc.iheart.com/content/2026-11-03-us-carries-out-defensive-strike-on-iranian-island/",
+      "url_mobile": "",
+      "title": "U . S . Carries Out Defensive Strike On Iranian Island",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://i.iheart.com/v3/re/assets.getty/6ae987844c50680fd8624eca?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "55krc.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wfmz.com/news/area/lehighvalley/northampton-county/bethlehem-area/hellertown-moves-forward-with-advertising-a-proposed-ordinance-to-change-its-fire-service-provider/article_f1ff320f-e95d-4d2a-bf0d-1e883f6c4894.html",
+      "url_mobile": "",
+      "title": "Hellertown moves forward with advertising proposed ordinance to change fire company",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://bloximages.newyork1.vip.townnews.com/wfmz.com/content/tncms/assets/v3/editorial/4/9f/49f28973-d514-478c-8407-c9865f6c8985/6a9648d2bb71c.image.jpg?crop=1919%2C1009%2C0%2C35",
+      "domain": "wfmz.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wsmv.com/2026/11/02/2-killed-early-morning-house-fire-kentucky-officials-say/",
+      "url_mobile": "",
+      "title": "Early morning house fire in KY kills 2",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://gray-wsmv-prod.gtv-cdn.com/resizer/v2/NA4RJJH6ONELTFWXDT37EGVKIM.png?auth=e9b6b7a3600da96dad03cc38043d9968630a5940f9f243ace3c0f4012fa5e9af&smart=true",
+      "domain": "wsmv.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wyff4.com/article/one-injuredcrash-overturned-truck-i85/74325278",
+      "url_mobile": "",
+      "title": "SC : Crash involving overturned truck on I - 85 injures one",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://kubrick.htvapps.com/htv-prod/images/95c7c6c0-7409-441b-b55e-0e6c7d13c71c.jpg?crop=1.00xw%3A0.424xh%3B0%2C0.206xh",
+      "domain": "wyff4.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.waff.com/2026/11/03/fire-officials-investigating-fire-governors-place-apartments/",
+      "url_mobile": "https://www.waff.com/2026/11/03/fire-officials-investigating-fire-governors-place-apartments/?outputType=amp",
+      "title": "Fire officials investigating fire at Governors Place apartments",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://gray-waff-prod.gtv-cdn.com/resizer/v2/YM4QJAZXWZABDOF6MZMSTLE63A.jpg?auth=86291946998c182207a77f320c2c43c0581c7176fbccfbbdbc38854ee3e7f1c7&smart=true",
+      "domain": "waff.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/did-you-lose-money-on-fuelcell-energy-inc-fcel-levi-korsinsky-r5240338.htm",
+      "url_mobile": "",
+      "title": "Did You Lose Money on Fuelcell Energy , Inc . ( FCEL )? Levi & Korsinsky ... ",
+      "seendate": "20261104T013000Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/lost-money-on-ast-spacemobile-inc-asts-contact-levi-korsinsky-r5240337.htm",
+      "url_mobile": "",
+      "title": "Lost Money on AST SpaceMobile , Inc . ( ASTS )? Contact Levi & Korsinsky ... ",
+      "seendate": "20261104T013000Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.whsv.com/2026/11/03/shenandoah-valley-fire-departments-receive-free-carbon-monoxide-detectors-residents/",
+      "url_mobile": "https://www.whsv.com/2026/11/03/shenandoah-valley-fire-departments-receive-free-carbon-monoxide-detectors-residents/?outputType=amp",
+      "title": "Shenandoah Valley fire departments receive free carbon monoxide detectors for residents",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://gray-whsv-prod.gtv-cdn.com/resizer/v2/VCKUBQ47SFHD3IOBXEESMJTXHA.png?auth=141154a687148ce7abeba57cdc6dda4ba205d18ad50ea1b1a95b675cb27c9297&smart=true",
+      "domain": "whsv.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wcti12.com/news/local/morehead-city-fire-ems-to-run-lp-gas-drills-public-urged-to-keep-area-clear",
+      "url_mobile": "",
+      "title": "Morehead City Fire - EMS to run LP gas drills ; public urged to keep area clear",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://wcti12.com/resources/media2/16x9/1680/1320/60x0/90/1be9c517-139b-448c-9837-14ec469e4ab1-885185289_1659959875514852_2966857206042855540_n.jfif",
+      "domain": "wcti12.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.americanthinker.com/articles/2026/11/iran-s-children-do-not-belong-to-the-regime/",
+      "url_mobile": "",
+      "title": "Iran Children Do Not Belong To The Regime - American Thinker",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://images.americanthinker.com/ib/ibt1feuxq1vwwyxms80m_1200.jpg",
+      "domain": "americanthinker.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wcti12.com/news/nation-world/georgia-senator-says-2028-may-be-theoretical-if-democrats-lose-the-midterms",
+      "url_mobile": "",
+      "title": "Georgia senator says 2028 may be  theoretical  if Democrats lose the midterms",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://wcti12.com/resources/media2/16x9/6000/1320/0x1/90/75d311d3-db38-49a3-875b-79c8d69594b2-AP23180560130070.jpg",
+      "domain": "wcti12.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.insurancebusinessmag.com/au/news/cyber/nsw-health-cyber-breach-puts-public-sector-cover-in-focus-596057.aspx",
+      "url_mobile": "",
+      "title": "NSW Health cyber breach puts public sector cover in focus",
+      "seendate": "20261104T013000Z",
+      "socialimage": "",
+      "domain": "insurancebusinessmag.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.sandiegouniontribune.com/2026/11/02/fbi-chicago-lawsuit/",
+      "url_mobile": "",
+      "title": "Ex - Chicago FBI chief says he was ousted over a failed protesters case , sues Justice Department",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://www.sandiegouniontribune.com/wp-content/uploads/2026/11/FBI_Chicago_Lawsuit_68_48.jpg",
+      "domain": "sandiegouniontribune.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://news.bigmir.net/ua/world/10459624-iran-zayaviv-pro-znischennya-55-amerikanskogo-bezpilotnika-mq-9-reaper",
+      "url_mobile": "https://news.bigmir.net/ua/amp-page/world/10459624-iran-zayaviv-pro-znischennya-55-amerikanskogo-bezpilotnika-mq-9-reaper",
+      "title": "\u0406\u0440\u0430\u043d \u0437\u0430\u044f\u0432\u0438\u0432 \u043f\u0440\u043e \u0437\u043d\u0438\u0449\u0435\u043d\u043d\u044f 55 \u0430\u043c\u0435\u0440\u0438\u043a\u0430\u043d\u0441\u044c\u043a\u043e\u0433\u043e \u0431\u0435\u0437\u043f\u0456\u043b\u043e\u0442\u043d\u0438\u043a\u0430 MQ - 9 Reaper",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://news.bigmir.net/i/10/45/96/24/10459624/8f1c7a130cbdcb023cfed96cb904a421-resize_crop_1Xquality_100Xallow_enlarge_0Xw_1200Xh_630.jpg",
+      "domain": "news.bigmir.net",
+      "language": "Ukrainian",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://dominicanrepublicpost.com/palestine-weekly-election-deadlock-meets-west-bank-sieges-gaza-killings/",
+      "url_mobile": "",
+      "title": "Palestine weekly : Election deadlock meets West Bank sieges , Gaza killings - Dominican Republic Post \u2013 Caribbean News , Business , Travel & Culture",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://dominicanrepublicpost.com/app/uploads/2026/11/AFP__20261102__D64M7KK__v1__HighRes__PalestinianIsraelConflictWestBank-1793606854-Q9v8fP.jpg",
+      "domain": "dominicanrepublicpost.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://afisha.bigmir.net/ua/restorany/10459387-italijska-klasika-vdoma-aromatna-pasta-z-tomatnim-sousom-i-bazilikom",
+      "url_mobile": "https://afisha.bigmir.net/ua/amp-page/restorany/10459387-italijska-klasika-vdoma-aromatna-pasta-z-tomatnim-sousom-i-bazilikom",
+      "title": "\u0406\u0442\u0430\u043b\u0456\u0439\u0441\u044c\u043a\u0430 \u043a\u043b\u0430\u0441\u0438\u043a\u0430 \u0432\u0434\u043e\u043c\u0430 : \u0430\u0440\u043e\u043c\u0430\u0442\u043d\u0430 \u043f\u0430\u0441\u0442\u0430 \u0437 \u0442\u043e\u043c\u0430\u0442\u043d\u0438\u043c \u0441\u043e\u0443\u0441\u043e\u043c \u0456 \u0431\u0430\u0437\u0438\u043b\u0456\u043a\u043e\u043c",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://afisha.bigmir.net/i/10/45/93/87/10459387/image_main/c39c031360fb818bc81de9ef98bfb246-resize_crop_1Xquality_100Xallow_enlarge_0Xw_1200Xh_630.jpg",
+      "domain": "afisha.bigmir.net",
+      "language": "Ukrainian",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://news.bigmir.net/ua/ukraine/10459695-u-ps-nazvali-kilkist-znischenikh-tsilej-u-zhovtni",
+      "url_mobile": "https://news.bigmir.net/ua/amp-page/ukraine/10459695-u-ps-nazvali-kilkist-znischenikh-tsilej-u-zhovtni",
+      "title": "\u0423 \u041f\u0421 \u043d\u0430\u0437\u0432\u0430\u043b\u0438 \u043a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u0437\u043d\u0438\u0449\u0435\u043d\u0438\u0445 \u0446\u0456\u043b\u0435\u0439 \u0443 \u0436\u043e\u0432\u0442\u043d\u0456",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://news.bigmir.net/i/10/45/96/95/10459695/85dc867b6e14fb1562942b1ce75345df-resize_crop_1Xquality_100Xallow_enlarge_0Xw_1200Xh_630.jpg",
+      "domain": "news.bigmir.net",
+      "language": "Ukrainian",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wxyz.com/news/livonia-firefighters-rescue-buck-trapped-in-backyard-swimming-pool",
+      "url_mobile": "",
+      "title": "Livonia firefighters rescue buck trapped in backyard swimming pool",
+      "seendate": "20261104T013000Z",
+      "socialimage": "http://ewscripps-brightspot.s3.amazonaws.com/4a/9a/8a62aaec4743ad2d44bdd71fc305/screenshot-2026-11-03-at-6-13-15-pm.png",
+      "domain": "wxyz.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.rawstory.com/georgia-2678217488/",
+      "url_mobile": "https://www.rawstory.com/amp/georgia-2678217488-2678217488",
+      "title": "Republican Georgia dream dies as Ossoff cruises to reelection",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://www.rawstory.com/media-library/sen-jon-ossoff-d-ga-speaks-during-a-senate-appropriations-committee-hearing-on-u-s-president-donald-trump-s-supplemental-fun.jpg?id=67639745&coordinates=0%2C167%2C0%2C167",
+      "domain": "rawstory.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.latimes.com/california/story/2026-11-03/trash-truck-engulfed-in-flames-on-5-freeway-causing-lane-closures-traffic-nightmare",
+      "url_mobile": "",
+      "title": "Trash truck engulfed in flames on 5 Freeway , causing lane closures , traffic nightmare",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://california-times-brightspot.s3.amazonaws.com/53/e0/98a508ef49a98ceadf364d8fe93b/me-burning-trash-truck.jpg",
+      "domain": "latimes.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://techno.bigmir.net/ua/technology/10459650-apple-zdobula-velicheznij-uspikh-kvartalnij-dokhid-zris-do-1145-mlrd-dolariv-a-iphone-prinis-rekordni-dokhodi",
+      "url_mobile": "https://techno.bigmir.net/ua/amp-page/technology/10459650-apple-zdobula-velicheznij-uspikh-kvartalnij-dokhid-zris-do-1145-mlrd-dolariv-a-iphone-prinis-rekordni-dokhodi",
+      "title": "Apple \u0437\u0434\u043e\u0431\u0443\u043b\u0430 \u0432\u0435\u043b\u0438\u0447\u0435\u0437\u043d\u0438\u0439 \u0443\u0441\u043f\u0456\u0445 : \u043a\u0432\u0430\u0440\u0442\u0430\u043b\u044c\u043d\u0438\u0439 \u0434\u043e\u0445\u0456\u0434 \u0437\u0440\u0456\u0441 \u0434\u043e 114 , 5 \u043c\u043b\u0440\u0434 \u0434\u043e\u043b\u0430\u0440\u0456\u0432 , \u0430 iPhone \u043f\u0440\u0438\u043d\u0456\u0441 \u0440\u0435\u043a\u043e\u0440\u0434\u043d\u0456 \u0434\u043e\u0445\u043e\u0434\u0438",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://techno.bigmir.net/i/10/45/96/50/10459650/image_main/cf99f91f56c3c338b9c77876be4f4bb2-resize_crop_1Xquality_100Xallow_enlarge_0Xw_1200Xh_630.jpg",
+      "domain": "techno.bigmir.net",
+      "language": "Ukrainian",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://techno.bigmir.net/ua/technology/10459658-samsung-nareshti-gotova-predstaviti-svoyi-smart-okulyari-zapusk-vidbudetsya-vzhe-v-grudni-ale-je-pevnij-nyuans-schodo-prodazhiv",
+      "url_mobile": "https://techno.bigmir.net/ua/amp-page/technology/10459658-samsung-nareshti-gotova-predstaviti-svoyi-smart-okulyari-zapusk-vidbudetsya-vzhe-v-grudni-ale-je-pevnij-nyuans-schodo-prodazhiv",
+      "title": "Samsung \u043d\u0430\u0440\u0435\u0448\u0442\u0456 \u0433\u043e\u0442\u043e\u0432\u0430 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u0438\u0442\u0438 \u0441\u0432\u043e\u0457 \u0441\u043c\u0430\u0440\u0442 - \u043e\u043a\u0443\u043b\u044f\u0440\u0438 : \u0437\u0430\u043f\u0443\u0441\u043a \u0432\u0456\u0434\u0431\u0443\u0434\u0435\u0442\u044c\u0441\u044f \u0432\u0436\u0435 \u0432 \u0433\u0440\u0443\u0434\u043d\u0456 , \u0430\u043b\u0435 \u0454 \u043f\u0435\u0432\u043d\u0438\u0439 \u043d\u044e\u0430\u043d\u0441 \u0449\u043e\u0434\u043e \u043f\u0440\u043e\u0434\u0430\u0436\u0456\u0432",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://techno.bigmir.net/i/10/45/96/58/10459658/image_main/23b66b66385868fd25ea69e82f3acb67-resize_crop_1Xquality_100Xallow_enlarge_0Xw_1200Xh_630.jpg",
+      "domain": "techno.bigmir.net",
+      "language": "Ukrainian",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://it.euronews.com/2026/11/03/madrid-sgomberato-laccampamento-a-puerta-del-sol-contro-la-crisi-abitativa",
+      "url_mobile": "",
+      "title": "Madrid , sgomberato laccampamento a Puerta del Sol",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://images.euronews.com/articles/stories/09/97/72/99/1200x675_cmsv2_4712ae28-016d-50c9-8210-c6d60c5c0e6a-9977299.jpg",
+      "domain": "it.euronews.com",
+      "language": "Italian",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.sandiegouniontribune.com/2026/11/02/mississippi-child-shot-protest/",
+      "url_mobile": "",
+      "title": "Parents of 1 - year - old fatally shot by police protest at Mississippi Attorney General Office",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://www.sandiegouniontribune.com/wp-content/uploads/2026/11/Mississippi_Child_Shot_3972_.jpg",
+      "domain": "sandiegouniontribune.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.sandiegouniontribune.com/2026/11/02/north-korea-binance/",
+      "url_mobile": "",
+      "title": "North Korea denies involvement in Binance hack and criticizes FBI probe as  a trite provocation  ",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://www.sandiegouniontribune.com/wp-content/uploads/2026/11/North_Korea_Koreas_Tensions_88_57.jpg",
+      "domain": "sandiegouniontribune.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://news.bigmir.net/ua/ukraine/10459679-rosiya-atakuvala-energob-jekti-10-oblastej-ukrayini",
+      "url_mobile": "https://news.bigmir.net/ua/amp-page/ukraine/10459679-rosiya-atakuvala-energob-jekti-10-oblastej-ukrayini",
+      "title": "\u0420\u043e\u0441\u0456\u044f \u0430\u0442\u0430\u043a\u0443\u0432\u0430\u043b\u0430 \u0435\u043d\u0435\u0440\u0433\u043e\u0431  \u0454\u043a\u0442\u0438 10 \u043e\u0431\u043b\u0430\u0441\u0442\u0435\u0439 \u0423\u043a\u0440\u0430\u0457\u043d\u0438 - \u041d\u043e\u0432\u0438\u043d\u0438 bigmir ) net",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://api2.phnx.click/storage/redirect/remote?cid=19&site=bmnews&data=8T9fp0vH5Hk%2FW4fbV9QsKDM2OWZmNzZiYzU5NzlhMDk5YjgzNDNjMmVlODU5YmU1MWIyMjBiYzFkMDc3ZThlMzYwOTFhMDExZmQ1NTFlZmapCWV%2F%2BhT4NrhIhnbdtrH2YHZ2IPei5J8WWi0aFnyeMNwoT0EtlWtGKg28aaa%2FSKsYJVvc44f6I4y23fzb1rBD48b6rcYJGZKmlD5maQJ3LwbUIEAjaZc0JtN4Zhaay8I%3D",
+      "domain": "news.bigmir.net",
+      "language": "Ukrainian",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.boredpanda.com/most-offensive-celebrity-halloween-costumes/?cexp_id=164032&_f=homepage_featured&cexp_var=23",
+      "url_mobile": "",
+      "title": "The Year 11 Most Offensive Celebrity Halloween Costumes As  Insensitive  Stars Totally Fail To Read The Room",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://static.boredpanda.com/blog/wp-content/uploads/2026/11/most-offensive-celebrity-halloween-costumes-fb4.jpg",
+      "domain": "boredpanda.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wbez.org/criminal-justice/2026/11/02/broadview-six-boutros-perry",
+      "url_mobile": "",
+      "title": "Chicago top federal prosecutor ordered to testify under oath in  Broadview 6  case",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://chorus-production-cst-web.s3.us-east-1.amazonaws.com/brightspot/30/4e/203444304cc397a75e1c71c03689/boutros-260407-12.JPG",
+      "domain": "wbez.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://news.bigmir.net/ua/ukraine/10459652-opituvannya-pokazalo-chi-doviryayut-ukrayintsi-garantiyam-vid-jevropi-i-ssha",
+      "url_mobile": "https://news.bigmir.net/ua/amp-page/ukraine/10459652-opituvannya-pokazalo-chi-doviryayut-ukrayintsi-garantiyam-vid-jevropi-i-ssha",
+      "title": "\u041e\u043f\u0438\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u043f\u043e\u043a\u0430\u0437\u0430\u043b\u043e , \u0447\u0438 \u0434\u043e\u0432\u0456\u0440\u044f\u044e\u0442\u044c \u0443\u043a\u0440\u0430\u0457\u043d\u0446\u0456 \u0433\u0430\u0440\u0430\u043d\u0442\u0456\u044f\u043c \u0432\u0456\u0434 \u0404\u0432\u0440\u043e\u043f\u0438 \u0456 \u0421\u0428\u0410",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://news.bigmir.net/i/10/45/96/52/10459652/41af97c2f94d9054790a96cea2e9fd36-resize_crop_1Xquality_100Xallow_enlarge_0Xw_1200Xh_630.jpg",
+      "domain": "news.bigmir.net",
+      "language": "Ukrainian",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.denverpost.com/2026/11/03/aurora-fart-police-lawsuit-dog-bite-excessive-force/",
+      "url_mobile": "",
+      "title": "Jury awards $200 , 000 to Mexican tourist in Aurora  fart police  lawsuit",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://www.denverpost.com/wp-content/uploads/2026/10/TDP-L-K9bite-01.jpg",
+      "domain": "denverpost.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.channelnewsasia.com/watch/yip-hon-weng-maritime-and-port-authority-singapore-amendment-bill-6516241",
+      "url_mobile": "",
+      "title": "Yip Hon Weng on Maritime and Port Authority of Singapore ( Amendment ) Bill",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://dam.mediacorp.sg/image/upload/s--NAfc_i_0--/c_fill,g_auto,h_338,w_600/f_auto,q_auto/v1/mediacorp/cna/image/2026/11/03/1793693235-image.jpg?itok=3dRF6MAa",
+      "domain": "channelnewsasia.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://news.bigmir.net/ua/world/10459623-mask-shukaje-sposib-zupiniti-sudovij-konflikt-iz-susidami-tsod-xai",
+      "url_mobile": "https://news.bigmir.net/ua/amp-page/world/10459623-mask-shukaje-sposib-zupiniti-sudovij-konflikt-iz-susidami-tsod-xai",
+      "title": "\u041c\u0430\u0441\u043a \u0448\u0443\u043a\u0430\u0454 \u0441\u043f\u043e\u0441\u0456\u0431 \u0437\u0443\u043f\u0438\u043d\u0438\u0442\u0438 \u0441\u0443\u0434\u043e\u0432\u0438\u0439 \u043a\u043e\u043d\u0444\u043b\u0456\u043a\u0442 \u0456\u0437 \u0441\u0443\u0441\u0456\u0434\u0430\u043c\u0438 \u0426\u041e\u0414 xAI",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://api2.phnx.click/storage/redirect/remote?cid=19&site=bmnews&data=wMJpHM9VWRfyqh3FUv1NHzM1MTRmOTU3YmQ2MWM0NWEzOTJmYjRiMzZmOTA5MjY3MzhkZDQwODYzYjkyOTU5MDY4ZWViN2EyMGEzNmJmYmG5xgi91zNNJrXwmmBPR3HSzRpff2ZFrMn0wTbSIzlqMQa7hwykPB%2BmD%2B97kjjLvhCcpNV6KT27lj0bAsy8P9XWiQmWJUodvebYufkYpsaex40pDox%2F4aJAnjnFrGCew90%3D",
+      "domain": "news.bigmir.net",
+      "language": "Ukrainian",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://news.bigmir.net/ua/ukraine/10459622-prezident-rozpoviv-pro-naslidki-masovanoyi-ataki-rf",
+      "url_mobile": "https://news.bigmir.net/ua/amp-page/ukraine/10459622-prezident-rozpoviv-pro-naslidki-masovanoyi-ataki-rf",
+      "title": "\u041f\u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0442 \u0440\u043e\u0437\u043f\u043e\u0432\u0456\u0432 \u043f\u0440\u043e \u043d\u0430\u0441\u043b\u0456\u0434\u043a\u0438 \u043c\u0430\u0441\u043e\u0432\u0430\u043d\u043e\u0457 \u0430\u0442\u0430\u043a\u0438 \u0420\u0424",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://news.bigmir.net/i/10/45/96/22/10459622/ed92a65f42228432c893278e1a944388-resize_crop_1Xquality_100Xallow_enlarge_0Xw_1200Xh_630.jpg",
+      "domain": "news.bigmir.net",
+      "language": "Ukrainian",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.yardbarker.com/mlb/articles/mlb_proposes_to_delay_salary_cap_until_2028_but_mlbpa_stands_firm/s1_13132_44512393",
+      "url_mobile": "",
+      "title": "MLB proposes to delay salary cap until 2028 , but MLBPA stands firm",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://www.yardbarker.com/media/c/3/c3afb4747c64ecd83d58585897a7f31443035409/thumb_16x9/mlb-proposes-delay-salary-cap-until-2028-mlbpa.jpg?v=1",
+      "domain": "yardbarker.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.upstreamonline.com/energy-security/kazakhstan-restarts-oil-export-pipeline-after-new-attack-sparks-major-fire-at-russian-facility/2-1-2068033",
+      "url_mobile": "",
+      "title": "Kazakhstan restarts oil export pipeline after new attack sparks major fire at Russian facility",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://image.dngroup.com/global/nhst/binary/67b92524993169b1e8284dc90052a397?crop=2400%2C1200%2Cx0%2Cy201%2Csafe&format=webp&quality=80",
+      "domain": "upstreamonline.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wxyz.com/news/metro-detroit-voters-head-to-the-polls-with-local-races-taxes-and-bond-proposals-on-the-ballot",
+      "url_mobile": "",
+      "title": "Voters turned out with local races , taxes & bond proposals on the ballot",
+      "seendate": "20261104T013000Z",
+      "socialimage": "http://ewscripps-brightspot.s3.amazonaws.com/d9/6c/5a95b7454a259da5f3d3056e79e7/20220925-american-flag-lkamrowski-1003.jpg",
+      "domain": "wxyz.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.bostonherald.com/2026/11/03/boston-mayors-4-9-billion-budget-facing-potential-cost-overruns-from-employee-overtime/",
+      "url_mobile": "",
+      "title": "Boston mayor $4 . 9 billion budget facing potential cost overruns from employee overtime",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://www.bostonherald.com/wp-content/uploads/2026/10/schoolms001_d1f281.jpg",
+      "domain": "bostonherald.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.channelnewsasia.com/world/russia-ukraine-us-trilateral-talks-6516046",
+      "url_mobile": "",
+      "title": "US to mediate trilateral talks with Ukraine , Russia in Abu Dhabi next week , US envoy says",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://dam.mediacorp.sg/image/upload/s--yEpvzcjQ--/c_fill,g_auto,h_338,w_600/fl_relative,g_south_east,l_mediacorp:cna:watermark:2024-04:reuters_1,w_0.1/f_auto,q_auto/v1/one-cms/core/2026-11-02T230250Z_1_LYNXNPEMA122B_RTROPTP_3_UKRAINE-CRISIS-NORWAY-TALKS.JPG?itok=Kefn7Ar6",
+      "domain": "channelnewsasia.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.whio.com/news/local/miami-county-voters-decide-tax-levy/LD7SSAN4SZACLB2F54WYLPDOQE/",
+      "url_mobile": "https://www.whio.com/news/local/miami-county-voters-decide-tax-levy/LD7SSAN4SZACLB2F54WYLPDOQE/?outputType=amp",
+      "title": "ELECTION 2026 : Miami County sees large voter turnout",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://cmg-cmg-tv-10040-prod.cdn.arcpublishing.com/resizer/v2/https%3A%2F%2Fcloudfront-us-east-1.images.arcpublishing.com%2Fcmg%2FAREBM6XG3RA3DGIBS4Q3Y3P6FI.jpeg?auth=d8d905d08b8d8f4012372dc241f7a0529f5d58504492e8b113a90321ae3c1e30&smart=true",
+      "domain": "whio.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.kcra.com/article/sacramento-county-motorcycle-car-crash-1-dead-1-injured/74317276",
+      "url_mobile": "",
+      "title": "1 killed , 1 injured in Sacramento County crash , officials say",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://kubrick.htvapps.com/htv-prod/images/222665d4-6b5f-49a3-ac4d-5fae37e7fc4a.jpg?crop=1.00xw%3A1.00xh%3B0%2C0",
+      "domain": "kcra.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://news.bigmir.net/ua/world/10459674-regioni-rosiyi-poterpayut-vid-mishachoyi-likhomanki",
+      "url_mobile": "https://news.bigmir.net/ua/amp-page/world/10459674-regioni-rosiyi-poterpayut-vid-mishachoyi-likhomanki",
+      "title": "\u0420\u0435\u0433\u0456\u043e\u043d\u0438 \u0420\u043e\u0441\u0456\u0457 \u043f\u043e\u0442\u0435\u0440\u043f\u0430\u044e\u0442\u044c \u0432\u0456\u0434  \u043c\u0438\u0448\u0430\u0447\u043e\u0457 \u043b\u0438\u0445\u043e\u043c\u0430\u043d\u043a\u0438  ",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://news.bigmir.net/i/10/45/96/74/10459674/c9e415ccfeb4bada2ca2cc8124908fa5-resize_crop_1Xquality_100Xallow_enlarge_0Xw_1200Xh_630.jpg",
+      "domain": "news.bigmir.net",
+      "language": "Ukrainian",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://news.bigmir.net/ua/ukraine/10459711-zagibli-poraneni-ta-zrujnovani-budinki-naslidki-atak-na-donechchini",
+      "url_mobile": "https://news.bigmir.net/ua/amp-page/ukraine/10459711-zagibli-poraneni-ta-zrujnovani-budinki-naslidki-atak-na-donechchini",
+      "title": "\u0417\u0430\u0433\u0438\u0431\u043b\u0456 , \u043f\u043e\u0440\u0430\u043d\u0435\u043d\u0456 \u0442\u0430 \u0437\u0440\u0443\u0439\u043d\u043e\u0432\u0430\u043d\u0456 \u0431\u0443\u0434\u0438\u043d\u043a\u0438 : \u043d\u0430\u0441\u043b\u0456\u0434\u043a\u0438 \u0430\u0442\u0430\u043a \u043d\u0430 \u0414\u043e\u043d\u0435\u0447\u0447\u0438\u043d\u0456",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://api2.phnx.click/storage/redirect/remote?cid=19&site=bmnews&data=YgCmAA2QpwwtkGyh9Yl%2BCGJlZDhjZjYwYmY2MWUwMDE3MTY4MGUyMTIzNmRhOThiMmEyZmFiMTNjMGQ0NDdmYThlNWMzZmQwMDlkZjM1YTQonnh0flUK7nWf717xesy0VhFsr7adtgEJFI2QGlHI2Cj4FWWecsZM56IY5B7R4Ti4FDR3ubA5b76YAgKfxFbwSeBWa%2BP8EjoLIhly3i8Op1%2BY8YOAyBB0mXoG0yCDMfA%3D",
+      "domain": "news.bigmir.net",
+      "language": "Ukrainian",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.channelnewsasia.com/world/russia-ukraine-war-black-sea-nato-6516256",
+      "url_mobile": "",
+      "title": "Russia - Ukraine war widens in the Black Sea in a test of NATO red lines",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://dam.mediacorp.sg/image/upload/s--kNaaJzOV--/c_fill,g_auto,h_338,w_600/fl_relative,g_south_east,l_mediacorp:cna:watermark:2024-04:reuters_1,w_0.1/f_auto,q_auto/v1/one-cms/core/2026-11-03T064538Z_1_LYNXNPEMA20DZ_RTROPTP_3_UKRAINE-CRISIS-NATO-BLACKSEA.JPG?itok=rRgQ9gfG",
+      "domain": "channelnewsasia.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.actionnewsjax.com/news/local/jso-1-dead-several-wounded-hyde-park-shooting/T76W6Y3XLRCHBGLWBBRMBWTCQ4/",
+      "url_mobile": "https://www.actionnewsjax.com/news/local/jso-1-dead-several-wounded-hyde-park-shooting/T76W6Y3XLRCHBGLWBBRMBWTCQ4/?outputType=amp",
+      "title": "Man dead , several injured in Jacksonville shooting",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://cmg-cmg-tv-10050-prod.cdn.arcpublishing.com/resizer/v2/https%3A%2F%2Fd1hfln2sfez66z.cloudfront.net%2F11-03-2026%2Ft_d46802db52224262ba519e32e0d78f58_name_file_1920x1080_5400_v4_.jpg?auth=ff57c982529ff90f8d0e552d0af0ef240fc44f0cbe86821a239cd074361d2af6&smart=true",
+      "domain": "actionnewsjax.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.usmagazine.com/celebrity-news/news/spencer-pratt-defends-luxury-hotel-stay-during-mayor-race/",
+      "url_mobile": "",
+      "title": "Spencer Pratt Defends Luxury Hotel Stay During Mayor Race",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://www.usmagazine.com/wp-content/uploads/2026/11/GettyImages-2278613495-spencer-pratt.jpg?crop=0px%2C23px%2C1817px%2C955px",
+      "domain": "usmagazine.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wtoc.com/2026/11/03/2-people-2-cats-rescued-after-35-foot-sailboat-runs-aground-tybee-island/",
+      "url_mobile": "",
+      "title": "2 people , 2 cats rescued after 35 - foot sailboat runs aground on Tybee Island",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://gray-wtoc-prod.gtv-cdn.com/resizer/v2/CKYWSPCXMJDSJFK7MQTB626QIM.jpg?auth=a4bd8c205973bfdb7f0de3bbb98509989189639f5816a7eaa7285c948f0a721e&smart=true",
+      "domain": "wtoc.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://1440wgig.iheart.com/content/2026-11-02-earthquake-swarm-jolts-northern-california-near-san-andreas-fault/",
+      "url_mobile": "",
+      "title": "Earthquake Swarm Jolts Northern California Near San Andreas Fault",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.iheart.com/v3/re/assets.getty/6ae8f9d2a079d731c06006cf?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "1440wgig.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://abc7chicago.com/post/election-day-2026-chicago-illinois-area-ballot-questions-put-taxes-schools-public-safety-focus/20013006/",
+      "url_mobile": "https://abc7chicago.com/amp/post/election-day-2026-chicago-illinois-area-ballot-questions-put-taxes-schools-public-safety-focus/20013006/",
+      "title": "Election Day 2026 : Chicago , Illinois - area ballot questions put taxes , schools , public safety in focus",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://cdn.abcotvs.com/dip/images/20013015_110326-wls-gallardo-referenda-430p-vid.jpg",
+      "domain": "abc7chicago.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.phillyvoice.com/2026-election-results-pa-nj-senate-booker-fitzpatrick-harvie-van-drew-mullock/",
+      "url_mobile": "",
+      "title": "Election 2026 : Sen . Booker wins third term in N . J . and two local U . S . House races to watch",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://media.phillyvoice.com/media/images/11226_Midterms_Three_Races.2e16d0ba.fill-1200x630-c0.jpg",
+      "domain": "phillyvoice.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.denverpost.com/2026/11/02/brian-watson-amazon-trial-northstar-commercial-partners/",
+      "url_mobile": "",
+      "title": "Brian Watson goes on trial alone after Amazon settles with other defendants",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://www.denverpost.com/wp-content/uploads/2026/01/brian_watson_trial.jpeg",
+      "domain": "denverpost.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://it.euronews.com/2026/11/03/colombo-trump-e-il-voto-italoamericano-cosa-ci-si-gioca-davvero-nelle-midterm-usa",
+      "url_mobile": "",
+      "title": "Colombo , Trump e il voto italoamericano : cosa ci si gioca davvero nelle midterm united states ",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://images.euronews.com/articles/stories/09/97/21/21/1200x675_cmsv2_f1f3ed1d-21c7-552e-a2c5-6abf3cefe31f-9972121.jpg",
+      "domain": "it.euronews.com",
+      "language": "Italian",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wfmz.com/news/ap/ap-national/us-strikes-iranian-targets-in-the-strait-of-hormuz-official-says-leaving-unclear-what-comes-next/article_b7d150b1-b5ee-570b-b828-fab0fd23b46a.html",
+      "url_mobile": "",
+      "title": "US strikes Iranian targets in the Strait of Hormuz , official says , leaving unclear what comes next",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://bloximages.newyork1.vip.townnews.com/wfmz.com/content/tncms/assets/v3/editorial/5/62/5620a89d-adf7-510d-974b-11756c770baf/6adf005a8c0e1.image.jpg?crop=1763%2C926%2C0%2C124",
+      "domain": "wfmz.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.rawstory.com/trump-doj-election-lawsuit-2678216539/",
+      "url_mobile": "https://www.rawstory.com/amp/trump-doj-election-lawsuit-2678216539-2678216539",
+      "title": "  Five - alarm fire  flagged as Trump DOJ hits Dems with target letters while votes cast",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://www.rawstory.com/media-library/us-president-donald-trump-speaks-to-the-press-before-departing-for-chillicothe-ohio-at-joint-base-andrews-in-maryland-us-oc.jpg?id=68546100&coordinates=0%2C417%2C0%2C418",
+      "domain": "rawstory.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.usmagazine.com/entertainment/news/could-sophia-bush-return-to-chicago-p-d-after-shocking-exit/",
+      "url_mobile": "",
+      "title": "Could Sophia Bush Return to Chicago P . D . After Shocking Exit ? ",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://www.usmagazine.com/wp-content/uploads/2026/10/TCDCHPD_EC143.jpg?crop=0px%2C0px%2C3000px%2C1576px",
+      "domain": "usmagazine.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.bostonherald.com/2026/11/03/melissa-rycroft-dwi-again/",
+      "url_mobile": "",
+      "title": "  Bachelor  alum Melissa Rycroft arrested for DWI , again ; this time after crashing into ambulance \u2013 Boston Herald",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://www.bostonherald.com/wp-content/uploads/2026/11/AP507307055197.jpg",
+      "domain": "bostonherald.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://laopinion.com/2026/11/03/bass-o-raman-la-disyuntiva-en-los-angeles/",
+      "url_mobile": "",
+      "title": "Bass o Raman , la disyuntiva en Los \u00c1ngeles",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://laopinion.com/wp-content/uploads/sites/3/2026/11/Foto-portada.jpg",
+      "domain": "laopinion.com",
+      "language": "Spanish",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wbtv.com/2026/11/03/some-north-carolina-election-results-be-delayed-after-voting-hours-extended-4-counties/",
+      "url_mobile": "",
+      "title": "Some North Carolina election results to be delayed after voting hours extended in 4 counties",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://gray-wbtv-prod.gtv-cdn.com/resizer/v2/GWGJPUD3QRDSFAU57RYEZHCWFM.bmp?auth=b6dcb259972156074c330872d2d04827f4f53e3c5e0e6bb3e3f57f6a4e96617d&smart=true",
+      "domain": "wbtv.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.dailynorseman.com/post/KfD6ot11U8Gw",
+      "url_mobile": "",
+      "title": "KOC offense and why it a bad fit for KM ( and maybe Herbert ) ",
+      "seendate": "20261104T013000Z",
+      "socialimage": "",
+      "domain": "dailynorseman.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.aljazeera.com/news/2026/11/3/deadly-rsf-drone-strikes-reveal-deep-divisions-between-sudan-and-ethiopia",
+      "url_mobile": "https://www.aljazeera.com/amp/news/2026/11/3/deadly-rsf-drone-strikes-reveal-deep-divisions-between-sudan-and-ethiopia",
+      "title": "Deadly RSF drone attacks reveal deep divisions between Sudan and Ethiopia",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://www.aljazeera.com/wp-content/uploads/2026/10/2026-10-20T163028Z_1518097159_RC247OARFAEN_RTRMADP_3_SOUTHSUDAN-SUDAN-SECURITY-1792561314.jpg",
+      "domain": "aljazeera.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.foxnews.com/us/ex-west-point-cadet-sued-secretly-drugging-pregnant-girlfriend-abortion-pills",
+      "url_mobile": "https://www.foxnews.com/us/ex-west-point-cadet-sued-secretly-drugging-pregnant-girlfriend-abortion-pills.amp",
+      "title": "Ex - West Point cadet sued after admitting he drugged pregnant girlfriend",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://static.foxnews.com/foxnews.com/content/uploads/2026/11/west-point-military-academy.jpg",
+      "domain": "foxnews.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://abc11.com/post/ice-agent-indicted-running-man-turns-himself/20008632/",
+      "url_mobile": "https://abc11.com/amp/post/ice-agent-indicted-running-man-turns-himself/20008632/",
+      "title": "ICE agent indicted for running over man turns himself in , posts bond , DA office says",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://cdn.abcotvs.com/dip/images/20008683_110226-ktrk-mario-morales-sw-img.png",
+      "domain": "abc11.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://laopinion.com/2026/11/03/nithya-raman-reafirma-su-intencion-de-convertirse-en-alcaldesa-de-l-a/",
+      "url_mobile": "",
+      "title": "Nithya Raman reafirma su intenci\u00f3n de convertirse en alcaldesa de L . A . ",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://laopinion.com/wp-content/uploads/sites/3/2026/11/AP26306780079701.jpg",
+      "domain": "laopinion.com",
+      "language": "Spanish",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.dailymail.com/news/article-16259387/West-Point-cadet-accused-spiking-girlfriend-protein-shake-abortion-pill-healthcare-exec.html",
+      "url_mobile": "",
+      "title": "West Point cadet accused of spiking pregnant girlfriend protein shake with abortion pill is the son of powerful healthcare exec who threw James Bond parties at $17m Washington mansion",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.dailymail.com/1s/2026/11/02/19/112253629-0-image-m-22_1793648307380.jpg",
+      "domain": "dailymail.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.diariolasamericas.com/florida/victimas-ultimos-mensajes-e-interrogantes-lo-que-se-sabe-la-tragedia-aerea-palm-beach-n5404670",
+      "url_mobile": "",
+      "title": "V\u00edctimas , \u00faltimos mensajes e interrogantes : lo que se sabe de la tragedia a\u00e9rea en Palm Beach",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://media.diariolasamericas.com/p/900fc8c8032ef6e281d499ddf24889fe/adjuntos/216/imagenes/100/286/0100286028/1200x675/smart/victimas-accidente-aereo-palm-beac.jpg",
+      "domain": "diariolasamericas.com",
+      "language": "Spanish",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.khqa.com/news/nation-world/us-strikes-iranian-targets-in-the-strait-of-hormuz-official-says-leaving-unclear-what-comes/article_896e1be2-c1cc-5a9f-9e92-606261f5d6d0.html",
+      "url_mobile": "",
+      "title": "US strikes Iranian targets in the Strait of Hormuz , official says , leaving unclear what comes next",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://bloximages.chicago2.vip.townnews.com/khqa.com/content/tncms/assets/v3/editorial/0/c9/0c9de386-cb5a-50bc-8d66-1afe381ea275/6ae0230834fb0.image.jpg?crop=1763%2C926%2C0%2C124",
+      "domain": "khqa.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.idahopress.com/ap_news/us/republicans-grip-on-texas-is-on-the-line-in-a-close-us-senate-race-between/article_204c25d0-fc83-5cd8-84ba-546e2c4acb4c.html",
+      "url_mobile": "https://www.idahopress.com/ap_news/us/republicans-grip-on-texas-is-on-the-line-in-a-close-us-senate-race-between/article_204c25d0-fc83-5cd8-84ba-546e2c4acb4c.amp.html",
+      "title": "Republican grip on Texas is on the line in a close US Senate race between Paxton , Talarico",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://bloximages.chicago2.vip.townnews.com/idahopress.com/content/tncms/assets/v3/editorial/e/b4/eb4dad46-e6dd-5807-bd38-83d30c6a2ae0/6adb498db5916.image.jpg?crop=1763%2C926%2C0%2C124",
+      "domain": "idahopress.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wcti12.com/news/local/nc-extends-voting-hours-at-several-precincts-delaying-statewide-election-results",
+      "url_mobile": "",
+      "title": "NC extends voting at 5 precincts , delaying statewide election results until 8 : 15 p . m . ",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://wcti12.com/resources/media2/16x9/5021/1320/0x262/90/fdfd69b9-71f0-48c4-9fbd-ad401365cb96-GettyImages2293666507.jpg",
+      "domain": "wcti12.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wxyz.com/politics/immigration/new-citizens-head-to-the-polls-amid-fears-of-federal-agents",
+      "url_mobile": "",
+      "title": "New citizens head to the polls amid fears of federal agents",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://ewscripps.brightspotcdn.com/90/fe/5d57783d43c789a879d3d73fbdb1/ap26295517445868.jpg",
+      "domain": "wxyz.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://nypost.com/2026/11/03/us-news/trump-calls-iran-conflict-a-soft-war-insists-us-holds-the-cards-ahead-of-midterm-elections/",
+      "url_mobile": "",
+      "title": "Trump calls Iran conflict a  soft war , insists US holds the cards ahead of midterm elections",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://nypost.com/wp-content/uploads/sites/2/2026/11/crop-41647139.jpg?quality=75&strip=all",
+      "domain": "nypost.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://ktvz.com/news/fire/2026/11/03/deschutes-national-forest-conducting-pile-burning-near-kiwa-butte-nw-of-sunriver/",
+      "url_mobile": "",
+      "title": "Deschutes National Forest conducting pile burning near Kiwa Butte , NW of Sunriver",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://ktvz.b-cdn.net/2026/02/Pile-burning-Deschutes-County-860x645.jpg",
+      "domain": "ktvz.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.polygon.com/avatar-seven-havens-season-2-new-ba-sing-se-theory/",
+      "url_mobile": "",
+      "title": "  Avatar : Seven Haven Season 2 Could Return to  The Last Airbender Most Iconic Location",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/11/joo-dee-ba-sing-se.webp?&fit=crop",
+      "domain": "polygon.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.idahopress.com/news/world/death-toll-hits-29-after-russian-strike-on-ukrainian-aid-site-with-48-still-missing/article_a4d8f461-322b-550c-af47-fe4a754497b6.html",
+      "url_mobile": "https://www.idahopress.com/news/world/death-toll-hits-29-after-russian-strike-on-ukrainian-aid-site-with-48-still-missing/article_a4d8f461-322b-550c-af47-fe4a754497b6.amp.html",
+      "title": "Death toll hits 29 after Russian strike on Ukrainian aid site , with 48 still missing",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://bloximages.chicago2.vip.townnews.com/idahopress.com/content/tncms/assets/v3/editorial/4/7c/47cfc263-ccfd-550d-ab8e-0195034c9015/6ae9a3da723a6.image.jpg?crop=1763%2C926%2C0%2C124",
+      "domain": "idahopress.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.sandiegouniontribune.com/2026/11/02/a-clerk-tried-to-remove-voters-from-the-rolls-how-her-county-and-the-state-of-michigan-stopped-her/",
+      "url_mobile": "",
+      "title": "A clerk tried to remove voters from the rolls . How her county , and the state of Michigan , stopped her",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://www.sandiegouniontribune.com/wp-content/uploads/2026/11/A_clerk_tried_to_remove_voters_from_the_rolls_How_her_county_and_the_state_of_Michigan_stopped_her.png",
+      "domain": "sandiegouniontribune.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.mlb.com/yankees/news/cam-schlittler-2026-al-cy-young-award-finalist",
+      "url_mobile": "https://www.mlb.com/amp/news/cam-schlittler-2026-al-cy-young-award-finalist.html",
+      "title": "Cam Schlittler named finalist for 2026 AL Cy Young Award",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://img.mlbstatic.com/mlb-images/image/upload/t_2x1/t_w1536/mlb/qz0axjgig2ehv5f7bpji.jpg",
+      "domain": "mlb.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pasadenastarnews.com/2026/11/03/two-cases-illustrate-the-limits-of-a-doctrine-that-often-blocks-civil-rights-claims/",
+      "url_mobile": "",
+      "title": "Two cases illustrate the limits of a doctrine that often blocks civil rights claims",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://www.pasadenastarnews.com/wp-content/uploads/2026/11/AP20294692159100.jpg",
+      "domain": "pasadenastarnews.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://politifact.com/article/2026/nov/03/senate-ad-spend-election-midterms-texas-michigan/",
+      "url_mobile": "",
+      "title": "PACs , campaigns spent $3 billion on ads . What were the most misleading messages to voters ? \u2013 PolitiFact",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://politifact.com/wp-content/uploads/2026/11/AP26307463093235.jpg",
+      "domain": "politifact.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.sitkasentinel.com/premium/stories/alaska-elections-officials-say-most-rural-early-voting-sites-flagged-by-lawsuits-opened-monday,183619",
+      "url_mobile": "",
+      "title": "Alaska elections officials say most rural early voting sites flagged by lawsuits opened Monday",
+      "seendate": "20261104T013000Z",
+      "socialimage": "",
+      "domain": "sitkasentinel.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.yourtango.com/zodiac/chinese-zodiac-signs-loneliness-ends-november-4-2026",
+      "url_mobile": "",
+      "title": "Loneliness Comes To An End For 4 Chinese Zodiac Signs On November 4 , 2026",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://www.yourtango.com/sites/default/files/image_blog/2026-11/chinese-zodiac-signs-loneliness-ends-november-4-2026_0.png",
+      "domain": "yourtango.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/kaplan-fox-encourages-doximity-inc-nyse-docs-investors-to-contact-r5240340.htm",
+      "url_mobile": "",
+      "title": "Kaplan Fox Encourages Doximity , Inc . ( NYSE : DOCS ) Investors to Contact ... ",
+      "seendate": "20261104T013000Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/kaplan-fox-encourages-tigo-energy-inc-nasdaq-tygo-investors-seeking-r5240341.htm",
+      "url_mobile": "",
+      "title": "Kaplan Fox Encourages Tigo Energy , Inc . ( NASDAQ : TYGO ) Investors Seeking ... ",
+      "seendate": "20261104T013000Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://redstate.com/jenvanlaar/2026/11/02/feds-charge-6-more-noncitizens-with-voting-in-ca-and-take-it-to-the-next-level-n2208932",
+      "url_mobile": "",
+      "title": "Judge Said  Go Out and Indict  Noncitizens Voting in CA . Feds Said  Game on , Ramp Up Prosecutions . ",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://media.townhall.com/cdn/hodl/2026/306/3209b122-f833-4307-9a45-56aacc6afb73-1200x630.jpg",
+      "domain": "redstate.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/kaplan-fox-encourages-investors-of-up-fintech-holding-limited-nasdaq-tigr-r5240343.htm",
+      "url_mobile": "",
+      "title": "Kaplan Fox Encourages Investors of UP Fintech Holding Limited ( NASDAQ : TIGR ) ... ",
+      "seendate": "20261104T013000Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wnyc.org/npr/nx-s1-6003534",
+      "url_mobile": "",
+      "title": "Is America really that polarized ? The answer might be a surprise",
+      "seendate": "20261103T021500Z",
+      "socialimage": "http://npr-brightspot.s3.amazonaws.com/16/fd/401ffbcb4dea8054ffd72e0169a5/gettyimages-2301917700.jpg",
+      "domain": "wnyc.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.eastbaytimes.com/2026/11/03/macklin-celebrini-san-jose-sharks-los-angeles-kings-ryan-warsofsky/",
+      "url_mobile": "",
+      "title": "San Jose Sharks , Macklin Celebrini optimistic that goals will come",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://www.eastbaytimes.com/wp-content/uploads/2026/11/BNG-L-SHARKS-1103-20-1.jpg",
+      "domain": "eastbaytimes.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/kaplan-fox-encourages-fluence-energy-inc-nasdaq-flnc-investors-r5240342.htm",
+      "url_mobile": "",
+      "title": "Kaplan Fox Encourages Fluence Energy , Inc . ( NASDAQ : FLNC ) Investors ... ",
+      "seendate": "20261104T013000Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.nbcnewyork.com/elections/midterm-elections-voters-pass-judgment-on-trump-what-to-know/6566602/",
+      "url_mobile": "https://www.nbcnewyork.com/elections/midterm-elections-voters-pass-judgment-on-trump-what-to-know/6566602/?amp=1",
+      "title": "Midterm elections come to a close , voters pass judgment on Trump \u2013 NBC New York",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://media.nbcnewyork.com/2026/11/GettyImages-2301917700.jpg?quality=85&strip=all",
+      "domain": "nbcnewyork.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.suncommercial.com/brazil_times/news/national/article_b0568233-6c47-5536-add2-cb46e860a7e7.html",
+      "url_mobile": "",
+      "title": "DOJ sends letters in Alaska spoiler candidate probe",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://bloximages.chicago2.vip.townnews.com/suncommercial.com/content/tncms/assets/v3/editorial/c/5d/c5dede6e-d4de-568e-a4db-a1c1474613c7/6ad238cdc80d4.image.jpg?crop=1200%2C630%2C0%2C22",
+      "domain": "suncommercial.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.bryantimes.com/news/doj-sends-letters-in-alaska-spoiler-candidate-probe/article_51334a37-6bc2-56e2-aa2d-5b6d301ff744.html",
+      "url_mobile": "",
+      "title": "DOJ sends letters in Alaska spoiler candidate probe",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://bloximages.chicago2.vip.townnews.com/bryantimes.com/content/tncms/assets/v3/editorial/4/c2/4c207e08-7c4d-56af-ad88-88706c705065/6ad238a69904d.image.jpg?crop=1200%2C630%2C0%2C22",
+      "domain": "bryantimes.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.ksut.org/2026-11-03/a-new-cold-war-hackers-target-fridges-across-the-globe",
+      "url_mobile": "https://www.ksut.org/2026-11-03/a-new-cold-war-hackers-target-fridges-across-the-globe?_amp=true",
+      "title": "A new cold war : hackers target fridges across the globe",
+      "seendate": "20261103T111500Z",
+      "socialimage": "http://npr-brightspot.s3.amazonaws.com/65/53/b6db7c9b4e3eb5112551e057ae01/gettyimages-2299339600.jpg",
+      "domain": "ksut.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wcsufm.org/latest-from-npr/2026-11-03/a-new-cold-war-hackers-target-fridges-across-the-globe",
+      "url_mobile": "https://www.wcsufm.org/latest-from-npr/2026-11-03/a-new-cold-war-hackers-target-fridges-across-the-globe?_amp=true",
+      "title": "A new cold war : hackers target fridges across the globe",
+      "seendate": "20261103T111500Z",
+      "socialimage": "http://npr-brightspot.s3.amazonaws.com/65/53/b6db7c9b4e3eb5112551e057ae01/gettyimages-2299339600.jpg",
+      "domain": "wcsufm.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.northernpublicradio.org/2026-11-03/a-new-cold-war-hackers-target-fridges-across-the-globe",
+      "url_mobile": "",
+      "title": "A new cold war : hackers target fridges across the globe",
+      "seendate": "20261103T111500Z",
+      "socialimage": "http://npr-brightspot.s3.amazonaws.com/65/53/b6db7c9b4e3eb5112551e057ae01/gettyimages-2299339600.jpg",
+      "domain": "northernpublicradio.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.aspenpublicradio.org/2026-11-03/a-new-cold-war-hackers-target-fridges-across-the-globe",
+      "url_mobile": "",
+      "title": "A new cold war : hackers target fridges across the globe",
+      "seendate": "20261103T111500Z",
+      "socialimage": "http://npr-brightspot.s3.amazonaws.com/65/53/b6db7c9b4e3eb5112551e057ae01/gettyimages-2299339600.jpg",
+      "domain": "aspenpublicradio.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.ksmu.org/2026-11-03/a-new-cold-war-hackers-target-fridges-across-the-globe",
+      "url_mobile": "https://www.ksmu.org/2026-11-03/a-new-cold-war-hackers-target-fridges-across-the-globe?_amp=true",
+      "title": "A new cold war : hackers target fridges across the globe",
+      "seendate": "20261103T111500Z",
+      "socialimage": "http://npr-brightspot.s3.amazonaws.com/65/53/b6db7c9b4e3eb5112551e057ae01/gettyimages-2299339600.jpg",
+      "domain": "ksmu.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.kunc.org/npr-news/2026-11-03/a-new-cold-war-hackers-target-fridges-across-the-globe",
+      "url_mobile": "",
+      "title": "A new cold war : hackers target fridges across the globe",
+      "seendate": "20261103T111500Z",
+      "socialimage": "http://npr-brightspot.s3.amazonaws.com/65/53/b6db7c9b4e3eb5112551e057ae01/gettyimages-2299339600.jpg",
+      "domain": "kunc.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://jamn1075.iheart.com/content/2026-11-03-gas-prices-decline-but-still-for-election-day/",
+      "url_mobile": "",
+      "title": "Gas Prices Decline , But Still For Election Day",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://i.iheart.com/v3/re/new_assets/6aea49d148fbfe9080b67e7b?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "jamn1075.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://1190kex.iheart.com/content/2026-11-03-gas-prices-decline-but-still-for-election-day/",
+      "url_mobile": "https://1190kex.iheart.com/alternate/amp/2026-11-03-gas-prices-decline-but-still-for-election-day/",
+      "title": "Gas Prices Decline , But Still For Election Day | News Radio 1190 KEX",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://i.iheart.com/v3/re/new_assets/6aea49d148fbfe9080b67e7b?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "1190kex.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.idahopress.com/community/health/how-st-lukes-team-helped-a-nurse-through-his-heart-emergency/article_98a4ef78-5d63-4df7-b985-359b55a93940.html",
+      "url_mobile": "https://www.idahopress.com/community/health/how-st-lukes-team-helped-a-nurse-through-his-heart-emergency/article_98a4ef78-5d63-4df7-b985-359b55a93940.amp.html",
+      "title": "St . Luke medical staff praised for swift heart attack care | Health",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://bloximages.chicago2.vip.townnews.com/idahopress.com/content/tncms/assets/v3/editorial/b/59/b595f8fe-8c4e-4adb-b8f3-e3393106f209/6aea18cdbdcc7.image.jpg?crop=1888%2C991%2C0%2C52",
+      "domain": "idahopress.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.foxnews.com/opinion/hugh-hewitt-ghosts-2006-stirring-catch-gop",
+      "url_mobile": "https://www.foxnews.com/opinion/hugh-hewitt-ghosts-2006-stirring-catch-gop.amp",
+      "title": "HUGH HEWITT : The 2006 warning is flashing but the GOP could have an escape hatch",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://static.foxnews.com/foxnews.com/content/uploads/2026/10/abdul-el-sayed-flag.jpg",
+      "domain": "foxnews.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://abc11.com/post/2026-elections-progressive-democrat-abdul-el-sayed-republican-mike-rogers-duel-key-michigan-us-senate-seat/20012775/",
+      "url_mobile": "https://abc11.com/amp/post/2026-elections-progressive-democrat-abdul-el-sayed-republican-mike-rogers-duel-key-michigan-us-senate-seat/20012775/",
+      "title": "2026 elections : Progressive Democrat Abdul El - Sayed and Republican Mike Rogers duel for key Michigan US Senate seat",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://cdn.abcotvs.com/dip/images/20012807_110326-wls-el-sayed-rogers-split-ap-img.png",
+      "domain": "abc11.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://989wclz.com/news/074470-wildfires-develop-as-maine-deals-with-high-fire-danger/",
+      "url_mobile": "",
+      "title": "Wildfires Develop as Maine Deals With High Fire Danger",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://wgan.com/wp-content/blogs.dir/47/files/2026/11/Casco-Fire-Rescue-1-Woods-Fire-Saturday-October-31-2026-620x400.jpg",
+      "domain": "989wclz.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wdel.com/news/row-home-fire-in-wilmington-leaves-one-resident-hospitalized/article_2e02be7f-7ee3-4969-b508-762fe42ee6a0.html",
+      "url_mobile": "",
+      "title": "Row home fire in Wilmington leaves one resident hospitalized",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://bloximages.newyork1.vip.townnews.com/wdel.com/content/tncms/assets/v3/editorial/8/98/898afa7e-b250-4a76-8bf1-7d3f10fcf7d6/6aea447cd134a.image.jpg?crop=1616%2C848%2C0%2C217",
+      "domain": "wdel.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://keyt.com/news/santa-barbara-s-county/2026/11/03/fire-crews-on-scene-for-geological-event-at-hope-ranch/",
+      "url_mobile": "",
+      "title": "Fire Crews At Hope Ranch  Volcano  Geological Phenomena Sparks Vegetation Fire Tuesday",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://keyt.com/wp-content/uploads/2026/11/Untitled-Design-2026-11-03T160720.989-860x484.png",
+      "domain": "keyt.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.americanthinker.com/articles/2026/11/civilization-on-thin-ice/",
+      "url_mobile": "",
+      "title": "Civilization On Thin Ice",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://images.americanthinker.com/xc/xcxofvft0rareswzw5jq_1200.jpg",
+      "domain": "americanthinker.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wthitv.com:443/2026/11/03/us-strikes-strait-hormuz-create-more-questions-about-whats-ahead/",
+      "url_mobile": "https://www.wthitv.com/2026/11/03/us-strikes-strait-hormuz-create-more-questions-about-whats-ahead/?outputType=amp",
+      "title": "US Launches Airstrikes on Iran in Strait of Hormuz Ahead of Midterms",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://gray-wthi-prod.gtv-cdn.com/resizer/v2/WXMQEBGXI5E7PPIKEQVON7UPRI.jpg?auth=b911ca135853db9b8992fef4219bd69ce9d7a8754d828fbf7879320135a96bd2&smart=true",
+      "domain": "wthitv.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://katcountry989.com/2026/11/03/three-pets-perish-in-rural-house-fire/",
+      "url_mobile": "",
+      "title": "Three Pets Perish In Rural House Fire",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://media-cdn.socastsrm.com/wordpress/wp-content/blogs.dir/2551/files/2026/11/sturgeon-township-fire-st-louis-co-sheriff-1100x675.jpg",
+      "domain": "katcountry989.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://radiousa.com/2026/11/03/three-pets-perish-in-rural-house-fire/",
+      "url_mobile": "",
+      "title": "Three Pets Perish In Rural House Fire",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://media-cdn.socastsrm.com/wordpress/wp-content/blogs.dir/2551/files/2026/11/sturgeon-township-fire-st-louis-co-sheriff-1100x675.jpg",
+      "domain": "radiousa.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wdsm710.com/2026/11/03/three-pets-perish-in-rural-house-fire/",
+      "url_mobile": "",
+      "title": "Three Pets Perish In Rural House Fire",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://media-cdn.socastsrm.com/wordpress/wp-content/blogs.dir/2551/files/2026/11/sturgeon-township-fire-st-louis-co-sheriff-1100x675.jpg",
+      "domain": "wdsm710.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://yubanet.com/regional/nevada-yuba-placer-and-sierra-counties-burn-permit-suspension-lifted-starting-nov-3-2026/",
+      "url_mobile": "",
+      "title": "Nevada , Yuba , Placer and Sierra Counties Burn Permit Suspension Lifted starting Nov . 3 , 2026",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://yubanet.com/wp-content/uploads/2026/11/cal-fire-neu.jpg",
+      "domain": "yubanet.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.kait8.com/2026/11/02/fire-crews-battle-early-morning-house-fire-helena-west-helena/",
+      "url_mobile": "",
+      "title": "Fire crews battle early morning house fire in Helena - West Helena",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://gray-kait-prod.gtv-cdn.com/resizer/v2/RODVPUM5IFCP3JJ5A4TN3QF6C4.png?auth=d0596d9437585d8067fda8eea3d41300a52082e6a2022c0b1790fc7279711d5b&smart=true",
+      "domain": "kait8.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.santacruzsentinel.com/2026/11/03/trees-illegally-cut-down-at-moran-lake-county-park-in-santa-cruz/",
+      "url_mobile": "",
+      "title": "Trees illegally cut down at Moran Lake County Park in Santa Cruz",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://www.santacruzsentinel.com/wp-content/uploads/2026/11/STC-L-CHMORANTREE-1104-01.jpeg",
+      "domain": "santacruzsentinel.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.yourtango.com/self/songs-80s-people-elite-music-taste-still-listen-repeat",
+      "url_mobile": "",
+      "title": "8 Songs From The 80s That People With Elite Music Taste Listen To On Repeat",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://www.yourtango.com/sites/default/files/image_blog/2026-11/songs-from-80s-people-with-elite-music-tastes-still-listen-to.png",
+      "domain": "yourtango.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pasadenastarnews.com/2026/11/03/republicans-deserve-to-lose-control-of-the-congress/",
+      "url_mobile": "",
+      "title": "Republicans deserve to lose control of the Congress",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://www.pasadenastarnews.com/wp-content/uploads/2026/10/Election_2_26_Congress_64936_e3095c_c2e481.jpg",
+      "domain": "pasadenastarnews.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.sitkasentinel.com/stories/fire-department-reports-busy-quarter-to-assembly,183668",
+      "url_mobile": "",
+      "title": "Fire Department Reports Busy Quarter to Assembly - Daily Sitka Sentinel",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://07bacfb59b7e206901e8-6735d0cb297b41aa6dba1598125bbd6d.ssl.cf1.rackcdn.com/sitka-og.png",
+      "domain": "sitkasentinel.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.thedailynews.cc/articles/just-in-residents-escape-mobile-home-fire-in-greenville-no-injuries-reported/",
+      "url_mobile": "",
+      "title": "JUST IN : Residents escape mobile home fire in Greenville ; no injuries reported",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://www.thedailynews.cc/wp-content/uploads/2026/11/loc-1104-cs-Walnut-fire-2-scaled.jpg",
+      "domain": "thedailynews.cc",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://newswithviews.com/since-today-is-election-day-we-want-you-to-know-the-rest-of-the-story-2/",
+      "url_mobile": "",
+      "title": "Since Today is Election Day We Want You to Know the Rest of the Story",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://newswithviews.com/wp-content/uploads/2022/05/nwv-facebook-2022.jpg",
+      "domain": "newswithviews.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.stlamerican.com/news/community-news/ferguson-residents-challenge-data-center-deal/",
+      "url_mobile": "",
+      "title": "Ferguson residents challenge data center deal",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://i0.wp.com/www.stlamerican.com/wp-content/uploads/2026/11/Ferguson-2-scaled.jpg?fit=2560%2C1707&ssl=1",
+      "domain": "stlamerican.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://943jackfm.com/2026/11/03/green-bay-fire-station-reopening-4-months-after-flood/",
+      "url_mobile": "",
+      "title": "Green Bay fire station reopening 4 months after flood",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://media-cdn.socastsrm.com/wordpress/wp-content/blogs.dir/2499/files/2026/06/screenshot-2026-06-26-114203.png",
+      "domain": "943jackfm.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.kmvt.com/2026/11/02/twin-falls-county-eyes-first-safe-haven-baby-box-magic-valley-kimberly-fire-station/",
+      "url_mobile": "",
+      "title": "Twin Falls County eyes first Safe Haven Baby Box in the Magic Valley at Kimberly fire station",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://gray-kmvt-prod.gtv-cdn.com/resizer/v2/5YTKNGS34VGVTPT2XQSGGMI7QI.jpg?auth=a15b5a9e95b50da3ba16331fead7e5ba5517b4dfaeaa6c9fedf1930dc8a96f72&smart=true",
+      "domain": "kmvt.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://freerepublic.com/tag/*/index?more=4401582",
+      "url_mobile": "",
+      "title": "Latest Articles",
+      "seendate": "20261103T111500Z",
+      "socialimage": "",
+      "domain": "freerepublic.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.stlamerican.com/arts-and-entertainment/hot-sheet-arts-and-entertainment/timbaland-says-former-managers-treated-his-finances-like-a-piggy-bank/",
+      "url_mobile": "",
+      "title": "Timbaland says former managers treated his finances like a  piggy bank  ",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://i0.wp.com/www.stlamerican.com/wp-content/uploads/2026/11/Timbaland-2026-billboard-1800.jpg?fit=1800%2C1200&ssl=1",
+      "domain": "stlamerican.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pharmaceuticalonline.com/doc/ross-portable-high-shear-mixing-system-0001",
+      "url_mobile": "",
+      "title": "ROSS Portable High Shear Mixing System",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://vertassets.blob.core.windows.net/image/fd476476/fd476476-cda8-46b9-8606-43d020cad1f3/208_450_ross_news_release_october_2026___ross_hsm_105_batch_high_shear_mixer.png",
+      "domain": "pharmaceuticalonline.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://rivergrandrapids.com/ixp/43/p/livonia-firefighters-rescue-buck-swimming-pool/",
+      "url_mobile": "",
+      "title": "Livonia Firefighters Rescue Buck From Backyard Swimming Pool",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://townsquare.media/site/43/files/2026/11/attachment-untitled-design-2026-11-03t142446-965.jpg?&q=75&format=natural",
+      "domain": "rivergrandrapids.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://kfdm.com/news/local/savor-the-cuisine-beaumont-restaurant-week-now-underway-at-these-45-eateries-businesses",
+      "url_mobile": "",
+      "title": "Savor the cuisine : Beaumont Restaurant Week now underway at these 45 locations",
+      "seendate": "20261103T021500Z",
+      "socialimage": "",
+      "domain": "kfdm.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://fox56.com/news/nation-world/georgia-senator-says-2028-may-be-theoretical-if-democrats-lose-the-midterms",
+      "url_mobile": "",
+      "title": "Georgia senator says 2028 may be  theoretical  if Democrats lose the midterms",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://fox56.com/resources/media2/16x9/6000/1320/0x1/90/75d311d3-db38-49a3-875b-79c8d69594b2-AP23180560130070.jpg",
+      "domain": "fox56.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.govtech.com/education/higher-ed/mass-colleges-see-mixed-reactions-to-adopting-flock-and-ai-cameras",
+      "url_mobile": "",
+      "title": "Mass . Colleges See Mixed Reactions to Adopting Flock and AI Cameras",
+      "seendate": "20261104T013000Z",
+      "socialimage": "http://erepublic-brightspot.s3.us-west-2.amazonaws.com/31/74/3bd4842141348fa448cd7073de6d/reaction-to-flock-cameras.jpg",
+      "domain": "govtech.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://krmg.com/2026/11/03/prominent-hong-kong-activist-joshua-wong-awaits-sentencing-heres-what-to-know-about-his-case/",
+      "url_mobile": "",
+      "title": "Prominent Hong Kong activist Joshua Wong awaits sentencing . Here what to know about his case",
+      "seendate": "20261104T013000Z",
+      "socialimage": "",
+      "domain": "krmg.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.kmvt.com/2026/11/04/local-firefighter-dies-after-firetruck-crashes-off-road-cassia-county/",
+      "url_mobile": "https://www.kmvt.com/2026/11/04/local-firefighter-dies-after-firetruck-crashes-off-road-cassia-county/?outputType=amp",
+      "title": "Local firefighter dies after firetruck crashes off the road in Cassia County",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://gray-kmvt-prod.gtv-cdn.com/resizer/v2/XM3ICAVQEVF7BL2QQM5X43DHDQ.jpg?auth=d39014cac90e55b87ec3c7c8849ee951962f6f8de0cdb0293bdafcb50e201aa5&smart=true",
+      "domain": "kmvt.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://newsroomamerica.com/?before=119465",
+      "url_mobile": "",
+      "title": "newsroomamerica . com",
+      "seendate": "20261104T013000Z",
+      "socialimage": "",
+      "domain": "newsroomamerica.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://news.crossmap.com/2026/11/02/former-acts-29-ceo-charged-with-rape-in-the-uk/",
+      "url_mobile": "",
+      "title": "Former Acts 29 CEO Charged with Rape in the united kingdom ",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://d1fn2c2m2gnvoh.cloudfront.net/img/us/c3/c31f15e7a21c8f21268be5a558b09f258e437222413824ad83dceb8b9a92998a_w1200.webp",
+      "domain": "news.crossmap.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://fox56.com/news/local/kingston-ward-6-voting-could-continue-until-9-pm-after-fire-alarm-closure",
+      "url_mobile": "",
+      "title": "Kingston Ward 6 voting could continue until 9 p . m . after fire alarm closure",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://fox56.com/resources/media2/16x9/1612/1320/0x35/90/efc46a41-ac58-4866-a668-10c67790609c-TheHoytLibraryviaGoogleEarth.png",
+      "domain": "fox56.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.ketv.com/article/rain-winding-down-for-omaha-tonight/74326731",
+      "url_mobile": "",
+      "title": "Rain winding down around Omaha tonight with cool temperatures",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://kubrick.htvapps.com/vidthumb/3cbf2a54-0adb-4d22-9a54-7537e84f9fb4/2409d639-e610-47cc-be0c-7bc329e3b859.jpg?crop=1xw%3A1.0xh%3Bcenter%2Ctop",
+      "domain": "ketv.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://newsroomamerica.com/a/KyT5ayEyEEV46MOf6kO4kKpLKbD/the_fda_says_toddlers_aged_1_5_to_2_5_have_suffered_complete_airway_obstruction_after_eating_the_bars_which_form_a_sticky_mass_that_standard_choking_first_aid_may_fail_to_dislodge.html",
+      "url_mobile": "",
+      "title": "Once Upon a Farm Recalls All Tractor Wheels Toddler Bars Nationwide Over Choking Hazard",
+      "seendate": "20261104T013000Z",
+      "socialimage": "",
+      "domain": "newsroomamerica.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.dominicanoshoy.com/2026/11/03/el-gobierno-aprueba-el-codigo-de-etica-de-la-inteligencia-artificial-para-garantizar-un-estado-digital-mas-justo-y-transparente/",
+      "url_mobile": "",
+      "title": "El Gobierno aprueba el C\u00f3digo de \u00c9tica de la Inteligencia Artificial para garantizar un estado digital m\u00e1s justo y transparente",
+      "seendate": "20261104T013000Z",
+      "socialimage": "http://www.dominicanoshoy.com/wp-content/uploads/2026/11/impuestos-control-fiscal.webp",
+      "domain": "dominicanoshoy.com",
+      "language": "Spanish",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.worstpreviews.com/powerful-anime-mages-magic/",
+      "url_mobile": "",
+      "title": "25 Most Powerful Anime Mages Who Command Magic",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://www.worstpreviews.com/wp-content/uploads/powerful-anime-mages-magic.webp",
+      "domain": "worstpreviews.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.summitdaily.com/news/colorado-supreme-court-case-short-term-rental-western-slope/",
+      "url_mobile": "",
+      "title": "Why a Colorado Supreme Court case could have  far - reaching consequence  for short - term rental regulations on the Western Slope",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://swiftmedia.s3.amazonaws.com/mountain.swiftcom.com/images/sites/2/2026/11/02161336/BreckenridgeSTRs-1024x683.jpg",
+      "domain": "summitdaily.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wkzo.com/2026/11/02/automakers-back-us-rollback-of-fuel-economy-rules/",
+      "url_mobile": "",
+      "title": "Automakers back Trump administration rollback of US fuel economy rules | WKZO | Everything Kalamazoo",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://storage.googleapis.com/media.mwcradio.com/mimesis/2026-11/02/2026-11-02T231454Z_1_LYNXNPEMA122L_RTROPTP_3_USA-AUTOS-CALIFORNIA.JPG",
+      "domain": "wkzo.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.dailymail.com/news/article-16260283/Alaska-Dan-Sullivan-Democrat-ballot.html",
+      "url_mobile": "https://www.dailymail.com/news/article-16260283/amp/Alaska-Dan-Sullivan-Democrat-ballot.html",
+      "title": "Alaska voter loses it after realizing he may have voted for wrong Dan Sullivan amid Democrat ballot scheme",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.dailymail.com/1s/2026/11/03/00/112259671-0-image-m-21_1793667190574.jpg",
+      "domain": "dailymail.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.southcarolinapublicradio.org/sc-news/2026-11-03/sled-investigates-officer-involved-shooting-in-florence-county",
+      "url_mobile": "https://www.southcarolinapublicradio.org/sc-news/2026-11-03/sled-investigates-officer-involved-shooting-in-florence-county?_amp=true",
+      "title": "SLED investigates officer - involved shooting in Florence County",
+      "seendate": "20261104T013000Z",
+      "socialimage": "http://npr-brightspot.s3.amazonaws.com/cf/0f/3600e7c047a49aabde507bd8a9ae/adobestock-476922984-1.jpeg",
+      "domain": "southcarolinapublicradio.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://fox56.com/news/local/juvenile-under-investigation-after-corn-stalks-catch-fire-in-stroudsburg",
+      "url_mobile": "",
+      "title": "Juvenile under investigation after corn stalks catch fire in Stroudsburg",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://fox56.com/resources/media2/16x9/631/1320/11x0/90/7f2304ba-df0b-4b94-bace-18fd128e5f21-Polefire7thandmain.jpg",
+      "domain": "fox56.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.keenesentinel.com/news/local/keene-nh-mom-testifies-about-toddlers-death/article_6e95ab36-14e5-4e7d-bac4-6d4b89c902c2.html",
+      "url_mobile": "",
+      "title": "Mother testifies about Keene toddler death in Bliss trial",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://bloximages.chicago2.vip.townnews.com/keenesentinel.com/content/tncms/assets/v3/editorial/b/57/b57fc1a3-3517-42ef-90a3-7de7d61db54f/6a91fb73629e7.image.jpg?crop=1763%2C926%2C0%2C124",
+      "domain": "keenesentinel.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.sitkasentinel.com/stories/police-blotternovember-3-2026,183658",
+      "url_mobile": "",
+      "title": "Police BlotterNovember 3 , 2026 - Daily Sitka Sentinel",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://07bacfb59b7e206901e8-6735d0cb297b41aa6dba1598125bbd6d.ssl.cf1.rackcdn.com/sitka-og.png",
+      "domain": "sitkasentinel.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.kacu.org/2026-11-02/the-supreme-court-rejects-a-doj-push-to-separate-california-ballots",
+      "url_mobile": "https://www.kacu.org/2026-11-02/the-supreme-court-rejects-a-doj-push-to-separate-california-ballots?_amp=true",
+      "title": "The Supreme Court rejects a DOJ push to separate California ballots",
+      "seendate": "20261103T021500Z",
+      "socialimage": "http://npr-brightspot.s3.amazonaws.com/9e/17/2b3a2cb44c0a80d5324b88c83698/gettyimages-2299615393.jpg",
+      "domain": "kacu.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.interlochenpublicradio.org/2026-11-02/the-supreme-court-rejects-a-doj-push-to-separate-california-ballots",
+      "url_mobile": "",
+      "title": "The Supreme Court rejects a DOJ push to separate California ballots",
+      "seendate": "20261103T021500Z",
+      "socialimage": "http://npr-brightspot.s3.amazonaws.com/9e/17/2b3a2cb44c0a80d5324b88c83698/gettyimages-2299615393.jpg",
+      "domain": "interlochenpublicradio.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://news.wjct.org/elections/2026-11-02/the-supreme-court-rejects-a-doj-push-to-separate-california-ballots",
+      "url_mobile": "https://news.wjct.org/elections/2026-11-02/the-supreme-court-rejects-a-doj-push-to-separate-california-ballots?_amp=true",
+      "title": "The Supreme Court rejects a DOJ push to separate California ballots",
+      "seendate": "20261103T021500Z",
+      "socialimage": "http://npr-brightspot.s3.amazonaws.com/9e/17/2b3a2cb44c0a80d5324b88c83698/gettyimages-2299615393.jpg",
+      "domain": "news.wjct.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://thebusinessjournal.com/california-prop-44-community-clinics-patient-care/",
+      "url_mobile": "",
+      "title": "California Prop . 44 would require clinics to spend 90 % on patient care",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://thebusinessjournal.com/wp-content/uploads/2024/01/uhc-coming-soon.jpg",
+      "domain": "thebusinessjournal.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://dominicanrepublicpost.com/cyclone-murasu-makes-landfall-on-indias-eastern-coast/",
+      "url_mobile": "",
+      "title": "Cyclone Murasu makes landfall on India eastern coast - Dominican Republic Post \u2013 Caribbean News , Business , Travel & Culture",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://dominicanrepublicpost.com/app/uploads/2026/11/afp_6ae99c66a413-1793694822-GnBSIE.jpg",
+      "domain": "dominicanrepublicpost.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.bozemandailychronicle.com/wire/news/us-strikes-iranian-targets-in-the-strait-of-hormuz-official-says-leaving-unclear-what-comes/article_2a589236-cc8b-5ff3-b827-2e79217f4103.html",
+      "url_mobile": "",
+      "title": "US strikes Iranian targets in the Strait of Hormuz , official says , leaving unclear what comes next",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://bloximages.chicago2.vip.townnews.com/bozemandailychronicle.com/content/tncms/assets/v3/editorial/1/96/19668d1c-40fb-5511-af69-f79eeca0ec08/6adf03022eac8.image.jpg?crop=1763%2C926%2C0%2C124",
+      "domain": "bozemandailychronicle.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.bozemandailychronicle.com/wire/politics/republicans-grip-on-texas-is-on-the-line-in-a-close-us-senate-race-between/article_5817b7da-b7f4-5828-803e-40944f8e2dcc.html",
+      "url_mobile": "",
+      "title": "Republican grip on Texas is on the line in a close US Senate race between Paxton , Talarico",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://bloximages.chicago2.vip.townnews.com/bozemandailychronicle.com/content/tncms/assets/v3/editorial/d/2d/d2d2d4bb-51c2-51ee-9e26-dee699f18ca9/6adb4e47d6d94.image.jpg?crop=1763%2C926%2C0%2C124",
+      "domain": "bozemandailychronicle.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://kiwaradio.com/news/find-your-polling-place-election-results-here/",
+      "url_mobile": "",
+      "title": "Find Your Polling Place & Election Results Here \u2013 KIWA Radio",
+      "seendate": "20261104T013000Z",
+      "socialimage": "",
+      "domain": "kiwaradio.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.joxfm.com/2026/11/02/freefalling-eagles-not-changing-oc-or-qb-nick-sirianni-says/",
+      "url_mobile": "",
+      "title": "Freefalling Eagles not changing OC or QB , Nick Sirianni says",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://v4.dailysportspage.com/cumulus/image/882991/600/400/",
+      "domain": "joxfm.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.dailymail.com/lifestyle/food-drink/article-16253495/diner-charged-admin-fee-order-restaurant-burger-tip.html",
+      "url_mobile": "https://www.dailymail.com/lifestyle/food-drink/article-16253495/amp/diner-charged-admin-fee-order-restaurant-burger-tip.html",
+      "title": "Diner claims he was  extorted  after being charged unexpected  admin fee  for ordering restaurant burger",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.dailymail.com/1s/2026/10/30/19/112202861-0-image-a-4_1793388232891.jpg",
+      "domain": "dailymail.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://kingjamesgospel.com/darius-garland-first-season-away-cleveland-reinforces-cavaliers-moved-on",
+      "url_mobile": "",
+      "title": "Darius Garland first full season away from Cleveland reinforces why the Cavaliers moved on",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://images2.minutemediacdn.com/image/upload/c_crop,x_749,y_183,w_3567,h_2006/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/ReutersImages/mmsport/164/01m6en07c26bf5gptjdw.jpg",
+      "domain": "kingjamesgospel.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wokq.com/ixp/204/p/hunger-games-sunrise-on-the-reaping-ella-langley-kacey-musgraves/",
+      "url_mobile": "",
+      "title": "Ella Langley , Kacey Musgraves + More On  Hunger Game Soundtrack",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://townsquare.media/site/204/files/2026/11/attachment-social-image-204-2026-11-03-14-45-25.jpg?&q=75&format=natural",
+      "domain": "wokq.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wkml.com/2026/11/02/cumberland-county-schools-gives-pick-for-new-e-e-smith-architects/",
+      "url_mobile": "",
+      "title": "Cumberland County Schools Gives Pick for New E . E . Smith Architects",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://wkml.com/uploads/2026/11/ee-smith-high-school.jpg?auto=webp",
+      "domain": "wkml.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://oxfordamerican.org/magazine/issue-133-134-summer-fall-2026/the-occidental-book-of-the-dead-excerpt",
+      "url_mobile": "",
+      "title": "Oxford American | Generous Terms",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://oxfordamerican.org/media/pages/magazine/issue-133-134-summer-fall-2026/the-occidental-book-of-the-dead-excerpt/964e60cd1b-1793575535/warehouse-2000-a-photograph-by-mitch-epstein-1200x630-crop-45-3-62-0.jpg",
+      "domain": "oxfordamerican.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.ksut.org/2026-11-03/new-restrictions-at-texas-tech-are-changing-what-professors-can-teach",
+      "url_mobile": "https://www.ksut.org/2026-11-03/new-restrictions-at-texas-tech-are-changing-what-professors-can-teach?_amp=true",
+      "title": "New restrictions at Texas Tech are changing what professors can teach",
+      "seendate": "20261103T111500Z",
+      "socialimage": "http://npr-brightspot.s3.amazonaws.com/52/05/e768bb574019b6c9fb2f141c7c45/screenshot-2026-10-27-132913.jpg",
+      "domain": "ksut.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.ksmu.org/2026-11-03/new-restrictions-at-texas-tech-are-changing-what-professors-can-teach",
+      "url_mobile": "https://www.ksmu.org/2026-11-03/new-restrictions-at-texas-tech-are-changing-what-professors-can-teach?_amp=true",
+      "title": "New restrictions at Texas Tech are changing what professors can teach",
+      "seendate": "20261103T111500Z",
+      "socialimage": "http://npr-brightspot.s3.amazonaws.com/52/05/e768bb574019b6c9fb2f141c7c45/screenshot-2026-10-27-132913.jpg",
+      "domain": "ksmu.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.aspenpublicradio.org/2026-11-03/new-restrictions-at-texas-tech-are-changing-what-professors-can-teach",
+      "url_mobile": "",
+      "title": "New restrictions at Texas Tech are changing what professors can teach",
+      "seendate": "20261103T111500Z",
+      "socialimage": "http://npr-brightspot.s3.amazonaws.com/52/05/e768bb574019b6c9fb2f141c7c45/screenshot-2026-10-27-132913.jpg",
+      "domain": "aspenpublicradio.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wcsufm.org/2026-11-03/new-restrictions-at-texas-tech-are-changing-what-professors-can-teach",
+      "url_mobile": "https://www.wcsufm.org/2026-11-03/new-restrictions-at-texas-tech-are-changing-what-professors-can-teach?_amp=true",
+      "title": "New restrictions at Texas Tech are changing what professors can teach",
+      "seendate": "20261103T111500Z",
+      "socialimage": "http://npr-brightspot.s3.amazonaws.com/52/05/e768bb574019b6c9fb2f141c7c45/screenshot-2026-10-27-132913.jpg",
+      "domain": "wcsufm.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.ksfr.org/npr-news/2026-11-03/new-restrictions-at-texas-tech-are-changing-what-professors-can-teach",
+      "url_mobile": "https://www.ksfr.org/npr-news/2026-11-03/new-restrictions-at-texas-tech-are-changing-what-professors-can-teach?_amp=true",
+      "title": "New restrictions at Texas Tech are changing what professors can teach",
+      "seendate": "20261103T111500Z",
+      "socialimage": "http://npr-brightspot.s3.amazonaws.com/52/05/e768bb574019b6c9fb2f141c7c45/screenshot-2026-10-27-132913.jpg",
+      "domain": "ksfr.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://103wjod.com/ixp/204/p/hardy-blake-shelton-hell-lyrics/",
+      "url_mobile": "",
+      "title": "Here Are the Lyrics to Hardy + Blake Shelton Song  Hell  ",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://townsquare.media/site/204/files/2026/10/attachment-untitled-design-253.jpg?&q=75&format=natural",
+      "domain": "103wjod.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://marshfieldmail.com/syndicated/a-clerk-tried-to-remove-voters-from-the-rolls-how-her-county-and-the-state-of-michigan-stopped-her",
+      "url_mobile": "",
+      "title": "A clerk tried to remove voters from the rolls . How her county , and the state of Michigan , stopped her",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://other.carpentermediagroup.com/stackercontent/wp-content/uploads/sites/37/2026/11/Votebeat-A-clerk-tried-to-remove-voters-from-the-rolls-9.jpg",
+      "domain": "marshfieldmail.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.coloradostar.com/news/279405972/rising-museum-thefts-expose-security-gaps-across-europe",
+      "url_mobile": "",
+      "title": "Rising museum thefts expose security gaps across Europe",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/21b97dd/436174f4-8cb9-463c-b691-63e7a7cb5d37/1/8-Louvvre-600x315.jpg",
+      "domain": "coloradostar.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.texasguardian.com/news/279405972/rising-museum-thefts-expose-security-gaps-across-europe",
+      "url_mobile": "",
+      "title": "Rising museum thefts expose security gaps across Europe",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/21b97dd/436174f4-8cb9-463c-b691-63e7a7cb5d37/1/8-Louvvre-600x315.jpg",
+      "domain": "texasguardian.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://keyt.com/news/national-world/cnn-national/2026/11/03/convicted-murderer-who-escaped-through-tennessee-prison-fence-is-captured-officials-say/",
+      "url_mobile": "",
+      "title": "Convicted murderer who escaped through Tennessee prison fence is captured , officials say",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://keyt.com/wp-content/uploads/2026/11/cnn-L19jb21wb25lbnRzL2ltYWdlL2luc3RhbmNlcy9jbXcxMDg4cTQwMDA2M2I2dGhvN2xnbzNi-L19jb21wb25lbnRzL2FydGljbGUvaW5zdGFuY2VzL2NtdzEwN2w3NDAwMnMyOG1oYjB5amI0bnQ-860x1147.jpg",
+      "domain": "keyt.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://kqvt.com/ixp/156/p/jerry-jones-dallas-cowboys-fire-gm/",
+      "url_mobile": "",
+      "title": "Dallas Cowboys Owner Jerry Jones Should Fire Jerry Jones the GM",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://townsquare.media/site/156/files/2026/11/attachment-fire-gm-jerry-jones-nfl-memes-via-facebook.jpg?&format=natural",
+      "domain": "kqvt.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://lazer993.com/news/030030-a-referendum-on-trump-election-monitors-and-a-democratic-shift-what-to-watch-on-election-day/",
+      "url_mobile": "",
+      "title": "A referendum on Trump , election monitors and a Democratic shift : What to watch on Election Day",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://news.sagacom.com/wp-content/blogs.dir/3/files/2026/11/AP26307106191682-620x400.jpg",
+      "domain": "lazer993.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wymg.com/news/030030-a-referendum-on-trump-election-monitors-and-a-democratic-shift-what-to-watch-on-election-day/",
+      "url_mobile": "",
+      "title": "A referendum on Trump , election monitors and a Democratic shift : What to watch on Election Day",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://news.sagacom.com/wp-content/blogs.dir/3/files/2026/11/AP26307106191682-620x400.jpg",
+      "domain": "wymg.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wxpr.org/2026-11-02/is-america-really-that-polarized-the-answer-might-be-a-surprise",
+      "url_mobile": "https://www.wxpr.org/2026-11-02/is-america-really-that-polarized-the-answer-might-be-a-surprise?_amp=true",
+      "title": "Is America really that polarized ? The answer might be a surprise",
+      "seendate": "20261103T021500Z",
+      "socialimage": "http://npr-brightspot.s3.amazonaws.com/16/fd/401ffbcb4dea8054ffd72e0169a5/gettyimages-2301917700.jpg",
+      "domain": "wxpr.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wlrn.org/national-politics/2026-11-02/is-america-really-that-polarized-the-answer-might-be-a-surprise",
+      "url_mobile": "",
+      "title": "Is America really that polarized ? The answer might be a surprise",
+      "seendate": "20261103T021500Z",
+      "socialimage": "http://npr-brightspot.s3.amazonaws.com/16/fd/401ffbcb4dea8054ffd72e0169a5/gettyimages-2301917700.jpg",
+      "domain": "wlrn.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.interlochenpublicradio.org/2026-11-02/is-america-really-that-polarized-the-answer-might-be-a-surprise",
+      "url_mobile": "",
+      "title": "Is America really that polarized ? The answer might be a surprise",
+      "seendate": "20261103T021500Z",
+      "socialimage": "http://npr-brightspot.s3.amazonaws.com/16/fd/401ffbcb4dea8054ffd72e0169a5/gettyimages-2301917700.jpg",
+      "domain": "interlochenpublicradio.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.cvilletomorrow.org/local-election-officials-unfazed-by-justice-department-monitoring-surge/",
+      "url_mobile": "",
+      "title": "Local election officials unfazed by Justice Department monitoring surge",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://www.cvilletomorrow.org/wp-content/uploads/2026/11/image-4.png",
+      "domain": "cvilletomorrow.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.news8000.com/news/politics/national-politics/midterm-elections-coming-to-a-close-as-voters-pass-judgment-on-trumps-second-term/article_aacd17b2-93f5-5949-be6b-d8059e3628e7.html",
+      "url_mobile": "",
+      "title": "Midterm elections coming to a close as voters pass judgment on Trump second term",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://bloximages.newyork1.vip.townnews.com/news8000.com/content/tncms/assets/v3/editorial/3/23/32320eab-c686-4a9b-92ee-981da819879c/6ae9a99640d25.image.jpg?crop=1414%2C742%2C0%2C97",
+      "domain": "news8000.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wthitv.com:443/2026/11/03/cost-living-economy-unhappiness-with-trumps-job-performance-among-early-voting-takeaways/",
+      "url_mobile": "https://www.wthitv.com/2026/11/03/cost-living-economy-unhappiness-with-trumps-job-performance-among-early-voting-takeaways/?outputType=amp",
+      "title": "Cost of living , economy and unhappiness with Trump job performance among early voting takeaways",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://gray-wthi-prod.gtv-cdn.com/resizer/v2/P4Z7KAWGUNADJHKSHYL5IEQIZI.jpg?auth=71754367ae4c29ec0554130f95b17e8c036dd6df0b3dcaa56d8536d6289691fd&smart=true",
+      "domain": "wthitv.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.dailymail.com/health/article-16259081/unhealthy-food-ad-ban-chocolate-spread-porridge-children.html",
+      "url_mobile": "",
+      "title": "UK  unhealthy  food ad ban allows M & S Whipped Chocolate spread to be promoted to children but NOT porridge",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.dailymail.com/1s/2026/11/02/18/112252447-0-image-a-29_1793644650897.jpg",
+      "domain": "dailymail.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://scvnews.com/?blackhole=b7122f38d1",
+      "url_mobile": "",
+      "title": "SCVNews . com",
+      "seendate": "20261103T111500Z",
+      "socialimage": "",
+      "domain": "scvnews.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.news8000.com/news/national-world/texas-couples-2-young-children-caregiver-and-pilots-killed-in-florida-learjet-crash/article_b9a307c5-42ba-565c-97a7-123763707d31.html",
+      "url_mobile": "",
+      "title": "Texas couples , 2 young children , caregiver and pilots killed in Florida Learjet crash",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://bloximages.newyork1.vip.townnews.com/news8000.com/content/tncms/assets/v3/editorial/4/2b/42bd7e12-86bb-5d24-8f2f-a45f29fd63fe/6ae89dbbc897a.image.jpg?crop=1763%2C926%2C0%2C125",
+      "domain": "news8000.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.dailymail.com/tvshowbiz/article-16260399/Martha-Stewart-behavior-halloween-thirsty-photos-ROB-SHUTER.html",
+      "url_mobile": "",
+      "title": "After Halloween humiliation , Martha Stewart friends tell ROB SHUTER about her alarming behavior ... thirsty nightwear photos ... and her desperate bid to stay relevant : ROB SHUTER",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://i.dailymail.com/1s/2026/11/03/00/112257743-0-image-m-14_1793664688475.jpg",
+      "domain": "dailymail.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.dailymail.com/news/article-16262839/Passenger-jet-bomb-threat-chaos-spreads-Europe-multiple-flights-including-three-UK-forced-make-emergency-landings.html",
+      "url_mobile": "https://www.dailymail.com/news/article-16262839/amp/Passenger-jet-bomb-threat-chaos-spreads-Europe-multiple-flights-including-three-UK-forced-make-emergency-landings.html",
+      "title": "Passenger jet bomb threat chaos spreads across Europe as multiple flights including three from united kingdom are forced to make emergency landings",
+      "seendate": "20261104T013000Z",
+      "socialimage": "https://i.dailymail.com/1s/2026/11/03/17/112272537-0-Spanish_officials_confirmed_a_Ryanair_plane_from_Manchester_to_M-a-13_1793725520670.jpg",
+      "domain": "dailymail.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://newsroomamerica.com/?before=119284",
+      "url_mobile": "",
+      "title": "newsroomamerica . com",
+      "seendate": "20261103T021500Z",
+      "socialimage": "",
+      "domain": "newsroomamerica.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.texasguardian.com/news/279409047/top-25-roundup-no-22-ucla-takes-down-no-5-arizona-to-open-season",
+      "url_mobile": "",
+      "title": "Top 25 roundup : No . 22 UCLA takes down No . 5 Arizona to open season",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/fb0953b/066cbf4f-37e0-4061-b9b6-3ad57f918409/0/MzEyYzMxODctNzc-600x315.jpg",
+      "domain": "texasguardian.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.orlandoecho.com/news/279409047/top-25-roundup-no-22-ucla-takes-down-no-5-arizona-to-open-season",
+      "url_mobile": "",
+      "title": "Top 25 roundup : No . 22 UCLA takes down No . 5 Arizona to open season",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/fb0953b/066cbf4f-37e0-4061-b9b6-3ad57f918409/0/MzEyYzMxODctNzc-600x315.jpg",
+      "domain": "orlandoecho.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wdsm710.com/2026/11/03/top-25-roundup-no-22-ucla-takes-down-no-5-arizona-to-open-season/",
+      "url_mobile": "",
+      "title": "Top 25 roundup : No . 22 UCLA takes down No . 5 Arizona to open season",
+      "seendate": "20261103T111500Z",
+      "socialimage": "https://storage.googleapis.com/media.mwcradio.com/mimesis/2026-11/03/2026-11-03T081855Z_1_LYNXNPEMA20LY_RTROPTP_3_BASKETBALL-NCAA.JPG",
+      "domain": "wdsm710.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.newtownbee.com/11022026/police-reports-october-3-october-27-2026/",
+      "url_mobile": "",
+      "title": "Police Reports | October 3 - October 27 , 2026",
+      "seendate": "20261103T021500Z",
+      "socialimage": "https://imengine.prod.ntb.infomaker.io/?uuid=962ff8f8-a311-5c78-b19e-5c37b1f7edcb&function=fit&type=preview",
+      "domain": "newtownbee.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    }
+  ]
+}
