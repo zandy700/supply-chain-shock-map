@@ -2,6 +2,168 @@
   "description": "Small documented convenience sample for historical demonstration; not a complete or randomly sampled news corpus.",
   "events": [
     {
+      "id": "7c8ddea4e0bbc223631b",
+      "date": "2021-03-26",
+      "title": "USW gives notice of strike at ATI starting March 30",
+      "tickers": [
+        "ATI"
+      ],
+      "event_type": "strike",
+      "sign": -1,
+      "severity": 0.6,
+      "url": "https://steelmarketupdate.com/2021/03/26/usw-to-strike-ati-beginning-on-tuesday",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"that it will go on strike beginning on Tuesday, March 30\". Timing: Friday; strike to begin Tue 2021-03-30.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "4c74bc9df38a2627c57a",
+      "date": "2021-04-09",
+      "title": "Boeing tells 16 airlines to address electrical grounding issue on some 737 MAX",
+      "tickers": [
+        "BA"
+      ],
+      "event_type": "recall",
+      "sign": -1,
+      "severity": 0.6,
+      "url": "https://www.news4jax.com/business/2021/04/09/airlines-pull-boeing-max-jets-to-inspect-electrical-systems/",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"Boeing said Friday that the issue affected planes used by 16 airlines\". Timing: pre-market Friday.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "b92e1af0a81015a81189",
+      "date": "2021-05-28",
+      "title": "Boeing halts 787 deliveries again after FAA requests more information",
+      "tickers": [
+        "BA"
+      ],
+      "event_type": "supplier_quality",
+      "sign": -1,
+      "severity": 0.6,
+      "url": "https://www.click2houston.com/business/2021/05/28/faa-questions-lead-to-new-halt-in-deliveries-of-boeing-plane",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"Boeing has again halted deliveries of its 787 jetliner\". Timing: Friday, likely after close.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "d976a27907800c5d42f7",
+      "date": "2021-07-14",
+      "title": "J&J recalls Neutrogena and Aveeno aerosol sunscreens over benzene",
+      "tickers": [
+        "JNJ"
+      ],
+      "event_type": "recall",
+      "sign": -1,
+      "severity": 0.6,
+      "url": "https://www.jnj.com/media-center/press-releases/johnson-johnson-consumer-inc-issues-voluntary-recall-of-specific-neutrogena-and-aveeno-aerosol-sunscreen-products-due-to-the-presence-of-benzene",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"is voluntarily recalling all lots of five\". Timing: time of day not verified.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "df966ad5cca32485505a",
+      "date": "2021-07-27",
+      "title": "Fatal acetic acid leak at LyondellBasell La Porte plant",
+      "tickers": [
+        "LYB"
+      ],
+      "event_type": "factory_shutdown",
+      "sign": -1,
+      "severity": 0.8,
+      "url": "https://abc13.com/la-porte-chemical-leak-lyondellbasell-2-killed-dozens-injured/10913127/",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"acetic acid leak occurred\". Timing: Tuesday evening, after close.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "113f77e6fa472a9a38a5",
+      "date": "2021-08-10",
+      "title": "Nabisco (Mondelez) Portland bakery workers strike",
+      "tickers": [
+        "MDLZ"
+      ],
+      "event_type": "strike",
+      "sign": -1,
+      "severity": 0.6,
+      "url": "https://opb.org/article/2021/08/21/nabisco-bakery-workers-strike-portland-union-contract-negotiations",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"walked out on Aug. 10\". Timing: time of day not verified.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "22b54929d8a675f1dea0",
+      "date": "2021-08-20",
+      "title": "GM expands Chevrolet Bolt battery-fire recall to all Bolts",
+      "tickers": [
+        "GM"
+      ],
+      "event_type": "recall",
+      "sign": -1,
+      "severity": 0.6,
+      "url": "https://www.columbian.com/news/2021/aug/20/gm-extends-recall-to-cover-all-chevy-bolts-due-to-fire-risk/",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"is recalling all Chevrolet Bolt electric vehicles\". Timing: Friday.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "d2a9813895177af5d953",
+      "date": "2021-10-14",
+      "title": "UAW strikes Deere at 14 US facilities",
+      "tickers": [
+        "DE"
+      ],
+      "event_type": "strike",
+      "sign": -1,
+      "severity": 0.6,
+      "url": "https://ycharts.com/news/story/PRN-C9765-20211014",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"14 facilities\". Timing: pre-market; strike began at midnight.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "30f31877fc7f8b33a5ac",
+      "date": "2021-12-23",
+      "title": "Explosion and fire at ExxonMobil Baytown refinery",
+      "tickers": [
+        "XOM"
+      ],
+      "event_type": "explosion",
+      "sign": -1,
+      "severity": 0.9,
+      "url": "https://www.cbsnews.com/news/baytown-exxonmobil-refinery-near-houston-major-fire",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"The fire broke out at around 1 a.m.\". Timing: fire about 1am local, pre-market.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
       "id": "c5c27b27a2cefe01ee22",
       "date": "2022-02-17",
       "title": "Abbott recalls powdered infant formula",
@@ -20,6 +182,60 @@
       "classification_method": "Manually curated event type; heuristic severity, not measured"
     },
     {
+      "id": "fd479f32a0fc4f19b1cf",
+      "date": "2022-02-20",
+      "title": "Expeditors cyberattack shuts down most operating systems globally",
+      "tickers": [
+        "EXPD"
+      ],
+      "event_type": "cyberattack",
+      "sign": -1,
+      "severity": 0.7,
+      "url": "https://www.sec.gov/Archives/edgar/data/746515/000156459022005838/expd-ex99_7.htm",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"we shut down most of our operating systems globally\". Timing: Sunday; first session 2022-02-22.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "13660eddd747abee7f88",
+      "date": "2022-03-27",
+      "title": "Tesla suspends Shanghai factory during Shanghai lockdown",
+      "tickers": [
+        "TSLA"
+      ],
+      "event_type": "factory_shutdown",
+      "sign": -1,
+      "severity": 0.8,
+      "url": "https://www.cnbc.com/2022/03/27/tesla-to-halt-shanghai-factory-production-amid-covid-curbs-bloomberg-news-reports.html",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"suspending production at its Shanghai factory\". Timing: Sunday.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "e71b945a2c5ebda0877f",
+      "date": "2022-06-14",
+      "title": "Ford stops Mustang Mach-E deliveries ahead of contactor recall",
+      "tickers": [
+        "F"
+      ],
+      "event_type": "recall",
+      "sign": -1,
+      "severity": 0.6,
+      "url": "https://electrek.co/2022/06/14/ford-stops-mustang-mach-e-deliveries-issue-safety-recall/",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"stop delivering Mustang Mach-E\". Timing: intraday.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
       "id": "d866fd7ae33d0250a8fc",
       "date": "2022-08-31",
       "title": "NVIDIA discloses export license restrictions for A100 and H100",
@@ -35,6 +251,169 @@
       "review_status": "documented_historical_example",
       "date_basis": "Public disclosure date; day-only alignment",
       "source_note": "Public filing dated August 31; government notification was August 26. Date is disclosure, not private notification.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "94f99e83a2391f448b29",
+      "date": "2022-09-07",
+      "title": "Pentagon suspends F-35 deliveries over Chinese-origin alloy in Honeywell magnet",
+      "tickers": [
+        "LMT",
+        "HON"
+      ],
+      "event_type": "supplier_quality",
+      "sign": -1,
+      "severity": 0.6,
+      "url": "https://www.defensenews.com/air/2022/09/07/pentagon-suspends-f-35-deliveries-over-chinese-alloy-in-magnet",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"Chinese-sourced alloy\". Timing: time of day unknown.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "21f48ec7b4c3b119a56d",
+      "date": "2022-10-12",
+      "title": "Applied Materials cuts quarterly outlook about $400M on China export rules",
+      "tickers": [
+        "AMAT"
+      ],
+      "event_type": "export_ban",
+      "sign": -1,
+      "severity": 0.8,
+      "url": "https://www.sec.gov/Archives/edgar/data/6951/000119312522261327/d370937dex991.htm",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"reduce its fourth-quarter net sales by approximately $400 million\". Timing: after close (8-K).",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "b8a6cf4ca82baaf56657",
+      "date": "2022-11-06",
+      "title": "Apple says COVID restrictions cut iPhone 14 Pro output at Zhengzhou",
+      "tickers": [
+        "AAPL"
+      ],
+      "event_type": "factory_shutdown",
+      "sign": -1,
+      "severity": 0.8,
+      "url": "https://www.cnbc.com/2022/11/06/apple-warns-covid-restrictions-in-china-are-hurting-iphone-production-.html",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"temporarily reduced iPhone 14\". Timing: Sunday.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "ff9c844d2da19af09e29",
+      "date": "2023-02-03",
+      "title": "Norfolk Southern train derails in East Palestine, Ohio",
+      "tickers": [
+        "NSC"
+      ],
+      "event_type": "derailment",
+      "sign": -1,
+      "severity": 0.8,
+      "url": "https://www.ntsb.gov/investigations/Pages/RRD23MR005.aspx",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"derailed 38\". Timing: Friday 8:54pm ET, after close.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "035a444c5b4444163a66",
+      "date": "2023-02-14",
+      "title": "Ford halts F-150 Lightning production and shipments over battery issue",
+      "tickers": [
+        "F"
+      ],
+      "event_type": "supplier_quality",
+      "sign": -1,
+      "severity": 0.6,
+      "url": "https://www.cnbc.com/2023/02/14/ford-halts-f-150-lightning-production.html",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"paused production and shipments of its electric F-150 Lightning\". Timing: intraday.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "9545ddb2a02c737ee150",
+      "date": "2023-02-16",
+      "title": "Tesla recalls 362,758 vehicles with FSD Beta",
+      "tickers": [
+        "TSLA"
+      ],
+      "event_type": "recall",
+      "sign": -1,
+      "severity": 0.6,
+      "url": "https://fortune.com/2023/02/16/tesla-recalls-all-362758-vehicles-with-full-self-driving-beta-may-cause-crashes-ota-software-update-elon-musk/",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"362,758\". Timing: intraday.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "0e843fef64d7076916d3",
+      "date": "2023-02-23",
+      "title": "Boeing pauses 787 deliveries over supplier analysis issue",
+      "tickers": [
+        "BA"
+      ],
+      "event_type": "supplier_quality",
+      "sign": -1,
+      "severity": 0.6,
+      "url": "https://www.click2houston.com/business/2023/02/24/boeing-stops-deliveries-of-jet-on-questions-surrounding-part",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"stopped deliveries of its 787\". Timing: likely after close.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "af16b9322fcd78a17fad",
+      "date": "2023-04-13",
+      "title": "Boeing flags 737 MAX delivery delays from non-standard Spirit fittings",
+      "tickers": [
+        "BA"
+      ],
+      "event_type": "supplier_quality",
+      "sign": -1,
+      "severity": 0.6,
+      "url": "https://www.click2houston.com/business/2023/04/13/boeing-max-production-could-be-slowed-by-issue-with-parts/",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"non-standard manufacturing process\". Timing: Thursday, after close.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "ca7b69d7a105aa496f48",
+      "date": "2023-05-21",
+      "title": "China CAC says Micron failed security review and bars some purchases",
+      "tickers": [
+        "MU"
+      ],
+      "event_type": "import_ban",
+      "sign": -1,
+      "severity": 0.8,
+      "url": "https://thedailyherald.sx/business/china-regulator-fails-micron-s-products-in-security-review-bars-some-purchases",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"failed its network security review\". Timing: Sunday.",
       "classification_method": "Manually curated event type; heuristic severity, not measured"
     },
     {
@@ -74,6 +453,42 @@
       "classification_method": "Manually curated event type; heuristic severity, not measured"
     },
     {
+      "id": "95bf50dc717a762262d1",
+      "date": "2023-08-24",
+      "title": "Spirit and Boeing disclose mis-drilled holes on 737 aft pressure bulkhead",
+      "tickers": [
+        "BA"
+      ],
+      "event_type": "supplier_quality",
+      "sign": -1,
+      "severity": 0.6,
+      "url": "https://techxplore.com/news/2023-08-spirit-aerosystems-aware-quality-issue.html",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"elongated fastener holes\". Timing: pre-market at latest.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "b48f0bc102b2004ecb16",
+      "date": "2023-09-11",
+      "title": "RTX GTF powder-metal update with about $3B charge",
+      "tickers": [
+        "RTX"
+      ],
+      "event_type": "supplier_quality",
+      "sign": -1,
+      "severity": 0.6,
+      "url": "https://www.sec.gov/Archives/edgar/data/101829/000089882223000025/rtx991-91123.htm",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"approximately $3 billion\". Timing: Monday.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
       "id": "e4b8924786635812fc7f",
       "date": "2023-09-12",
       "title": "MGM Resorts issues statement on cybersecurity disruption",
@@ -89,6 +504,24 @@
       "review_status": "documented_historical_example",
       "date_basis": "Public disclosure date; day-only alignment",
       "source_note": "Dated company statement September 12; public reports began September 11. This study uses statement date, with timing uncertainty.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "324cdd67ce57eccd68a8",
+      "date": "2023-09-12",
+      "title": "France orders Apple to halt iPhone 12 sales over radiation levels",
+      "tickers": [
+        "AAPL"
+      ],
+      "event_type": "import_ban",
+      "sign": -1,
+      "severity": 0.8,
+      "url": "https://techxplore.com/news/2023-09-france-apple-iphone-sales-halted.html",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"halt sales of the iPhone 12\". Timing: Tuesday, European day.",
       "classification_method": "Manually curated event type; heuristic severity, not measured"
     },
     {
@@ -111,6 +544,60 @@
       "classification_method": "Manually curated event type; heuristic severity, not measured"
     },
     {
+      "id": "3af60db0dfc77f1d6941",
+      "date": "2023-09-27",
+      "title": "Johnson Controls cyber incident disrupts business operations",
+      "tickers": [
+        "JCI"
+      ],
+      "event_type": "cyberattack",
+      "sign": -1,
+      "severity": 0.7,
+      "url": "https://www.sec.gov/Archives/edgar/data/833444/000083344423000036/jci-20230927.htm",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"disruption to parts of the Company\". Timing: after close (8-K).",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "d17d4ba12ff8a65fec35",
+      "date": "2023-10-17",
+      "title": "Updated BIS AI-chip export rules hit NVIDIA data-center products",
+      "tickers": [
+        "NVDA"
+      ],
+      "event_type": "export_ban",
+      "sign": -1,
+      "severity": 0.8,
+      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581023000217/nvda-20231017.htm",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"additional licensing requirements\". Timing: BIS rule intraday; NVIDIA 8-K after close.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "dbe53cf2e1c5343635c4",
+      "date": "2023-10-24",
+      "title": "California DMV suspends GM Cruise driverless permits",
+      "tickers": [
+        "GM"
+      ],
+      "event_type": "recall",
+      "sign": -1,
+      "severity": 0.6,
+      "url": "https://www.dmv.ca.gov/portal/news-and-media/dmv-statement-on-cruise-llc-suspension/",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"suspension\". Timing: intraday.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
       "id": "e73e67e50681c98b3c55",
       "date": "2023-12-13",
       "title": "Tesla Autopilot recall becomes public",
@@ -129,6 +616,278 @@
       "classification_method": "Manually curated event type; heuristic severity, not measured"
     },
     {
+      "id": "b975615ec813fd976088",
+      "date": "2023-12-15",
+      "title": "Quaker Oats (PepsiCo) recalls granola bars and cereals over Salmonella",
+      "tickers": [
+        "PEP"
+      ],
+      "event_type": "recall",
+      "sign": -1,
+      "severity": 0.6,
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/quaker-recalls-granola-bars-and-granola-cereals-due-possible-health-risk",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"recall of specific granola bars\". Timing: Friday.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "ce6f8533438a2e326fb1",
+      "date": "2023-12-18",
+      "title": "Apple pauses US Apple Watch Series 9 and Ultra 2 sales after ITC order",
+      "tickers": [
+        "AAPL"
+      ],
+      "event_type": "import_ban",
+      "sign": -1,
+      "severity": 0.8,
+      "url": "https://www.mactrast.com/2023/12/apple-halting-sales-of-apple-watch-series-9-and-ultra-2-in-u-s-due-to-ongoing-patent-dispute/",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"pausing sales of the Apple Watch Series 9\". Timing: Monday.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "6ddc1c0217af398a0421",
+      "date": "2023-12-22",
+      "title": "GM stop-sale on Chevrolet Blazer EV over software problems",
+      "tickers": [
+        "GM"
+      ],
+      "event_type": "recall",
+      "sign": -1,
+      "severity": 0.6,
+      "url": "https://insideevs.com/news/702188/chevy-blazer-ev-stop-sale/",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"stop-sale\". Timing: late Friday; next session Dec 26.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "f75fb11dca2e7eeededd",
+      "date": "2024-01-05",
+      "title": "Alaska Airlines 1282 Boeing 737-9 MAX door plug blowout",
+      "tickers": [
+        "BA",
+        "ALK"
+      ],
+      "event_type": "supplier_quality",
+      "sign": -1,
+      "severity": 0.6,
+      "url": "https://www.ksl.com/article/50836516/alaska-airlines-flight-makes-emergency-landing-after-window-and-chunk-of-fuselage-blow-out",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"made an emergency landing in Oregon on Friday\". Timing: Friday 7:52pm ET, after close.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "20fa74b83f499c85c21c",
+      "date": "2024-01-11",
+      "title": "Tesla suspends Giga Berlin production over Red Sea parts shortage",
+      "tickers": [
+        "TSLA"
+      ],
+      "event_type": "factory_shutdown",
+      "sign": -1,
+      "severity": 0.8,
+      "url": "https://maritime-executive.com/article/red-sea-disruption-forces-tesla-to-suspend-production-in-germany",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"suspend vehicle production at the Gigafactory Berlin\". Timing: Thursday, likely late.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "1cf5d4ea296662964290",
+      "date": "2024-02-04",
+      "title": "Boeing says about 50 undelivered 737 MAX need rework after mis-drilled holes",
+      "tickers": [
+        "BA"
+      ],
+      "event_type": "supplier_quality",
+      "sign": -1,
+      "severity": 0.6,
+      "url": "https://www.cnbc.com/2024/02/05/new-quality-glitch-to-delay-some-boeing-737-max-deliveries.html",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"about 50 undelivered 737 Max\". Timing: Sunday.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "e59f25b3143abbb7db36",
+      "date": "2024-02-20",
+      "title": "GM pauses sales of 2024 Colorado and Canyon over software issue",
+      "tickers": [
+        "GM"
+      ],
+      "event_type": "recall",
+      "sign": -1,
+      "severity": 0.6,
+      "url": "https://www.foxbusiness.com/markets/gm-pauses-sales-new-line-trucks-over-software-issue",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"temporarily paused sales\". Timing: likely after close.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "cd8c7e89fc77cbe92bc6",
+      "date": "2024-02-21",
+      "title": "Change Healthcare (UnitedHealth) cyberattack",
+      "tickers": [
+        "UNH"
+      ],
+      "event_type": "cyberattack",
+      "sign": -1,
+      "severity": 0.7,
+      "url": "https://www.sec.gov/Archives/edgar/data/731766/000073176624000045/unh-20240221.htm",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"Change Healthcare information technology systems\". Timing: outage public intraday; 8-K Feb 22.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "f35874a459ddcd322aa5",
+      "date": "2024-03-05",
+      "title": "Tesla Giga Berlin halted after arson on power pylon",
+      "tickers": [
+        "TSLA"
+      ],
+      "event_type": "factory_shutdown",
+      "sign": -1,
+      "severity": 0.8,
+      "url": "https://www.voanews.com/a/tesla-s-german-plant-halts-production-after-suspected-arson-nearby/7514201.html",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"halted production\". Timing: pre-market.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "ad736e35146613db32f1",
+      "date": "2024-04-03",
+      "title": "Taiwan earthquake disrupts Micron DRAM production",
+      "tickers": [
+        "MU"
+      ],
+      "event_type": "factory_shutdown",
+      "sign": -1,
+      "severity": 0.8,
+      "url": "https://www.sec.gov/Archives/edgar/data/723125/000110465924045952/tm2411566d1_8k.htm",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Hualien earthquake struck 2024-04-03 local time (evening of 2024-04-02 ET). Source is Micron's 8-K dated 2024-04-10 quantifying the DRAM impact. Verified source quote: \"not yet at full DRAM production\". Timing: quake after US close Apr 2; Micron statement Apr 3.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "1b89c41135f680478236",
+      "date": "2024-04-19",
+      "title": "Tesla recalls 3,878 Cybertrucks over accelerator pedal",
+      "tickers": [
+        "TSLA"
+      ],
+      "event_type": "recall",
+      "sign": -1,
+      "severity": 0.6,
+      "url": "https://www.foxbusiness.com/technology/tesla-recalls-nearly-3900-cybertrucks-over-accelerator-pedal-issue",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"recalling nearly 3,900\". Timing: intraday.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "2875af475279db92054f",
+      "date": "2024-05-07",
+      "title": "Commerce revokes Intel and Qualcomm export licenses to Huawei",
+      "tickers": [
+        "INTC",
+        "QCOM"
+      ],
+      "event_type": "export_ban",
+      "sign": -1,
+      "severity": 0.8,
+      "url": "https://www.sec.gov/Archives/edgar/data/804328/000080432824000042/qcom-20240509.htm",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"revoking the Company\". Timing: press reports May 7; 8-Ks May 8-9.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "0ca17ba622d59577caaf",
+      "date": "2024-07-19",
+      "title": "Faulty CrowdStrike Falcon update causes global Windows outage",
+      "tickers": [
+        "CRWD"
+      ],
+      "event_type": "it_outage",
+      "sign": -1,
+      "severity": 0.7,
+      "url": "https://www.sec.gov/Archives/edgar/data/1535527/000110465924081571/tm2419936d1_8k.htm",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"resulted in outages\". Timing: pre-market Friday.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "64091f30442b56c038d2",
+      "date": "2024-08-20",
+      "title": "Microchip cyberattack leaves manufacturing below normal levels",
+      "tickers": [
+        "MCHP"
+      ],
+      "event_type": "cyberattack",
+      "sign": -1,
+      "severity": 0.7,
+      "url": "https://www.sec.gov/Archives/edgar/data/827054/000082705424000153/mchp-20240820.htm",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"operating at less than normal levels\". Timing: after close (8-K).",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "071b4c3daf738ecf2978",
+      "date": "2024-08-21",
+      "title": "Halliburton cyberattack affects systems",
+      "tickers": [
+        "HAL"
+      ],
+      "event_type": "cyberattack",
+      "sign": -1,
+      "severity": 0.7,
+      "url": "https://www.worldoil.com/news/2024/8/22/halliburton-experiences-cyberattack-at-campus-in-houston-texas/",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"experienced a cyberattack on Wednesday\". Timing: Wednesday.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
       "id": "4d71da07a7881cf3702c",
       "date": "2024-09-13",
       "title": "Boeing machinists begin strike",
@@ -144,6 +903,222 @@
       "review_status": "documented_historical_example",
       "date_basis": "Public disclosure date; day-only alignment",
       "source_note": "SEC quarterly filing confirms strike began September 13, 2024.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "42da7dbab837d7a0663f",
+      "date": "2024-09-23",
+      "title": "Machinists strike at Textron Aviation, Wichita",
+      "tickers": [
+        "TXT"
+      ],
+      "event_type": "strike",
+      "sign": -1,
+      "severity": 0.6,
+      "url": "https://www.kwch.com/2024/09/23/machinists-textron-aviation-begin-strike-after-rejecting-contract-offer",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"began Day 1 of their strike on Monday\". Timing: Monday, strike day 1.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "5480fcdd836bb6edb13b",
+      "date": "2024-09-29",
+      "title": "Baxter North Cove plant closed by Hurricane Helene flooding",
+      "tickers": [
+        "BAX"
+      ],
+      "event_type": "factory_shutdown",
+      "sign": -1,
+      "severity": 0.8,
+      "url": "https://investor.baxter.com/investors/events-and-news/news/press-release-details/2024/Baxter-Provides-Update-on-North-Cove-N.C.-Facility-and-Hurricane-Helene-Relief-Plans-for-Community/default.aspx",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"currently closed for production\". Timing: Sunday.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "3b16dfb45d1011a62061",
+      "date": "2025-04-15",
+      "title": "NVIDIA discloses H20 China license requirement and up to $5.5B charges",
+      "tickers": [
+        "NVDA"
+      ],
+      "event_type": "export_ban",
+      "sign": -1,
+      "severity": 0.8,
+      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000082/nvda-20250409.htm",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"approximately $5.5 billion\". Timing: after close (8-K).",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "aec0d88e7ff5a630d517",
+      "date": "2025-04-16",
+      "title": "AMD says new export control covers MI308, up to $800M charges",
+      "tickers": [
+        "AMD"
+      ],
+      "event_type": "export_ban",
+      "sign": -1,
+      "severity": 0.8,
+      "url": "https://www.sec.gov/Archives/edgar/data/2488/000000248825000039/amd-20250415.htm",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"MI308\". Timing: pre-market (8-K).",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "a03391870b27837c0a4c",
+      "date": "2025-04-29",
+      "title": "GM recalls about 597,000 trucks and SUVs with 6.2L V8",
+      "tickers": [
+        "GM"
+      ],
+      "event_type": "recall",
+      "sign": -1,
+      "severity": 0.6,
+      "url": "https://www.jalopnik.com/1846906/gm-recalls-600000-trucks-suvs-v8-engine-failures/",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"recall of nearly 600,000 vehicles\". Timing: intraday.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "60942b173d773c8bc074",
+      "date": "2025-05-05",
+      "title": "Machinists strike at Pratt & Whitney Connecticut",
+      "tickers": [
+        "RTX"
+      ],
+      "event_type": "strike",
+      "sign": -1,
+      "severity": 0.6,
+      "url": "https://www.defensenews.com/industry/2025/05/05/thousands-of-machinists-strike-at-jet-engine-maker-pratt-whitney/",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"went on strike early Monday\". Timing: pre-market Monday.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "078b3b49e4170ae4114d",
+      "date": "2025-05-13",
+      "title": "Nucor cyber incident halts production at various locations",
+      "tickers": [
+        "NUE"
+      ],
+      "event_type": "cyberattack",
+      "sign": -1,
+      "severity": 0.7,
+      "url": "https://www.sec.gov/Archives/edgar/data/73309/000119312525119311/d795264d8k.htm",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "8-K date of report 2025-05-13; incident disclosed in that filing. Verified source quote: \"halted certain production operations\". Timing: pre-market (8-K).",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "30a7686564e869f40412",
+      "date": "2025-08-03",
+      "title": "Machinists strike Boeing St. Louis defense sites",
+      "tickers": [
+        "BA"
+      ],
+      "event_type": "strike",
+      "sign": -1,
+      "severity": 0.6,
+      "url": "https://www.kpbs.org/news/national/2025/08/03/more-than-3-000-boeing-workers-begin-strike-after-rejecting-a-contract-offer",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"began striking at midnight\". Timing: Sunday; strike from midnight.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "bd3dce04577486ff3506",
+      "date": "2025-08-28",
+      "title": "UAW strike at GE Aerospace Evendale and Erlanger",
+      "tickers": [
+        "GE"
+      ],
+      "event_type": "strike",
+      "sign": -1,
+      "severity": 0.6,
+      "url": "https://uaw-newsroom.prgloo.com/press-release/uaw-members-at-ge-aerospace-are-on-strike-after-rejecting-companys-final-offer",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"walked out on strike\". Timing: pre-market.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "6599f9e42345d67d0def",
+      "date": "2025-09-17",
+      "title": "China reportedly tells firms to cancel NVIDIA RTX Pro 6000D orders",
+      "tickers": [
+        "NVDA"
+      ],
+      "event_type": "import_ban",
+      "sign": -1,
+      "severity": 0.8,
+      "url": "https://www.engadget.com/ai/china-reportedly-bans-tech-companies-from-buying-nvidias-ai-chips-120143740.html",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"RTX Pro 6000D\". Timing: pre-market (FT report).",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "c9a51f5ee60138749ca3",
+      "date": "2025-10-07",
+      "title": "Novelis Oswego aluminum plant fire disrupts Ford F-Series supply",
+      "tickers": [
+        "F"
+      ],
+      "event_type": "factory_fire",
+      "sign": -1,
+      "severity": 0.8,
+      "url": "https://www.cnbc.com/2025/10/07/stocks-making-the-biggest-moves-midday-orcl-fig-tmq-f-and-more.html",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"a fire at a key supplier\". Timing: WSJ report; fire itself 2025-09-16.",
+      "classification_method": "Manually curated event type; heuristic severity, not measured"
+    },
+    {
+      "id": "4f7de2cde12b6ea8280c",
+      "date": "2025-10-20",
+      "title": "AWS us-east-1 outage",
+      "tickers": [
+        "AMZN"
+      ],
+      "event_type": "it_outage",
+      "sign": -1,
+      "severity": 0.7,
+      "url": "https://aws.amazon.com/message/101925/",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T05:48:41+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Public disclosure date; weekend/holiday dates anchor to the prior session",
+      "source_note": "Verified source quote: \"October 20\". Timing: pre-market Monday.",
       "classification_method": "Manually curated event type; heuristic severity, not measured"
     }
   ]
