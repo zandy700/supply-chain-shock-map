@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Supply Chain Shock Map</title>
+  <meta name="description" content="Evidence-linked supply-chain shock propagation, a hash-chained prediction ledger and an honest accuracy record. Not financial advice.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231b1c1e'/%3E%3Cpath d='M9 22L16 10L23 22' stroke='%23d5e6f0' stroke-width='2' fill='none'/%3E%3Ccircle cx='16' cy='10' r='4' fill='%23e0663a'/%3E%3Ccircle cx='9' cy='22' r='3' fill='%23d5e6f0'/%3E%3Ccircle cx='23' cy='22' r='3' fill='%23d5e6f0'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="masthead">
+      <h1>Supply Chain Shock Map</h1>
+      <p>How a disruption at one company might ripple through documented SEC supply relationships, and how well that idea has held up.</p>
+    </div>
+    <nav class="tabs" aria-label="Views">
+      <a href="#graph" data-view="graph">Shock graph</a>
+      <a href="#events" data-view="events">Event feed</a>
+      <a href="#ledger" data-view="ledger">Ledger</a>
+      <a href="#accuracy" data-view="accuracy">Accuracy</a>
+      <a href="#about" data-view="about">Methodology &amp; credits</a>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <p id="load-error" class="notice" role="alert" hidden></p>
+
+    <section id="view-graph" class="view" aria-labelledby="graph-title">
+      <h2 id="graph-title" class="sr-only">Shock propagation graph</h2>
+      <div class="graph-layout">
+        <div class="side">
+          <div class="card event-picker">
+            <label for="event-select">Pick a disruption event</label>
+            <select id="event-select"></select>
+            <div class="btn-row" style="margin-top:.6rem">
+              <button type="button" class="btn" id="replay-btn">Replay ripple</button>
+            </div>
+          </div>
+          <div class="card event-detail" id="event-detail" aria-live="polite"></div>
+          <div class="card inspector" id="inspector" aria-live="polite"></div>
+        </div>
+        <div class="graph-col">
+          <div class="graph-wrap">
+            <svg id="graph-svg" role="img" aria-labelledby="graph-desc"><desc id="graph-desc">Force-directed graph of SEC-documented supplier to customer relationships. Use the event picker to animate a shock; the prediction list beside the graph contains the same information as text.</desc></svg>
+            <div class="graph-toolbar">
+              <button type="button" class="btn" id="zoom-in" aria-label="Zoom in">+</button>
+              <button type="button" class="btn" id="zoom-out" aria-label="Zoom out">&minus;</button>
+              <button type="button" class="btn" id="zoom-fit">Fit</button>
+            </div>
+            <p class="hop-status" id="hop-status" aria-live="polite"></p>
+          </div>
+          <div class="legend" aria-label="Legend">
+            <span><i class="swatch neg"></i>Predicted negative</span>
+            <span><i class="swatch pos"></i>Predicted positive</span>
+            <span><i class="swatch idle"></i>In SEC graph, unaffected</span>
+            <span><i class="swatch out"></i>Event company outside graph</span>
+            <span>Size = |expected abnormal return|</span>
+            <span>Arrow = supplier &rarr; customer</span>
+          </div>
+          <p class="small muted" style="margin-top:.4rem">Drag to pan, pinch or scroll to zoom, tap a company or link for its SEC evidence.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-events" class="view" aria-labelledby="events-title" hidden>
+      <h2 id="events-title">Event feed</h2>
+      <p class="lede" id="events-lede"></p>
+      <ul class="feed" id="feed"></ul>
+    </section>
+
+    <section id="view-ledger" class="view" aria-labelledby="ledger-title" hidden>
+      <h2 id="ledger-title">Prediction ledger</h2>
+      <p class="lede">Every prediction is appended to <code>ledger/predictions.jsonl</code> with the previous entry's hash. Your browser recomputes each SHA-256 below from RFC 8785 canonical JSON using Web Crypto, independently of the Python verifier.</p>
+      <div class="ledger-summary">
+        <p class="ledger-status" id="ledger-status" role="status">Verifying&hellip;</p>
+        <div class="btn-row">
+          <button type="button" class="btn" id="reverify-btn">Re-verify</button>
+          <button type="button" class="btn" id="tamper-btn">Simulate tampering</button>
+        </div>
+      </div>
+      <p class="small" id="tamper-result" aria-live="polite"></p>
+      <div class="table-wrap ledger-table">
+        <table>
+          <caption class="sr-only">Ledger entries with browser verification</caption>
+          <thead><tr><th>#</th><th>Issued (UTC)</th><th>Event</th><th>Mode</th><th>Prev hash</th><th>Hash</th><th>Browser check</th></tr></thead>
+          <tbody id="ledger-rows"></tbody>
+        </table>
+      </div>
+      <ul class="ledger-cards" id="ledger-cards"></ul>
+      <p class="small muted" style="margin-top:1rem">A hash chain proves integrity relative to a trusted head hash. It does not independently timestamp entries or prevent a rewrite of the entire history; compare the head against an archived Git commit.</p>
+    </section>
+
+    <section id="view-accuracy" class="view" aria-labelledby="accuracy-title" hidden>
+      <h2 id="accuracy-title">Accuracy dashboard</h2>
+      <p class="lede" id="accuracy-lede"></p>
+      <div class="finding" id="finding" role="note"></div>
+      <div class="chart-grid">
+        <div class="card chart-card">
+          <h3>Mean absolute error</h3>
+          <p class="sub">Percentage points of CAR, lower is better. Whiskers: event-cluster bootstrap 95% CI.</p>
+          <div id="chart-mae"></div>
+        </div>
+        <div class="card chart-card">
+          <h3>Directional hit rate</h3>
+          <p class="sub">Share of predictions with the right sign. The zero baseline never predicts a sign, so it scores 0%.</p>
+          <div id="chart-hit"></div>
+        </div>
+        <div class="card chart-card wide">
+          <h3>Predicted vs. realized abnormal return</h3>
+          <p class="sub">Each point is one event &times; ticker. The diagonal is a perfect forecast.</p>
+          <div class="btn-row" role="group" aria-label="Horizon" id="horizon-btns"></div>
+          <div id="chart-scatter"></div>
+        </div>
+      </div>
+      <h3 style="margin-top:1.5rem">All metrics</h3>
+      <div class="table-wrap"><table id="metrics-table"></table></div>
+      <h3 style="margin-top:1.5rem">Prospective ledger scores</h3>
+      <p id="prospective"></p>
+      <div class="chart-tip" id="chart-tip" role="tooltip"></div>
+    </section>
+
+    <section id="view-about" class="view" aria-labelledby="about-title" hidden>
+      <h2 id="about-title">Methodology &amp; credits</h2>
+      <div class="notice"><strong>Not financial advice.</strong> These are uncalibrated research scenarios built for a school stock club project, not investment recommendations.</div>
+      <div class="prose" id="about"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Built by Xingjian Zhang. Code MIT; data retains its sources' terms. <strong>Not financial advice.</strong></p>
+  </footer>
+
+  <script src="vendor/d3.min.js"></script>
+  <script type="module" src="assets/app.js"></script>
+</body>
+</html>
