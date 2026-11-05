@@ -96,16 +96,19 @@
       <h2 id="accuracy-title">Accuracy dashboard</h2>
       <p class="lede" id="accuracy-lede"></p>
       <div class="finding" id="finding" role="note"></div>
+      <h3>Results by horizon and relation</h3>
+      <p class="sub small muted">Direct = the disrupted company itself. Downstream = its customers (lost supply). Upstream = its suppliers (lost demand). CIs: 10,000 event-cluster bootstrap resamples, fixed seed. p: exact two-sided binomial test of hit rate vs 50%, which assumes independent predictions.</p>
+      <div class="table-wrap"><table class="stats-table" id="stats-table"></table></div>
       <div class="chart-grid">
         <div class="card chart-card">
-          <h3>Mean absolute error</h3>
-          <p class="sub">Percentage points of CAR, lower is better. Whiskers: event-cluster bootstrap 95% CI.</p>
-          <div id="chart-mae"></div>
+          <h3>Direction hit rate</h3>
+          <p class="sub">Share of predictions whose sign matched the realized abnormal return. Dashed line: a coin flip.</p>
+          <div id="chart-hit"></div>
         </div>
         <div class="card chart-card">
-          <h3>Directional hit rate</h3>
-          <p class="sub">Share of predictions with the right sign. The zero baseline never predicts a sign, so it scores 0%.</p>
-          <div id="chart-hit"></div>
+          <h3>Error vs. predicting zero</h3>
+          <p class="sub">Model MAE minus zero-forecast MAE, in percentage points of CAR. Left of the line, the model beat zero.</p>
+          <div id="chart-mae"></div>
         </div>
         <div class="card chart-card wide">
           <h3>Predicted vs. realized abnormal return</h3>
@@ -114,9 +117,11 @@
           <div id="chart-scatter"></div>
         </div>
       </div>
-      <h3 style="margin-top:1.5rem">All metrics</h3>
-      <div class="table-wrap"><table id="metrics-table"></table></div>
-      <h3 style="margin-top:1.5rem">Prospective ledger scores</h3>
+      <details class="more">
+        <summary>Correlation and sector-control metrics</summary>
+        <div class="table-wrap"><table id="metrics-table"></table></div>
+      </details>
+      <h3 class="section-gap">Prospective ledger scores</h3>
       <p id="prospective"></p>
       <div class="chart-tip" id="chart-tip" role="tooltip"></div>
     </section>

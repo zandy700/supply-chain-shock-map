@@ -221,6 +221,11 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
   border: 1px solid var(--neg); background: var(--neg-soft); border-radius: var(--radius);
   padding: .8rem 1rem; margin-bottom: 1rem;
 }
+.section-gap { margin-top: 2rem; }
+#view-accuracy > h3 { margin-top: 1.5rem; }
+.stats-table + * , #view-accuracy .chart-grid { margin-top: 1rem; }
+details.more { margin-top: 1.25rem; }
+details.more .table-wrap { margin-top: .6rem; }
 .chart-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
 .chart-card h3 { margin-bottom: .2rem; }
 .chart-card .sub { font-size: .85rem; color: var(--muted); margin-bottom: .5rem; }
@@ -229,6 +234,18 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .axis text { font: 11px var(--sans); fill: var(--muted); }
 .axis path, .axis line { stroke: var(--rule-strong); }
 .gridline line { stroke: var(--rule); stroke-dasharray: 2 3; }
+.axis-label, .ref-label { font: 12px var(--sans); fill: var(--muted); }
+.ref-label { font-weight: 600; fill: var(--ink); }
+.ref-line { stroke: var(--ink); stroke-dasharray: 4 3; stroke-width: 1.2; }
+.row-head { font: 600 13px var(--sans); fill: var(--ink); }
+.row-label { font: 12px var(--sans); fill: var(--ink); }
+.row-empty { font: italic 12px var(--sans); fill: var(--muted); }
+.row-sep { stroke: var(--rule); }
+.ci { stroke: var(--model); stroke-width: 2; }
+.est { fill: var(--panel); stroke: var(--model); stroke-width: 2; }
+.est.overall { fill: var(--model); }
+.stats-table td, .stats-table th { white-space: nowrap; }
+.stats-table tbody tr.first td { border-top: 2px solid var(--rule-strong); }
 .chart-legend { display: flex; flex-wrap: wrap; gap: .3rem .9rem; font-size: .82rem; color: var(--muted); margin-top: .4rem; }
 .chart-legend i { display: inline-block; width: 12px; height: 12px; border-radius: 2px; margin-right: .3rem; vertical-align: -1px; }
 details summary { cursor: pointer; font-weight: 600; margin-top: .6rem; }

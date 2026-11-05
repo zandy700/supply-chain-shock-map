@@ -1,7 +1,7 @@
 // Supply Chain Shock Map: static front end. Reads only ./data/*.json. Original work, MIT.
 import { createGraph } from "./graph.js";
 import { verifyChain } from "./ledger.js";
-import { SERIES, groupedBars, maeFormat, metricOf, rateFormat, scatter } from "./charts.js";
+import { GROUPS, SERIES, forest, metricOf, scatter } from "./charts.js";
 import { esc, fmtCI, fmtNum, fmtPct, fmtRate, loadJSON, safeUrl, shortHash } from "./util.js";
 
 const $ = (id) => document.getElementById(id);
@@ -235,13 +235,34 @@ function renderAccuracy() {
     `Market-model CAR vs ${results.methodology.market}, estimation window ${results.methodology.estimation_window.join("..")} trading days. ` +
     `This is a small, selected sample: treat every number as descriptive, not as evidence of skill.`;
 
-  const worse = hs.filter((h) => results.horizons[h].mae > results.horizons[h].baselines.zero.mae);
-  const better = hs.filter((h) => !worse.includes(h));
-  const maePair = (h) => `${fmtNum(results.horizons[h].mae)} vs ${fmtNum(results.horizons[h].baselines.zero.mae)}`;
-  $("finding").innerHTML = `<strong>Honest read:</strong> ` +
-    (worse.length ? `at ${worse.map((h) => `+${h}`).join(" and ")} day${worse.length > 1 ? "s" : ""} the model's MAE is <strong>worse than predicting zero</strong> (${worse.map(maePair).join("; ")}). ` : "") +
-    (better.length ? `At ${better.map((h) => `+${h}`).join(", ")} it is lower (${better.map(maePair).join("; ")}) but the bootstrap intervals overlap heavily. ` : "") +
-    `Only ${propagated} observation${propagated === 1 ? "" : "s"} per horizon come${propagated === 1 ? "s" : ""} from supply-chain propagation, which cannot validate the propagation idea.`;
+  const ev = results.evaluation || {};
+  const pp = (v) => `${v > 0 ? "+" : ""}${fmtNum(v, 2)} pp`;
+  const pval = (p) => (p == null ? "n/a" : p < 0.001 ? "<0.001" : fmtNum(p, 3));
+  const verdict = (m) => {
+    if (!m?.n) return "no observations";
+    const [lo, hi] = m.mae_diff_ci95;
+    const err = hi < 0 ? "beat zero on error" : lo > 0 ? "was <strong>worse than predicting zero</strong>" : "was indistinguishable from zero on error";
+    return `hit ${fmtRate(m.hit_rate)} of ${m.n} (p = ${pval(m.binomial_p_two_sided)}) and ${err} (${pp(m.mae_diff)}, CI ${pp(lo)} to ${pp(hi)})`;
+  };
+  const prop = hs.map((h) => ev[h]?.propagated?.n ?? 0);
+  $("finding").innerHTML = `<strong>Honest read.</strong> ` +
+    hs.map((h) => `At +${h} day${h === "1" ? "" : "s"} the model ${verdict(ev[h]?.overall)}.`).join(" ") +
+    ` Propagated (supplier/customer) predictions: ${prop.join(" / ")} per horizon. ` +
+    "Small, hand-selected sample with correlated predictions within an event; treat as descriptive, not proof of skill.";
+
+  const statRows = hs.flatMap((h) => GROUPS.map((g, i) => {
+    const m = ev[h]?.[g.key] || { n: 0 };
+    const cells = m.n
+      ? `<td class="num">${m.n}</td><td class="num">${m.events}</td><td class="num">${fmtRate(m.hit_rate)}</td><td class="num">${fmtCI(m.hit_rate_ci95, fmtRate)}</td>` +
+        `<td class="num">${pval(m.binomial_p_two_sided)}</td><td class="num">${fmtNum(m.mae_model, 2)}</td><td class="num">${fmtNum(m.mae_zero, 2)}</td>` +
+        `<td class="num">${pp(m.mae_diff)}</td><td class="num">${fmtCI(m.mae_diff_ci95, (v) => fmtNum(v, 2))}</td>`
+      : `<td class="num">0</td><td colspan="8" class="muted">no observations</td>`;
+    return `<tr${i === 0 ? ' class="first"' : ""}><td>${i === 0 ? `<strong>+${h}d</strong>` : ""}</td><td>${esc(g.label)}</td>${cells}</tr>`;
+  })).join("");
+  $("stats-table").innerHTML = `<caption class="sr-only">Hit rate, binomial test and MAE versus zero by horizon and relation group</caption>` +
+    `<thead><tr><th>Horizon</th><th>Group</th><th class="num">n</th><th class="num">Events</th><th class="num">Hit rate</th><th class="num">95% CI</th>` +
+    `<th class="num">p vs 50%</th><th class="num">MAE model (pp)</th><th class="num">MAE zero (pp)</th><th class="num">Model − zero</th><th class="num">95% CI</th></tr></thead>` +
+    `<tbody>${statRows}</tbody>`;
 
   drawAccuracyCharts();
   const btns = $("horizon-btns");
@@ -276,9 +297,19 @@ function renderAccuracy() {
 }
 
 function drawAccuracyCharts() {
-  const { results } = state.data;
-  groupedBars($("chart-mae"), results, { metric: "mae", series: SERIES, format: maeFormat, yLabel: "MAE (pp)" });
-  groupedBars($("chart-hit"), results, { metric: "directional_hit_rate", series: SERIES, format: rateFormat, yLabel: "Hit rate", domainMax: 1 });
+  const ev = state.data.results.evaluation || {};
+  const span = (rows, f) => d3.extent(rows.flatMap((r) => (r.m?.n ? f(r.m) : [])));
+  forest($("chart-hit"), ev, {
+    value: (m) => m.hit_rate, ci: (m) => m.hit_rate_ci95, domain: () => [0, 1], ref: 0.5, refLabel: "50%",
+    xLabel: "Hit rate (% of predictions with correct sign)", xShort: "Hit rate (% correct sign)", fmt: fmtRate, axisFmt: (v) => `${Math.round(v * 100)}%`,
+    betterSide: "right",
+  });
+  forest($("chart-mae"), ev, {
+    value: (m) => m.mae_diff, ci: (m) => m.mae_diff_ci95,
+    domain: (rows) => { const [lo, hi] = span(rows, (m) => m.mae_diff_ci95); const a = Math.max(Math.abs(lo ?? 1), Math.abs(hi ?? 1)); return [-a, a]; },
+    ref: 0, refLabel: "0", xLabel: "MAE difference, model − zero (percentage points)", xShort: "Model − zero MAE (pp)",
+    fmt: (v) => `${v > 0 ? "+" : ""}${fmtNum(v, 2)} pp`, axisFmt: (v) => `${v}`, betterSide: "left",
+  });
   if (state.horizon) showScatter(state.horizon);
 }
 
