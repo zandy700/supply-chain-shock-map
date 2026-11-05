@@ -277,7 +277,8 @@ details summary { cursor: pointer; font-weight: 600; margin-top: .6rem; }
   main { padding: 1rem .85rem; }
   .masthead { padding: .9rem .85rem .3rem; }
   .masthead h1 { font-size: 1.5rem; }
-  .tabs { padding: 0 .5rem; }
+  .tabs { padding: 0 .5rem; mask-image: linear-gradient(to right, #000 82%, transparent); }
+  .tabs a { padding: .6rem .65rem; }
   h2 { font-size: 1.45rem; }
   #graph-svg { height: 520px; }
   .ledger-table { display: none; }
