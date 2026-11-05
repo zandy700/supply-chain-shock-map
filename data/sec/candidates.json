@@ -1,0 +1,142 @@
+[
+  {
+    "source": "APH",
+    "target": "AAPL",
+    "evidence": "During the year ended December 31, 2020, aggregate sales to Apple Inc., including sales of products to EMS companies that the Company believes are manufacturing products on Apple\u2019s behalf, accounted for approximately 11% of our net sales.",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/820313/000155837021000881/aph-20201231x10k.htm",
+    "filed_date": "2021-02-10",
+    "accession_number": "0001558370-21-000881",
+    "evidence_sha256": "84633c4b84a068e926c5fbc33e3d0802633f9f763898ceeb754c46e362ca27e2",
+    "extraction_confidence": 0.8
+  },
+  {
+    "source": "AVGO",
+    "target": "AAPL",
+    "evidence": "We believe aggregate sales to Apple Inc., through all channels, accounted for approximately 20% and 15% of our net revenue for fiscal years 2021 and 2020, respectively.",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/1730168/000173016821000153/avgo-20211031.htm",
+    "filed_date": "2021-12-17",
+    "accession_number": "0001730168-21-000153",
+    "evidence_sha256": "803686fb1915e28e4a83272cce6408898521594cd24e9b59bb79c921f6c2d371",
+    "extraction_confidence": 0.8
+  },
+  {
+    "source": "QCOM",
+    "target": "AAPL",
+    "evidence": "In fiscal 2021, revenues from Apple, Samsung and Xiaomi each comprised 10% or more of our consolidated revenues.",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/804328/000172894921000076/qcom-20210926.htm",
+    "filed_date": "2021-11-03",
+    "accession_number": "0001728949-21-000076",
+    "evidence_sha256": "bac80d28bbdb27d215a8eb88c6b38b7912627374643ac404f940d728603bb3c1",
+    "extraction_confidence": 0.8
+  },
+  {
+    "source": "SWKS",
+    "target": "AAPL",
+    "evidence": "Our key customers include Amazon, Apple Inc.",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/4127/000000412721000058/swks-20211001.htm",
+    "filed_date": "2021-11-24",
+    "accession_number": "0000004127-21-000058",
+    "evidence_sha256": "64e1e918e44454e3fbb6efe6d2de331c8fb6e05f847800438f04fde74a961ec0",
+    "extraction_confidence": 0.8
+  },
+  {
+    "source": "SWKS",
+    "target": "AMZN",
+    "evidence": "Our key customers include Amazon, Apple Inc.",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/4127/000000412721000058/swks-20211001.htm",
+    "filed_date": "2021-11-24",
+    "accession_number": "0000004127-21-000058",
+    "evidence_sha256": "64e1e918e44454e3fbb6efe6d2de331c8fb6e05f847800438f04fde74a961ec0",
+    "extraction_confidence": 0.8
+  },
+  {
+    "source": "GE",
+    "target": "BA",
+    "evidence": "Federal Aviation Administration (FAA) lifted the grounding notice for the 737 MAX and Boeing commenced aircraft deliveries to customers in compliance with FAA regulatory requirements in December 2020.",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/40545/000004054521000011/ge-20201231.htm",
+    "filed_date": "2021-02-12",
+    "accession_number": "0000040545-21-000011",
+    "evidence_sha256": "5dc6e32bb6b1d12acf9d62ad83ee5ac7b8b5976836c5b7abf9e32194c40a5005",
+    "extraction_confidence": 0.8
+  },
+  {
+    "source": "HWM",
+    "target": "BA",
+    "evidence": "Sales by End Market and Significant Customer Revenue Sales by end markets for the years ended December 31, 2020, 2019, and 2018, were: For the Year Ended December\u00a031, \u00a0 2020 2019 2018 Aerospace - Commercial 50\u00a0 % 59\u00a0 % 59\u00a0 % Aerospace - Defense 19\u00a0 % 13\u00a0 % 11\u00a0 % Commercial Transportation 16\u00a0 % 17\u00a0 % 18\u00a0 % Industrial and Other 15\u00a0 % 11\u00a0 % 12\u00a0 % In 2020, General Electric Company, Raytheon Technologies Corporation and The Boeing Company represented approximately  11% , 9 %  and 8%, respectively, of the Company\u2019s third-party sales.",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/4281/000000428121000049/arnc-20201231.htm",
+    "filed_date": "2021-02-16",
+    "accession_number": "0000004281-21-000049",
+    "evidence_sha256": "4ef34a7111365c52d24e672a93eab60224c99d14ca33a911d0027eb20be711a8",
+    "extraction_confidence": 0.8
+  },
+  {
+    "source": "RTX",
+    "target": "BA",
+    "evidence": "Collins Aerospace\u2019s largest customers are Boeing and Airbus with combined sales, prior to discounts and incentives, of 21%, 27% and 31% of total Collins Aerospace segment sales in 2020, 2019 and 2018, respectively.",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/101829/000010182921000008/rtx-20201231.htm",
+    "filed_date": "2021-02-08",
+    "accession_number": "0000101829-21-000008",
+    "evidence_sha256": "1ddce229dc22cc123c7907ab703de250b6b2b9b7e44cd4d560943df389205e8c",
+    "extraction_confidence": 0.8
+  },
+  {
+    "source": "TDG",
+    "target": "BA",
+    "evidence": "Our commercial transport OEM shipments and revenues generally run ahead of Boeing and Airbus airframe delivery schedules.",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/1260221/000126022121000134/tdg-20210930.htm",
+    "filed_date": "2021-11-16",
+    "accession_number": "0001260221-21-000134",
+    "evidence_sha256": "636a1ab7a8333ddf02adbbd7f113ee64a302d65e61d41c3fc98137e23e9cb44f",
+    "extraction_confidence": 0.8
+  },
+  {
+    "source": "TXT",
+    "target": "BA",
+    "evidence": "We account for this alliance as a collaborative arrangement with Bell and Boeing reporting costs incurred and revenues generated from transactions with the U.S.",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/217346/000021734621000019/txt-20210102.htm",
+    "filed_date": "2021-02-19",
+    "accession_number": "0000217346-21-000019",
+    "evidence_sha256": "239f9eb5f6c6f40152647577618a8a4de2832d6672c6338db8a74edff5e343fa",
+    "extraction_confidence": 0.8
+  },
+  {
+    "source": "HWM",
+    "target": "GE",
+    "evidence": "Sales by End Market and Significant Customer Revenue Sales by end markets for the years ended December 31, 2020, 2019, and 2018, were: For the Year Ended December\u00a031, \u00a0 2020 2019 2018 Aerospace - Commercial 50\u00a0 % 59\u00a0 % 59\u00a0 % Aerospace - Defense 19\u00a0 % 13\u00a0 % 11\u00a0 % Commercial Transportation 16\u00a0 % 17\u00a0 % 18\u00a0 % Industrial and Other 15\u00a0 % 11\u00a0 % 12\u00a0 % In 2020, General Electric Company, Raytheon Technologies Corporation and The Boeing Company represented approximately  11% , 9 %  and 8%, respectively, of the Company\u2019s third-party sales.",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/4281/000000428121000049/arnc-20201231.htm",
+    "filed_date": "2021-02-16",
+    "accession_number": "0000004281-21-000049",
+    "evidence_sha256": "4ef34a7111365c52d24e672a93eab60224c99d14ca33a911d0027eb20be711a8",
+    "extraction_confidence": 0.8
+  },
+  {
+    "source": "AMD",
+    "target": "MSFT",
+    "evidence": "The success of our semi-custom SoC products is dependent on securing customers for our semi-custom design pipeline and consumer market conditions, including the success of the Sony PlayStation\u00ae4, Sony PlayStation\u00ae4 Pro, Microsoft\u00ae Xbox One\u2122 S and Microsoft\u00ae Xbox One\u2122 X game console systems and next generation consoles for Sony and Microsoft, worldwide.",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/2488/000162828021001185/amd-20201226.htm",
+    "filed_date": "2021-01-29",
+    "accession_number": "0001628280-21-001185",
+    "evidence_sha256": "89854dde3a21b2f5ea9934da73dd55061da60d9ed7713e369c0ddcf964cd362e",
+    "extraction_confidence": 0.8
+  },
+  {
+    "source": "AVGO",
+    "target": "MSFT",
+    "evidence": "Our primary competitors are Atlassian Corporation, Plc, BMC Software Inc., BeyondTrust Corporation, Cisco Systems, Inc., CrowdStrike Holdings, Inc., CyberArk Software, Ltd., International Business Machines Corporation, Micro Focus International Plc, Microsoft Corporation, New Relic, Inc., Oracle Corporation, Proofpoint, Inc., Rocket Software, Inc., SailPoint, Inc., Salesforce.com, Inc., ServiceNow, Inc., SolarWinds, Inc., Splunk, Inc.",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/1730168/000173016821000153/avgo-20211031.htm",
+    "filed_date": "2021-12-17",
+    "accession_number": "0001730168-21-000153",
+    "evidence_sha256": "82283ca6ec5ed6d1c00474302ba5394900f04d21ffdaad6482fd34315cbf647c",
+    "extraction_confidence": 0.8
+  },
+  {
+    "source": "HWM",
+    "target": "RTX",
+    "evidence": "Sales by End Market and Significant Customer Revenue Sales by end markets for the years ended December 31, 2020, 2019, and 2018, were: For the Year Ended December\u00a031, \u00a0 2020 2019 2018 Aerospace - Commercial 50\u00a0 % 59\u00a0 % 59\u00a0 % Aerospace - Defense 19\u00a0 % 13\u00a0 % 11\u00a0 % Commercial Transportation 16\u00a0 % 17\u00a0 % 18\u00a0 % Industrial and Other 15\u00a0 % 11\u00a0 % 12\u00a0 % In 2020, General Electric Company, Raytheon Technologies Corporation and The Boeing Company represented approximately  11% , 9 %  and 8%, respectively, of the Company\u2019s third-party sales.",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/4281/000000428121000049/arnc-20201231.htm",
+    "filed_date": "2021-02-16",
+    "accession_number": "0000004281-21-000049",
+    "evidence_sha256": "4ef34a7111365c52d24e672a93eab60224c99d14ca33a911d0027eb20be711a8",
+    "extraction_confidence": 0.8
+  }
+]

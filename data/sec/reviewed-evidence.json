@@ -1,0 +1,18 @@
+{
+  "method": "Manual review of verbatim SEC evidence; removals only. SHA-256 keys bind decisions to upstream text.",
+  "accepted": {
+    "84633c4b84a068e926c5fbc33e3d0802633f9f763898ceeb754c46e362ca27e2": "Explicit customer/revenue disclosure or named semi-custom console customer in upstream evidence; retained without editing.",
+    "803686fb1915e28e4a83272cce6408898521594cd24e9b59bb79c921f6c2d371": "Explicit customer/revenue disclosure or named semi-custom console customer in upstream evidence; retained without editing.",
+    "bac80d28bbdb27d215a8eb88c6b38b7912627374643ac404f940d728603bb3c1": "Explicit customer/revenue disclosure or named semi-custom console customer in upstream evidence; retained without editing.",
+    "64e1e918e44454e3fbb6efe6d2de331c8fb6e05f847800438f04fde74a961ec0": "Explicit customer/revenue disclosure or named semi-custom console customer in upstream evidence; retained without editing.",
+    "4ef34a7111365c52d24e672a93eab60224c99d14ca33a911d0027eb20be711a8": "Explicit customer/revenue disclosure or named semi-custom console customer in upstream evidence; retained without editing.",
+    "1ddce229dc22cc123c7907ab703de250b6b2b9b7e44cd4d560943df389205e8c": "Explicit customer/revenue disclosure or named semi-custom console customer in upstream evidence; retained without editing.",
+    "89854dde3a21b2f5ea9934da73dd55061da60d9ed7713e369c0ddcf964cd362e": "Explicit customer/revenue disclosure or named semi-custom console customer in upstream evidence; retained without editing."
+  },
+  "rejected": {
+    "5dc6e32bb6b1d12acf9d62ad83ee5ac7b8b5976836c5b7abf9e32194c40a5005": "Grounding/delivery discussion does not establish a supplier relationship.",
+    "636a1ab7a8333ddf02adbbd7f113ee64a302d65e61d41c3fc98137e23e9cb44f": "OEM shipment timing suggests exposure, but the extracted sentence does not explicitly establish direct sales to Boeing.",
+    "239f9eb5f6c6f40152647577618a8a4de2832d6672c6338db8a74edff5e343fa": "Collaborative arrangement is not a directed supplier/customer disclosure.",
+    "82283ca6ec5ed6d1c00474302ba5394900f04d21ffdaad6482fd34315cbf647c": "Sentence explicitly lists competitors, not customers."
+  }
+}
