@@ -71,3 +71,60 @@ def test_shipped_real_prices_produce_full_estimation_window():
     assert result["window_start"] == "2024-09-16"
     assert result["window_end"] == "2024-09-20"
     assert np.isfinite(result["car_pct"])
+
+
+def _rows(spec):
+    return [
+        {"event_id": e, "predicted": p, "actual": a, "relation": rel, "hops": int(rel != "origin")}
+        for e, p, a, rel in spec
+    ]
+
+
+def test_evaluate_hit_rate_mae_difference_and_binomial_p():
+    from scsm.backtest import evaluate
+
+    # 9 of 10 signs right; every model error is 1 pp smaller than |actual|.
+    spec = [(f"e{i}", -1.0, -2.0, "origin") for i in range(9)] + [("e9", -1.0, 1.0, "origin")]
+    result = evaluate(_rows(spec), n_boot=2000)
+    assert result["n"] == 10 and result["events"] == 10 and result["hits"] == 9
+    assert result["hit_rate"] == pytest.approx(0.9)
+    assert result["binomial_p_two_sided"] == pytest.approx(22 / 1024)
+    assert result["mae_model"] == pytest.approx(1.1)
+    assert result["mae_zero"] == pytest.approx(1.9)
+    assert result["mae_diff"] == pytest.approx(-0.8)
+    low, high = result["hit_rate_ci95"]
+    assert low <= 0.9 <= high <= 1.0
+    low, high = result["mae_diff_ci95"]
+    assert low <= -0.8 <= high
+
+
+def test_evaluate_is_deterministic_and_clusters_by_event():
+    from scsm.backtest import evaluate
+
+    # One event with many identical predictions is a single resampling unit.
+    rows = _rows([("a", -1.0, -3.0, "origin")] * 5 + [("b", -1.0, 2.0, "origin")])
+    first, second = evaluate(rows, n_boot=500), evaluate(rows, n_boot=500)
+    assert first == second
+    assert first["events"] == 2
+    # Bootstrap samples are {a,a}, {a,b}, {b,b}: rates 1, 5/6 and 0.
+    assert first["hit_rate_ci95"] == [0.0, 1.0]
+
+
+def test_evaluate_by_group_splits_direct_downstream_upstream():
+    from scsm.backtest import evaluate_by_group
+
+    rows = _rows(
+        [
+            ("a", -3.0, -1.0, "origin"),
+            ("a", -0.75, 0.5, "downstream"),
+            ("b", -3.0, -2.0, "origin"),
+            ("b", -0.75, -0.2, "upstream"),
+        ]
+    )
+    groups = evaluate_by_group(rows, n_boot=100)
+    assert groups["overall"]["n"] == 4
+    assert groups["direct"]["n"] == 2 and groups["direct"]["hit_rate"] == 1.0
+    assert groups["downstream"]["n"] == 1 and groups["downstream"]["hits"] == 0
+    assert groups["upstream"]["n"] == 1 and groups["upstream"]["hits"] == 1
+    assert groups["propagated"]["n"] == 2
+    assert evaluate_by_group([], n_boot=10)["upstream"]["hit_rate"] is None

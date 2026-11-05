@@ -13,7 +13,7 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from scipy.stats import spearmanr
+from scipy.stats import binomtest, spearmanr
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
@@ -208,6 +208,82 @@ def summarize(rows, bootstrap_n=1000):
     return result
 
 
+GROUPS = {
+    "overall": ("origin", "downstream", "upstream"),
+    "direct": ("origin",),
+    "propagated": ("downstream", "upstream"),
+    "downstream": ("downstream",),
+    "upstream": ("upstream",),
+}
+BOOTSTRAP_N = 10_000
+BOOTSTRAP_SEED = 2026
+
+
+def relation_of(row):
+    """Older samples without a relation are direct (0 hops) or downstream."""
+    return row.get("relation") or ("origin" if row.get("hops", 0) == 0 else "downstream")
+
+
+def evaluate(rows, n_boot=BOOTSTRAP_N, seed=BOOTSTRAP_SEED):
+    """Hit rate and MAE versus a predict-zero baseline, with event-cluster bootstrap CIs.
+
+    Units: predicted and actual are percentage points of CAR. mae_diff is
+    model MAE minus zero-forecast MAE, so negative means the model beat zero.
+    The binomial p-value treats predictions as independent, which overstates
+    evidence when one event produces several correlated predictions.
+    """
+    empty = {
+        "n": 0,
+        "events": 0,
+        "hits": 0,
+        "hit_rate": None,
+        "hit_rate_ci95": None,
+        "binomial_p_two_sided": None,
+        "mae_model": None,
+        "mae_zero": None,
+        "mae_diff": None,
+        "mae_diff_ci95": None,
+    }
+    if not rows:
+        return empty
+    predicted = np.array([r["predicted"] for r in rows], float)
+    actual = np.array([r["actual"] for r in rows], float)
+    hit = (np.sign(predicted) == np.sign(actual)) & (predicted != 0)
+    err_model = np.abs(predicted - actual)
+    err_zero = np.abs(actual)
+    events = sorted({r["event_id"] for r in rows})
+    index = {e: i for i, e in enumerate(events)}
+    cluster = np.array([index[r["event_id"]] for r in rows])
+    # Per-event sums make each resample a cheap indexed sum.
+    per_n = np.bincount(cluster, minlength=len(events)).astype(float)
+    per_hits = np.bincount(cluster, weights=hit.astype(float), minlength=len(events))
+    per_diff = np.bincount(cluster, weights=err_model - err_zero, minlength=len(events))
+    draws = np.random.default_rng(seed).integers(0, len(events), (n_boot, len(events)))
+    boot_n = per_n[draws].sum(axis=1)
+    boot_rate = per_hits[draws].sum(axis=1) / boot_n
+    boot_diff = per_diff[draws].sum(axis=1) / boot_n
+    n, hits = len(rows), int(hit.sum())
+    return {
+        "n": n,
+        "events": len(events),
+        "hits": hits,
+        "hit_rate": hits / n,
+        "hit_rate_ci95": [float(x) for x in np.quantile(boot_rate, [0.025, 0.975])],
+        "binomial_p_two_sided": float(binomtest(hits, n, 0.5).pvalue),
+        "mae_model": float(err_model.mean()),
+        "mae_zero": float(err_zero.mean()),
+        "mae_diff": float(err_model.mean() - err_zero.mean()),
+        "mae_diff_ci95": [float(x) for x in np.quantile(boot_diff, [0.025, 0.975])],
+    }
+
+
+def evaluate_by_group(rows, **kwargs):
+    return {
+        name: evaluate([r for r in rows if relation_of(r) in relations], **kwargs)
+        for name, relations in GROUPS.items()
+    }
+
+
 def run_backtest(offline=True):
     from scsm.news import load_companies, load_events
     from scsm.propagate import propagate
@@ -254,6 +330,7 @@ def run_backtest(offline=True):
                             "horizon": horizon,
                             "path": prediction["path"],
                             "hops": prediction.get("hops", len(prediction["path"]) - 1),
+                            "relation": prediction.get("relation", "origin"),
                             "sector_baseline": float(np.mean(peers)) if peers else None,
                             "sector_peer_n": len(peers),
                             **study,
@@ -268,7 +345,7 @@ def run_backtest(offline=True):
                             "reason": str(exc),
                         }
                     )
-    horizons = {}
+    horizons, evaluation = {}, {}
     for horizon in (1, 5, 20):
         rows = [row for row in samples if row["horizon"] == horizon]
         metrics = summarize(rows)
@@ -282,9 +359,11 @@ def run_backtest(offline=True):
         metrics["propagated_n"] = sum(row["hops"] > 0 for row in rows)
         metrics["direct_n"] = sum(row["hops"] == 0 for row in rows)
         horizons[str(horizon)] = metrics
+        evaluation[str(horizon)] = evaluate_by_group(rows)
     result = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "horizons": horizons,
+        "evaluation": evaluation,
         "samples": samples,
         "exclusions": exclusions,
         "historical_events_n": len(events),
@@ -302,6 +381,12 @@ def run_backtest(offline=True):
                 "peers, excluding target. Control comparison, not a forecast."
             ),
             "sector_peer_panel": PEERS,
+            "evaluation": (
+                f"Per horizon and relation group: direction hit rate, MAE vs predict-zero MAE. "
+                f"95% CIs from {BOOTSTRAP_N} event-cluster percentile bootstrap resamples "
+                f"(seed {BOOTSTRAP_SEED}); two-sided exact binomial test of hit rate vs 50%, "
+                "which assumes independent predictions."
+            ),
         },
         "limitations": [
             "Small, hand-selected historical demonstration; selection and survivorship bias.",
