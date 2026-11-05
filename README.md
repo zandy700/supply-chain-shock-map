@@ -1,5 +1,7 @@
 # Supply Chain Shock Map
 
+**Live demo:** <https://supply-chain-shock-map.xingjianzhang700.workers.dev>
+
 A research observatory connecting documented supply relationships, disruption news, and measured abnormal stock returns. Built by **Xingjian Zhang**, VP of his school's stock club.
 
 A factory disruption can matter beyond the company in the headline. This project makes the proposed route visible, keeps its evidence attached, and checks the idea against actual market returns. Its predictions are **uncalibrated research scenarios**, not investment recommendations.
@@ -112,7 +114,7 @@ git diff --exit-code -- web/data
 
 ## Static Cloudflare Worker assets
 
-`wrangler.jsonc` configures the `web/` asset directory and `worker/index.js` serves the asset binding. No server-side API or scheduled handler is needed; cron belongs to GitHub Actions. The checked-in configuration is ready for the owner's deployment workflow. No deployment is performed by this project build.
+`wrangler.jsonc` configures the `web/` asset directory and `worker/index.js` serves the asset binding. No server-side API or scheduled handler is needed; cron belongs to GitHub Actions. The live demo is deployed from this configuration to supply-chain-shock-map.xingjianzhang700.workers.dev.
 
 ## Credits and licenses
 
