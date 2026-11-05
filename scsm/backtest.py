@@ -68,7 +68,7 @@ def load_prices(ticker, offline=True):
     return prices.loc[~prices.index.duplicated()]
 
 
-def fetch_prices(ticker, start="2021-01-01", end=None):
+def fetch_prices(ticker, start="2020-01-01", end=None):
     import yfinance as yf
 
     end = end or (date.today() + timedelta(days=1)).isoformat()
@@ -115,10 +115,12 @@ def study_prices(stock, market, event_date, horizon):
     )
     returns = joined.pct_change(fill_method=None)
     target = pd.Timestamp(event_date)
-    positions = np.flatnonzero(joined.index >= target)
-    if not len(positions):
+    # Day 0 is the last session on/before the disclosure date (as in score_anchor), so a
+    # weekend or holiday disclosure is first priced at +1 rather than silently skipped.
+    positions = np.flatnonzero(joined.index <= target)
+    if not len(positions) or joined.index[-1] < target:
         raise ValueError("event date beyond price cache")
-    day0 = int(positions[0])
+    day0 = int(positions[-1])
     if day0 < 251:
         raise ValueError("insufficient estimation history: require full -250..-11 window")
     if day0 + horizon >= len(returns):
@@ -371,7 +373,10 @@ def run_backtest(offline=True):
             "market": "SPY",
             "estimation_window": [-250, -11],
             "estimation_n": 240,
-            "car_window": "+1 through +h trading days, event day excluded",
+            "car_window": (
+                "+1 through +h trading days after day 0, the last session on/before "
+                "the disclosure date; day 0 itself excluded"
+            ),
             "predictions": (
                 "Uncalibrated heuristic percentage-point magnitudes; "
                 "same magnitude at every horizon."

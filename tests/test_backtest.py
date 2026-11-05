@@ -128,3 +128,17 @@ def test_evaluate_by_group_splits_direct_downstream_upstream():
     assert groups["upstream"]["n"] == 1 and groups["upstream"]["hits"] == 1
     assert groups["propagated"]["n"] == 2
     assert evaluate_by_group([], n_boot=10)["upstream"]["hit_rate"] is None
+
+
+def test_weekend_event_anchors_to_prior_session_so_monday_is_first_return():
+    dates = pd.bdate_range("2020-01-01", periods=320)
+    market = np.sin(np.arange(320)) * 0.005
+    stock = 0.001 + 1.2 * market
+    friday = next(i for i in range(270, 290) if dates[i].weekday() == 4)
+    stock[friday + 1] += 0.03  # Monday reaction to a Sunday disclosure
+    spy = pd.Series(100 * np.cumprod(1 + market), index=dates)
+    equity = pd.Series(100 * np.cumprod(1 + stock), index=dates)
+    sunday = (dates[friday] + pd.Timedelta(days=2)).date().isoformat()
+    result = study_prices(equity, spy, sunday, 1)
+    assert result["window_start"] == dates[friday + 1].date().isoformat()
+    assert result["car_pct"] == pytest.approx(3.0, abs=1e-8)
