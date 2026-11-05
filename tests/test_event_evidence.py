@@ -12,6 +12,16 @@ def test_positive_cohort_has_fetched_evidence_and_mature_prices():
     events = json.loads((root / "data/events/historical.json").read_text())["events"]
     positives = [e for e in events if e["sign"] == 1]
     assert len(positives) >= 20
+    non_apple = [e for e in positives if "AAPL" not in e["tickers"]]
+    assert len({t for e in non_apple for t in e["tickers"]}) >= 5
+    required = {
+        "earnings_beat",
+        "guidance_raise",
+        "major_win",
+        "supplier_expansion",
+        "rate_cut_relief",
+    }
+    assert len({e["event_type"] for e in non_apple} & required) >= 3
     assert sum(e["sign"] == -1 for e in events) >= 20
     assert max(e["date"] for e in positives) >= "2026-11-01"
     for e in positives:

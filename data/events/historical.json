@@ -1581,6 +1581,121 @@
       "date_basis": "Reuters publication date; web fetch confirmed Oct 1, not the scheduled Friday review",
       "classification_method": "Manual negative certification-delay scenario; no grounding or safety finding asserted",
       "source_note": "Fetched via web open; curl blocked. Officials did not believe the issue posed a safety concern."
+    },
+    {
+      "id": "c77a4bb9a8a57d06c01c",
+      "date": "2025-10-06",
+      "title": "AMD and OpenAI announce definitive GPU deployment agreement",
+      "tickers": [
+        "AMD"
+      ],
+      "event_type": "major_win",
+      "sign": 1,
+      "severity": 0.6,
+      "url": "https://newsroom.amd.com/news/amd-and-openai-announce-strategic-partnership-to-d/",
+      "source_url": "https://newsroom.amd.com/news/amd-and-openai-announce-strategic-partnership-to-d/",
+      "source_quote": "Under this definitive agreement, OpenAI will work with AMD as a core strategic compute partner",
+      "source_date_quote": "October 6, 2025",
+      "source_sha256": "07fa4823a9326356020170a3e62bc42e377e0b66b658bf06ddfc97ae08b661e3",
+      "source_snapshot": "data/events/sources/07fa4823a93263560201.html.gz",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T07:39:28.221605+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Fetched primary-source disclosure date; day-level alignment",
+      "classification_method": "Manual catalyst sign; positive scenario, not an observed price label",
+      "evidence_notes": "Definitive multi-generation agreement; deployments begin later and the release also discloses an equity warrant. Favorable demand scenario, not guaranteed net shareholder benefit."
+    },
+    {
+      "id": "4bfceff1a7a3f32f1248",
+      "date": "2023-05-23",
+      "title": "Broadcom wins multiyear Apple component supply agreement",
+      "tickers": [
+        "AVGO"
+      ],
+      "event_type": "major_win",
+      "sign": 1,
+      "severity": 0.6,
+      "url": "https://www.apple.com/newsroom/2023/05/apple-announces-multibillion-dollar-deal-with-broadcom/",
+      "source_url": "https://www.apple.com/newsroom/2023/05/apple-announces-multibillion-dollar-deal-with-broadcom/",
+      "source_quote": "Today Apple announced a new multiyear, multibillion-dollar agreement with Broadcom",
+      "source_date_quote": "May 23, 2023",
+      "source_sha256": "e2658d298ec66a9b4e0a73c5069ab125bb26061458e92026718f9608ed24a527",
+      "source_snapshot": "data/events/sources/e2658d298ec66a9b4e0a.html.gz",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T07:39:08.970781+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Fetched primary-source disclosure date; day-level alignment",
+      "classification_method": "Manual catalyst sign; positive scenario, not an observed price label",
+      "evidence_notes": "Customer-authored primary disclosure of a contract awarded to Broadcom. Issuer is AVGO, not AAPL; customer news creates dependence on Apple, not an independent industry sample."
+    },
+    {
+      "id": "d6fadec1f284997b7b74",
+      "date": "2022-09-12",
+      "title": "Micron breaks ground on new Boise memory fab",
+      "tickers": [
+        "MU"
+      ],
+      "event_type": "supplier_expansion",
+      "sign": 1,
+      "severity": 0.5,
+      "url": "https://www.micron.com/about/press/media-relations/press-kits/groundbreaking-event",
+      "source_url": "https://www.micron.com/about/press/media-relations/press-kits/groundbreaking-event",
+      "source_quote": "On September 12, 2022 Micron broke ground on our leading-edge memory manufacturing fab at our headquarters in Boise, Idaho.",
+      "source_date_quote": "September 12, 2022",
+      "source_sha256": "45ebce48acedba2d8fa407078805eb7889fb8eb02376e544a29ff51ddf504fd8",
+      "source_snapshot": "data/events/sources/45ebce48acedba2d8fa4.html.gz",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T07:39:15.414387+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Fetched primary-source disclosure date; day-level alignment",
+      "classification_method": "Manual catalyst sign; positive scenario, not an observed price label",
+      "evidence_notes": "Groundbreaking milestone, not the earlier investment announcement or completed production. Capacity and revenue arrive later; capital costs can outweigh benefits."
+    },
+    {
+      "id": "8105fb928d4c74566433",
+      "date": "2024-04-17",
+      "title": "Abbott raises midpoint of full-year sales and EPS guidance",
+      "tickers": [
+        "ABT"
+      ],
+      "event_type": "guidance_raise",
+      "sign": 1,
+      "severity": 0.6,
+      "url": "https://abbott.mediaroom.com/2024-04-17-Abbott-Reports-First-Quarter-2024-Results-and-Raises-Midpoint-of-Full-Year-Guidance-Ranges",
+      "source_url": "https://abbott.mediaroom.com/2024-04-17-Abbott-Reports-First-Quarter-2024-Results-and-Raises-Midpoint-of-Full-Year-Guidance-Ranges",
+      "source_quote": "we are raising our full-year sales and EPS guidance",
+      "source_date_quote": "April 17, 2024",
+      "source_sha256": "6a19fcd9cf0aa0e2e9768c9e46c2a6d54586cb40e3b861143ec29f1fafaa2149",
+      "source_snapshot": "data/events/sources/6a19fcd9cf0aa0e2e976.html.gz",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T07:39:08.346819+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Fetched primary-source disclosure date; day-level alignment",
+      "classification_method": "Manual catalyst sign; positive scenario, not an observed price label",
+      "evidence_notes": "Guidance ranges were narrowed with higher midpoints; not every bound was raised. No analyst-consensus earnings beat claimed."
+    },
+    {
+      "id": "f6106d498f3cd3e731d2",
+      "date": "2024-03-18",
+      "title": "NVIDIA announces Blackwell computing platform",
+      "tickers": [
+        "NVDA"
+      ],
+      "event_type": "product_launch",
+      "sign": 1,
+      "severity": 0.5,
+      "url": "https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing",
+      "source_url": "https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing",
+      "source_quote": "NVIDIA today announced that the NVIDIA Blackwell platform has arrived",
+      "source_date_quote": "March 18, 2024",
+      "source_sha256": "e133b0dd42236cdd497e5f859527a19d67b66ad98595cb050300540c1e481fcf",
+      "source_snapshot": "data/events/sources/e133b0dd42236cdd497e.html.gz",
+      "source": "curated_primary_source",
+      "retrieved_at": "2026-11-05T07:39:08.654800+00:00",
+      "review_status": "documented_historical_example",
+      "date_basis": "Fetched primary-source disclosure date; day-level alignment",
+      "classification_method": "Manual catalyst sign; positive scenario, not an observed price label",
+      "evidence_notes": "Platform announcement, not immediate general availability or a demonstrated positive return."
     }
   ]
 }
