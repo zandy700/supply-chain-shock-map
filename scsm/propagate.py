@@ -1,8 +1,9 @@
 """Bounded shock scenarios over evidence-backed supplier -> customer edges.
 
-A supplier shock travels downstream (supplier -> customer: lost supply). A customer
-shock travels upstream (customer -> supplier: lost demand). A path never changes
-direction, so a shock cannot zig-zag into an unrelated sibling supplier.
+A signed supplier catalyst travels downstream (supplier -> customer: supply change).
+A customer catalyst travels upstream (customer -> supplier: demand change).
+Positive expansion/demand scenarios preserve sign; explicit competitors invert it.
+A path never changes direction, so a shock cannot zig-zag into an unrelated sibling supplier.
 
 5 percentage points at severity 1 is an explicit uncalibrated assumption.
 Weights reflect model assumptions unless a filing reports exposure; confidence

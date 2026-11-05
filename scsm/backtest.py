@@ -280,10 +280,13 @@ def evaluate(rows, n_boot=BOOTSTRAP_N, seed=BOOTSTRAP_SEED):
 
 
 def evaluate_by_group(rows, **kwargs):
-    return {
+    groups = {
         name: evaluate([r for r in rows if relation_of(r) in relations], **kwargs)
         for name, relations in GROUPS.items()
     }
+    for name, sign in (("positive", 1), ("negative", -1)):
+        groups[name] = evaluate([r for r in rows if np.sign(r["predicted"]) == sign], **kwargs)
+    return groups
 
 
 def run_backtest(offline=True):

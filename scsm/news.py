@@ -35,6 +35,17 @@ RULES = [
 ]
 
 
+# Checked after disruptions: mixed headlines conservatively retain the disruption.
+POSITIVE_RULES = [
+    ("earnings_beat", r"\bearnings (?:beat|beats)\b", 0.6),
+    ("product_launch", r"\b(?:launches? (?:a |the )?new product|product launch)\b", 0.5),
+    ("guidance_raise", r"\b(?:raises? guidance|guidance raise)\b", 0.6),
+    ("major_win", r"\b(?:wins? (?:a )?major contract|major contract win)\b", 0.6),
+    ("rate_cut_relief", r"\brate[- ]cut(?:s| relief)?\b", 0.4),
+    ("supplier_expansion", r"\b(?:supplier|capacity) expansion\b", 0.5),
+]
+
+
 def utc_now():
     return datetime.now(timezone.utc).isoformat()
 
@@ -72,6 +83,22 @@ def classify(text):
                 "sign": -1,
                 "severity": severity,
                 "classification_method": "headline keyword heuristic v1",
+            }
+    # Conservatively skip positive matches in negated/cancelled headlines.
+    # Clause-level meaning still requires review; this is not sentiment inference.
+    positive_negated = re.search(
+        r"\b(?:no|not|without|rules? out|delays?|delayed|cancels?|cancelled|canceled|"
+        r"postpones?|postponed)\b",
+        clean,
+        re.I,
+    )
+    for event_type, pattern, severity in POSITIVE_RULES:
+        if not positive_negated and re.search(pattern, clean, re.I):
+            return {
+                "event_type": event_type,
+                "sign": 1,
+                "severity": severity,
+                "classification_method": "headline keyword heuristic v2; positive scenario",
             }
     return {
         "event_type": "unclassified",
@@ -111,6 +138,12 @@ def ingest(offline=False):
             "export ban",
             "sanctions",
             "cyberattack",
+            "earnings beat",
+            "product launch",
+            "raises guidance",
+            "major contract",
+            "rate cut",
+            "supplier expansion",
         ],
         timespan="1w",
         num_records=250,
