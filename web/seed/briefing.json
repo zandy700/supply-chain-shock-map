@@ -1,6 +1,6 @@
 {
-  "date": "Wednesday, November 4",
-  "summary": "In this sample scenario, broad indexes edge higher as technology leads and defensive sectors lag. Treasury yields rise, keeping pressure on rate-sensitive stocks. Your watchlist has a mixed outlook: improving AI and advertising demand meets higher financing and input costs.",
+  "date": "Wednesday, November 4, 2026",
+  "summary": "Sample data for November 4, 2026. These fictional Fed, CPI and earnings scenarios illustrate how catalysts could affect your watchlist. Index moves, dates and confidence are examples, not live observations or an economic release calendar.",
   "market": [
     {
       "label": "S&P 500",
@@ -21,33 +21,35 @@
   "impacts": [
     {
       "id": "P001",
-      "title": "TSMC capacity expansion",
+      "title": "Nov 4 \u00b7 Supplier expansion outlook",
       "source": "TSMC",
       "direction": "positive",
       "affected": [
         "NVDA",
         "AAPL"
       ],
-      "reason": "More advanced-chip capacity could ease production constraints.",
-      "confidence": "High",
-      "category": "Supplier capacity"
+      "reason": "Sample data: a supplier capacity expansion could ease advanced-chip constraints.",
+      "confidence": "Low",
+      "category": "Supplier capacity",
+      "date": "2026-11-04"
     },
     {
       "id": "P002",
-      "title": "Cloud spending accelerates",
+      "title": "Nov 4 \u00b7 AI earnings guidance raised",
       "source": "Cloud customers",
       "direction": "positive",
       "affected": [
         "NVDA",
         "META"
       ],
-      "reason": "A stronger infrastructure budget could support AI hardware demand.",
-      "confidence": "Medium",
-      "category": "Customer demand"
+      "reason": "Sample data: stronger cloud customer earnings guidance could support AI hardware demand.",
+      "confidence": "Low",
+      "category": "Customer demand",
+      "date": "2026-11-04"
     },
     {
       "id": "P003",
-      "title": "Borrowing costs rise",
+      "title": "Nov 4 \u00b7 Hawkish Fed scenario",
       "source": "Interest rates",
       "direction": "negative",
       "affected": [
@@ -56,46 +58,51 @@
         "META",
         "NVDA"
       ],
-      "reason": "Higher discount rates could pressure growth-stock valuations.",
-      "confidence": "High",
-      "category": "Macro conditions"
+      "reason": "Sample data: a Fed signal of higher rates for longer could pressure growth valuations.",
+      "confidence": "Low",
+      "category": "Macro conditions",
+      "date": "2026-11-04"
     },
     {
       "id": "P004",
-      "title": "Battery material costs climb",
+      "title": "Nov 4 \u00b7 Battery margin warning",
       "source": "Lithium suppliers",
       "direction": "negative",
       "affected": [
         "TSLA"
       ],
-      "reason": "Higher input costs could squeeze vehicle margins.",
-      "confidence": "Medium",
-      "category": "Supplier costs"
+      "reason": "Sample data: an earnings warning about battery input costs could squeeze vehicle margins.",
+      "confidence": "Low",
+      "category": "Supplier costs",
+      "date": "2026-11-04"
     },
     {
       "id": "P005",
-      "title": "Ad budgets recover",
+      "title": "Nov 4 \u00b7 Advertising earnings beat",
       "source": "Advertising customers",
       "direction": "positive",
       "affected": [
         "META"
       ],
-      "reason": "Stronger customer spending could lift advertising demand.",
-      "confidence": "Medium",
-      "category": "Customer demand"
+      "reason": "Sample data: an advertising earnings beat could signal stronger customer spending.",
+      "confidence": "Low",
+      "category": "Customer demand",
+      "date": "2026-11-04"
     },
     {
       "id": "P006",
-      "title": "Consumer spending softens",
+      "title": "Nov 4 \u00b7 Hot CPI scenario",
       "source": "Consumer economy",
       "direction": "negative",
       "affected": [
         "AAPL",
         "TSLA"
       ],
-      "reason": "Lower discretionary spending could weaken device and vehicle demand.",
-      "confidence": "Medium",
-      "category": "Macro conditions"
+      "reason": "Sample data: hotter CPI could increase borrowing costs and weaken discretionary demand.",
+      "confidence": "Low",
+      "category": "Macro conditions",
+      "date": "2026-11-04"
     }
-  ]
+  ],
+  "data_label": "Sample data"
 }

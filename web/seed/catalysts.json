@@ -3,23 +3,24 @@
     {
       "day": "05",
       "month": "NOV",
-      "time": "After close \u00b7 Illustrative",
+      "time": "Sample data \u00b7 Nov 2026 \u00b7 Fictional date",
       "type": "Earnings",
-      "title": "TSMC supplier outlook",
+      "title": "Supplier earnings expansion scenario",
       "affected": [
         "NVDA",
         "AAPL"
       ],
       "direction": "positive",
-      "confidence": "Medium",
-      "reason": "A stronger capacity outlook could ease chip supply constraints."
+      "confidence": "Low",
+      "reason": "Sample data: A stronger capacity outlook could ease chip supply constraints.",
+      "date": "2026-11-05"
     },
     {
       "day": "06",
       "month": "NOV",
-      "time": "8:30 AM ET \u00b7 Illustrative",
-      "type": "Jobs report",
-      "title": "US employment report",
+      "time": "Sample data \u00b7 Nov 2026 \u00b7 Fictional date",
+      "type": "Earnings",
+      "title": "Earnings margin warning scenario",
       "affected": [
         "AAPL",
         "META",
@@ -27,15 +28,16 @@
         "TSLA"
       ],
       "direction": "negative",
-      "confidence": "Medium",
-      "reason": "A strong jobs scenario could keep rates elevated and pressure valuations."
+      "confidence": "Low",
+      "reason": "Sample data: an earnings warning about higher input costs could pressure device and vehicle margins.",
+      "date": "2026-11-06"
     },
     {
       "day": "10",
       "month": "NOV",
-      "time": "8:30 AM ET \u00b7 Illustrative",
+      "time": "Sample data \u00b7 Nov 2026 \u00b7 Fictional date",
       "type": "CPI",
-      "title": "Consumer inflation release",
+      "title": "Cool CPI relief scenario",
       "affected": [
         "AAPL",
         "META",
@@ -44,14 +46,15 @@
       ],
       "direction": "positive",
       "confidence": "Low",
-      "reason": "A cooler inflation scenario could support rate-sensitive growth stocks."
+      "reason": "Sample data: A cooler inflation scenario could support rate-sensitive growth stocks.",
+      "date": "2026-11-10"
     },
     {
       "day": "12",
       "month": "NOV",
-      "time": "2:00 PM ET \u00b7 Illustrative",
-      "type": "Fed meeting",
-      "title": "Federal Reserve rate decision",
+      "time": "Sample data \u00b7 Nov 2026 \u00b7 Fictional date",
+      "type": "Fed",
+      "title": "Hawkish Fed decision scenario",
       "affected": [
         "AAPL",
         "META",
@@ -60,7 +63,11 @@
       ],
       "direction": "negative",
       "confidence": "Low",
-      "reason": "A hawkish policy scenario could increase financing costs."
+      "reason": "Sample data: A hawkish policy scenario could increase financing costs.",
+      "date": "2026-11-12"
     }
-  ]
+  ],
+  "data_label": "Sample data",
+  "as_of": "2026-11-04",
+  "calendar_note": "Fictional November 2026 scenarios; not actual release dates or guidance."
 }

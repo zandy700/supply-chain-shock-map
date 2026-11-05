@@ -1,0 +1,62 @@
+[
+  {
+    "screen": "briefing",
+    "device": "desktop",
+    "path": "/workspace/scsm-pulse-phase2-briefing-desktop.png",
+    "scrollWidth": 1440,
+    "viewport": 1440,
+    "watchlist": [
+      "AAPL",
+      "META",
+      "NVDA",
+      "TSLA"
+    ],
+    "sample": true,
+    "errors": []
+  },
+  {
+    "screen": "catalysts",
+    "device": "desktop",
+    "path": "/workspace/scsm-pulse-phase2-catalysts-desktop.png",
+    "scrollWidth": 1440,
+    "viewport": 1440,
+    "watchlist": [
+      "AAPL",
+      "META",
+      "NVDA",
+      "TSLA"
+    ],
+    "sample": true,
+    "errors": []
+  },
+  {
+    "screen": "briefing",
+    "device": "mobile",
+    "path": "/workspace/scsm-pulse-phase2-briefing-mobile.png",
+    "scrollWidth": 390,
+    "viewport": 390,
+    "watchlist": [
+      "AAPL",
+      "META",
+      "NVDA",
+      "TSLA"
+    ],
+    "sample": true,
+    "errors": []
+  },
+  {
+    "screen": "catalysts",
+    "device": "mobile",
+    "path": "/workspace/scsm-pulse-phase2-catalysts-mobile.png",
+    "scrollWidth": 390,
+    "viewport": 390,
+    "watchlist": [
+      "AAPL",
+      "META",
+      "NVDA",
+      "TSLA"
+    ],
+    "sample": true,
+    "errors": []
+  }
+]

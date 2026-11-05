@@ -13,7 +13,10 @@
     "competitors": [
       "Samsung",
       "Google"
-    ]
+    ],
+    "data_label": "Sample data",
+    "sample_as_of": "2026-11-04",
+    "scenario_note": "Fictional November 2026 relationships and catalyst exposure; not verified current coverage."
   },
   "META": {
     "name": "Meta",
@@ -29,7 +32,10 @@
     "competitors": [
       "Google",
       "TikTok"
-    ]
+    ],
+    "data_label": "Sample data",
+    "sample_as_of": "2026-11-04",
+    "scenario_note": "Fictional November 2026 relationships and catalyst exposure; not verified current coverage."
   },
   "NVDA": {
     "name": "NVIDIA",
@@ -45,7 +51,10 @@
     "competitors": [
       "AMD",
       "Intel"
-    ]
+    ],
+    "data_label": "Sample data",
+    "sample_as_of": "2026-11-04",
+    "scenario_note": "Fictional November 2026 relationships and catalyst exposure; not verified current coverage."
   },
   "TSLA": {
     "name": "Tesla",
@@ -61,6 +70,9 @@
     "competitors": [
       "BYD",
       "Rivian"
-    ]
+    ],
+    "data_label": "Sample data",
+    "sample_as_of": "2026-11-04",
+    "scenario_note": "Fictional November 2026 relationships and catalyst exposure; not verified current coverage."
   }
 }
