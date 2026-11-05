@@ -2,9 +2,9 @@
   "ticker": "HWM",
   "source": "Yahoo Finance via yfinance",
   "auto_adjust": true,
-  "retrieved_at": "2026-11-05T04:01:34.413163+00:00",
-  "requested_start": "2021-01-01",
+  "retrieved_at": "2026-11-05T05:48:48.454162+00:00",
+  "requested_start": "2020-01-01",
   "requested_end_exclusive": "2026-11-05",
-  "n": 1467,
+  "n": 1720,
   "warning": "Retrospectively adjusted prices; vendor revisions possible."
 }
