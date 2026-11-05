@@ -2,7 +2,7 @@
   "ticker": "CLX",
   "source": "Yahoo Finance via yfinance",
   "auto_adjust": true,
-  "retrieved_at": "2026-11-05T05:48:45.600040+00:00",
+  "retrieved_at": "2026-11-05T07:05:35.790784+00:00",
   "requested_start": "2020-01-01",
   "requested_end_exclusive": "2026-11-05",
   "n": 1720,

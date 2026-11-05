@@ -1,0 +1,8 @@
+{
+  "retrieved_at": "2026-11-05T07:05:43.353526+00:00",
+  "source": "GDELT DOC 2.0 via gdelt-doc-api",
+  "query": "(fire OR explosion OR strike OR lawsuit OR recall OR \"export ban\" OR sanctions OR cyberattack OR \"earnings beat\" OR \"product launch\" OR \"raises guidance\" OR \"major contract\" OR \"rate cut\" OR \"supplier expansion\") sourcecountry:US &timespan=1w&maxrecords=250",
+  "events": [],
+  "status": "unavailable",
+  "error": "RateLimitError: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n"
+}

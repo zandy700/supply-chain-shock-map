@@ -2,7 +2,7 @@
   "ticker": "AMZN",
   "source": "Yahoo Finance via yfinance",
   "auto_adjust": true,
-  "retrieved_at": "2026-11-05T05:48:43.111304+00:00",
+  "retrieved_at": "2026-11-05T07:05:34.431294+00:00",
   "requested_start": "2020-01-01",
   "requested_end_exclusive": "2026-11-05",
   "n": 1720,
