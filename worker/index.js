@@ -1,3 +1,6 @@
+import {brokerRoute} from "./broker.js";
+export {BrokerSession} from "./broker.js";
+import {calendar} from './calendar.js';
 import {classify} from './classify.js';
 
 const MAX_TICKERS = 12;
@@ -50,6 +53,28 @@ function parseInput(raw) {
   }
   return entries;
 }
+async function portfolioQuotes(tickers, env, ctx) {
+  const prices = {};
+  if (!env.FINNHUB_API_KEY) return {prices, unavailable:tickers};
+  const results = await Promise.allSettled(tickers.map(async ticker => {
+    const quote = await finnhub('quote', {symbol:ticker}, env, ctx, 60);
+    if (!Number.isFinite(quote?.c) || quote.c <= 0 || !Number.isFinite(quote.t) || quote.t <= 0) {
+      throw new UpstreamError('quote_unavailable');
+    }
+    return {
+      price:quote.c,
+      previous:Number.isFinite(quote.pc) && quote.pc > 0 ? quote.pc : null,
+      asOf:new Date(quote.t * 1000).toISOString()
+    };
+  }));
+  const unavailable = [];
+  results.forEach((result, index) => {
+    const ticker = tickers[index];
+    if (result.status === 'fulfilled') prices[ticker] = result.value;
+    else unavailable.push(ticker);
+  });
+  return {prices, unavailable};
+}
 async function resolve(entries,env,ctx) {
   const companies=[], unresolved=[], errors=[], suggestions={};
   for (const input of entries) {
@@ -60,7 +85,7 @@ async function resolve(entries,env,ctx) {
     }
     try {
       const results=await finnhub('search',{q:input,exchange:'US'},env,ctx,86400);
-      const candidates=(results.result||[]).filter(x=>SYMBOL.test(x.symbol) && ['Common Stock','ETP','ADR','REIT'].includes(x.type));
+      const candidates=(results.result||[]).filter(x=>SYMBOL.test(x.symbol) && ['Common Stock','ETP','ADR','REIT','NY Reg Shrs'].includes(x.type));
       const exact=candidates.filter(x=>x.symbol===q || x.description?.toUpperCase()===q);
       const prefix=candidates.filter(x=>{
         const name=x.description?.toUpperCase()||'';
@@ -141,13 +166,29 @@ export default {
   async fetch(request,env,ctx) {
     const url=new URL(request.url);
     if (!url.pathname.startsWith('/api/')) return env.ASSETS.fetch(request);
+    if (url.pathname.startsWith('/api/broker/')) return brokerRoute(request,env);
     if (request.method!=='GET') return json({error:'Use GET.'},405);
     if (url.pathname==='/api/health') return json({ok:true,finnhub:Boolean(env.FINNHUB_API_KEY)});
-    if (!['/api/briefing','/api/catalysts','/api/resolve'].includes(url.pathname)) return json({error:'Unknown API route.'},404);
+    if (!['/api/briefing','/api/catalysts','/api/resolve','/api/calendar','/api/portfolio-quotes'].includes(url.pathname)) return json({error:'Unknown API route.'},404);
     let entries;
     try { entries=parseInput(url.searchParams.get(url.pathname==='/api/resolve'?'q':'tickers')); }
     catch(error) { return json({error:error.message,unresolved:[]},400); }
     try {
+      if (url.pathname === '/api/portfolio-quotes') {
+        const symbols = entries.map(entry => entry.toUpperCase());
+        if (symbols.some(symbol => !SYMBOL.test(symbol))) return json({error:'Use US tickers for portfolio quotes.'},400);
+        return json(await portfolioQuotes(symbols, env, ctx));
+      }
+      if (url.pathname==='/api/calendar') {
+        const symbols = entries.map(entry => entry.toUpperCase());
+        if (symbols.some(symbol => !SYMBOL.test(symbol))) return json({error:'Use watchlist tickers for the calendar.'},400);
+        const peers = env.FINNHUB_API_KEY ? async ticker => {
+          const result = await finnhub('stock/peers',{symbol:ticker},env,ctx,86400);
+          if (!Array.isArray(result)) throw new Error('Peer lookup unavailable');
+          return result.filter(symbol => typeof symbol === 'string' && SYMBOL.test(symbol));
+        } : undefined;
+        return json(await calendar(symbols, new Date(), peers));
+      }
       if (url.pathname==='/api/resolve') {
         const result=await resolve(entries,env,ctx);
         return json({...result,tickers:result.companies.map(x=>x.ticker),verified:Boolean(env.FINNHUB_API_KEY)});

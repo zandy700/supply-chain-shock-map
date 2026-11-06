@@ -32,6 +32,22 @@ test('live provider resolves names, emits signed sourced news and real quote tim
     assert.equal(p.mode,'live');
   }finally{restore();}
 });
+test('US registry shares resolve by ticker and company name while warrants stay excluded', async () => {
+  resetUpstreamStateForTests();
+  const restore = provider(() => Response.json({result: [
+    {symbol: 'ASML', description: 'ASML HOLDING NV-NY REG SHS', type: 'NY Reg Shrs'},
+    {symbol: 'TESTW', description: 'ASML HOLDING WARRANT', type: 'Warrant'}
+  ]}));
+  try {
+    for (const query of ['asml', 'ASML Holding']) {
+      const result = await (await worker.fetch(req('/api/resolve?q=' + encodeURIComponent(query)), env)).json();
+      assert.deepEqual(result.tickers, ['ASML']);
+      assert.deepEqual(result.unresolved, []);
+    }
+    const warrant = await (await worker.fetch(req('/api/resolve?q=TESTW'), env)).json();
+    assert.deepEqual(warrant.unresolved, ['TESTW']);
+  } finally { restore(); }
+});
 test('invalid-looking and unknown tickers do not silently pass resolution',async()=>{
   resetUpstreamStateForTests();
   const restore=provider(()=>Response.json({result:[]}));

@@ -1,6 +1,6 @@
 'use strict';
-const KEY = 'watchlist-pulse';
 const sampleMode = new URLSearchParams(location.search).get('seed') === 'demo';
+const KEY = sampleMode ? 'watchlist-pulse-demo' : 'watchlist-pulse';
 let live = null;
 let liveError = '';
 let liveLoading = false;
@@ -8,18 +8,14 @@ let requestVersion = 0;
 const demo = ['AAPL', 'META', 'NVDA', 'TSLA'];
 const main = document.querySelector('main');
 const escapeHTML = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[c]));
-let watchlist = [];
+let watchlist = sampleMode ? demo : [];
 let data;
 let storageAvailable = true;
 try {
-  const stored = JSON.parse(localStorage.getItem(KEY) || '[]');
-  watchlist = Array.isArray(stored) ? stored.filter(x => typeof x === 'string') : [];
-  if (sampleMode) {
-    watchlist = demo;
-    localStorage.setItem(KEY, JSON.stringify(watchlist));
-  }
+  const stored = JSON.parse(localStorage.getItem(KEY));
+  if (Array.isArray(stored)) watchlist = stored.filter(x => typeof x === 'string');
 } catch { storageAvailable = false; }
-const navItems = ['Briefing', 'Catalysts', 'Watchlist', 'Ledger'];
+const navItems = sampleMode ? ['Briefing', 'Catalysts', 'Watchlist', 'Ledger'] : ['Briefing', 'Portfolio', 'Calendar', 'Catalysts', 'Watchlist', 'Ledger'];
 const affected = item => item.affected.filter(t => watchlist.includes(t));
 const tickers = names => names.map(t => `<a class="ticker" href="#/company/${encodeURIComponent(t)}">${escapeHTML(t)}</a>`).join('');
 const confidence = item => `<span class="confidence">${item.confidence} confidence</span>`;
@@ -29,36 +25,80 @@ function impacts(items) {
   return items.length ? `<div class="panel">${items.map(item => `<article class="impact">${direction(item)}<div><div class="eyebrow">${item.category || item.id}</div><h3>${item.title}</h3><p>${item.reason}</p><div class="meta">${tickers(affected(item))}<span class="small ${item.direction}">${item.direction === 'positive' ? 'Positive' : 'Negative'} impact</span></div>${item.logged ? `<div class="hint">Logged ${item.logged} · ${item.status}</div>` : ''}</div>${confidence(item)}</article>`).join('')}</div>` : '<div class="panel empty">No sample predictions cover these names. Edit your watchlist to explore AAPL, META, NVDA or TSLA.</div>';
 }
 function editor(onboarding = false) {
-  return `<form class="${onboarding ? '' : 'panel editor'}" id="watchlist-form"><label for="companies">${onboarding ? 'Tickers or company names' : 'Your companies'}</label><input id="companies" name="companies" autocomplete="off" placeholder="e.g. Apple, NVDA, Tesla" value="${escapeHTML(watchlist.join(', '))}" required maxlength="500"><div class="hint">Separate names with commas. Up to 12 US tickers or company names. Live mode resolves names through Finnhub.</div><div id="form-error" class="error" role="alert"></div><button class="button" type="submit">${onboarding ? 'Create watchlist' : 'Save watchlist'}</button></form>`;
+  return `<form class="${onboarding ? '' : 'panel editor'}" id="watchlist-form">
+    <label for="companies">Add companies</label>
+    <input id="companies" name="companies" autocomplete="off" placeholder="e.g. Apple, NVDA, Tesla" aria-describedby="company-hint" required maxlength="500">
+    <div id="company-hint" class="hint">Enter a ticker or company name. Use commas to add several at once. Follow up to 12 companies.</div>
+    <div id="form-error" class="error" role="alert"></div>
+    <button class="button" type="submit">${onboarding ? 'Create watchlist' : 'Add to watchlist'}</button>
+  </form>`;
 }
+
+function saveWatchlist(values) {
+  try {
+    localStorage.setItem(KEY, JSON.stringify(values));
+    storageAvailable = true;
+  } catch {
+    document.querySelector('#form-error').textContent = 'Browser storage is unavailable. Enable local storage to save your watchlist.';
+    return;
+  }
+  watchlist = values;
+  live = null;
+  liveError = '';
+  ++requestVersion;
+  liveLoading = false;
+  if (location.hash !== '#/watchlist') history.pushState(null, '', '#/watchlist');
+  render();
+  document.querySelector('#companies').focus();
+  if (!sampleMode && values.length) loadLive();
+}
+
 function bindForm() {
-  document.querySelector('form')?.addEventListener('submit', async event => {
+  const form = document.querySelector('#watchlist-form');
+  if (!form) return;
+  for (const button of main.querySelectorAll('[data-remove]')) {
+    button.onclick = () => saveWatchlist(watchlist.filter(ticker => ticker !== button.dataset.remove));
+  }
+  form.addEventListener('submit', async event => {
     event.preventDefault();
     const aliases = {APPLE:'AAPL','APPLE INC':'AAPL',META:'META',FACEBOOK:'META',NVIDIA:'NVDA',TESLA:'TSLA'};
-    let values = [...new Set(document.querySelector('input').value.split(/[,;\n]+/).map(x => x.trim().toUpperCase()).filter(Boolean).map(x => aliases[x] || x))];
-    const error = document.querySelector('#form-error');
+    const entries = form.elements.companies.value.split(/[,;\n]+/).map(x => x.trim().toUpperCase()).filter(Boolean);
+    let values = [...new Set(entries.map(x => aliases[x] || x))];
+    const error = form.querySelector('#form-error');
     if (!values.length || values.some(x => !/^[A-Z0-9 .&'’()-]{1,60}$/.test(x)) || values.length > 12) {
       error.textContent = 'Enter 1–12 tickers or company names, separated by commas (up to 60 characters each).';
       return;
     }
-    if (!sampleMode) {
-      const button = event.target.querySelector('button');
-      button.disabled = true; button.textContent = 'Resolving…';
-      try {
+    error.textContent = '';
+    const button = form.querySelector('button');
+    if (button.disabled) return;
+    const label = button.textContent;
+    try {
+      values = values.filter(ticker => !watchlist.includes(ticker));
+      if (!sampleMode && values.length) {
+        button.disabled = true;
+        button.textContent = 'Resolving…';
+        form.elements.companies.readOnly = true;
         const resolved = await api('/api/resolve?q=' + encodeURIComponent(values.join(',')));
         if (resolved.unresolved.length || resolved.errors.length) throw new Error('Could not resolve: ' + resolved.unresolved.join(', ') + '. ' + Object.entries(resolved.suggestions || {}).map(([name,options]) => options.length ? name + ': try ' + options.map(x=>x.ticker).join(' or ') + '.' : '').join(' ') + ' Check the names or try again if the provider is unavailable.');
         values = resolved.tickers;
-      } catch (failure) {
-        error.textContent = failure.message;
-        button.disabled = false; button.textContent = 'Save watchlist'; return;
       }
+      if (!form.isConnected) return;
+      const updated = [...new Set([...watchlist, ...values])];
+      if (updated.length === watchlist.length) {
+        error.textContent = 'Already on your watchlist.';
+      } else if (updated.length > 12) {
+        error.textContent = 'Your watchlist can hold 12 companies. Remove a company or add fewer at once.';
+      } else {
+        saveWatchlist(updated);
+      }
+    } catch (failure) {
+      error.textContent = failure.message;
+    } finally {
+      button.disabled = false;
+      button.textContent = label;
+      form.elements.companies.readOnly = false;
     }
-    try { localStorage.setItem(KEY, JSON.stringify(values)); storageAvailable = true; }
-    catch { error.textContent = 'Browser storage is unavailable. Enable local storage to save your watchlist.'; return; }
-    watchlist = values;
-    live = null; liveError = '';
-    if (!sampleMode) loadLive();
-    if (location.hash === '#/briefing') render(); else location.hash = '/briefing';
   });
 }
 function render() {
@@ -68,11 +108,23 @@ function render() {
     ? 'Illustrative scenarios only. <a class="link" href="/#/briefing">Switch to Live</a>'
     : 'Headline heuristics are unreviewed scenarios, not financial advice or verified supply-chain effects. <a class="link" href="?seed=demo#/briefing">Explore Sample mode</a>';
   let [page = 'briefing', symbol] = location.hash.replace(/^#\/?/, '').split('/');
-  if (!['briefing','catalysts','watchlist','ledger','company'].includes(page)) page = 'briefing';
-  const onboarding = !watchlist.length;
-  document.querySelector('nav').innerHTML = onboarding ? '' : navItems.map(name => `<a href="#/${name.toLowerCase()}" ${page === name.toLowerCase() || (page === 'company' && name === 'Watchlist') ? 'class="active" aria-current="page"' : ''}>${name}</a>`).join('');
+  if (!['briefing','catalysts','watchlist','ledger','company','calendar','portfolio'].includes(page) || (sampleMode && ['portfolio','calendar'].includes(page))) page = 'briefing';
+  const portfolio = page === 'portfolio';
+  document.body.classList.toggle('portfolio-page',portfolio);
+  const onboarding = !watchlist.length && !portfolio;
+  document.querySelector('nav').innerHTML = (!watchlist.length && !sampleMode ? ['Watchlist','Portfolio'] : navItems).map(name => `<a href="#/${name.toLowerCase()}" ${page === name.toLowerCase() || (page === 'company' && name === 'Watchlist') ? 'class="active" aria-current="page"' : ''}>${name}</a>`).join('');
   if (onboarding) {
     main.innerHTML = `<section class="onboarding"><div class="panel"><span class="brand-mark">⌁</span><h1>A little context.<br>A clearer watchlist.</h1><p>See how other companies and the wider market could affect the names you follow.</p>${editor(true)}<div class="hint">${storageAvailable ? 'Saved on this device. No account needed.' : 'Enable browser storage to save your watchlist.'}</div></div><div class="hint" style="text-align:center;margin-top:20px">${sampleMode ? 'Sample data only. Explore illustrative scenarios.' : 'Live news via Finnhub. Sample mode is available from the footer.'}</div></section>`;
+  } else if (portfolio) {
+    document.querySelector('.sample').textContent = 'Portfolio';
+    document.querySelector('footer').textContent = 'Portfolio quantities, costs and balances are stored in this browser. Only ticker symbols are sent for quotes and events.';
+    main.innerHTML = '<p role="status">Loading portfolio…</p>';
+    import('./portfolio.js').then(module => {
+      if (location.hash === '#/portfolio') module.mountPortfolio(main);
+    }).catch(() => { if (location.hash === '#/portfolio') main.innerHTML = '<p role="alert">The portfolio could not load. Refresh to try again.</p>'; });
+  } else if (page === 'calendar') {
+    document.querySelector('.sample').textContent = 'Event calendar';
+    renderCalendar();
   } else if (!sampleMode && ['briefing','catalysts','company'].includes(page)) {
     renderLive(page,symbol);
   } else if (page === 'briefing') {
@@ -82,7 +134,12 @@ function render() {
     const events = data.catalysts.events.filter(i => affected(i).length);
     main.innerHTML = heading('Upcoming catalysts', 'A look ahead at events that could affect your companies.') + `<div class="panel notice">Sample calendar. Dates, expectations and scenarios are illustrative, not a real event schedule.</div>` + (events.length ? `<div class="panel">${events.map(item => `<article class="impact event"><div class="datebox"><span>${item.month}</span><strong>${item.day}</strong></div><div><div class="eyebrow">${item.type} · ${item.time}</div><h3>${item.title}</h3><p>${item.reason}</p><div class="meta">${tickers(affected(item))}<span class="small ${item.direction}">${item.direction === 'positive' ? '+' : '−'} ${item.direction} scenario</span></div></div>${confidence(item)}</article>`).join('')}</div>` : '<div class="panel empty">No sample catalysts cover your watchlist yet.</div>');
   } else if (page === 'watchlist') {
-    main.innerHTML = heading('Your watchlist', 'Follow the companies you care about. Saved on this device.') + editor() + `<div class="section-head"><h2>Following</h2><span class="muted small">${watchlist.length} companies</span></div><div class="panel">${watchlist.map(t => `<a class="watch-row" href="#/company/${encodeURIComponent(t)}"><div><strong>${escapeHTML(t)}</strong><div class="muted small">${escapeHTML((sampleMode ? data.companies[t]?.name : live?.companies.find(c => c.ticker === t)?.name) || t)}</div></div><span class="muted small">View company ›</span></a>`).join('')}</div>`;
+    main.innerHTML = heading('Your watchlist', 'Follow the companies you care about. Saved on this device.') + editor() +
+      `<div class="section-head"><h2>Following (${watchlist.length}/12)</h2><a class="link" href="#/briefing">View briefing ›</a></div>
+      <div class="panel">${watchlist.map(t => `<div class="watch-row">
+        <a class="company-link" href="#/company/${encodeURIComponent(t)}"><strong>${escapeHTML(t)}</strong><span class="muted small" data-name="${escapeHTML(t)}">${escapeHTML(companyName(t))}</span></a>
+        <button type="button" class="button secondary" data-remove="${escapeHTML(t)}" aria-label="Remove ${escapeHTML(t)} from watchlist">Remove</button>
+      </div>`).join('')}</div>`;
   } else if (page === 'company') {
     try { symbol = decodeURIComponent(symbol || ''); } catch { symbol = ''; }
     const company = Object.hasOwn(data.companies, symbol) ? data.companies[symbol] : null;
@@ -99,9 +156,21 @@ async function api(path) {
   if (!response.ok) throw new Error(payload.error || 'Live briefing unavailable. Try again shortly.');
   return payload;
 }
+function companyName(ticker) {
+  const name = sampleMode ? data.companies[ticker]?.name : live?.companies.find(c => c.ticker === ticker)?.name;
+  return name === ticker ? '' : name || '';
+}
+
+function refreshLiveView() {
+  if (location.hash === '#/portfolio') return;
+  // Live responses may arrive while someone is typing or resolving the next company.
+  if (!document.querySelector('#watchlist-form')) { render(); return; }
+  for (const label of main.querySelectorAll('[data-name]')) label.textContent = companyName(label.dataset.name);
+}
+
 async function loadLive(extraSymbol) {
   const version = ++requestVersion;
-  liveLoading = true; liveError = ''; render();
+  liveLoading = true; liveError = ''; refreshLiveView();
   try {
     const names = [...new Set([...watchlist, ...(extraSymbol ? [extraSymbol] : [])])];
     if (names.length > 12) throw new Error('This company is outside your 12-name watchlist. Edit your watchlist to include it.');
@@ -110,7 +179,7 @@ async function loadLive(extraSymbol) {
     if (version !== requestVersion) return;
     live = {...briefing, events:catalysts.events, errors:[...new Map([...briefing.errors,...catalysts.errors].map(x=>[JSON.stringify(x),x])).values()]};
   } catch (error) { if (version === requestVersion) liveError = error.name === 'TimeoutError' ? 'Live request timed out. Try again shortly.' : error.message; }
-  finally { if (version === requestVersion) { liveLoading = false; render(); } }
+  finally { if (version === requestVersion) { liveLoading = false; refreshLiveView(); } }
 }
 function liveImpacts(items) {
   if (!items.length) return '<div class="panel empty">No classified headlines for these names in the recent seven-day window. Unclassified company news appears on company pages.</div>';
@@ -124,6 +193,7 @@ function renderLive(page,rawSymbol) {
   try { symbol = decodeURIComponent(rawSymbol || '').toUpperCase(); } catch { /* invalid route */ }
   const title = page === 'company' ? (live?.companies.find(c=>c.ticker===symbol)?.name || symbol || 'Company') : page === 'catalysts' ? 'Watchlist catalysts' : 'Daily briefing';
   main.innerHTML = heading(escapeHTML(title), page === 'catalysts' ? 'Recent headline catalysts for the companies you follow.' : page === 'company' ? escapeHTML(symbol) + ' · Company news and context' : 'Recent developments from your companies’ news feeds, without inferred propagation.', 'Live · Finnhub');
+  if (page === 'briefing') main.innerHTML += '<aside class="panel notice"><a class="link" href="#/calendar">View upcoming earnings and market events ›</a></aside>';
   if (liveLoading) { main.innerHTML += '<div class="panel notice" role="status">Loading live news and quotes…</div>'; return; }
   if (liveError) { main.innerHTML += `<div class="panel notice" role="alert">${escapeHTML(liveError)} <button class="button secondary" id="retry-live">Try again</button></div>`; document.querySelector('#retry-live').onclick=()=>loadLive(page==='company'?symbol:undefined); return; }
   if (!live) { main.innerHTML += '<div class="panel empty">Live briefing is loading…</div>'; return; }
@@ -142,7 +212,7 @@ function renderLive(page,rawSymbol) {
     }
   }
   main.innerHTML += `<div class="section-head"><h2>${page==='catalysts'?'Recent catalysts':'Classified headlines'}</h2><span class="muted small">${items.length} live scenarios</span></div>` + (page === 'company' && !items.length ? '<div class="panel notice">No classified headlines for this name in the recent seven-day window.</div>' : liveImpacts(items));
-  if (page==='catalysts') main.innerHTML += '<aside class="panel notice" style="margin-top:20px"><strong>Calendar coverage</strong><p>These are recent news catalysts, not scheduled future events. No live Fed, CPI or earnings calendar is supplied. The Sample calendar contains fictional scenarios.</p></aside>';
+  if (page==='catalysts') main.innerHTML += '<aside class="panel notice" style="margin-top:20px"><strong>Calendar coverage</strong><p>See upcoming earnings, inflation releases and Fed meetings in the <a class="link" href="#/calendar">event calendar</a>.</p></aside>';
   if (page==='company') {
     const news=live.news.filter(n=>n.affected.includes(symbol) && !n.sign).slice(0,12);
     main.innerHTML += '<div class="section-head"><h2>More company news</h2><span class="muted small">Unclassified mentions</span></div>' + (news.length ? '<div class="panel">'+news.map(n=>`<article class="news-row"><h3><a class="article-link" href="${escapeHTML(n.url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(n.title)}</a></h3><p class="hint">${escapeHTML(n.source)} · ${escapeHTML(n.date.slice(0,10))} · No impact classification</p></article>`).join('')+'</div>' : '<div class="panel empty">No additional news available for this name.</div>');

@@ -13,3 +13,4 @@ graphify-out/
 .dev.vars
 node_modules/
 .wrangler/
+.dev.vars.*

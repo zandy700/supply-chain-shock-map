@@ -4,7 +4,11 @@ The mobile-first UI shell runs with **seeded sample data only**. Follow companie
 
 Built by **Xingjian Zhang**, VP of his school's stock club. The Python research engine, data, append-only ledger, vendored sources, and CI remain separate from the UI. Their attribution and historical findings are retained below.
 
-## Run the UI
+## Live portfolio
+
+For the Worker-powered portfolio, CSV imports, and read-only brokerage connections, see [local and hosted broker setup](docs/broker-setup.md).
+
+## Run the sample UI
 
 ```bash
 python -m http.server 8000 --directory web

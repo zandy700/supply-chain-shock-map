@@ -2,6 +2,7 @@
   // Static assets on a Cloudflare Worker. Deployed at supply-chain-shock-map.xingjianzhang700.workers.dev.
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "supply-chain-shock-map",
+  "preview_urls": false,
   "main": "worker/index.js",
   "compatibility_date": "2026-11-01",
   "assets": {
@@ -9,5 +10,7 @@
     "binding": "ASSETS",
     "run_worker_first": ["/api/*"]
   },
-  "observability": { "enabled": true }
+  "durable_objects": { "bindings": [{ "name": "BROKER_SESSIONS", "class_name": "BrokerSession" }] },
+  "migrations": [{ "tag": "broker-v1", "new_sqlite_classes": ["BrokerSession"] }],
+  "observability": { "enabled": true, "logs": { "invocation_logs": false } }
 }

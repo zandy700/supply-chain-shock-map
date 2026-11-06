@@ -2,6 +2,6 @@
   "name": "watchlist-pulse",
   "private": true,
   "type": "module",
-  "scripts": { "test": "node --test worker/*.test.js", "dev": "wrangler dev --ip 127.0.0.1" },
+  "scripts": { "test": "node --test worker/*.test.js", "broker:setup": "python3 scripts/setup-broker.py", "dev": "wrangler dev --ip 127.0.0.1" },
   "devDependencies": { "wrangler": "4.157.0" }
 }
