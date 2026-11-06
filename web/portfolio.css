@@ -37,3 +37,5 @@ body.portfolio-page {
 
 .pf-brokers { display:flex; flex-wrap:wrap; align-items:center; gap:.7rem; margin:.75rem 0 1rem; }
 .pf-brokers a { font-size:.85rem; text-decoration:underline; color:#135698; }
+
+.pf-brokers h2 { flex-basis:100%; margin:0; font-size:1.1rem; }

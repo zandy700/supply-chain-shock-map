@@ -45,6 +45,9 @@ export function brokerControls(node, state, reload, switchView, linkedView) {
     node.append(el);
   }
   const message=document.createElement('span'); message.className='pf-note'; message.setAttribute('role','status');
+  const heading=document.createElement('h2');
+  heading.textContent='SnapTrade broker connection';
+  node.append(heading);
   if (state.connected) {
     button(linkedView?'View manual portfolios':'View linked accounts',switchView);
     button('Refresh holdings',reload);
@@ -56,7 +59,7 @@ export function brokerControls(node, state, reload, switchView, linkedView) {
     const setup=document.createElement('a');setup.href=manageUrl;setup.target='_blank';setup.rel='noopener noreferrer';
     setup.textContent='Link a broker in SnapTrade';node.append(setup);
   } else if (!state.error) {
-    message.textContent='Broker linking awaits SnapTrade setup. CSV import is available.';
+    message.textContent='Broker sign-in is awaiting setup on this site. You can import a holdings CSV now.';
   }
   if (state.error) { message.textContent=state.error; if (!state.connected) button('Retry broker link',reload); }
   if (state.message) message.textContent=state.message;

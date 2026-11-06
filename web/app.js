@@ -24,6 +24,7 @@ const heading = (title, sub, eyebrow = 'Your watchlist, in context') => `<div cl
 function impacts(items) {
   return items.length ? `<div class="panel">${items.map(item => `<article class="impact">${direction(item)}<div><div class="eyebrow">${item.category || item.id}</div><h3>${item.title}</h3><p>${item.reason}</p><div class="meta">${tickers(affected(item))}<span class="small ${item.direction}">${item.direction === 'positive' ? 'Positive' : 'Negative'} impact</span></div>${item.logged ? `<div class="hint">Logged ${item.logged} · ${item.status}</div>` : ''}</div>${confidence(item)}</article>`).join('')}</div>` : '<div class="panel empty">No sample predictions cover these names. Edit your watchlist to explore AAPL, META, NVDA or TSLA.</div>';
 }
+const brokerLink = '<a class="link" href="#/portfolio">SnapTrade broker connection</a>';
 function editor(onboarding = false) {
   return `<form class="${onboarding ? '' : 'panel editor'}" id="watchlist-form">
     <label for="companies">Add companies</label>
@@ -114,7 +115,7 @@ function render() {
   const onboarding = !watchlist.length && !portfolio;
   document.querySelector('nav').innerHTML = (!watchlist.length && !sampleMode ? ['Watchlist','Portfolio'] : navItems).map(name => `<a href="#/${name.toLowerCase()}" ${page === name.toLowerCase() || (page === 'company' && name === 'Watchlist') ? 'class="active" aria-current="page"' : ''}>${name}</a>`).join('');
   if (onboarding) {
-    main.innerHTML = `<section class="onboarding"><div class="panel"><span class="brand-mark">⌁</span><h1>A little context.<br>A clearer watchlist.</h1><p>See how other companies and the wider market could affect the names you follow.</p>${editor(true)}<div class="hint">${storageAvailable ? 'Saved on this device. No account needed.' : 'Enable browser storage to save your watchlist.'}</div></div><div class="hint" style="text-align:center;margin-top:20px">${sampleMode ? 'Sample data only. Explore illustrative scenarios.' : 'Live news via Finnhub. Sample mode is available from the footer.'}</div></section>`;
+    main.innerHTML = `<section class="onboarding"><div class="panel"><span class="brand-mark">⌁</span><h1>A little context.<br>A clearer watchlist.</h1><p>See how other companies and the wider market could affect the names you follow.</p>${editor(true)}<div class="hint">${storageAvailable ? 'Saved on this device. No account needed.' : 'Enable browser storage to save your watchlist.'}</div>${sampleMode ? '' : '<p>'+brokerLink+'</p>'}</div><div class="hint" style="text-align:center;margin-top:20px">${sampleMode ? 'Sample data only. Explore illustrative scenarios.' : 'Live news via Finnhub. Sample mode is available from the footer.'}</div></section>`;
   } else if (portfolio) {
     document.querySelector('.sample').textContent = 'Portfolio';
     document.querySelector('footer').textContent = 'Portfolio quantities, costs and balances are stored in this browser. Only ticker symbols are sent for quotes and events.';
@@ -193,7 +194,7 @@ function renderLive(page,rawSymbol) {
   try { symbol = decodeURIComponent(rawSymbol || '').toUpperCase(); } catch { /* invalid route */ }
   const title = page === 'company' ? (live?.companies.find(c=>c.ticker===symbol)?.name || symbol || 'Company') : page === 'catalysts' ? 'Watchlist catalysts' : 'Daily briefing';
   main.innerHTML = heading(escapeHTML(title), page === 'catalysts' ? 'Recent headline catalysts for the companies you follow.' : page === 'company' ? escapeHTML(symbol) + ' · Company news and context' : 'Recent developments from your companies’ news feeds, without inferred propagation.', 'Live · Finnhub');
-  if (page === 'briefing') main.innerHTML += '<aside class="panel notice"><a class="link" href="#/calendar">View upcoming earnings and market events ›</a></aside>';
+  if (page === 'briefing') main.innerHTML += '<aside class="panel notice"><a class="link" href="#/calendar">View upcoming earnings and market events ›</a><div>'+brokerLink+'</div></aside>';
   if (liveLoading) { main.innerHTML += '<div class="panel notice" role="status">Loading live news and quotes…</div>'; return; }
   if (liveError) { main.innerHTML += `<div class="panel notice" role="alert">${escapeHTML(liveError)} <button class="button secondary" id="retry-live">Try again</button></div>`; document.querySelector('#retry-live').onclick=()=>loadLive(page==='company'?symbol:undefined); return; }
   if (!live) { main.innerHTML += '<div class="panel empty">Live briefing is loading…</div>'; return; }
