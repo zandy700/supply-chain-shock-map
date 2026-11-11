@@ -15,7 +15,7 @@ try {
   const stored = JSON.parse(localStorage.getItem(KEY));
   if (Array.isArray(stored)) watchlist = stored.filter(x => typeof x === 'string');
 } catch { storageAvailable = false; }
-const navItems = sampleMode ? ['Briefing', 'Catalysts', 'Watchlist', 'Ledger'] : ['Briefing', 'Portfolio', 'Calendar', 'Catalysts', 'Watchlist', 'Ledger'];
+const navItems = sampleMode ? ['Briefing', 'Watchlist', 'Ledger'] : ['Briefing', 'Portfolio', 'Calendar', 'Watchlist', 'Ledger'];
 const affected = item => item.affected.filter(t => watchlist.includes(t));
 const tickers = names => names.map(t => `<a class="ticker" href="#/company/${encodeURIComponent(t)}">${escapeHTML(t)}</a>`).join('');
 const confidence = item => `<span class="confidence">${item.confidence} confidence</span>`;
@@ -109,7 +109,11 @@ function render() {
     ? 'Illustrative scenarios only. <a class="link" href="/#/briefing">Switch to Live</a>'
     : 'Headline heuristics are unreviewed scenarios, not financial advice or verified supply-chain effects. <a class="link" href="?seed=demo#/briefing">Explore Sample mode</a>';
   let [page = 'briefing', symbol] = location.hash.replace(/^#\/?/, '').split('/');
-  if (!['briefing','catalysts','watchlist','ledger','company','calendar','portfolio'].includes(page) || (sampleMode && ['portfolio','calendar'].includes(page))) page = 'briefing';
+  if (page === 'catalysts') {
+    history.replaceState(history.state, '', '#/briefing');
+    page = 'briefing';
+  }
+  if (!['briefing','watchlist','ledger','company','calendar','portfolio'].includes(page) || (sampleMode && ['portfolio','calendar'].includes(page))) page = 'briefing';
   const portfolio = page === 'portfolio';
   document.body.classList.toggle('portfolio-page',portfolio);
   const onboarding = !watchlist.length && !portfolio;
@@ -126,14 +130,11 @@ function render() {
   } else if (page === 'calendar') {
     document.querySelector('.sample').textContent = 'Event calendar';
     renderCalendar();
-  } else if (!sampleMode && ['briefing','catalysts','company'].includes(page)) {
+  } else if (!sampleMode && ['briefing','company'].includes(page)) {
     renderLive(page,symbol);
   } else if (page === 'briefing') {
     const items = data.briefing.impacts.filter(i => affected(i).length);
-    main.innerHTML = heading('Daily briefing', 'The developments beyond your watchlist that could move it.', data.briefing.date + ' · Sample edition') + `<section class="summary panel"><div><h2>The market in a minute</h2><p>${data.briefing.summary}</p></div><div class="market">${data.briefing.market.map(x => `<div><span>${x.label}</span><strong class="${x.direction}">${x.value}</strong></div>`).join('')}<div class="muted">Illustrative moves, not live quotes</div></div></section><div class="section-head"><h2>What could move your watchlist</h2><span class="muted small">${items.length} sample signals</span></div>${impacts(items)}<aside class="panel callout"><div><h3>Next on the calendar</h3><p class="muted small">Earnings, inflation and the Fed. See what could matter.</p></div><a class="link" href="#/catalysts">View catalysts</a></aside>`;
-  } else if (page === 'catalysts') {
-    const events = data.catalysts.events.filter(i => affected(i).length);
-    main.innerHTML = heading('Upcoming catalysts', 'A look ahead at events that could affect your companies.') + `<div class="panel notice">Sample calendar. Dates, expectations and scenarios are illustrative, not a real event schedule.</div>` + (events.length ? `<div class="panel">${events.map(item => `<article class="impact event"><div class="datebox"><span>${item.month}</span><strong>${item.day}</strong></div><div><div class="eyebrow">${item.type} · ${item.time}</div><h3>${item.title}</h3><p>${item.reason}</p><div class="meta">${tickers(affected(item))}<span class="small ${item.direction}">${item.direction === 'positive' ? '+' : '−'} ${item.direction} scenario</span></div></div>${confidence(item)}</article>`).join('')}</div>` : '<div class="panel empty">No sample catalysts cover your watchlist yet.</div>');
+    main.innerHTML = heading('Daily briefing', 'The developments beyond your watchlist that could move it.', data.briefing.date + ' · Sample edition') + `<section class="summary panel"><div><h2>The market in a minute</h2><p>${data.briefing.summary}</p></div><div class="market">${data.briefing.market.map(x => `<div><span>${x.label}</span><strong class="${x.direction}">${x.value}</strong></div>`).join('')}<div class="muted">Illustrative moves, not live quotes</div></div></section><div class="section-head"><h2>What could move your watchlist</h2><span class="muted small">${items.length} sample signals</span></div>${impacts(items)}`;
   } else if (page === 'watchlist') {
     main.innerHTML = heading('Your watchlist', 'Follow the companies you care about. Saved on this device.') + editor() +
       `<div class="section-head"><h2>Following (${watchlist.length}/12)</h2><a class="link" href="#/briefing">View briefing ›</a></div>
@@ -176,9 +177,9 @@ async function loadLive(extraSymbol) {
     const names = [...new Set([...watchlist, ...(extraSymbol ? [extraSymbol] : [])])];
     if (names.length > 12) throw new Error('This company is outside your 12-name watchlist. Edit your watchlist to include it.');
     const query = '?tickers=' + encodeURIComponent(names.join(','));
-    const [briefing,catalysts] = await Promise.all([api('/api/briefing'+query),api('/api/catalysts'+query)]);
+    const briefing = await api('/api/briefing'+query);
     if (version !== requestVersion) return;
-    live = {...briefing, events:catalysts.events, errors:[...new Map([...briefing.errors,...catalysts.errors].map(x=>[JSON.stringify(x),x])).values()]};
+    live = briefing;
   } catch (error) { if (version === requestVersion) liveError = error.name === 'TimeoutError' ? 'Live request timed out. Try again shortly.' : error.message; }
   finally { if (version === requestVersion) { liveLoading = false; refreshLiveView(); } }
 }
@@ -192,8 +193,8 @@ function quoteRows(quotes) {
 function renderLive(page,rawSymbol) {
   let symbol = '';
   try { symbol = decodeURIComponent(rawSymbol || '').toUpperCase(); } catch { /* invalid route */ }
-  const title = page === 'company' ? (live?.companies.find(c=>c.ticker===symbol)?.name || symbol || 'Company') : page === 'catalysts' ? 'Watchlist catalysts' : 'Daily briefing';
-  main.innerHTML = heading(escapeHTML(title), page === 'catalysts' ? 'Recent headline catalysts for the companies you follow.' : page === 'company' ? escapeHTML(symbol) + ' · Company news and context' : 'Recent developments from your companies’ news feeds, without inferred propagation.', 'Live · Finnhub');
+  const title = page === 'company' ? (live?.companies.find(c=>c.ticker===symbol)?.name || symbol || 'Company') : 'Daily briefing';
+  main.innerHTML = heading(escapeHTML(title), page === 'company' ? escapeHTML(symbol) + ' · Company news and context' : 'Recent developments from your companies’ news feeds, without inferred propagation.', 'Live · Finnhub');
   if (page === 'briefing') main.innerHTML += '<aside class="panel notice"><a class="link" href="#/calendar">View upcoming earnings and market events ›</a><div>'+brokerLink+'</div></aside>';
   if (liveLoading) { main.innerHTML += '<div class="panel notice" role="status">Loading live news and quotes…</div>'; return; }
   if (liveError) { main.innerHTML += `<div class="panel notice" role="alert">${escapeHTML(liveError)} <button class="button secondary" id="retry-live">Try again</button></div>`; document.querySelector('#retry-live').onclick=()=>loadLive(page==='company'?symbol:undefined); return; }
@@ -202,7 +203,7 @@ function renderLive(page,rawSymbol) {
   if (live.notice) main.innerHTML += `<div class="panel notice">${escapeHTML(live.notice)} <a class="link" href="?seed=demo#/briefing">Explore Sample mode</a></div>`;
   if (live.unresolved.length) main.innerHTML += `<div class="panel notice error" role="alert">Unresolved: ${escapeHTML(live.unresolved.join(', '))}. <a class="link" href="#/watchlist">Edit watchlist</a></div>`;
   if (live.errors.length) main.innerHTML += `<div class="panel notice" role="alert">Some live data is unavailable: ${live.errors.map(e=>escapeHTML((e.ticker||e.input) + ' ' + (e.resource||'resolution') + ': ' + e.code.replaceAll('_',' '))).join('; ')}. Available results are shown. <button class="button secondary" id="retry-live">Retry</button></div>`;
-  const items = (page === 'catalysts' ? live.events : live.impacts).filter(i=>page!=='company' || i.affected.includes(symbol));
+  const items = live.impacts.filter(i=>page!=='company' || i.affected.includes(symbol));
   main.innerHTML += quoteRows(live.quotes.filter(q=>page!=='company'||q.ticker===symbol));
   if (page === 'company') {
     const mapped = data.graph.nodes.some(n=>n.ticker===symbol);
@@ -212,8 +213,7 @@ function renderLive(page,rawSymbol) {
       main.innerHTML += '<div class="panel notice"><strong>Illustrative relationship context · 12-node SEC graph</strong><p>Existing research relationships; not live evidence or verified propagation from these headlines.</p>' + (edges.length ? '<p>'+edges.map(e=>escapeHTML(e.source+' → '+e.target)).join(' · ')+'</p>' : '<p>No relationships recorded for this node.</p>') + '</div>';
     }
   }
-  main.innerHTML += `<div class="section-head"><h2>${page==='catalysts'?'Recent catalysts':'Classified headlines'}</h2><span class="muted small">${items.length} live scenarios</span></div>` + (page === 'company' && !items.length ? '<div class="panel notice">No classified headlines for this name in the recent seven-day window.</div>' : liveImpacts(items));
-  if (page==='catalysts') main.innerHTML += '<aside class="panel notice" style="margin-top:20px"><strong>Calendar coverage</strong><p>See upcoming earnings, inflation releases and Fed meetings in the <a class="link" href="#/calendar">event calendar</a>.</p></aside>';
+  main.innerHTML += `<div class="section-head"><h2>Classified headlines</h2><span class="muted small">${items.length} live scenarios</span></div>` + (page === 'company' && !items.length ? '<div class="panel notice">No classified headlines for this name in the recent seven-day window.</div>' : liveImpacts(items));
   if (page==='company') {
     const news=live.news.filter(n=>n.affected.includes(symbol) && !n.sign).slice(0,12);
     main.innerHTML += '<div class="section-head"><h2>More company news</h2><span class="muted small">Unclassified mentions</span></div>' + (news.length ? '<div class="panel">'+news.map(n=>`<article class="news-row"><h3><a class="article-link" href="${escapeHTML(n.url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(n.title)}</a></h3><p class="hint">${escapeHTML(n.source)} · ${escapeHTML(n.date.slice(0,10))} · No impact classification</p></article>`).join('')+'</div>' : '<div class="panel empty">No additional news available for this name.</div>');
@@ -225,7 +225,7 @@ function renderLive(page,rawSymbol) {
   document.querySelector('#retry-live')?.addEventListener('click',()=>loadLive(page==='company'?symbol:undefined));
 }
 window.addEventListener('hashchange', () => { render(); window.scrollTo(0,0); main.focus({preventScroll:true}); });
-Promise.all(['briefing','catalysts','companies','ledger','graph'].map(async name => {
+Promise.all(['briefing','companies','ledger','graph'].map(async name => {
   const response = await fetch(name === 'graph' ? 'seed/graph.json' : `seed/${name}.json`);
   if (!response.ok) throw new Error('Sample data unavailable');
   return [name, await response.json()];
