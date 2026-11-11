@@ -31,12 +31,13 @@ jobs:
           python -m scsm export
           python -m scsm ledger verify
           pytest -q
-      - name: Commit ledger and cached assets
+      - name: Commit ledger and cached research data
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add ledger data/events data/prices web/data
+          # web/data is an ignored legacy export; persist the research inputs and ledger.
+          git add ledger data/events data/prices
           if ! git diff --cached --quiet; then
-            git commit -m 'Update daily predictions, matured outcomes and static data'
+            git commit -m 'Update daily predictions, matured outcomes and cached research data'
             git push
           fi
