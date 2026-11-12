@@ -365,7 +365,7 @@ export const KALSHI_STOCK_SOURCES = [
   ['KXIPOANTHROPIC', 'Anthropic IPO'], ['KXIPOOPENAI', 'OpenAI IPO'], ['KXIPOSPACEX', 'SpaceX IPO']
 ].map(([id, label]) => ({ id, label }));
 
-async function kalshiStockFeed(url) {
+async function kalshiStockFeed(url, spacing = 0) {
   const status = url.searchParams.get('status') || 'open', token = url.searchParams.get('cursor') || '';
   if (!['open', 'closed'].includes(status)) throw new UpstreamError('invalid_prediction_query', 400);
   let cursors = KALSHI_STOCK_SOURCES.map(() => '');
@@ -391,6 +391,7 @@ async function kalshiStockFeed(url) {
       for (const [k, v] of Object.entries({ series_ticker: source.id, status, with_nested_markets: true, limit: 2 })) endpoint.searchParams.set(k, String(v));
       if (cursors[i]) endpoint.searchParams.set('cursor', cursors[i]);
       try {
+        if (spacing) await new Promise(resolve => setTimeout(resolve, spacing));
         const { body, fetchedAt } = await publicPage(endpoint);
         if (!Array.isArray(body?.events) || typeof body.cursor !== 'string' || body.cursor.length > 4000 || !/^[A-Za-z0-9_+=/:.-]*$/.test(body.cursor)) throw new UpstreamError('invalid_provider_response');
         let retained = 0;
@@ -444,7 +445,7 @@ export async function handle(request, env, ctx, url, rest) {
   if (rest === 'stock-events') {
     const provider = url.searchParams.get('provider') || 'polymarket';
     if (!['kalshi', 'polymarket'].includes(provider)) throw new UpstreamError('invalid_prediction_query', 400);
-    return provider === 'kalshi' ? kalshiStockFeed(url) : stockFeed(url);
+    return provider === 'kalshi' ? kalshiStockFeed(url, env?.predictionSync === true ? 350 : 0) : stockFeed(url);
   }
   if (rest !== 'catalog') return json({ error: 'Unknown prediction-market route.' }, 404);
   const q = url.searchParams, provider = q.get('provider') || 'all', status = q.get('status') || 'open', kind = q.get('kind') || 'standard';

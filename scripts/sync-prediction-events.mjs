@@ -5,23 +5,35 @@ import { pathToFileURL } from 'node:url';
 import { handle, resetPredictionMarketCacheForTests } from '../worker/space/prediction-markets.js';
 import { rankStockEvents } from '../web/space/panels/prediction-relevance.js';
 const diagnostics = body => (body.coverage || []).filter(c=>c.status === 'error').map(c=>({id:c.id,error:c.error}));
-export async function collectSnapshot({ previous = null, pageLimit = 3, getPage, now = () => new Date().toISOString() } = {}) {
+export async function collectSnapshot({ previous = null, pageLimit = 3, getPage, pause = ms => new Promise(resolve => setTimeout(resolve, ms)), now = () => new Date().toISOString() } = {}) {
   if (!Number.isInteger(pageLimit) || pageLimit < 1 || pageLimit > 5) throw new Error('Discovery page limit must be 1–5.');
   const providers = {}, sync = {}, generatedAt = now();
   const request = getPage || (async (provider, cursor) => {
     const url = new URL('https://local.invalid/api/space/prediction-markets/stock-events');
     url.searchParams.set('provider', provider); if (cursor) url.searchParams.set('cursor', cursor);
-    const response = await handle(new Request(url), {}, {}, url, 'stock-events');
+    const response = await handle(new Request(url), { predictionSync: true }, {}, url, 'stock-events');
     const body = await response.json();
     if (!response.ok) { const error = new Error('Public venue unavailable'); error.reason = 'provider_unavailable'; error.issues = diagnostics(body); throw error; }
     return body;
   });
+  async function requestWithCooldown(provider, cursor) {
+    for (let attempt = 0; attempt < 2; attempt++) {
+      try {
+        const body = await request(provider, cursor);
+        if (!attempt && diagnostics(body).some(c=>c.error === 'rate_limited')) { await pause(31000); continue; }
+        return body;
+      } catch (error) {
+        if (!attempt && error.issues?.some(c=>c.error === 'rate_limited')) { await pause(31000); continue; }
+        throw error;
+      }
+    }
+  }
   let successes = 0;
   for (const provider of ['polymarket', 'kalshi']) {
     const events = new Map(); let cursor = null, source = null, partial = false, pages = 0, issues = [];
     try {
       for (; pages < pageLimit; pages++) {
-        const body = await request(provider, cursor);
+        const body = await requestWithCooldown(provider, cursor);
         source = body.sources?.find(s => s.provider === provider);
         if (source?.status !== 'ok' || !Array.isArray(body.events)) throw new Error('Invalid venue page');
         partial ||= !!source.partial; issues.push(...diagnostics(body));

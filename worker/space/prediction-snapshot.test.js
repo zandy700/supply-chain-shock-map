@@ -87,3 +87,12 @@ test('snapshot writes are atomic on failure and local pack routes need no backen
     assert.notEqual((await fetch(url+'/%2e%2e%2fpackage.json')).status,200);
   }finally{if(server)await new Promise(resolve=>server.close(resolve));await rm(dir,{recursive:true,force:true});}
 });
+
+test('rate-limited discovery waits for cooldown once and then accepts fresh venue events', async () => {
+  const pauses=[];let calls=0;
+  const result=await collectSnapshot({previous:saved(),pause:async ms=>pauses.push(ms),now:()=>time,getPage:async p=>{
+    if(p==='polymarket'&&calls++===0){const retry=body(p,[]);retry.sources[0].partial=true;retry.coverage=[{id:'fed',status:'error',error:'rate_limited'}];return retry;}
+    return body(p,[event('FRESH',p)]);
+  }});
+  assert.deepEqual(pauses,[31000]);assert.equal(result.sync.polymarket.status,'ok');assert.equal(result.providers.polymarket.events[0].id,'polymarket:FRESH');
+});
