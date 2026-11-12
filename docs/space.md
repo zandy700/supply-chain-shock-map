@@ -1,6 +1,6 @@
-# Ultimater
+# Ultimater Analyzer
 
-Ultimater is the desktop research workspace at `/space.html` (Cloudflare also serves the clean `/space` URL). Run `npm run dev`, then open `http://127.0.0.1:8787/space.html`. Use a distinct `--persist-to` directory for each concurrent Wrangler server to avoid SQLite locks. See the [signed-in Yahoo Gold audit](rea-full-audit.md) for the latest changes, checks and data limits.
+Analyzer is the additional desktop analysis workspace within Ultimater. The original research dashboard (`/#/briefing`), research engine, and ledger are retained; see the [preservation check](original-workspace.md). Analyzer is available at `/space.html` (Cloudflare also serves the clean `/space` URL). Run `npm run dev`, then open `http://127.0.0.1:8787/space.html`. Use a distinct `--persist-to` directory for each concurrent Wrangler server to avoid SQLite locks. See the [signed-in Yahoo Gold audit](rea-full-audit.md) for the latest changes, checks and data limits.
 
 The [workspace contract](space-contract.md) records the shared interfaces. The existing briefing and its classified news scenarios remain available, and the workspace Predictions panel uses that same classification flow.
 

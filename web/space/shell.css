@@ -144,6 +144,10 @@ html,body.space{height:100%;margin:0;background:var(--s-bg);color:var(--s-text);
 .sp-body{flex:1;min-height:0;display:flex;position:relative}
 .sp-side{width:var(--sp-side-w);flex:none;display:flex;flex-direction:column;border-right:1px solid var(--s-border);background:var(--s-surface);min-height:0}
 .sp-side-scroll{flex:1;overflow-y:auto;overflow-x:hidden;padding:10px 10px 16px;scrollbar-width:thin;scrollbar-color:var(--s-border-strong) transparent}
+.sp-research-home{display:flex;align-items:center;gap:10px;padding:10px 12px;margin-bottom:8px;border-radius:6px;color:var(--s-muted);font:500 13px var(--s-font);text-decoration:none}
+.sp-research-home:hover{background:var(--s-hover);color:var(--s-text)}
+.side-collapsed .sp-research-home{justify-content:center;padding-inline:0}
+.side-collapsed .sp-research-home span{display:none}
 .sp-sec+.sp-sec{margin-top:6px}
 .sp-sec-head{display:flex;align-items:center;gap:4px;padding:2px 2px 2px 4px}
 .sp-sec-toggle{flex:1;display:flex;align-items:center;gap:6px;border:0;background:none;color:var(--s-muted);font:700 12px var(--s-font);letter-spacing:.14em;padding:6px 4px;cursor:pointer;text-align:left;border-radius:4px}

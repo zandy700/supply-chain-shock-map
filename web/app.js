@@ -117,7 +117,7 @@ function render() {
   const portfolio = page === 'portfolio';
   document.body.classList.toggle('portfolio-page',portfolio);
   const onboarding = !watchlist.length && !portfolio;
-  document.querySelector('nav').innerHTML = (!watchlist.length && !sampleMode ? ['Watchlist','Portfolio'] : navItems).map(name => `<a href="#/${name.toLowerCase()}" ${page === name.toLowerCase() || (page === 'company' && name === 'Watchlist') ? 'class="active" aria-current="page"' : ''}>${name}</a>`).join('');
+  document.querySelector('nav').innerHTML = (!watchlist.length && !sampleMode ? ['Watchlist','Portfolio'] : navItems).map(name => `<a href="#/${name.toLowerCase()}" ${page === name.toLowerCase() || (page === 'company' && name === 'Watchlist') ? 'class="active" aria-current="page"' : ''}>${name}</a>`).join('') + '<a href="/space?view=analysis">Analyzer</a>';
   if (onboarding) {
     main.innerHTML = `<section class="onboarding"><div class="panel"><span class="brand-mark">⌁</span><h1>A little context.<br>A clearer watchlist.</h1><p>See how other companies and the wider market could affect the names you follow.</p>${editor(true)}<div class="hint">${storageAvailable ? 'Saved on this device. No account needed.' : 'Enable browser storage to save your watchlist.'}</div>${sampleMode ? '' : '<p>'+brokerLink+'</p>'}</div><div class="hint" style="text-align:center;margin-top:20px">${sampleMode ? 'Sample data only. Explore illustrative scenarios.' : 'Live news via Finnhub. Sample mode is available from the footer.'}</div></section>`;
   } else if (portfolio) {

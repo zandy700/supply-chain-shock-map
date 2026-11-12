@@ -498,6 +498,7 @@ function renderSidebar() {
   const mine = myViews();
   els.side.innerHTML = `
     <div class="sp-side-scroll">
+      <a class="sp-research-home" href="/#/briefing" aria-label="Back to research dashboard" title="Back to research dashboard">${icon('back')}<span>Research dashboard</span></a>
       <section class="sp-sec" data-section="views">
         <div class="sp-sec-head"><button type="button" class="sp-sec-toggle" data-sec="views" aria-expanded="${s.views}">${icon('chevron', 'sp-caret')}<span>VIEWS</span></button>
           <button type="button" class="s-icon-btn s-icon-btn-sm sp-collapse" data-act="collapse-side" aria-label="${prefs.sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}" aria-pressed="${prefs.sidebarCollapsed}">${icon('sidebar')}</button></div>

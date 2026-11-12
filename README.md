@@ -1,10 +1,12 @@
 # Ultimater
 
-**A customizable workspace for researching stocks, tracking portfolios, and exploring prediction markets.**
+**Supply-chain research, watchlists, and a dedicated stock analyzer.**
 
-Ultimater brings charts, company financials, earnings, news, options, and thematic research into one browser workspace. Start with a built-in view, link panels to the same ticker, or build your own layout.
+Ultimater builds on the original Supply Chain Shock Map project. The research dashboard keeps its Briefing, Watchlist, Portfolio, Calendar, and demonstration Ledger. The Python research engine, source evidence, historical data, and append-only research ledger remain separate from that demonstration UI.
 
-Built by **Xingjian Zhang** with vanilla JavaScript and a Cloudflare Worker. The repository also contains a separate Python supply-chain research engine and an auditable prediction ledger.
+**Analyzer** is the additional workspace informed by the AlphaSpace interface audit. It brings charts, company financials, earnings, news, options, and thematic research into linked panels. Open it from the dashboard's **Analyzer** link; use **Research dashboard** in its sidebar to return.
+
+Built by **Xingjian Zhang** with vanilla JavaScript, a Cloudflare Worker, and a Python research engine.
 
 ![Ultimater chart workspace with candlesticks, company research panels, and chart appearance controls](docs/screenshots/ultimater-chart-style-1200.png)
 
@@ -12,6 +14,7 @@ Built by **Xingjian Zhang** with vanilla JavaScript and a Cloudflare Worker. The
 
 | Workspace | Features |
 | --- | --- |
+| **Research dashboard** | Original watchlist, headline impact scenarios, company context, portfolio, calendar, and demonstration ledger. The research engine and its append-only ledger remain available through the Python tools below. |
 | **Markets & themes** | Movers, watchlists, heatmaps, screens, and 34 stock themes, including housing, gambling, semiconductors, nuclear energy, and prediction-market exposure. |
 | **Stock analysis** | Candlesticks and other chart styles, 52 studies, drawing tools, comparisons, replay, company profiles, financial statements, rolling LTM, YoY rows, and analyst consensus. |
 | **Earnings** | Calendar navigation, company details, reported results and estimates, and shareable earnings images. |
@@ -34,7 +37,7 @@ npm ci
 npm run dev -- --port 8820
 ```
 
-Open **[http://127.0.0.1:8820/space](http://127.0.0.1:8820/space)**.
+Open the **[research dashboard](http://127.0.0.1:8820/#/briefing)** or the **[Analyzer](http://127.0.0.1:8820/space?view=analysis)**.
 
 The workspace can start without provider keys. Public endpoints supply available data; features that need credentials show their setup or unavailable state. Use the Worker server above for the workspace APIs. A plain static file server does not provide them.
 
@@ -130,7 +133,8 @@ Local `.dev.vars` credentials are not automatically uploaded as hosted secrets. 
 
 ## Documentation and credits
 
-- [Workspace features, refresh behavior, and limitations](docs/space.md)
+- [Original dashboard and research preservation check](docs/original-workspace.md)
+- [Analyzer features, refresh behavior, and limitations](docs/space.md)
 - [Reference audit: changes, evidence, and remaining gaps](docs/rea-full-audit.md)
 - [Supply-chain research methodology and full attribution](docs/research-engine.md)
 - [Graph provenance](docs/graph-provenance.md)
