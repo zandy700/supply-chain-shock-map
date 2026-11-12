@@ -2,6 +2,9 @@ import {brokerRoute} from "./broker.js";
 export {BrokerSession} from "./broker.js";
 import {calendar} from './calendar.js';
 import {classify} from './classify.js';
+import {workspaceSyncRoute} from './space/workspace-sync.js';
+export {WorkspaceSync} from './space/workspace-sync.js';
+import {spaceRoute} from './space/router.js';
 
 const MAX_TICKERS = 12;
 const SYMBOL = /^[A-Z]{1,5}(?:[.-][A-Z])?$/;
@@ -57,7 +60,7 @@ async function portfolioQuotes(tickers, env, ctx) {
   const prices = {};
   if (!env.FINNHUB_API_KEY) return {prices, unavailable:tickers};
   const results = await Promise.allSettled(tickers.map(async ticker => {
-    const quote = await finnhub('quote', {symbol:ticker}, env, ctx, 60);
+    const quote = await finnhub('quote', {symbol:ticker}, env, ctx, 30);
     if (!Number.isFinite(quote?.c) || quote.c <= 0 || !Number.isFinite(quote.t) || quote.t <= 0) {
       throw new UpstreamError('quote_unavailable');
     }
@@ -167,6 +170,8 @@ export default {
     const url=new URL(request.url);
     if (!url.pathname.startsWith('/api/')) return env.ASSETS.fetch(request);
     if (url.pathname.startsWith('/api/broker/')) return brokerRoute(request,env);
+    if (url.pathname === '/api/space/workspace') return workspaceSyncRoute(request,env);
+    if (url.pathname.startsWith('/api/space/')) return spaceRoute(request,env,ctx);
     if (request.method!=='GET') return json({error:'Use GET.'},405);
     if (url.pathname==='/api/health') return json({ok:true,finnhub:Boolean(env.FINNHUB_API_KEY)});
     if (!['/api/briefing','/api/catalysts','/api/resolve','/api/calendar','/api/portfolio-quotes'].includes(url.pathname)) return json({error:'Unknown API route.'},404);

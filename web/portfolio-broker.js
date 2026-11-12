@@ -18,7 +18,7 @@ export function brokerAccount(raw) {
 }
 
 async function api(action,method) {
-  const r=await fetch(root+action,{method,cache:'no-store'});
+  const r=await fetch(root+action,{method,cache:'no-store',...(!method || method === 'GET' ? {signal:AbortSignal.timeout(30000)} : {})});
   if (!r.headers.get('content-type')?.includes('application/json')) throw new Error('Broker linking requires the Worker server.');
   const data=await r.json();
   if (!r.ok) throw new Error(data.error || 'Broker request failed.');

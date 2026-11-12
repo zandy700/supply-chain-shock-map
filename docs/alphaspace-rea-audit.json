@@ -1,0 +1,265 @@
+{
+  "inspectedAt": "2026-11-12T00:08:00Z",
+  "reference": "https://alphaspace.finance.yahoo.com/",
+  "scope": "UI controls only. No cookies, credentials, account names, balances, holdings or article text persisted.",
+  "observations": [
+    {
+      "evidence_id": "ev_7601c919608f4a59b6793ec0d3b30fa16a8a8ee4700400dad541e4476993c460",
+      "kind": "markets passive control inspection"
+    },
+    {
+      "evidence_id": "ev_a13f8854eabef11d6b26903934d9b9cc8bb669427f9f9440a563a469abd975e0",
+      "kind": "create-view menu",
+      "controls": [
+        "Start from scratch",
+        "Select a template"
+      ]
+    },
+    {
+      "evidence_id": "ev_e8c8c7e24f50396f138ff78777cb9fc5f0fe6d043546492cf59334b7639050e8",
+      "kind": "chart menus",
+      "menus": [
+        {
+          "step": "menu-0",
+          "lines": [
+            "    - button \"Customize chart style\" [expanded]:",
+            "    - dialog \"Customize chart style\":",
+            "      - text: Customize style",
+            "      - button \"Close customize style\":",
+            "      - text: Preset",
+            "      - radiogroup \"Chart style preset\":",
+            "        - radio \"Default\" [checked]",
+            "        - radio \"High contrast\"",
+            "        - radio \"Mono\"",
+            "        - radio \"Ocean\"",
+            "        - radio \"Accessible\"",
+            "        - radio \"Terminal\"",
+            "      - button \"Chart frame\"",
+            "      - button \"Text watermark\"",
+            "      - button \"Price scale\"",
+            "      - button \"Time axis\"",
+            "      - button \"Candles & bars\"",
+            "      - button \"Line & mountain\"",
+            "      - button \"Comparison series\"",
+            "      - button \"Metrics\"",
+            "      - button \"Reset to defaults\" [disabled]",
+            "      - button \"Done\""
+          ]
+        },
+        {
+          "step": "menu-1",
+          "lines": [
+            "    - button \"More toolbar options\" [expanded]:",
+            "    - menu:",
+            "      - group \"Replay\":",
+            "        - text: Replay",
+            "        - menuitem \"Bar Replay\"",
+            "      - group \"Price\":",
+            "        - text: Price",
+            "        - menuitemcheckbox \"Extended hours\" [checked]",
+            "        - menuitemcheckbox \"Total return Enable Total Return to see dividend-adjusted prices on the chart. Live updates use regular streaming close.\"",
+            "      - group \"Overlays\":",
+            "        - text: Overlays",
+            "        - menuitemcheckbox \"OHLCV legend\" [checked]",
+            "        - menuitemcheckbox \"Show volume\" [checked]",
+            "        - menuitemcheckbox \"Dividends & splits\"",
+            "        - menuitemcheckbox \"Watermark\"",
+            "      - group \"Hover\":",
+            "        - text: Hover",
+            "        - menuitemcheckbox \"Hover legend\" [checked]",
+            "        - menuitemcheckbox \"Vertical crosshair\" [checked]",
+            "        - menuitemcheckbox \"Horizontal crosshair\" [checked]",
+            "      - button \"Reset defaults\""
+          ]
+        },
+        {
+          "step": "menu-2",
+          "lines": [
+            "    - button \"Fundamental metrics\" [expanded]: Metrics",
+            "    - dialog \"Fundamentals\":",
+            "      - searchbox \"Search fundamentals\"",
+            "      - text: Period",
+            "      - button \"Annual\" [pressed]",
+            "      - button \"Quarterly\"",
+            "      - text: Type",
+            "      - button \"Bars\" [pressed]",
+            "      - button \"Line\"",
+            "      - button \"Area\"",
+            "      - text: Income Statement",
+            "      - button \"Revenue\"",
+            "      - button \"Gross Profit\"",
+            "      - button \"Operating Income\"",
+            "      - button \"Net Income\"",
+            "      - button \"Diluted EPS\"",
+            "      - button \"EBITDA\"",
+            "      - text: Cash Flow",
+            "      - button \"Operating Cash Flow\"",
+            "      - button \"Free Cash Flow\"",
+            "      - button \"Capital Expenditure\"",
+            "      - text: Key Metrics",
+            "      - button \"Market Cap\"",
+            "      - button \"Enterprise Value\"",
+            "      - button \"Dividend Yield\"",
+            "      - button \"Return on Equity\"",
+            "      - button \"Return on Invested Capital\"",
+            "      - text: Valuation",
+            "      - button \"P/E (Trailing)\"",
+            "      - button \"P/E (Forward)\"",
+            "      - button \"Price / Book\"",
+            "      - button \"EV / Revenue\"",
+            "      - button \"EV / EBITDA\"",
+            "      - text: Growth",
+            "      - button \"Revenue Growth\"",
+            "      - text: Margins",
+            "      - button \"Gross Margin\"",
+            "      - button \"Operating Margin\"",
+            "      - button \"Net Margin\"",
+            "      - button \"EBITDA Margin\""
+          ]
+        },
+        {
+          "step": "menu-3",
+          "lines": [
+            "    - button \"Indicators\" [expanded]: Ind",
+            "    - dialog \"Technical indicators\":",
+            "      - searchbox \"Search indicators\"",
+            "      - listbox \"Indicators\":",
+            "        - text: Moving Averages",
+            "        - option \"Simple Moving Average\" [selected]",
+            "        - option \"Exponential Moving Average\"",
+            "        - option \"Double Exponential Moving Average\"",
+            "        - option \"Triple Exponential Moving Average\"",
+            "        - option \"Weighted Moving Average\"",
+            "        - text: Bands & Channels",
+            "        - option \"Bollinger Bands\"",
+            "        - option \"Acceleration Bands\"",
+            "        - option \"Keltner Channels\"",
+            "        - option \"Price Channel\"",
+            "        - option \"Price Envelopes\"",
+            "        - option \"Pivot Points\"",
+            "        - text: Trend",
+            "        - option \"Parabolic SAR\"",
+            "        - option \"Ichimoku Cloud\"",
+            "        - option \"Super Trend\"",
+            "        - option \"Linear Regression\"",
+            "        - option \"Trendline\"",
+            "        - option \"Zig Zag\"",
+            "        - option \"Directional Movement Index\"",
+            "        - option \"Aroon\"",
+            "        - text: Momentum",
+            "        - option \"Relative Strength Index\"",
+            "        - option \"MACD\"",
+            "        - option \"Stochastic Oscillator\"",
+            "        - option \"Slow Stochastic\"",
+            "        - option \"Momentum\"",
+            "        - option \"Rate of Change\"",
+            "        - option \"Awesome Oscillator\"",
+            "        - option \"Chande Momentum Oscillator\"",
+            "        - option \"Williams %R\"",
+            "        - option \"Detrended Price Oscillator\"",
+            "        - option \"Disparity Index\"",
+            "        - text: Volatility",
+            "        - option \"Average True Range\"",
+            "        - option \"Normalized ATR\"",
+            "        - option \"Commodity Channel Index\"",
+            "        - text: Volume",
+            "        - option \"Volume Weighted Avg Price\"",
+            "        - option \"Volume by Price\"",
+            "        - option \"On-Balance Volume\"",
+            "        - option \"Money Flow Index\"",
+            "        - option \"Chaikin Money Flow\"",
+            "        - option \"Accumulation/Distribution\"",
+            "        - option \"Chaikin Oscillator\"",
+            "        - option \"Klinger Oscillator\"",
+            "        - text: Regression",
+            "        - option \"Linear Regression Angle\"",
+            "        - option \"Linear Regression Intercept\"",
+            "        - option \"Linear Regression Slope\"",
+            "        - option \"Aroon Oscillator\"",
+            "        - text: Other",
+            "        - option \"Absolute Price Oscillator\"",
+            "        - option \"Percentage Price Oscillator\"",
+            "        - option \"TRIX\"",
+            "      - button \"Manage all \u2192\""
+          ]
+        }
+      ]
+    },
+    {
+      "evidence_id": "ev_18aaac6f70415bcf948d72783839eff7bf47c3f2ec0102c9dff836348b0f42df",
+      "kind": "six core view controls",
+      "findings": [
+        "Fundamentals includes Operating Metrics, Valuation Multiples, Segments, comparison and unit/order controls.",
+        "Analyst ratings includes Track record tab.",
+        "News includes Yahoo Finance TV.",
+        "Portfolio includes Holdings, News, Insights, Movers, Risk and Hide values.",
+        "Options includes Options Flow Screener and Contract Detail.",
+        "Earnings includes Revenue vs Earnings Annual/Quarterly and Earnings/Revenue Estimate tabs."
+      ]
+    },
+    {
+      "evidence_id": "ev_8fccb7684be81ac87baaa88e1c1fcb213afb015e526a6bd86365c2252a875643",
+      "kind": "options flow filter controls",
+      "controls": [
+        "All",
+        "Ask Flow",
+        "Bid Flow",
+        "Big Trades - Ask",
+        "Big Trades - Bid",
+        "ETF Flows - Ask",
+        "Big Multileggers"
+      ]
+    },
+    {
+      "evidence_id": "ev_dc1746d83af06e36a9d60a7d9a7c9a03236810aab82c7cd3358de2faf7584a2d",
+      "kind": "portfolio tabs",
+      "completed": [
+        "Insights selected",
+        "Movers selected; sortable Gainers table"
+      ],
+      "unknown": [
+        "Risk tab exists; click timed out. Risk contents not verified."
+      ]
+    },
+    {
+      "evidence_id": "ev_f8778bcae4549cbc4433570b01b7a38e62efccaecc397d24a564c033a3145953",
+      "kind": "search palette",
+      "controls": [
+        "Toggle Sidebar",
+        "Open Scout",
+        "Create New View",
+        "Open or clone view",
+        "Type > for commands"
+      ]
+    },
+    {
+      "evidence_id": "ev_4f483bf85119c2bec2b93900e3809b5db60d4dfeef03445cf1408a64db5739aa",
+      "kind": "command mode",
+      "controls": [
+        "Toggle Sidebar",
+        "Open Scout",
+        "Create New View"
+      ]
+    },
+    {
+      "evidence_id": "ev_f098fe75c4032e261b3f476372dbcc22c32f86d2c3675f7ba2bd921910a85ec8",
+      "kind": "search second-step view actions",
+      "controls": [
+        "Open View",
+        "Clone View"
+      ]
+    },
+    {
+      "evidence_id": "ev_2bb548836a08eb5ee1d5b936db942b1f7b0a0edb0d34f02e9694f0683c1a1d6e",
+      "kind": "unknown search destination",
+      "finding": "A Trade Watch recent-search entry and its Open/Clone actions exist. Opening it returned the root shell with no substantive view controls captured. Its actual availability/content remains unknown."
+    }
+  ],
+  "limitations": [
+    "Accessibility captures show control presence; most menu choices were not activated and their data semantics remain unverified.",
+    "Several core view captures occurred while data was loading.",
+    "No Yahoo Scout prompt was sent; actual generated behavior remains unverified.",
+    "No reference layout, portfolio, or alert was created, changed or deleted. Navigation and panel menu/tab state changed during inspection.",
+    "Source-side comparison identifies absent UI code and is not proof that every existing control behaves equivalently."
+  ]
+}

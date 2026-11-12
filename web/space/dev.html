@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" data-space-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Space panel harness</title>
+<link rel="stylesheet" href="tokens.css"><link rel="stylesheet" href="shell.css"><link rel="stylesheet" href="panels.css">
+<style>
+  body{margin:0;background:var(--s-bg);color:var(--s-text);font:13px var(--s-font)}
+  #space-dock{display:none!important}
+  .dev-grid{display:grid;gap:12px;padding:12px;grid-template-columns:repeat(auto-fill,minmax(min(100%,var(--w,520px)),1fr))}
+  .dev-panel{background:var(--s-panel);border:1px solid var(--s-border);border-radius:var(--s-radius);height:var(--h,460px);display:flex;flex-direction:column;overflow:hidden}
+  .dev-panel>header{padding:8px 12px;border-bottom:1px solid var(--s-border);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--s-muted)}
+  .dev-panel>.body{flex:1;min-height:0;overflow:auto}
+</style>
+</head>
+<body>
+<!-- Usage: dev.html?panels=chart,quote&symbol=NVDA&theme=light  (mounts each panel with a stub ctx) -->
+<div class="dev-grid" id="grid"></div>
+<script type="module">
+  import './panels/index.js';
+  import { getPanel, listPanels, api, links, bus, fmt, esc, toCSV, state as ui } from './core.js';
+  const q = new URLSearchParams(location.search);
+  if (q.get('theme')) document.documentElement.dataset.spaceTheme = q.get('theme');
+  const types = (q.get('panels') || listPanels().map(p => p.type).join(',')).split(',').filter(Boolean);
+  links.set('dev', q.get('symbol') || 'NVDA');
+  const grid = document.getElementById('grid');
+  window.__space = { instances: [] };
+  for (const type of types) {
+    const def = getPanel(type);
+    const box = document.createElement('section'); box.className = 'dev-panel';
+    box.innerHTML = `<header>${esc(def ? def.title : type + ' (not registered)')}</header><div class="body"></div>`;
+    grid.append(box);
+    if (!def) continue;
+    let st = {};
+    const ctx = {
+      type, group: 'dev', get symbol() { return def.symbolLinked ? links.get('dev') : null; },
+      get state() { return st; }, setState(p) { st = { ...st, ...p }; },
+      setTitle(t) { box.querySelector('header').textContent = t; }, setSubtitle() {},
+      openSymbol(s) { links.set('dev', s); }, api, links, bus, fmt, esc, toCSV, ui, locked: false
+    };
+    try {
+      const inst = def.mount(box.querySelector('.body'), ctx) || {};
+      window.__space.instances.push({ type, inst });
+      if (def.symbolLinked) bus.on('symbol', ({ group, symbol }) => group === 'dev' && inst.onSymbol?.(symbol));
+    } catch (e) { box.querySelector('.body').textContent = 'Mount failed: ' + e.message; console.error(e); }
+  }
+</script>
+</body>
+</html>

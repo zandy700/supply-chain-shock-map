@@ -149,7 +149,7 @@ function render() {
   } else if (page === 'ledger') {
     main.innerHTML = heading('Prediction ledger', 'A record of the call, before the result.') + '<div class="panel notice"><strong>Not financial advice. Predictions are logged before outcomes; scores come later.</strong><p class="hint">These are seeded demonstration entries, not real forecasts or records from the research ledger. No outcomes have been scored.</p></div><div class="section-head"><h2>Sample predictions</h2><span class="muted small">Outcomes pending</span></div>' + impacts(data.ledger.entries.filter(i => affected(i).length));
   }
-  document.title = `${onboarding ? 'Create your watchlist' : page === 'company' ? symbol : navItems.find(x => x.toLowerCase() === page) || 'Briefing'} · Watchlist Pulse`;
+  document.title = `${onboarding ? 'Create your watchlist' : page === 'company' ? symbol : navItems.find(x => x.toLowerCase() === page) || 'Briefing'} · Ultimater`;
   bindForm();
 }
 async function api(path) {

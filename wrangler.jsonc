@@ -10,7 +10,7 @@
     "binding": "ASSETS",
     "run_worker_first": ["/api/*"]
   },
-  "durable_objects": { "bindings": [{ "name": "BROKER_SESSIONS", "class_name": "BrokerSession" }] },
-  "migrations": [{ "tag": "broker-v1", "new_sqlite_classes": ["BrokerSession"] }],
+  "durable_objects": { "bindings": [{ "name": "BROKER_SESSIONS", "class_name": "BrokerSession" }, { "name": "WORKSPACE_SYNC", "class_name": "WorkspaceSync" }] },
+  "migrations": [{ "tag": "broker-v1", "new_sqlite_classes": ["BrokerSession"] }, { "tag": "workspace-sync-v1", "new_sqlite_classes": ["WorkspaceSync"] }],
   "observability": { "enabled": true, "logs": { "invocation_logs": false } }
 }

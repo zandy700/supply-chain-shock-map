@@ -1,0 +1,27 @@
+/* Shared design tokens for the Space workspace. Every Space stylesheet uses these. */
+:root{
+  --s-bg:#0b0d10;--s-surface:#111418;--s-panel:#14181d;--s-panel-2:#1a1f26;--s-hover:#20262e;
+  --s-border:#252c35;--s-border-strong:#323b46;
+  --s-text:#e6e9ed;--s-muted:#8b95a1;--s-faint:#5c6672;
+  --s-accent:#4c8dff;--s-accent-soft:rgba(76,141,255,.16);--s-focus:#4c8dff;
+  --s-up:#2ebd85;--s-down:#f0616d;--s-warn:#e7b04a;--s-gold:#e1a73b;
+  --s-radius:10px;--s-radius-sm:6px;
+  --s-font:Inter,system-ui,-apple-system,Segoe UI,sans-serif;
+  --s-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --s-shadow:0 8px 30px rgba(0,0,0,.45);
+  color-scheme:dark;
+}
+:root[data-space-theme="light"]{
+  --s-bg:#f4f6f9;--s-surface:#ffffff;--s-panel:#ffffff;--s-panel-2:#f3f5f8;--s-hover:#eaeef3;
+  --s-border:#dfe4ea;--s-border-strong:#c9d1db;
+  --s-text:#111827;--s-muted:#5b6675;--s-faint:#8a94a3;
+  --s-accent:#2463eb;--s-accent-soft:rgba(36,99,235,.12);--s-focus:#2463eb;
+  --s-up:#0f9d63;--s-down:#d93848;--s-shadow:0 8px 30px rgba(15,23,42,.12);
+  color-scheme:light;
+}
+.s-up{color:var(--s-up)}.s-down{color:var(--s-down)}.s-muted{color:var(--s-muted)}.s-num{font-variant-numeric:tabular-nums}
+:root[data-space-theme="blue-steel"]{
+  --s-bg:#0b1724;--s-surface:#102033;--s-panel:#14283d;--s-panel-2:#19334b;--s-hover:#234660;
+  --s-border:#2b435b;--s-border-strong:#45647e;--s-text:#e5eff8;--s-muted:#9bb1c5;--s-faint:#658198;
+  --s-accent:#78b9f5;--s-accent-soft:rgba(120,185,245,.16);--s-focus:#8bc9ff;--s-up:#56d3ac;--s-down:#ff919f;--s-shadow:0 8px 30px rgba(0,9,21,.45);color-scheme:dark;
+}

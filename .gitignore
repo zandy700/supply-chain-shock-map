@@ -14,3 +14,6 @@ graphify-out/
 node_modules/
 .wrangler/
 .dev.vars.*
+
+# Local agent handoff; sanitized implementation reports live alongside it.
+/docs/rea-audit-status.md
