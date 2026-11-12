@@ -81,7 +81,15 @@ function mountMarket(el, ctx, config) {
   const resultsId = `market-results-${ctx.id || config.type}`;
   el.innerHTML = `<div class="p-market"><div class="p-market-toolbar"></div><div class="p-market-live" role="status" aria-live="off"></div><div class="p-market-message" role="status"></div><div class="p-market-body" id="${esc(resultsId)}"${config.variants || config.moverAsset ? ` role="tabpanel" aria-label="${esc(config.title)} results"` : ''}></div><div class="p-market-footer"></div></div>`;
   const toolbar = el.querySelector('.p-market-toolbar'), body = el.querySelector('.p-market-body'), footer = el.querySelector('.p-market-footer'), message = el.querySelector('.p-market-message'), live = el.querySelector('.p-market-live');
-  const save = patch => { settings = { ...settings, ...patch }; ctx.setState(patch); if (config.watchlist && patch.symbols) store.set('watchlist', patch.symbols); };
+  const save = patch => {
+    if (ctx.setState(patch) === false && config.watchlist && Array.isArray(patch.symbols)) {
+      message.textContent = 'Browser storage is unavailable. Your watchlist change was not saved. Enable local storage and try again.';
+      return false;
+    }
+    settings = { ...settings, ...patch };
+    if (config.watchlist && patch.symbols) store.set('watchlist', patch.symbols);
+    return true;
+  };
   function controls() {
     const variants = visibleVariants();
     if(config.moverAsset){ctx.setVariantOptions?.(variants);if(variants.some(v=>v.id===variant)){if(ctx.variant!==variant&&syncedVariant!==variant)ctx.setVariant?.(variant);syncedVariant=variant;}}
@@ -117,7 +125,11 @@ function mountMarket(el, ctx, config) {
       if (dead || signal.aborted || current !== revision || e.name === 'AbortError') return;
       const detail = ({ provider_unavailable: 'The market data provider is unavailable. Try again shortly.', rate_limited: 'The data provider’s request limit was reached. Try again shortly.', provider_access_denied: 'The data provider could not serve this request.' })[e.message] || e.message || 'Market data could not be loaded.';
       if (data) message.textContent = `Update failed; showing previous data. ${detail} Retrying automatically.`;
-      else { rows = []; body.innerHTML = ui.error(detail); }
+      else if (config.watchlist) {
+        data = { quotes: [], missing: settings.symbols || [] };
+        message.textContent = `Your watchlist is saved. Quotes are unavailable. ${detail} Retrying automatically.`;
+        render({ updateControls: first });
+      } else { rows = []; body.innerHTML = ui.error(detail); }
       throw e;
     }
   }
@@ -144,7 +156,7 @@ function mountMarket(el, ctx, config) {
     if (button.hasAttribute('data-market-pause')) { save({ marketPaused: !poll.state().paused }); poll.setPaused(settings.marketPaused); return; }
     if (button.dataset.symbol) { ctx.openSymbol(button.dataset.symbol); return; }
     if (button.dataset.sort) { const key = button.dataset.sort; sort = { key, asc: sort?.key === key ? !sort.asc : key === 'symbol' || key === 'name' }; save({ sort }); if (data) render(); return; }
-    if (button.dataset.remove) { save({ symbols: (settings.symbols || []).filter(s => s !== button.dataset.remove) }); load(); }
+    if (button.dataset.remove && save({ symbols: (settings.symbols || []).filter(s => s !== button.dataset.remove) })) load();
   }
   function chooseVariant(id) {
     if (id === variant || !visibleVariants().some(v => v.id === id)) return;
@@ -183,7 +195,7 @@ function mountMarket(el, ctx, config) {
     const symbols = settings.symbols || [];
     if (symbols.includes(symbol)) { message.textContent = `${symbol} is already on this watchlist.`; return; }
     if (symbols.length >= 40) { message.textContent = 'This watchlist holds up to 40 instruments.'; return; }
-    save({ symbols: [...symbols, symbol] }); input.value = ''; load();
+    if (save({ symbols: [...symbols, symbol] })) { input.value = ''; load(); }
   }
   el.addEventListener('click', click); el.addEventListener('change', change); el.addEventListener('submit', submit); el.addEventListener('keydown', keydown);
   load();

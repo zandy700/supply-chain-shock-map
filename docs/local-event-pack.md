@@ -16,6 +16,8 @@ Open the address printed in the terminal, normally:
 
 No npm install, API key, Cloudflare account or app hosting is needed for this pack. It runs a static server bound to your own computer. Opening the HTML with `file://` is not supported because browser modules require HTTP.
 
+Watchlists save in this browser on this device. Ticker additions and removals save immediately, including when quote services are unavailable; saved tickers stay visible with unavailable prices. Company-name lookup still needs a live service, so use ticker symbols such as `MSFT` in the standalone pack. Keep using the same browser and local address/port after replacing the pack, since browser storage is separate for different addresses. Your saved stocks are not uploaded to GitHub.
+
 The event board checks the public GitHub snapshot while visible and uses the newest bundled or fetched data. Reads are shared and cached for one minute, so loaded event pages do not each download the whole file. The full question, source link, rules, individual close date and saved timestamp remain available. Polymarket takes priority for recognized overlaps; Kalshi supplements gaps. Saved search covers the downloaded event selection, rather than the full venue catalog.
 
 If GitHub or your internet connection is unavailable, the bundled or previously loaded snapshot remains readable. Data over 45 minutes old is explicitly marked stale. A failed venue sync retains its last successful selection and timestamp. It never fabricates an empty market catalog or stamps old prices as fresh.

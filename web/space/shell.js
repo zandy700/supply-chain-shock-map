@@ -162,9 +162,9 @@ function saveDoc(now = false) {
   const write = () => {
     const { id } = doc;
     const data = { ...doc, panels: doc.panels.map(({ id: pid, type, x, y, w, h, group, state, variant, locked, pinned }) => ({ id: pid, type, x, y, w, h, group, state, variant, locked, pinned })) };
-    store.set('view:' + id, data);
+    return store.set('view:' + id, data);
   };
-  if (now) write(); else saveTimer = setTimeout(write, 250);
+  if (now) return write(); else saveTimer = setTimeout(write, 250);
 }
 
 /* ------------------------------------------------------------------ small UI helpers */
@@ -1017,7 +1017,13 @@ function mountPanel(p) {
       get group() { return gid(p); },
       get symbol() { return def.symbolLinked ? links.get(gid(p)) : null; },
       get state() { return p.state || (p.state = {}); },
-      setState(patch) { p.state = { ...(p.state || {}), ...patch }; saveDoc(); },
+      setState(patch) {
+        const previous = p.state;
+        p.state = { ...(p.state || {}), ...patch };
+        const saved = saveDoc(p.type === 'watchlist' && Array.isArray(patch.symbols));
+        if (saved === false) p.state = previous;
+        return saved;
+      },
       setTitle(t) { m.title = t; updateTitle(m); },
       setSubtitle(t) { m.sub = t || ''; updateTitle(m); },
       openSymbol(sym) { if (sym) links.set(gid(p), sym); },

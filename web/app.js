@@ -29,7 +29,7 @@ function editor(onboarding = false) {
   return `<form class="${onboarding ? '' : 'panel editor'}" id="watchlist-form">
     <label for="companies">Add companies</label>
     <input id="companies" name="companies" autocomplete="off" placeholder="e.g. Apple, NVDA, Tesla" aria-describedby="company-hint" required maxlength="500">
-    <div id="company-hint" class="hint">Enter a ticker or company name. Use commas to add several at once. Follow up to 12 companies.</div>
+    <div id="company-hint" class="hint">Tickers save on this device without a live data connection. Company names need lookup. Use commas to follow up to 12 companies.</div>
     <div id="form-error" class="error" role="alert"></div>
     <button class="button" type="submit">${onboarding ? 'Create watchlist' : 'Add to watchlist'}</button>
   </form>`;
@@ -76,13 +76,14 @@ function bindForm() {
     const label = button.textContent;
     try {
       values = values.filter(ticker => !watchlist.includes(ticker));
-      if (!sampleMode && values.length) {
+      const names = values.filter(value => !/^[A-Z]{1,5}(?:[.-][A-Z])?$/.test(value));
+      if (!sampleMode && names.length) {
         button.disabled = true;
         button.textContent = 'Resolving…';
         form.elements.companies.readOnly = true;
-        const resolved = await api('/api/resolve?q=' + encodeURIComponent(values.join(',')));
+        const resolved = await api('/api/resolve?q=' + encodeURIComponent(names.join(',')));
         if (resolved.unresolved.length || resolved.errors.length) throw new Error('Could not resolve: ' + resolved.unresolved.join(', ') + '. ' + Object.entries(resolved.suggestions || {}).map(([name,options]) => options.length ? name + ': try ' + options.map(x=>x.ticker).join(' or ') + '.' : '').join(' ') + ' Check the names or try again if the provider is unavailable.');
-        values = resolved.tickers;
+        values = [...values.filter(value => /^[A-Z]{1,5}(?:[.-][A-Z])?$/.test(value)), ...resolved.tickers];
       }
       if (!form.isConnected) return;
       const updated = [...new Set([...watchlist, ...values])];
