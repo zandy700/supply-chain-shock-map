@@ -42,13 +42,13 @@ Open the **[research dashboard](http://127.0.0.1:8820/#/briefing)** or the **[An
 The workspace can start without provider keys. Public endpoints supply available data; features that need credentials show their setup or unavailable state. Use the Worker server above for the workspace APIs. A plain static file server does not provide them.
 
 <details>
-<summary>Run the older Briefing sample UI without the Worker</summary>
+<summary>Run the research dashboard in sample-only mode without the Worker</summary>
 
 ```sh
 python3 -m http.server 8000 --directory web
 ```
 
-Open `http://localhost:8000`. This mode uses the isolated `web/seed/` demonstration data. It does not activate the workspace's server APIs or read the research ledger.
+Open `http://localhost:8000/?seed=demo#/briefing`. This mode uses the isolated `web/seed/` demonstration data. It does not activate the workspace's server APIs or read the research ledger.
 
 </details>
 
