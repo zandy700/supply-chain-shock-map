@@ -28,8 +28,8 @@ Custom views support movable, resizable panels and linked ticker groups. Layouts
 Requires **Node.js 22+** and npm. Python 3 is needed for the credential setup helpers; Python 3.11+ is needed only if you run the research engine.
 
 ```sh
-git clone https://github.com/zandy700/Ultimate-Tracker.git
-cd Ultimate-Tracker
+git clone https://github.com/zandy700/supply-chain-shock-map.git
+cd supply-chain-shock-map
 npm ci
 npm run dev -- --port 8820
 ```
