@@ -1,5 +1,6 @@
 // Public, read-only catalogs. No accounts, positions, order submission or API keys.
 import { json, UpstreamError } from './upstream.js';
+import { STOCK_SOURCES, stockEvent, rankStockEvents } from '../../web/space/panels/prediction-relevance.js';
 
 const KALSHI = 'https://external-api.kalshi.com/trade-api/v2';
 const POLY = 'https://gamma-api.polymarket.com';
@@ -7,6 +8,7 @@ const pages = new Map(), pending = new Map(), cooldowns = new Map(), pageBudgets
 let cacheBytes = 0;
 const MAX_CACHE_BYTES = 8 * 1024 * 1024, MAX_RESPONSE_BYTES = 4 * 1024 * 1024;
 const PROVIDERS = ['kalshi', 'polymarket'];
+const stockFeeds = new Map(), stockPending = new Map();
 const text = (v, max = 1000) => typeof v === 'string' ? v.trim().slice(0, max) : '';
 const fullText = v => typeof v === 'string' ? v.trim() : '';
 const numeric = v => ['number', 'string'].includes(typeof v) && !(typeof v === 'string' && !v.trim()) && Number.isFinite(Number(v)) ? Number(v) : null;
@@ -282,8 +284,80 @@ async function searchPolymarket(query, status, limit, pageNumber) {
     totalResults: Number.isSafeInteger(body.pagination.totalResults) && body.pagination.totalResults >= 0 ? body.pagination.totalResults : null } };
 }
 
+async function stockTagPage(source, status, offset) {
+  const budgetKey = `stocks:${source.id}:${status}`, budget = pageBudgets.get(budgetKey);
+  let limit = budget?.expires > Date.now() ? Math.min(4, budget.limit) : 4;
+  const url = new URL(`${POLY}/events`);
+  for (const [key, value] of Object.entries({ tag_id: source.tagId, related_tags: true, closed: status === 'closed', order: 'volume24hr', ascending: false, offset })) url.searchParams.set(key, String(value));
+  if (status === 'open') url.searchParams.set('active', 'true');
+  for (;;) {
+    url.searchParams.set('limit', String(limit));
+    try {
+      const { body, fetchedAt } = await publicPage(url);
+      if (!Array.isArray(body)) throw new UpstreamError('invalid_provider_response');
+      const events = body.map(normalizePolymarketEvent).filter(Boolean).map(stockEvent).filter(Boolean);
+      return { events, coverage: { ...source, status: 'ok', fetchedAt, scanned: body.length, retained: events.length, hasMore: body.length === limit, nextOffset: body.length === limit ? offset + body.length : null } };
+    } catch (e) {
+      if (e.code !== 'provider_page_too_large' || limit === 1) throw e;
+      limit = Math.max(1, Math.floor(limit / 2)); pageBudgets.set(budgetKey, { limit, expires: Date.now() + 1800000 });
+    }
+  }
+}
+
+async function stockFeed(url) {
+  const status = url.searchParams.get('status') || 'open', token = url.searchParams.get('cursor') || '';
+  if (!['open', 'closed'].includes(status)) throw new UpstreamError('invalid_prediction_query', 400);
+  let offsets = STOCK_SOURCES.map(() => 0);
+  if (token) {
+    try {
+      if (token.length > 6000 || !/^[A-Za-z0-9_-]+$/.test(token)) throw 0;
+      const data = JSON.parse(atob(token.replace(/-/g, '+').replace(/_/g, '/')));
+      if (data.v !== 3 || data.s !== status || !Array.isArray(data.o) || data.o.length !== offsets.length || data.o.some(n => n !== null && (!Number.isSafeInteger(n) || n < 0 || n > 10000000))) throw 0;
+      offsets = data.o;
+    } catch { throw new UpstreamError('invalid_cursor', 400); }
+  }
+  const key = status + ':' + token, cached = stockFeeds.get(key);
+  if (cached?.until > Date.now()) return json(cached.body, 200, 0);
+  if (stockPending.has(key)) { const b = await stockPending.get(key); return json(b, b.error ? 503 : 200, 0); }
+  if (stockPending.size >= 2) throw new UpstreamError('rate_limited', 429);
+  const work = (async () => {
+    const results = [];
+    // Keep the existing public-request concurrency bound, including shared caching.
+    for (let i = 0; i < STOCK_SOURCES.length; i += 3) {
+      results.push(...await Promise.all(STOCK_SOURCES.slice(i, i + 3).map(async (source, j) => {
+        const offset = offsets[i + j];
+        if (offset === null) return { events: [], coverage: { ...source, status: 'ok', scanned: 0, retained: 0, nextOffset: null, hasMore: false } };
+        try { return await stockTagPage(source, status, offset); }
+        catch (e) { return { events: [], coverage: { ...source, status: 'error', error: ['rate_limited', 'provider_page_too_large', 'invalid_provider_response', 'provider_access_denied'].includes(e.code) ? e.code : 'provider_unavailable', scanned: 0, retained: 0, nextOffset: offset, hasMore: true } }; }
+      })));
+    }
+    const coverage = results.map(r => r.coverage), unique = new Map();
+    results.flatMap(r => r.events).forEach(e => { if (!unique.has(e.id)) unique.set(e.id, e); });
+    const events = rankStockEvents([...unique.values()]);
+    const activeSources = coverage.filter((_, i) => offsets[i] !== null), failed = activeSources.filter(c => c.status === 'error');
+    const allFailed = activeSources.length > 0 && failed.length === activeSources.length;
+    const hasMore = coverage.some(c => c.hasMore), next = btoa(JSON.stringify({ v: 3, s: status, o: coverage.map(c => c.nextOffset) })).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    const fetchedAt = firstDate(coverage.map(c => c.fetchedAt));
+    const body = { ...(allFailed ? { error: 'prediction_providers_unavailable' } : {}), events, coverage,
+      sources: [{ provider: 'polymarket', status: allFailed ? 'error' : 'ok', partial: failed.length > 0, ...(allFailed ? { error: 'provider_unavailable' } : {}), fetchedAt, hasMore,
+        nextCursor: hasMore ? next : null, returnedEvents: events.length, returnedMarkets: events.reduce((n, e) => n + e.markets.length, 0),
+        pageScope: 'stock-relevant events across ' + STOCK_SOURCES.length + ' categories' }],
+      fetchedAt: new Date().toISOString(), notices: [
+        `Screened ${coverage.reduce((n, c) => n + c.scanned, 0)} provider events across ${STOCK_SOURCES.length} stock, business, technology, economic, energy, trade and geopolitical categories; duplicate events are combined.`,
+        'Relevance is editorial title/tag screening, not a forecast of stock-price impact. Sports, entertainment, personal-life and unrelated questions are excluded. Coverage is a paginated selection, not every important market.',
+        'Events are ranked by available 24-hour Polymarket USD activity. Probabilities are outcome-price snapshots; read individual deadlines and resolution rules.',
+        ...(failed.length ? [`${failed.length} categories could not be checked. Other results are retained; refresh to retry.`] : [])
+      ] };
+    if (!allFailed && JSON.stringify(body).length <= 4 * 1024 * 1024) { if (stockFeeds.size >= 2) stockFeeds.delete(stockFeeds.keys().next().value); stockFeeds.set(key, { until: Date.now() + 30000, body }); }
+    return body;
+  })();
+  stockPending.set(key, work);
+  try { const body = await work; return json(body, body.error ? 503 : 200, 0); } finally { stockPending.delete(key); }
+}
+
 export async function handle(request, env, ctx, url, rest) {
   if (request.method !== 'GET') return json({ error: 'Method not allowed.' }, 405);
+  if (rest === 'stock-events') return stockFeed(url);
   if (rest !== 'catalog') return json({ error: 'Unknown prediction-market route.' }, 404);
   const q = url.searchParams, provider = q.get('provider') || 'all', status = q.get('status') || 'open', kind = q.get('kind') || 'standard';
   const rawLimit = q.get('limit') || '12', limit = Number(rawLimit);
@@ -296,7 +370,8 @@ export async function handle(request, env, ctx, url, rest) {
     const pageNumber = searchCursor(q.get('cursor'), query, status, limit);
     try {
       const result = await searchPolymarket(query, status, limit, pageNumber);
-      return json({ events: result.events, sources: [result.source], query, fetchedAt: new Date().toISOString(), notices: [
+      const events = q.get('scope') === 'stocks' ? result.events.map(stockEvent).filter(Boolean) : result.events;
+      return json({ events, sources: [{ ...result.source, returnedEvents: events.length, returnedMarkets: events.reduce((n, e) => n + e.markets.length, 0) }], query, fetchedAt: new Date().toISOString(), notices: [
         'Search results come from Polymarket, with provider pagination. Loaded category and text filters apply within these results.',
         'Percentages are market-implied probabilities from outcome price snapshots, not independent forecasts or guaranteed executable quotes. Read each contract’s deadline and resolution rules.',
         'Provider update times may reflect metadata; checked time records this application fetch.'
@@ -324,7 +399,10 @@ export async function handle(request, env, ctx, url, rest) {
   if (sources.some(s => s.pageLimit < s.requestedLimit)) notices.push('A provider page contains many outcomes, so its event page size was reduced to fit the response budget. All nested markets are retained; use that provider’s next page to continue.');
   if (failed.length) notices.push('Some requested provider catalogs are unavailable; successful provider results remain visible.');
   const allFailed = failed.length === providers.length;
-  return json({ ...(allFailed ? { error: 'prediction_providers_unavailable' } : {}), events: results.flatMap(r => r.events), sources, fetchedAt: new Date().toISOString(), notices }, allFailed ? 503 : 200, 0);
+  const returned = results.flatMap(r => r.events);
+  const events = q.get('scope') === 'stocks' ? returned.map(stockEvent).filter(Boolean) : returned;
+  if (q.get('scope') === 'stocks') for (const source of sources) { const retained = events.filter(e => e.provider === source.provider); source.returnedEvents = retained.length; source.returnedMarkets = retained.reduce((n, e) => n + e.markets.length, 0); }
+  return json({ ...(allFailed ? { error: 'prediction_providers_unavailable' } : {}), events, sources, fetchedAt: new Date().toISOString(), notices }, allFailed ? 503 : 200, 0);
 }
 
-export function resetPredictionMarketCacheForTests() { pages.clear(); pending.clear(); cooldowns.clear(); pageBudgets.clear(); cacheBytes = 0; }
+export function resetPredictionMarketCacheForTests() { pages.clear(); pending.clear(); cooldowns.clear(); pageBudgets.clear(); stockFeeds.clear(); stockPending.clear(); cacheBytes = 0; }

@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { handle, normalizeKalshiEvent, normalizePolymarketEvent, resetPredictionMarketCacheForTests } from './prediction-markets.js';
 import { fail } from './upstream.js';
+import { STOCK_SOURCES } from '../../web/space/panels/prediction-relevance.js';
 
 const kalshiMarket = (extra = {}) => ({ ticker: 'KXTEST-26-YES', title: 'Will this happen?', status: 'active', yes_ask_dollars: '0.4200', yes_bid_dollars: '0.4000', no_ask_dollars: '0.6000', no_bid_dollars: '0.5800', last_price_dollars: '0.4100', volume_fp: '123.50', volume_24h_fp: '10.25', open_interest_fp: '77.50', close_time: '2026-12-31T20:00:00Z', updated_time: '2026-11-11T12:00:00Z', rules_primary: 'Resolves Yes if the stated condition happens.', ...extra });
 const kalshiEvent = (extra = {}) => ({ event_ticker: 'KXTEST-26', series_ticker: 'KXTEST', title: 'Public event', sub_title: 'Fiscal year', category: 'Economics', markets: [kalshiMarket()], ...extra });
@@ -270,5 +271,74 @@ test('search cache isolates different query terms and reuses identical public re
   try {
     await get('provider=polymarket&q=Jensen'); await get('provider=polymarket&q=Jensen');
     await get('provider=polymarket&q=Fed'); assert.equal(s.calls.length, 2);
+  } finally { s.restore(); }
+});
+
+async function stockFeed(query = '') {
+  const url = new URL('https://pulse.test/api/space/prediction-markets/stock-events' + (query ? '?' + query : ''));
+  try { return await handle(new Request(url), {}, {}, url, 'stock-events'); } catch (e) { return fail(e); }
+}
+const relevantEvent = (id = '10', title = 'Fed rate decision in December?') => polyEvent({ id, title, markets: [{ id: id + '1', question: title, active: true, outcomes: ['Yes', 'No'], outcomePrices: ['0.3', '0.7'] }] });
+
+test('stock discovery scans every configured category, de-duplicates events and excludes unrelated results', async () => {
+  const s = stub(u => {
+    assert.equal(u.pathname, '/events'); assert.ok(u.searchParams.get('tag_id'));
+    assert.equal(u.searchParams.get('related_tags'), 'true');
+    return Response.json([relevantEvent(), relevantEvent('11', 'NBA basketball: A vs B')]);
+  });
+  try {
+    const r = await stockFeed(); const b = await r.json();
+    assert.equal(r.status, 200); assert.equal(b.coverage.length, STOCK_SOURCES.length); assert.equal(s.calls.length, STOCK_SOURCES.length);
+    assert.equal(b.events.length, 1); assert.equal(b.events[0].title, 'Fed rate decision in December?');
+    assert.equal(b.sources[0].hasMore, false); assert.ok(b.events[0].stockTopics.includes('economy'));
+  } finally { s.restore(); }
+});
+
+test('stock-feed cursors advance provider offsets and cannot be used across event statuses', async () => {
+  const s = stub(u => Response.json(Array.from({ length: 4 }, (_, i) => relevantEvent(String(Number(u.searchParams.get('offset')) + i + 10)))));
+  try {
+    const b = await (await stockFeed()).json(); assert.equal(b.sources[0].hasMore, true);
+    const cursor = encodeURIComponent(b.sources[0].nextCursor);
+    assert.equal((await stockFeed('cursor=' + cursor)).status, 200);
+    assert.ok(s.calls.slice(STOCK_SOURCES.length).every(u => u.searchParams.get('offset') === '4'));
+    const count = s.calls.length;
+    assert.equal((await stockFeed('status=closed&cursor=' + cursor)).status, 400);
+    assert.equal(s.calls.length, count);
+  } finally { s.restore(); }
+});
+
+test('one failed discovery category preserves successful events and flags partial coverage', async () => {
+  const s = stub(u => u.searchParams.get('tag_id') === '107' ? new Response('', { status: 403 }) : Response.json([relevantEvent()]));
+  try {
+    const r = await stockFeed(); const b = await r.json();
+    assert.equal(r.status, 200); assert.equal(b.events.length, 1); assert.equal(b.sources[0].partial, true);
+    assert.equal(b.coverage.filter(c => c.status === 'error').length, 1); assert.equal(b.sources[0].hasMore, true);
+  } finally { s.restore(); }
+});
+
+test('all discovery categories failing returns unavailable, never a successful empty market feed', async () => {
+  const s = stub(() => new Response('', { status: 403 }));
+  try { const r = await stockFeed(); assert.equal(r.status, 503); assert.equal((await r.json()).sources[0].status, 'error'); }
+  finally { s.restore(); }
+});
+
+test('discovery requests are bounded and shared between simultaneous readers', async () => {
+  let running = 0, peak = 0;
+  const s = stub(async () => {
+    running++; peak = Math.max(peak, running); await new Promise(resolve => setTimeout(resolve, 3)); running--;
+    return Response.json([relevantEvent()]);
+  });
+  try {
+    await Promise.all([stockFeed(), stockFeed()]); await stockFeed();
+    assert.equal(s.calls.length, STOCK_SOURCES.length); assert.ok(peak <= 3);
+  } finally { s.restore(); }
+});
+
+test('stock-scoped Polymarket search removes basketball and personal bets but keeps the leadership question', async () => {
+  const s = stub(() => Response.json({ events: [relevantEvent('1', 'Jensen Huang resignation or removal?'), relevantEvent('2', 'Jensen Huang divorce?'), relevantEvent('3', 'NBA basketball winner?')], pagination: { hasMore: true, totalResults: 3 } }));
+  try {
+    const r = await get('provider=polymarket&q=Jensen&scope=stocks'); const b = await r.json();
+    assert.equal(r.status, 200); assert.equal(b.events.length, 1); assert.equal(b.sources[0].hasMore, true);
+    assert.equal(b.events[0].title, 'Jensen Huang resignation or removal?');
   } finally { s.restore(); }
 });

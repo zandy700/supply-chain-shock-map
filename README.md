@@ -20,7 +20,7 @@ Built by **Xingjian Zhang** with vanilla JavaScript, a Cloudflare Worker, and a 
 | **Earnings** | Calendar navigation, company details, reported results and estimates, and shareable earnings images. |
 | **News** | Ticker and theme feeds, 26 topic filters over loaded headlines, article reading, and share links. |
 | **Options** | Chains, contract details, configurable columns, and derived IV/Greeks and other statistics. Optional Alpaca indicative data and a separate subscription-based transaction-flow adapter. |
-| **Prediction markets** | Search Polymarket event questions and see market-implied Yes/No percentages, deadlines, and rules. Public Kalshi catalogs, provider pagination, and Kalshi combo tickets are also available. Browsing only; no order submission. |
+| **Prediction markets** | Stock-relevant Polymarket events across company, AI, macro, trade, healthcare, energy, and geopolitical categories. Topic filters, activity ranking, percentage odds, rules, and pagination. Sports and unrelated questions are screened out. Browsing only; no order submission. |
 | **Portfolio** | Manual and CSV holdings, sortable tables, allocation, movers, recorded account history, privacy masking, and an optional read-only broker connection. |
 | **AI assistant** | A bottom-right **Ask AI** button, panel context, research questions, workspace actions, and daily recaps. Requires your own Anthropic API key. |
 
