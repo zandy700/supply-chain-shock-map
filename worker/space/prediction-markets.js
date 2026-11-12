@@ -355,9 +355,97 @@ async function stockFeed(url) {
   try { const body = await work; return json(body, body.error ? 503 : 200, 0); } finally { stockPending.delete(key); }
 }
 
+// Deliberate economic/company series, verified against the public series catalog.
+// The general /events page is dominated by sports; never treat it as stock discovery.
+export const KALSHI_STOCK_SOURCES = [
+  ['KXFEDDECISION', 'Fed decisions'], ['KXCPI', 'CPI'], ['KXCPIYOY', 'Annual inflation'],
+  ['KXCPICORE', 'Core CPI'], ['KXCPICOREYOY', 'Core annual inflation'], ['KXGDP', 'US GDP'],
+  ['KXU3', 'Unemployment'], ['KXPAYROLLS', 'Payrolls'], ['KXJOBLESSCLAIMS', 'Jobless claims'],
+  ['KXMORTGAGERATE', 'Mortgage rates'], ['KXHOUSINGSTART', 'Housing starts'],
+  ['KXIPOANTHROPIC', 'Anthropic IPO'], ['KXIPOOPENAI', 'OpenAI IPO'], ['KXIPOSPACEX', 'SpaceX IPO']
+].map(([id, label]) => ({ id, label }));
+
+async function kalshiStockFeed(url) {
+  const status = url.searchParams.get('status') || 'open', token = url.searchParams.get('cursor') || '';
+  if (!['open', 'closed'].includes(status)) throw new UpstreamError('invalid_prediction_query', 400);
+  let cursors = KALSHI_STOCK_SOURCES.map(() => '');
+  if (token) {
+    try {
+      if (token.length > 64000 || !/^[A-Za-z0-9_-]+$/.test(token)) throw 0;
+      const d = JSON.parse(atob(token.replace(/-/g, '+').replace(/_/g, '/')));
+      if (d.v !== 4 || d.s !== status || !Array.isArray(d.c) || d.c.length !== cursors.length ||
+        d.c.some(c => c !== null && (typeof c !== 'string' || c.length > 4000 || !/^[A-Za-z0-9_+=/:.-]*$/.test(c)))) throw 0;
+      cursors = d.c;
+    } catch { throw new UpstreamError('invalid_cursor', 400); }
+  }
+  const key = 'kalshi:' + status + ':' + token, cached = stockFeeds.get(key);
+  if (cached?.until > Date.now()) return json(cached.body, 200, 0);
+  if (stockPending.has(key)) { const b = await stockPending.get(key); return json(b, b.error ? 503 : 200, 0); }
+  if (stockPending.size >= 2) throw new UpstreamError('rate_limited', 429);
+  const work = (async () => {
+    const eventsById = new Map(), coverage = [];
+    // One Kalshi request at a time leaves three shared slots for Polymarket.
+    for (const [i, source] of KALSHI_STOCK_SOURCES.entries()) {
+      if (cursors[i] === null) { coverage.push({ ...source, status: 'ok', scanned: 0, retained: 0, nextCursor: null }); continue; }
+      const endpoint = new URL(KALSHI + '/events');
+      for (const [k, v] of Object.entries({ series_ticker: source.id, status, with_nested_markets: true, limit: 2 })) endpoint.searchParams.set(k, String(v));
+      if (cursors[i]) endpoint.searchParams.set('cursor', cursors[i]);
+      try {
+        const { body, fetchedAt } = await publicPage(endpoint);
+        if (!Array.isArray(body?.events) || typeof body.cursor !== 'string' || body.cursor.length > 4000 || !/^[A-Za-z0-9_+=/:.-]*$/.test(body.cursor)) throw new UpstreamError('invalid_provider_response');
+        let retained = 0;
+        for (const row of body.events) {
+          const event = stockEvent(normalizeKalshiEvent(row));
+          if (!event) continue;
+          // Open events may also contain already settled date/threshold contracts.
+          // Only open child contracts belong in the live discovery feed.
+          if (status === 'open') {
+            const markets = event.markets.filter(m => m.status === 'open');
+            if (!markets.length) continue;
+            event.excludedLifecycleMarkets = event.markets.length - markets.length;
+            event.markets = markets; event.marketCount = markets.length;
+            event.closeTime = firstDate(markets.map(m => m.closeTime));
+            event.volume24h = sum(markets.map(m => m.volume24h));
+          }
+          eventsById.set(event.id, event); retained++;
+        }
+        coverage.push({ ...source, status: 'ok', fetchedAt, scanned: body.events.length, retained, nextCursor: body.cursor || null });
+      } catch (e) {
+        coverage.push({ ...source, status: 'error', error: ['rate_limited', 'provider_access_denied', 'invalid_provider_response', 'provider_page_too_large'].includes(e.code) ? e.code : 'provider_unavailable', scanned: 0, retained: 0, nextCursor: cursors[i] });
+      }
+    }
+    const failed = coverage.filter(c => c.status === 'error'), active = coverage.filter((_, i) => cursors[i] !== null);
+    const allFailed = active.length > 0 && failed.length === active.length;
+    const hasMore = coverage.some(c => c.nextCursor !== null);
+    const next = btoa(JSON.stringify({ v: 4, s: status, c: coverage.map(c => c.nextCursor) })).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    const events = rankStockEvents([...eventsById.values()]);
+    const body = { ...(allFailed ? { error: 'prediction_providers_unavailable' } : {}), events, coverage,
+      sources: [{ provider: 'kalshi', status: allFailed ? 'error' : 'ok', partial: failed.length > 0, ...(allFailed ? { error: 'provider_unavailable' } : {}),
+        fetchedAt: firstDate(coverage.map(c => c.fetchedAt)), hasMore, nextCursor: hasMore ? next : null,
+        returnedEvents: events.length, returnedMarkets: events.reduce((n, e) => n + e.markets.length, 0), pageScope: 'stock-relevant events across ' + KALSHI_STOCK_SOURCES.length + ' selected series' }],
+      fetchedAt: new Date().toISOString(), notices: [
+        'Kalshi discovery covers selected Fed, inflation, GDP, employment, housing, mortgage and IPO series. This is a paginated selection, not the entire exchange.',
+        'Kalshi prices are ask prices in cents, not Polymarket probability snapshots. Contract volumes and USD turnover are kept separate.',
+        'On the combined board, Polymarket takes priority for recognized overlapping events. Kalshi adds unmatched events from loaded pages. Kalshi-only browsing retains its full selected catalog; contract prices and rules are never merged.',
+        ...(failed.length ? [`${failed.length} Kalshi series could not be checked. Other results are retained; refresh to retry.`] : [])
+      ] };
+    if (!allFailed && JSON.stringify(body).length <= 4 * 1024 * 1024) {
+      if (stockFeeds.size >= 4) stockFeeds.delete(stockFeeds.keys().next().value);
+      stockFeeds.set(key, { until: Date.now() + 30000, body });
+    }
+    return body;
+  })();
+  stockPending.set(key, work);
+  try { const body = await work; return json(body, body.error ? 503 : 200, 0); } finally { stockPending.delete(key); }
+}
+
 export async function handle(request, env, ctx, url, rest) {
   if (request.method !== 'GET') return json({ error: 'Method not allowed.' }, 405);
-  if (rest === 'stock-events') return stockFeed(url);
+  if (rest === 'stock-events') {
+    const provider = url.searchParams.get('provider') || 'polymarket';
+    if (!['kalshi', 'polymarket'].includes(provider)) throw new UpstreamError('invalid_prediction_query', 400);
+    return provider === 'kalshi' ? kalshiStockFeed(url) : stockFeed(url);
+  }
   if (rest !== 'catalog') return json({ error: 'Unknown prediction-market route.' }, 404);
   const q = url.searchParams, provider = q.get('provider') || 'all', status = q.get('status') || 'open', kind = q.get('kind') || 'standard';
   const rawLimit = q.get('limit') || '12', limit = Number(rawLimit);

@@ -17,3 +17,6 @@ node_modules/
 
 # Local agent handoff; sanitized implementation reports live alongside it.
 /docs/rea-audit-status.md
+
+# Generated downloadable local event pack.
+/dist/

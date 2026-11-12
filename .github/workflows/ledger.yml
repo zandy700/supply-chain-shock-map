@@ -6,7 +6,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: prediction-ledger
+  group: repository-data-writer
   cancel-in-progress: false
 jobs:
   ledger:

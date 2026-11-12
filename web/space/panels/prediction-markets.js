@@ -1,8 +1,10 @@
 import { registerPanel, esc, fmt, toCSV, state as ui } from '../core.js';
 import { createLiveRefresh, refreshLabel } from '../live-refresh.js';
-import { STOCK_TOPICS, stockEvent } from './prediction-relevance.js';
+import { createSnapshotReader } from '../prediction-snapshot.js';
+const readSavedEvents = createSnapshotReader();
+import { STOCK_TOPICS, stockEvent, supplementStockEvents } from './prediction-relevance.js';
 
-const VENUES = { kalshi: 'Kalshi', polymarket: 'Polymarket' };
+const VENUES = { polymarket: 'Polymarket', kalshi: 'Kalshi' };
 const finite = v => typeof v === 'number' && Number.isFinite(v);
 const price = v => finite(v) && v >= 0 && v <= 1 ? `${fmt.num(v * 100, Number.isInteger(v * 100) ? 0 : 1)}¢` : '—';
 const chance = v => finite(v) && v >= 0 && v <= 1 ? `${fmt.num(v * 100, Number.isInteger(v * 100) ? 0 : 1)}%` : '—';
@@ -28,9 +30,9 @@ const option = (value, label, selected) => `<option value="${esc(value)}"${value
 registerPanel('prediction-markets', {
   title: 'Prediction Markets', category: 'Markets', defaultSize: { w: 12, h: 22 }, symbolLinked: false,
   mount(el, ctx) {
-    let st = { provider: 'polymarket', status: 'open', kind: 'standard', q: '', search: '', category: 'all', topic: 'all', sort: 'activity', paused: false, ...ctx.state };
-    if (st.stockOnlyVersion !== 1) {
-      const migration = { stockOnlyVersion: 1, provider: 'polymarket', kind: 'standard', search: '', q: '', category: 'all', topic: 'all', sort: 'activity' };
+    let st = { provider: 'all', status: 'open', kind: 'standard', q: '', search: '', category: 'all', topic: 'all', sort: 'activity', paused: false, ...ctx.state };
+    if (st.stockOnlyVersion !== 2) {
+      const migration = { stockOnlyVersion: 2, provider: 'all', kind: 'standard', search: '', q: '', category: 'all', topic: 'all', sort: 'default' };
       Object.assign(st, migration); ctx.setState(migration);
     }
     if (!STOCK_TOPICS.some(t => t.id === st.topic)) st.topic = 'all';
@@ -43,6 +45,7 @@ registerPanel('prediction-markets', {
     let pages = [], sources = new Map(), failedPages = new Map(), notices = [], revision = 0, dead = false, initial = true;
     let task = { kind: 'initial' }, rotation = 0, liveState = null, lastError = null;
     const expanded = new Set(), openDetails = new Set();
+    let snapshotMode = new URL(location.href).searchParams.get('marketData') === 'snapshot';
     const save = patch => { st = { ...st, ...patch }; ctx.setState(patch); };
     const venues = () => st.provider === 'all' ? Object.keys(VENUES) : [st.provider];
     const searchId = 'pm-search-' + crypto.randomUUID();
@@ -53,7 +56,7 @@ registerPanel('prediction-markets', {
       <div class="p-pm-toolbar p-pm-controls">
         <label class="p-pm-sort"><span class="s-sr">Sort loaded events</span><select class="s-select" data-pm-control="sort">${[['activity','Most active'],['closing','Closing soon'],['title','A–Z'],['default','Source order']].map(([v,l])=>option(v,l,st.sort)).join('')}</select></label>
         <details class="p-pm-extra-filters"><summary>Filters</summary><div class="p-pm-extra-controls">
-        <label>Venue<select class="s-select" data-pm-control="provider">${[['polymarket','Polymarket'],['all','Both venues'],['kalshi','Kalshi']].map(([v,l])=>option(v,l,st.provider)).join('')}</select></label>
+        <label>Venue<select class="s-select" data-pm-control="provider">${[['all','Polymarket + Kalshi extras'],['polymarket','Polymarket'],['kalshi','Kalshi']].map(([v,l])=>option(v,l,st.provider)).join('')}</select></label>
         <label class="p-pm-search">Filter loaded events<input class="s-input" type="search" data-pm-query value="${esc(st.q)}" placeholder="Question, outcome or keyword"></label>
         <label>Event status<select class="s-select" data-pm-control="status">${[['open','Open events'],['closed','Closed events']].map(([v,l])=>option(v,l,st.status)).join('')}</select></label>
         <label>Catalog<select class="s-select" data-pm-control="kind">${[['standard','Standard markets'],['combos','Kalshi combos']].map(([v,l])=>option(v,l,st.kind)).join('')}</select></label>
@@ -89,7 +92,8 @@ registerPanel('prediction-markets', {
     }
     function filtered() {
       const q = String(st.q || '').trim().toLowerCase();
-      const list = allEvents().filter(e => (st.topic === 'all' || e.stockTopics?.includes(st.topic)) && (st.category === 'all' || e.category === st.category) && (!q ||
+      const listings = allEvents();
+      const list = (st.provider === 'all' ? supplementStockEvents(listings) : listings).filter(e => (st.topic === 'all' || e.stockTopics?.includes(st.topic)) && (st.category === 'all' || e.category === st.category) && (!q ||
         [e.title, e.subtitle, ...(e.tags || []), ...(e.markets || []).flatMap(m => [m.question, m.subtitle, ...(m.outcomes || []).map(o => o.label)])].join(' ').toLowerCase().includes(q)));
       if (st.sort === 'title') list.sort((a,b) => String(a.title).localeCompare(String(b.title)));
       if (st.sort === 'closing') list.sort((a,b) => (Date.parse(a.closeTime) || Infinity) - (Date.parse(b.closeTime) || Infinity));
@@ -134,9 +138,11 @@ registerPanel('prediction-markets', {
     function renderSources() {
       $('.p-pm-source-content').innerHTML = venues().map(provider => {
         const source = sources.get(provider);
-        const count = allEvents().filter(e => e.provider === provider).length;
+        const loaded = allEvents();
+        const count = (st.provider === 'all' ? supplementStockEvents(loaded) : loaded).filter(e => e.provider === provider).length;
+        const hidden = loaded.filter(e => e.provider === provider).length - count;
         const failed = source?.status === 'error';
-        return `<div class="p-pm-source${failed ? ' is-error' : ''}"><strong>${VENUES[provider]}</strong><span>${failed ? esc(errorText(source.error)) : source?.status === 'skipped' ? 'Not included in this catalog' : initial ? 'Loading…' : `${count} events loaded`}</span>${failed ? `<button type="button" class="s-btn s-btn-sm s-btn-ghost" data-pm-act="retry" data-pm-provider="${provider}">Retry ${VENUES[provider]}</button>` : ''}</div>`;
+        return `<div class="p-pm-source${failed ? ' is-error' : ''}"><strong>${VENUES[provider]}</strong><span>${failed ? esc(errorText(source.error)) : source?.status === 'skipped' ? 'Not included in this catalog' : initial ? 'Loading…' : `${count} events loaded${hidden ? ' · ' + hidden + ' overlaps hidden' : ''}`}</span>${failed ? `<button type="button" class="s-btn s-btn-sm s-btn-ghost" data-pm-act="retry" data-pm-provider="${provider}">Retry ${VENUES[provider]}</button>` : ''}</div>`;
       }).join('') + (notices.length ? `<details class="p-pm-notices"><summary>Data &amp; coverage</summary>${notices.map(n=>`<p>${esc(n)}</p>`).join('')}</details>` : '');
     }
     function render() {
@@ -146,7 +152,7 @@ registerPanel('prediction-markets', {
       const active = grid.contains(document.activeElement) ? document.activeElement : null;
       const focus = active ? { act: active.dataset.pmAct, id: active.dataset.pmId, detail: active.closest('[data-pm-detail]')?.dataset.pmDetail, summary: active.tagName === 'SUMMARY' } : null;
       categories(); renderSources();
-      const all = allEvents(), list = filtered();
+      const all = st.provider === 'all' ? supplementStockEvents(allEvents()) : allEvents(), list = filtered();
       scroll.setAttribute('aria-labelledby', searchId + '-' + st.topic);
       for (const b of el.querySelectorAll('[data-pm-topic]')) { b.setAttribute('aria-selected', String(b.dataset.pmTopic === st.topic)); b.tabIndex = b.dataset.pmTopic === st.topic ? 0 : -1; b.querySelector('span').textContent = b.dataset.pmTopic === 'all' ? all.length : all.filter(e=>e.stockTopics?.includes(b.dataset.pmTopic)).length; }
       $('.p-pm-count').innerHTML = `<span><strong>${list.length}</strong> stock-relevant events${st.search ? ' · ' + esc(st.search) : ''}</span><span>${[...sources.values()].some(s=>s.partial) ? '<span class="p-pm-warning">Some categories unavailable · </span>' : ''}${list.reduce((n,e)=>n+(e.markets?.length || 0),0)} contracts · loaded results</span>`;
@@ -172,8 +178,9 @@ registerPanel('prediction-markets', {
       if (dead) return;
       liveState = state;
       $('[data-pm-live]').title = refreshLabel(state) + ' · 30s checks; up to 4 loaded pages per cycle';
-      $('[data-pm-live]').textContent = state.paused ? 'Updates paused' : state.busy ? 'Checking…' : state.error ? 'Update delayed' : state.status === 'offline' ? 'Offline' : 'Auto refresh · 30s';
-      $('[data-pm-live]').classList.toggle('is-stale', !!state.error || state.status === 'offline');
+      const saved = [...sources.values()].filter(s=>s.delivery === 'github-snapshot');
+      $('[data-pm-live]').textContent = saved.length && !state.busy && !state.paused ? (saved.some(s=>s.snapshotStale) ? 'Saved data · stale' : saved.some(s=>!s.remoteAvailable) ? 'Saved snapshot · sync unavailable' : 'GitHub snapshot · 15m schedule') : state.paused ? 'Updates paused' : state.busy ? 'Checking…' : state.error ? 'Update delayed' : state.status === 'offline' ? 'Offline' : 'Auto refresh · 30s';
+      $('[data-pm-live]').classList.toggle('is-stale', !!state.error || state.status === 'offline' || saved.some(s=>s.snapshotStale));
       const pause = $('[data-pm-act="pause"]'); pause.textContent = state.paused ? 'Resume' : 'Pause'; pause.setAttribute('aria-pressed', String(state.paused));
       for (const button of el.querySelectorAll('[data-pm-act="more"]')) button.disabled = state.busy || !sources.get(button.dataset.pmProvider)?.nextCursor;
     }
@@ -181,6 +188,11 @@ registerPanel('prediction-markets', {
       if (dead || seq !== revision) return false;
       const source = response.sources?.find(s => s.provider === provider);
       if (!source) throw new Error(`${VENUES[provider]} returned no source status.`);
+      if (source.delivery === 'github-snapshot') {
+        $('.p-pm-event-search > label').textContent = 'Search saved stock-relevant events';
+        $('.p-pm-event-search > p > span').textContent = 'Saved-event search';
+        $('.p-pm-foot').textContent = 'Saved venue prices · Read contract deadlines and rules.';
+      }
       const current = pages.find(p => p.provider === provider && p.cursor === cursor);
       const last = pages.filter(p => p.provider === provider).at(-1);
       // Refreshing an earlier page must never rewind the next-page cursor.
@@ -214,9 +226,16 @@ registerPanel('prediction-markets', {
         throw e;
       }
     }
-    function requestPage(provider, cursor, signal) {
-      const path = provider === 'polymarket' && st.kind === 'standard' && !st.search ? 'prediction-markets/stock-events' : 'prediction-markets/catalog';
-      return ctx.api(path, { provider, cursor, limit: 12, status: st.status, kind: st.kind, scope: 'stocks', ...(st.search ? { q: st.search } : {}) }, { signal });
+    async function requestPage(provider, cursor, signal) {
+      const path = st.kind === 'standard' && !st.search ? 'prediction-markets/stock-events' : 'prediction-markets/catalog';
+      const params = { provider, cursor, limit: 12, status: st.status, kind: st.kind, scope: 'stocks', ...(st.search ? { q: st.search } : {}) };
+      if (snapshotMode) return readSavedEvents(params, { signal });
+      try { return await ctx.api(path, params, { signal }); }
+      catch (e) {
+        if (signal.aborted || e.name === 'AbortError' || (e.status && ![404, 501].includes(e.status))) throw e;
+        snapshotMode = true;
+        return readSavedEvents(params, { signal });
+      }
     }
     async function refresh(signal) {
       const seq = revision, job = task; task = null;
@@ -224,10 +243,18 @@ registerPanel('prediction-markets', {
         if (job?.kind === 'more' || job?.kind === 'retry') {
           await fetchPage({ provider: job.provider, cursor: job.cursor || null }, signal, seq);
         } else if (job?.kind === 'initial' || !pages.length) {
-          const response = await requestPage(st.provider, null, signal);
-          if (signal.aborted || seq !== revision || dead) return;
-          notices = response.notices || [];
-          const results = venues().map(provider => applyPage(response, provider, null, seq));
+          const results = [];
+          for (const provider of venues()) {
+            try {
+              const response = await requestPage(provider, null, signal);
+              if (signal.aborted || seq !== revision || dead) return;
+              notices = [...new Set([...notices, ...(response.notices || [])])];
+              results.push(applyPage(response, provider, null, seq));
+            } catch (e) {
+              if (signal.aborted || seq !== revision || dead) throw e;
+              markFailed({ provider, cursor: null }, e.message); results.push(false);
+            }
+          }
           if (!results.some(Boolean)) throw new Error('Neither venue returned a market page.');
           if (results.some(v => !v)) throw new Error('Some venue pages could not be loaded.');
         } else {
@@ -238,7 +265,11 @@ registerPanel('prediction-markets', {
             if (!batch.some(p => p.provider === page.provider && p.cursor === page.cursor)) batch.push(page);
           }
           rotation = (rotation + Math.max(1, scanned)) % Math.max(1, pages.length);
-          const results = await Promise.allSettled(batch.map(page => fetchPage(page, signal, seq)));
+          const results = [];
+          for (const page of batch) {
+            try { await fetchPage(page, signal, seq); results.push({ status: 'fulfilled' }); }
+            catch (reason) { results.push({ status: 'rejected', reason }); }
+          }
           if (results.some(r => r.status === 'rejected')) throw results.find(r => r.status === 'rejected').reason;
         }
         lastError = null;
@@ -260,7 +291,7 @@ registerPanel('prediction-markets', {
       render(); return poll.restart().catch(() => {});
     }
     function searchEvents(value) {
-      save({ search: String(value).trim().slice(0, 200), provider: 'polymarket', kind: 'standard', q: '', category: 'all', topic: 'all', sort: 'activity' });
+      save({ search: String(value).trim().slice(0, 200), provider: value ? 'polymarket' : 'all', kind: 'standard', q: '', category: 'all', topic: 'all', sort: value ? 'activity' : 'default' });
       $('[data-pm-search]').value = st.search; $('[data-pm-query]').value = '';
       $('[data-pm-control="provider"]').value = st.provider; $('[data-pm-control="kind"]').value = st.kind; $('[data-pm-control="sort"]').value = st.sort;
       reset();
@@ -309,7 +340,9 @@ registerPanel('prediction-markets', {
     };
     el.addEventListener('keydown', topicKey);
     el.addEventListener('click', click); el.addEventListener('change', change); el.addEventListener('input', input); el.addEventListener('toggle', toggle, true);
-    render(); poll.request(true).catch(() => {});
+    render();
+    if (navigator.onLine === false) refresh(new AbortController().signal).catch(() => {});
+    else poll.request(true).catch(() => {});
     return {
       csv() { const rows = filtered().flatMap(e => (e.markets || []).flatMap(m => (m.outcomes || []).map(o=>({ venue: VENUES[e.provider], event:e.title, contract:m.question, outcome:o.label, price:o.price, priceKind:o.priceKind, bid:o.bid, ask:o.ask, status:m.status, close:m.closeTime, activity24h:m.volume24h, activityUnit:m.volumeUnit, checked:new Date(e.__checkedAt).toISOString(), url:m.url || e.url })))); return rows.length ? toCSV(rows.map(row => Object.fromEntries(Object.entries(row).map(([key, value]) => [key, typeof value === 'string' && /^[\s]*[=+\-@]/.test(value) ? "'" + value : value])))) : null; },
       scoutContext() { return `Prediction markets, ${st.status} ${st.kind} events from ${venues().map(v=>VENUES[v]).join(' + ')}${st.search ? ', Polymarket search: ' + st.search : ''}. Local filters cover loaded pages only; percentages are market-implied probabilities, not independent forecasts.\n` + filtered().slice(0,20).map(e => `${e.title} (${VENUES[e.provider]}): ${(e.markets || []).slice(0,10).map(m=>`${m.question}: ${(m.outcomes || []).map(o=>`${o.label} ${e.provider === 'polymarket' ? chance(o.price) : price(o.price)}`).join(', ')}`).join('; ')}`).join('\n'); },

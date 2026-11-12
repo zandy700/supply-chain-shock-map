@@ -2,6 +2,16 @@
   "name": "watchlist-pulse",
   "private": true,
   "type": "module",
-  "scripts": { "test": "node --test worker/*.test.js worker/space/*.test.js", "alpaca:setup": "python3 scripts/setup-alpaca.py", "broker:setup": "python3 scripts/setup-broker.py", "dev": "wrangler dev --ip 127.0.0.1" },
-  "devDependencies": { "wrangler": "4.157.0" }
+  "scripts": {
+    "test": "node --test worker/*.test.js worker/space/*.test.js",
+    "alpaca:setup": "python3 scripts/setup-alpaca.py",
+    "broker:setup": "python3 scripts/setup-broker.py",
+    "dev": "wrangler dev --ip 127.0.0.1",
+    "events:sync": "node scripts/sync-prediction-events.mjs",
+    "pack:build": "node scripts/build-local-pack.mjs",
+    "pack:start": "node scripts/serve-pack.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "4.157.0"
+  }
 }

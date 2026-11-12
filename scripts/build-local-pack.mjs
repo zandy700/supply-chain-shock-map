@@ -1,0 +1,11 @@
+import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+const target = resolve('dist/ultimater-local-pack');
+const snapshot = JSON.parse(await readFile('web/prediction-data/latest.json', 'utf8'));
+if (snapshot.schemaVersion !== 1 || !Object.keys(snapshot.providers || {}).length) throw new Error('Sync a valid event snapshot before building the pack.');
+await rm(target, { recursive: true, force: true }); await mkdir(target, { recursive: true });
+await cp('web', target + '/web', { recursive: true, filter: path => !path.split(/[\\/]/).some(p => p.startsWith('.') || p === 'data') });
+await mkdir(target + '/scripts'); await cp('scripts/serve-pack.mjs', target + '/scripts/serve-pack.mjs');
+await writeFile(target + '/package.json', JSON.stringify({ name: 'ultimater-local-pack', private: true, type: 'module', scripts: { start: 'node scripts/serve-pack.mjs' }, engines: { node: '>=22' } }, null, 2) + '\n');
+await cp('docs/local-event-pack.md', target + '/README.md');
+console.log('Built ' + target + ' with saved event data. No keys, node_modules, account files or hosted Worker.');

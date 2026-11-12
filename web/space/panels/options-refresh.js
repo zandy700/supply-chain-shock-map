@@ -58,8 +58,5 @@ export const refreshHTML='<div class="p-opt-refresh"><button class="s-btn s-btn-
 export function optionSourceHTML(data, side) {
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   if(!data)return esc(optionSource(data));
-  const indicative=data.indicative===true||data.feed==='indicative';
-  const timestamp=side?side.quoteAsOf:data.quoteAsOf;
-  const label=[data.source||'Options provider',data.feed?'Feed: '+data.feed:null,indicative?'Indicative quotes, not OPRA; trades delayed 15m':null,(side?'Contract quote':'Latest quote')+': '+(timestamp||'unavailable'),data.coverage?.partial?'Partial snapshot':null,data.unavailableMetrics?.some(m=>m==='volume'||m==='openInterest')?'Volume/OI unavailable':null].filter(Boolean).join(' · ');
-  return `<details class="p-opt-source-details"><summary>${esc(label)} · Source details</summary><div>${esc(optionSource(data,side))}</div></details>`;
+  return `<details class="p-opt-source-details"><summary>Source details</summary><div>${esc(optionSource(data,side))}</div></details>`;
 }

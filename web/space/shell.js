@@ -431,6 +431,14 @@ function startClock() {
 /* ------------------------------------------------------------------ ticker tape */
 let tapePoll;
 function loadTape() {
+  if (new URL(location.href).searchParams.get('marketData') === 'snapshot') {
+    tapePoll?.destroy(); tapePoll = null;
+    els.tape.classList.remove('is-moving');
+    els.tape.innerHTML = '<span class="sp-tape-msg">Saved prediction events · GitHub sync scheduled every 15 minutes · Read saved timestamps</span>';
+    $('span', els.region).textContent = 'EVENT PACK';
+    els.region.setAttribute('aria-label', 'Saved prediction event pack'); els.region.disabled = true;
+    return Promise.resolve();
+  }
   if (!tapePoll) tapePoll = createLiveRefresh({ el: els.tapeView, interval: 30000, refresh: fetchTape,
     onState(state) {
       let status = els.tapeView.querySelector('.sp-tape-status');
@@ -507,7 +515,7 @@ function renderSidebar() {
       <section class="sp-sec" data-section="themes">
         <div class="sp-sec-head"><button type="button" class="sp-sec-toggle" data-sec="themes" aria-expanded="${s.themes}">${icon('chevron', 'sp-caret')}<span>THEMES</span></button>
           <button type="button" class="s-icon-btn s-icon-btn-sm sp-sec-action" data-act="reorder" aria-label="Reorder Themes section" aria-pressed="${reorderMode}">${icon(reorderMode ? 'x' : 'swap')}</button></div>
-        <div class="sp-theme-discovery"><button class="s-btn s-btn-sm" data-act="browse-themes">${icon('search')} Browse all ${THEMES.length} themes</button><div class="sp-theme-featured">${['housing-rates','gambling'].map(id=>{const t=THEMES.find(t=>t.id===id);return `<button data-view="${id}" class="sp-featured-theme">${icon(t.icon)}${esc(t.name)}</button>`;}).join('')}<button data-view="prediction-board" class="sp-featured-theme">${icon('target')}Polymarket events</button></div></div>
+        <div class="sp-theme-discovery"><button class="s-btn s-btn-sm" data-act="browse-themes">${icon('search')} Browse all ${THEMES.length} themes</button><div class="sp-theme-featured">${['housing-rates','gambling'].map(id=>{const t=THEMES.find(t=>t.id===id);return `<button data-view="${id}" class="sp-featured-theme">${icon(t.icon)}${esc(t.name)}</button>`;}).join('')}<button data-view="prediction-board" class="sp-featured-theme">${icon('target')}Market events</button></div></div>
         <ul class="sp-nav${reorderMode ? ' is-reorder' : ''}" ${s.themes ? '' : 'hidden'}>${shown.map((t, i) => item(t, reorderMode ? `<span class="sp-reorder"><button type="button" class="s-icon-btn s-icon-btn-sm" data-move="-1" data-theme="${t.id}" aria-label="Move ${esc(t.name)} up" ${i === 0 ? 'disabled' : ''}>${icon('up')}</button><button type="button" class="s-icon-btn s-icon-btn-sm" data-move="1" data-theme="${t.id}" aria-label="Move ${esc(t.name)} down" ${i === shown.length - 1 ? 'disabled' : ''}>${icon('down')}</button></span>` : '')).join('')}
           ${reorderMode ? '' : `<li><button type="button" class="sp-more-link" data-act="themes-more" aria-expanded="${prefs.themesExpanded}">${prefs.themesExpanded ? 'Show less' : `View more (${themes.length - 5})`}</button></li>`}</ul>
       </section>

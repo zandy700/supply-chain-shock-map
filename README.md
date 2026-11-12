@@ -20,7 +20,7 @@ Built by **Xingjian Zhang** with vanilla JavaScript, a Cloudflare Worker, and a 
 | **Earnings** | Calendar navigation, company details, reported results and estimates, and shareable earnings images. |
 | **News** | Ticker and theme feeds, 26 topic filters over loaded headlines, article reading, and share links. |
 | **Options** | Chains, contract details, configurable columns, and derived IV/Greeks and other statistics. Optional Alpaca indicative data and a separate subscription-based transaction-flow adapter. |
-| **Prediction markets** | Stock-relevant Polymarket events across company, AI, macro, trade, healthcare, energy, and geopolitical categories. Topic filters, activity ranking, percentage odds, rules, and pagination. Sports and unrelated questions are screened out. Browsing only; no order submission. |
+| **Prediction markets** | Stock-relevant Polymarket events plus complementary Kalshi macro, housing, employment, and IPO markets. Polymarket takes priority for recognized overlapping events; Kalshi adds coverage gaps. Topic filters, activity ranking, percentage odds, rules, and pagination. Sports and unrelated questions are screened out. Browsing only; no order submission. |
 | **Portfolio** | Manual and CSV holdings, sortable tables, allocation, movers, recorded account history, privacy masking, and an optional read-only broker connection. |
 | **AI assistant** | A bottom-right **Ask AI** button, panel context, research questions, workspace actions, and daily recaps. Requires your own Anthropic API key. |
 
@@ -39,7 +39,13 @@ npm run dev -- --port 8820
 
 Open the **[research dashboard](http://127.0.0.1:8820/#/briefing)** or the **[Analyzer](http://127.0.0.1:8820/space?view=analysis)**.
 
-The workspace can start without provider keys. Public endpoints supply available data; features that need credentials show their setup or unavailable state. Use the Worker server above for the workspace APIs. A plain static file server does not provide them.
+The workspace can start without provider keys. Public endpoints supply available data; features that need credentials show their setup or unavailable state. Use the Worker server above for the workspace APIs. A plain static file server does not provide the full workspace APIs. The prediction-event pack below works separately without a hosted Worker.
+
+### Prediction events without app hosting
+
+[Download the latest **ultimater-local-pack** artifact](https://github.com/zandy700/supply-chain-shock-map/actions/workflows/prediction-events.yml) from a successful Actions run. Unzip it and run `npm start` (Node.js 22+, no dependencies or API keys). It serves the event board on your own computer and checks public GitHub snapshots automatically. GitHub Actions re-discovers new events every 15 minutes even while your computer is off; scheduled runs can be delayed. Bundled data stays readable when GitHub is unavailable, and old data is labeled stale.
+
+From a checkout, use `npm run events:sync`, `npm run pack:build`, and `npm run pack:start`. This saved-event pack covers open Polymarket/Kalshi discovery, rules, filters and saved-event search; the local Worker remains available for faster data and other workspace APIs. See the [local pack guide](docs/local-event-pack.md) for timing, coverage and download instructions.
 
 <details>
 <summary>Run the research dashboard in sample-only mode without the Worker</summary>

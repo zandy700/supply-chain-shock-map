@@ -1,0 +1,45 @@
+name: Sync prediction events and build local pack
+on:
+  schedule:
+    - cron: '7,22,37,52 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: repository-data-writer
+  cancel-in-progress: false
+jobs:
+  events:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check snapshot collection and saved-page behavior
+        run: node --test worker/space/prediction-snapshot.test.js
+      - name: Rediscover new public events and save current snapshots
+        run: npm run events:sync
+      - name: Commit only public event snapshots
+        env:
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add web/prediction-data/latest.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Refresh public prediction event snapshot'
+            git pull --rebase origin "$DEFAULT_BRANCH"
+            git push origin "HEAD:$DEFAULT_BRANCH"
+          fi
+      - name: Build standalone local event pack
+        run: npm run pack:build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ultimater-local-pack
+          path: dist/ultimater-local-pack/
+          retention-days: 1
+          if-no-files-found: error

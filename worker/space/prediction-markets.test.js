@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { handle, normalizeKalshiEvent, normalizePolymarketEvent, resetPredictionMarketCacheForTests } from './prediction-markets.js';
+import { handle, KALSHI_STOCK_SOURCES, normalizeKalshiEvent, normalizePolymarketEvent, resetPredictionMarketCacheForTests } from './prediction-markets.js';
 import { fail } from './upstream.js';
 import { STOCK_SOURCES } from '../../web/space/panels/prediction-relevance.js';
 
@@ -341,4 +341,53 @@ test('stock-scoped Polymarket search removes basketball and personal bets but ke
     assert.equal(r.status, 200); assert.equal(b.events.length, 1); assert.equal(b.sources[0].hasMore, true);
     assert.equal(b.events[0].title, 'Jensen Huang resignation or removal?');
   } finally { s.restore(); }
+});
+
+test('Kalshi stock discovery uses selected series, excludes sports and settled children, and preserves contract details', async () => {
+  const s = stub(u => {
+    assert.equal(u.pathname, '/trade-api/v2/events'); assert.ok(KALSHI_STOCK_SOURCES.some(v=>v.id === u.searchParams.get('series_ticker')));
+    assert.equal(u.searchParams.get('with_nested_markets'), 'true'); assert.equal(u.searchParams.get('status'), 'open');
+    return Response.json({ events: [kalshiEvent({ title: 'Mortgage rates in December?', markets: [kalshiMarket(), kalshiMarket({ ticker: 'OLD', status: 'finalized', close_time: '2025-01-01T00:00:00Z' })] }), kalshiEvent({ event_ticker: 'NBA', title: 'NBA basketball champion?' })], cursor: '' });
+  });
+  try {
+    const r = await stockFeed('provider=kalshi'), b = await r.json();
+    assert.equal(r.status, 200); assert.equal(s.calls.length, KALSHI_STOCK_SOURCES.length);
+    assert.equal(b.events.length, 1); assert.equal(b.events[0].markets.length, 1); assert.equal(b.events[0].marketCount, 1);
+    assert.equal(b.events[0].excludedLifecycleMarkets, 1); assert.equal(b.events[0].closeTime, '2026-12-31T20:00:00.000Z');
+    assert.equal(b.events[0].markets[0].rules, 'Resolves Yes if the stated condition happens.');
+    assert.equal(b.events[0].volumeUnit, 'contracts'); assert.equal(b.sources[0].hasMore, false);
+    await stockFeed('provider=kalshi'); assert.equal(s.calls.length, KALSHI_STOCK_SOURCES.length);
+  } finally { s.restore(); }
+});
+
+test('Kalshi discovery cursors track each series, bind status and reject Polymarket cursors', async () => {
+  const s = stub(() => Response.json({ events: [kalshiEvent({ title: 'US GDP growth?' })], cursor: 'NEXT' }));
+  try {
+    const b = await (await stockFeed('provider=kalshi')).json(); const cursor = encodeURIComponent(b.sources[0].nextCursor);
+    assert.equal((await stockFeed('provider=kalshi&cursor='+cursor)).status, 200);
+    assert.ok(s.calls.slice(KALSHI_STOCK_SOURCES.length).every(u=>u.searchParams.get('cursor') === 'NEXT'));
+    const count = s.calls.length;
+    assert.equal((await stockFeed('provider=kalshi&status=closed&cursor='+cursor)).status, 400);
+    assert.equal((await stockFeed('cursor='+cursor)).status, 400); assert.equal(s.calls.length, count);
+  } finally { s.restore(); }
+});
+
+test('Kalshi partial discovery preserves successful series and retries failed series without dropping pagination', async () => {
+  const s = stub(u => u.searchParams.get('series_ticker') === 'KXCPI' ? new Response('', { status: 403 }) : Response.json({ events: [kalshiEvent({ title: 'US GDP growth?' })], cursor: '' }));
+  try {
+    const r = await stockFeed('provider=kalshi'), b = await r.json();
+    assert.equal(r.status, 200); assert.equal(b.events.length, 1); assert.equal(b.sources[0].partial, true);
+    assert.equal(b.sources[0].hasMore, true);
+    const next = await (await stockFeed('provider=kalshi&cursor='+encodeURIComponent(b.sources[0].nextCursor))).json();
+    assert.equal(next.sources[0].status, 'error'); assert.equal(s.calls.length, KALSHI_STOCK_SOURCES.length + 1);
+  } finally { s.restore(); }
+});
+
+test('Kalshi discovery errors are separate from valid empty series, with no fake fallback data', async () => {
+  let s = stub(() => new Response('', { status: 503 }));
+  try { const r = await stockFeed('provider=kalshi'); assert.equal(r.status, 503); assert.equal((await r.json()).events.length, 0); }
+  finally { s.restore(); }
+  s = stub(() => Response.json({ events: [], cursor: '' }));
+  try { const r = await stockFeed('provider=kalshi'); assert.equal(r.status, 200); assert.equal((await r.json()).sources[0].hasMore, false); }
+  finally { s.restore(); }
 });

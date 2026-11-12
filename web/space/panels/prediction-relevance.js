@@ -61,3 +61,31 @@ export function stockEvent(event) {
 export function rankStockEvents(events) {
   return [...events].sort((a, b) => (b.volume24h ?? -1) - (a.volume24h ?? -1) || String(a.id).localeCompare(String(b.id)));
 }
+
+// These keys identify overlapping event coverage, never fungible contracts or prices.
+// Unknown wording stays separate rather than guessing from a shared company name.
+export function relatedEventKey(event) {
+  const title = String(event?.title || '').toLowerCase().replace(/[’']/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
+  const context = title + ' ' + String(event?.subtitle || '').toLowerCase();
+  const months = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+  const month = context.match(/\b(jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:tember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\b/);
+  const namedYear = context.match(/\b(20\d{2})\b/)?.[1];
+  const close = event?.closeTime ? new Date(event.closeTime) : null;
+  const year = namedYear || (month && close && Number.isFinite(+close) && months[close.getUTCMonth()] === month[1].slice(0,3) ? String(close.getUTCFullYear()) : null);
+  const period = month && year ? year + '-' + month[1].slice(0,3) : null;
+  if (period && /^(?:fed|federal reserve) (?:rate )?decision\b/.test(title)) return 'fed-decision:' + period;
+  if (period && /^(?:(?:us|u s|united states) )?(?:core )?cpi(?: yoy)? (?:in )?(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/.test(title)) {
+    return 'us-cpi:' + (/\bcore\b/.test(title) ? 'core:' : 'headline:') + (/\byoy\b/.test(title) ? 'annual:' : 'monthly:') + period;
+  }
+  const company = title.match(/\b(anthropic|openai|spacex)\b/)?.[1];
+  if (company && /\bipo\b/.test(title) && !/\b(valuation|cap|closing|price|shares|sector)\b/.test(title)) return 'ipo-timing:' + company;
+  // Exact titles also need the same explicit period, including the day when given.
+  const day = context.match(/\b(?:january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sep|oct|nov|dec)\s+(\d{1,2})(?:\b|,)/)?.[1];
+  return title && period ? 'title:' + title + ':' + period + (day ? ':' + day : '') : null;
+}
+// Polymarket owns shared coverage; Kalshi supplements gaps in the loaded pages.
+// Recompute after every refresh/page load so a later Polymarket match takes priority.
+export function supplementStockEvents(events) {
+  const covered = new Set(events.filter(e => e.provider === 'polymarket').map(relatedEventKey).filter(Boolean));
+  return events.filter(event => event.provider !== 'kalshi' || !covered.has(relatedEventKey(event)));
+}
