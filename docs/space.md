@@ -65,7 +65,7 @@ Crypto's current candle uses Coinbase's [latest-trade snapshot](https://docs.cdp
 
 Open `/space?view=prediction-board` or choose **Prediction Markets** in Views. It browses public Kalshi and Polymarket catalogs without credentials, including nested outcome contracts, prices, resolution rules, source links, per-venue pagination and Kalshi combo tickets. The existing stock-exposure theme is now named **Prediction Market Stocks** and keeps its original identifier.
 
-Visible loaded pages rotate through 30-second refresh checks. Search, category and sorting apply to loaded events; Load more continues each provider's catalog. Long events expose every supplied contract through expansion. Advanced filters collapse on phones so questions and prices remain visible. See [API and coverage notes](prediction-markets.md) for pricing units, snapshot freshness, adaptive page sizes and historical-archive limits. These are public markets, not a person's private positions or bets.
+Visible loaded pages rotate through 30-second refresh checks. The primary search queries Polymarket event questions, with implied percentages and provider result pagination. Secondary category/text filters and sorting apply to loaded events; Load more continues the selected provider results. Long events expose every supplied contract through expansion. Advanced filters collapse on phones so questions and prices remain visible. See [API and coverage notes](prediction-markets.md) for pricing units, snapshot freshness, adaptive page sizes and historical-archive limits. These are public markets, not a person's private positions or bets.
 
 ## Stock-theme expansion
 

@@ -20,7 +20,7 @@ Built by **Xingjian Zhang** with vanilla JavaScript, a Cloudflare Worker, and a 
 | **Earnings** | Calendar navigation, company details, reported results and estimates, and shareable earnings images. |
 | **News** | Ticker and theme feeds, 26 topic filters over loaded headlines, article reading, and share links. |
 | **Options** | Chains, contract details, configurable columns, and derived IV/Greeks and other statistics. Optional Alpaca indicative data and a separate subscription-based transaction-flow adapter. |
-| **Prediction markets** | Public Kalshi and Polymarket event catalogs, outcome contracts, rules, provider pagination, and Kalshi combo tickets. Browsing only; no order submission. |
+| **Prediction markets** | Search Polymarket event questions and see market-implied Yes/No percentages, deadlines, and rules. Public Kalshi catalogs, provider pagination, and Kalshi combo tickets are also available. Browsing only; no order submission. |
 | **Portfolio** | Manual and CSV holdings, sortable tables, allocation, movers, recorded account history, privacy masking, and an optional read-only broker connection. |
 | **AI assistant** | A bottom-right **Ask AI** button, panel context, research questions, workspace actions, and daily recaps. Requires your own Anthropic API key. |
 
@@ -80,7 +80,7 @@ See [Alpaca setup](docs/alpaca-options.md), [broker setup](docs/broker-setup.md)
 - **Refreshes are polling, not a streaming entitlement.** Visible stock charts check every 30 seconds and crypto charts every 15 seconds. Hidden/offscreen panels pause updates. Provider delays still apply; a new check does not guarantee a new candle.
 - **Sources stay visible.** Nasdaq stock/options data may be delayed. Crypto uses Coinbase snapshots. ETF samples, Treasury yields, currency rates, sampled candles, and derived statistics are labeled. Missing values stay unavailable.
 - **Alpaca's configured feed is indicative.** Quotes are modified rather than executable OPRA quotations; trades are delayed. Large chains can be partial because requests stop after five pages. This integration supplies options data; it does not switch every stock chart to Alpaca.
-- **Catalog coverage is paginated.** Prediction-market and news filters operate on loaded results. The prediction-market page is a public catalog, not anyone's private bets or positions.
+- **Catalog coverage is paginated.** Polymarket event search queries the provider and supports result pagination; secondary prediction-market filters and news filters operate on loaded results. The prediction-market page is a public catalog, not anyone's private bets or positions.
 - **Portfolio history must be recorded.** Current holdings cannot reconstruct past deposits, withdrawals, trades, or investment returns. Local price alerts run while the page is open.
 - **Some data requires additional sources.** Proprietary fair values, analyst accuracy scores, some asset classes, and premium transaction feeds are not supplied merely by rendering their controls.
 

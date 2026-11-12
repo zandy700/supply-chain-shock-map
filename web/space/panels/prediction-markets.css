@@ -5,6 +5,13 @@
 .p-pm-intro h2{font-size:20px;font-weight:600;letter-spacing:-.025em;margin:0 0 6px;line-height:1.3}
 .p-pm-intro p{font-size:12px;line-height:1.6;color:var(--s-muted);margin:0;max-width:70ch}
 .p-pm-access{flex:none;border:1px solid var(--s-border);border-radius:5px;padding:5px 8px;color:var(--s-muted);font-size:10px;white-space:nowrap}
+.p-pm-event-search{padding:0 20px 14px;flex:none}
+.p-pm-event-search>label{display:block;font-size:12px;font-weight:600;margin-bottom:7px}
+.p-pm-event-search>div{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.p-pm-event-search input{flex:1 1 180px;min-width:0;height:34px}
+.p-pm-event-search>p{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:8px 0 0;font-size:11px;color:var(--s-muted)}
+.p-pm-event-search [data-pm-search-topic]{border:1px solid var(--s-border);border-radius:4px;background:var(--s-panel-2);color:var(--s-text);padding:4px 8px;font-size:11px;cursor:pointer}
+.p-pm-event-search [data-pm-search-topic]:hover{border-color:var(--s-accent)}
 .p-pm-toolbar{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap;padding:0 20px 16px}
 .p-pm-toolbar label{display:flex;flex-direction:column;gap:6px;font-size:10px;color:var(--s-muted);min-width:90px;flex:0 1 auto}
 .p-pm-toolbar .s-select{max-width:180px;font-size:12px;height:32px}
@@ -12,7 +19,9 @@
 .p-pm-toolbar .p-pm-search{flex:1 1 180px;min-width:150px}
 .p-pm-extra-filters{display:block;flex:0 1 auto;min-width:0}
 .p-pm-extra-controls{display:flex;align-items:flex-end;flex-wrap:wrap;gap:10px}
-.p-pm-extra-filters>summary{display:none}
+.p-pm-extra-filters>summary{display:block;width:fit-content;cursor:pointer;border:1px solid var(--s-border-strong);border-radius:var(--s-radius-sm);padding:6px 10px;color:var(--s-text);font-size:11px;line-height:1.4}
+.p-pm-extra-controls{margin-top:12px}
+.p-pm-extra-filters:not([open])>.p-pm-extra-controls{display:none}
 .p-pm-foot-short{display:none}
 .p-pm-controls{display:flex;align-items:center;gap:8px;padding:8px 20px;border-top:1px solid var(--s-border);border-bottom:1px solid var(--s-border)}
 .p-pm-controls>[data-pm-live]{flex:1;min-width:0;color:var(--s-muted);font-size:10px;line-height:1.6}
@@ -63,6 +72,8 @@
   .p-pm-count{align-items:flex-start}.p-pm-count>span:last-child{text-align:right}
 }
 @container prediction-board (max-width:600px){
+  .p-pm-event-search{padding:12px 12px 0}
+  .p-pm-event-search input{flex-basis:100%}
   .p-pm-intro{display:none}
   .p-pm-toolbar{flex:none;gap:8px;padding:12px}
   .p-pm-toolbar>label:first-child{flex:0 0 102px}

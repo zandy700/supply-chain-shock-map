@@ -257,6 +257,31 @@ async function boundedBody(response) {
   } finally { reader.releaseLock(); }
 }
 
+function searchCursor(token, query, status, limit) {
+  if (!token) return 1;
+  try {
+    if (token.length > 6000 || !/^[A-Za-z0-9_-]+$/.test(token)) throw 0;
+    const raw = atob(token.replace(/-/g, '+').replace(/_/g, '/'));
+    const data = JSON.parse(new TextDecoder().decode(Uint8Array.from(raw, c => c.charCodeAt(0))));
+    if (data.v !== 2 || data.q !== query || data.s !== status || data.l !== limit || !Number.isSafeInteger(data.p) || data.p < 1 || data.p > 10000) throw 0;
+    return data.p;
+  } catch { throw new UpstreamError('invalid_cursor', 400); }
+}
+
+async function searchPolymarket(query, status, limit, pageNumber) {
+  const url = new URL(`${POLY}/public-search`), pageLimit = Math.min(limit, 5);
+  for (const [key, value] of Object.entries({ q: query, events_status: status === 'open' ? 'active' : 'closed', limit_per_type: pageLimit, page: pageNumber, search_profiles: false, search_tags: false })) url.searchParams.set(key, String(value));
+  const { body, fetchedAt } = await publicPage(url);
+  if (!body || (body.events != null && !Array.isArray(body.events)) || typeof body.pagination?.hasMore !== 'boolean') throw new UpstreamError('invalid_provider_response');
+  const rows = body.events || [], events = rows.map(normalizePolymarketEvent).filter(Boolean);
+  const next = { v: 2, q: query, s: status, l: limit, p: pageNumber + 1 };
+  const encoded = btoa(String.fromCharCode(...new TextEncoder().encode(JSON.stringify(next)))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  return { events, source: { provider: 'polymarket', status: 'ok', fetchedAt, query, pageScope: 'Polymarket search results', hasMore: body.pagination.hasMore,
+    nextCursor: body.pagination.hasMore ? encoded : null, requestedLimit: limit, pageLimit, returnedEvents: events.length, upstreamEvents: rows.length,
+    droppedEvents: rows.length - events.length, returnedMarkets: events.reduce((n, e) => n + e.markets.length, 0),
+    totalResults: Number.isSafeInteger(body.pagination.totalResults) && body.pagination.totalResults >= 0 ? body.pagination.totalResults : null } };
+}
+
 export async function handle(request, env, ctx, url, rest) {
   if (request.method !== 'GET') return json({ error: 'Method not allowed.' }, 405);
   if (rest !== 'catalog') return json({ error: 'Unknown prediction-market route.' }, 404);
@@ -264,6 +289,23 @@ export async function handle(request, env, ctx, url, rest) {
   const rawLimit = q.get('limit') || '12', limit = Number(rawLimit);
   if (!['all', ...PROVIDERS].includes(provider) || !['open', 'closed'].includes(status) || !['standard', 'combos'].includes(kind) || !/^\d+$/.test(rawLimit) || !Number.isSafeInteger(limit) || limit < 1 || limit > 30) throw new UpstreamError('invalid_prediction_query', 400);
   if (provider === 'polymarket' && kind === 'combos') throw new UpstreamError('combos_available_only_on_kalshi', 400);
+  if (q.has('q')) {
+    const query = q.get('q').trim();
+    if (!query || query.length > 200 || /[\u0000-\u001f\u007f]/.test(query)) throw new UpstreamError('invalid_prediction_search', 400);
+    if (provider !== 'polymarket' || kind !== 'standard') throw new UpstreamError('search_available_only_on_polymarket', 400);
+    const pageNumber = searchCursor(q.get('cursor'), query, status, limit);
+    try {
+      const result = await searchPolymarket(query, status, limit, pageNumber);
+      return json({ events: result.events, sources: [result.source], query, fetchedAt: new Date().toISOString(), notices: [
+        'Search results come from Polymarket, with provider pagination. Loaded category and text filters apply within these results.',
+        'Percentages are market-implied probabilities from outcome price snapshots, not independent forecasts or guaranteed executable quotes. Read each contract’s deadline and resolution rules.',
+        'Provider update times may reflect metadata; checked time records this application fetch.'
+      ] }, 200, 0);
+    } catch (e) {
+      const error = ['rate_limited', 'provider_access_denied', 'invalid_provider_response', 'provider_page_too_large'].includes(e.code) ? e.code : 'provider_unavailable';
+      return json({ error: 'prediction_providers_unavailable', query, events: [], sources: [{ provider: 'polymarket', status: 'error', error, hasMore: false, nextCursor: null }], notices: ['Polymarket search is unavailable. This is not evidence that no matching markets exist.'] }, 503, 0);
+    }
+  }
   const cursor = decodeCursor(q.get('cursor'), provider, status, kind, limit);
   const providers = provider === 'all' ? kind === 'combos' ? ['kalshi'] : PROVIDERS : [provider];
   const results = await Promise.all(providers.map(async p => {

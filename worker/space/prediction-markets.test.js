@@ -176,3 +176,99 @@ test('public-provider redirects are rejected without following an arbitrary Loca
     assert.equal(res.status, 503); assert.equal(d.sources[0].error, 'provider_unavailable'); assert.equal(s.calls.length, 1);
   } finally { s.restore(); }
 });
+
+test('Polymarket event search queries the provider and preserves outcome prices and exact contract wording', async () => {
+  const s = stub(u => {
+    assert.equal(u.pathname, '/public-search');
+    assert.equal(u.searchParams.get('q'), 'Jensen Huang');
+    assert.equal(u.searchParams.get('events_status'), 'active');
+    assert.equal(u.searchParams.get('limit_per_type'), '5');
+    assert.equal(u.searchParams.get('search_profiles'), 'false');
+    assert.equal(u.searchParams.get('search_tags'), 'false');
+    return Response.json({ events: [polyEvent()], pagination: { hasMore: true, totalResults: 23 } });
+  });
+  try {
+    const r = await get('provider=polymarket&q=Jensen%20Huang'); assert.equal(r.status, 200);
+    const b = await r.json(); assert.equal(b.query, 'Jensen Huang');
+    assert.equal(b.events[0].markets[0].question, 'Will the condition happen?');
+    assert.deepEqual(b.events[0].markets[0].outcomes.map(o => o.price), [0.4, 0.6]);
+    assert.equal(b.sources[0].totalResults, 23); assert.equal(b.sources[0].pageScope, 'Polymarket search results');
+    assert.equal(b.sources[0].hasMore, true); assert.equal(b.events[0].volumeUnit, 'USD');
+  } finally { s.restore(); }
+});
+
+test('search pagination is bound to query, status and requested limit, and catalog cursors are not search cursors', async () => {
+  const s = stub(() => Response.json({ events: [polyEvent()], pagination: { hasMore: true } }));
+  try {
+    const b = await (await get('provider=polymarket&q=Jensen')).json();
+    const cursor = encodeURIComponent(b.sources[0].nextCursor);
+    assert.equal((await get('provider=polymarket&q=Jensen&cursor=' + cursor)).status, 200);
+    assert.equal(s.calls.at(-1).searchParams.get('page'), '2');
+    const count = s.calls.length;
+    for (const query of ['q=Fed', 'q=Jensen&status=closed', 'q=Jensen&limit=2']) {
+      assert.equal((await get('provider=polymarket&' + query + '&cursor=' + cursor)).status, 400);
+    }
+    assert.equal((await get('provider=polymarket&cursor=' + cursor)).status, 400);
+    assert.equal(s.calls.length, count);
+  } finally { s.restore(); }
+});
+
+test('search cursor supports Unicode terms without corrupting pagination', async () => {
+  const s = stub(() => Response.json({ events: [], pagination: { hasMore: true } }));
+  try {
+    const query = 'provider=polymarket&q=' + encodeURIComponent('人工智能');
+    const b = await (await get(query)).json();
+    assert.equal((await get(query + '&cursor=' + encodeURIComponent(b.sources[0].nextCursor))).status, 200);
+    assert.equal(s.calls.at(-1).searchParams.get('q'), '人工智能');
+  } finally { s.restore(); }
+});
+
+test('a valid empty provider search is distinct from an unavailable provider', async () => {
+  const s = stub(() => Response.json({ events: null, pagination: { hasMore: false, totalResults: 0 } }));
+  try {
+    const r = await get('provider=polymarket&q=unlikely-question'); const b = await r.json();
+    assert.equal(r.status, 200); assert.deepEqual(b.events, []);
+    assert.equal(b.sources[0].status, 'ok'); assert.equal(b.sources[0].nextCursor, null);
+  } finally { s.restore(); }
+});
+
+test('invalid or unsupported search requests never reach a provider', async () => {
+  const s = stub(() => { throw new Error('must not fetch'); });
+  try {
+    for (const query of ['provider=polymarket&q=', 'provider=polymarket&q=%00x', 'provider=polymarket&q=' + 'x'.repeat(201), 'provider=all&q=Jensen', 'provider=kalshi&q=Jensen']) {
+      assert.equal((await get(query)).status, 400);
+    }
+    assert.equal(s.calls.length, 0);
+  } finally { s.restore(); }
+});
+
+test('closed search uses provider status and preserves closed contract status', async () => {
+  const s = stub(u => {
+    assert.equal(u.searchParams.get('events_status'), 'closed');
+    return Response.json({ events: [polyEvent({ markets: [{ id: '1', question: 'Past condition?', closed: true, outcomes: ['Yes', 'No'], outcomePrices: ['1', '0'] }] })], pagination: { hasMore: false } });
+  });
+  try {
+    const b = await (await get('provider=polymarket&status=closed&q=past')).json();
+    assert.equal(b.events[0].markets[0].status, 'closed');
+    assert.deepEqual(b.events[0].markets[0].outcomes.map(o => o.price), [1, 0]);
+  } finally { s.restore(); }
+});
+
+test('malformed search data and denied provider access cannot become successful empty results', async () => {
+  for (const response of [() => Response.json({ events: [] }), () => new Response('provider detail', { status: 403 })]) {
+    const s = stub(response);
+    try {
+      const r = await get('provider=polymarket&q=Jensen'); const b = await r.json();
+      assert.equal(r.status, 503); assert.equal(b.sources[0].status, 'error');
+      assert.equal(b.sources[0].nextCursor, null); assert.ok(!JSON.stringify(b).includes('provider detail'));
+    } finally { s.restore(); }
+  }
+});
+
+test('search cache isolates different query terms and reuses identical public requests', async () => {
+  const s = stub(() => Response.json({ events: [], pagination: { hasMore: false } }));
+  try {
+    await get('provider=polymarket&q=Jensen'); await get('provider=polymarket&q=Jensen');
+    await get('provider=polymarket&q=Fed'); assert.equal(s.calls.length, 2);
+  } finally { s.restore(); }
+});

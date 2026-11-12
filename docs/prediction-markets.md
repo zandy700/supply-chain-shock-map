@@ -29,7 +29,7 @@ Combo mode covers Kalshi only. In all-provider mode it requests only Kalshi and 
 
 Ordinary event status is distinct from nested market status: an open event can contain closed or settled child markets. The adapter preserves all nested markets rather than hiding resolved outcomes. Older settled Kalshi markets beyond its historical cutoff are excluded from nested event responses by the provider, so this view is not a complete historical settlement archive.
 
-Keyword/category filtering in the page operates on loaded events and their child questions. It is labeled accordingly; it is not presented as a global Kalshi search. Provider cursors remain available for further browsing. There is no arbitrary fixed “first 100 markets” coverage claim.
+The primary **Search Polymarket events** form queries Polymarket’s public search service, rather than filtering a downloaded catalog page. It switches to Polymarket standard events and preserves provider result pagination. Separate keyword/category filters inside **Filters** operate only on loaded events and their child questions; global Kalshi search is not claimed. Provider cursors remain available for further browsing. There is no arbitrary fixed “first 100 markets” coverage claim.
 
 ## Price and volume semantics
 
@@ -50,3 +50,13 @@ Provider requests use fixed hosts, a 12-second deadline and manual redirect hand
 One failed provider does not erase a successful provider's results. If every requested provider fails, the route returns 503 with per-provider error states rather than a misleading successful empty list. A provider 429 starts a short host-specific cooldown. Error responses never echo provider bodies. The frontend's shared refresh scheduler supplies visible-panel polling, pause/manual refresh, abort cleanup and stale-data status.
 
 Focused adapter tests cover normalized units and missing values, multi-outcome events, closed-settlement price labels, pagination/query-bound cursors, provider partial failures, invalid inputs, rate-limit cooldown, and safe source links. Actual Worker smoke checks verified unauthenticated results from both providers; Node-only success was not treated as sufficient activation evidence.
+
+## Polymarket event search and probabilities
+
+Use **Prediction Markets** in Views or the **Polymarket events** shortcut. New panels default to Polymarket. Search event questions or use the Jensen Huang, Fed rates, and AI shortcuts. The stock-exposure theme remains separately named Prediction Market Stocks in the theme catalog.
+
+`GET /api/space/prediction-markets/catalog?provider=polymarket&q=Jensen%20Huang` sends a bounded 1–200 character query to Polymarket’s [`/public-search` API](https://docs.polymarket.com/api-spec/gamma-openapi.yaml). Public event search disables profile/tag search, requests up to five events per provider page, retains all supplied nested outcomes, and binds continuation tokens to query, status, and requested limit. Search terms support Unicode. A provider error is distinguished from a valid empty search. Browse events clears the remote query; changing venue or catalog also clears it.
+
+Polymarket outcome snapshots are displayed as **market-implied percentages**; missing prices remain unavailable. Closed contracts are labeled last implied chance. Kalshi ask prices remain in cents, and numeric export values retain the original normalized 0–1 prices. Exact contract questions, individual deadlines, rules, source links, and check times remain visible. Multi-deadline events do not advertise a single shared contract deadline. The Jensen Huang example retains Polymarket’s broader resignation-or-removal wording; it is not relabeled as a firing-only event.
+
+An actual local Worker search returned HTTP 200 with five events, 17 nested contracts, and provider pagination for Jensen Huang. Figures are a checked snapshot, not a fixed forecast. The integration does not place trades, access wallets, or require private prediction-market credentials.
