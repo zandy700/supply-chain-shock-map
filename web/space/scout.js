@@ -3,7 +3,7 @@
 import { registerPanel, getPanel, links, bus, fmt, esc, state as ui, store } from './core.js';
 import { selectedPortfolioHoldings } from './panels/portfolio.js';
 
-const NOT_SET_UP = "Ultimater AI isn't set up yet — the site owner needs to add an API key.";
+const NOT_SET_UP = "Ultimater AI isn't connected yet. An Anthropic API key is required.";
 const SYMBOL = /^\^?[A-Z0-9]{1,6}(?:[.=-][A-Z0-9]{1,4})?$/;
 const MAX_CHARS = 8000, MAX_HISTORY = 20, MAX_CHATS = 20, PANEL_CHARS = 3900;
 
@@ -141,11 +141,11 @@ async function hydrateUntilAborted(signal) {
 let linkedHoldings = null, holdingsUnavailable = false, holdingsGeneration = 0;
 async function hydrateHoldings() {
   const ticket=++holdingsGeneration;
-  if (!settings.shareHoldings) {linkedHoldings=null;holdingsUnavailable=false;return;}
+  if (!settings.shareHoldings || store.get('portfolio:private', false)) {linkedHoldings=null;holdingsUnavailable=false;return;}
   try {const rows=await selectedPortfolioHoldings();if(ticket===holdingsGeneration&&settings.shareHoldings){linkedHoldings=rows;holdingsUnavailable=false;}}
   catch {if(ticket===holdingsGeneration){linkedHoldings=[];holdingsUnavailable=true;}}
 }
-function holdings() { return settings.shareHoldings ? linkedHoldings || [] : []; }
+function holdings() { return settings.shareHoldings && !store.get('portfolio:private', false) ? linkedHoldings || [] : []; }
 function holdingsSummary() {
   if (!settings.shareHoldings) return null;
   if (holdingsUnavailable) return 'Selected portfolio holdings could not be loaded. Do not infer positions from another account.';
@@ -203,7 +203,7 @@ root.innerHTML = `
     <button class="s-icon-btn" data-act="expand" title=""></button>
     <button class="s-icon-btn" data-act="hide" aria-label="Hide Ultimater AI" title="Hide Ultimater AI">${I.close}</button>
   </header>
-  <div class="p-scout-banner" role="status" hidden>${I.warn}<span>${esc(NOT_SET_UP)}</span></div>
+  <div class="p-scout-banner" role="status" hidden>${I.warn}<span>${esc(NOT_SET_UP)} <a href="/setup#api-anthropic">API setup</a></span></div>
   <div class="p-scout-body s-scroll" tabindex="-1"></div>
   <form class="p-scout-compose" novalidate>
     <div class="p-scout-chips" aria-label="Attached context"></div>
@@ -599,6 +599,10 @@ bus.on('ai:attach', ({id,attached,title,symbol,panelType,context,getContext}={})
 });
 bus.on('portfolio:changed',()=>{holdingsGeneration++;linkedHoldings=null;});
 bus.on('portfolio:selection',()=>{holdingsGeneration++;linkedHoldings=null;});
+bus.on('portfolio:privacy',()=>{holdingsGeneration++;linkedHoldings=null;holdingsUnavailable=false;});
+addEventListener('storage', event => {
+  if (event.key === 'space:portfolio:private' || event.key === null) { holdingsGeneration++; linkedHoldings=null; holdingsUnavailable=false; }
+});
 bus.on('ai:open', () => openDock());
 bus.on('ai:ask', ({ prompt, context, panelType, label } = {}) => {
   openDock({ focus: !prompt });

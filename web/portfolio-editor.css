@@ -1,38 +1,50 @@
+/* Portfolio editor dialog, styled like the Analyzer's .s-dialog. Sections separate by surface, not rules. */
 .portfolio-editor {
-  width:min(640px, calc(100% - 24px)); max-height:88dvh; padding:0;
-  border:1px solid #c1ccd4; border-radius:16px; color:#192129; background:#ffffff;
-  box-shadow:0 28px 80px #07101566; color-scheme:light;
+  width: min(640px, calc(100% - 24px)); max-height: 88dvh; padding: 0; border: 0; border-radius: var(--s-radius);
+  background: var(--s-panel); color: var(--s-text); box-shadow: var(--s-shadow); font-family: var(--s-font);
 }
-.portfolio-editor::backdrop { background:#08111c99 }
-.portfolio-editor form { margin:0; padding:0 }
-.portfolio-editor .pe-head, .portfolio-editor .pe-actions { margin:0; padding:16px 22px; border:0; background:#ffffff }
-.portfolio-editor .pe-head { position:static; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #d8dfe4 }
-.portfolio-editor h2, .portfolio-editor h3 { margin:0; color:#192129 }
-.portfolio-editor h2 { font-size:1.3rem }
-.portfolio-editor h3 { font-size:1rem }
-.portfolio-editor .pe-content { display:grid; gap:22px; padding:20px 22px }
-.portfolio-editor label { display:grid; gap:5px; align-content:start; color:#364551; font-size:.8rem }
+.portfolio-editor::backdrop { background: rgba(0, 0, 0, .55); }
+.portfolio-editor form { margin: 0; padding: 0; }
+.portfolio-editor .pe-head, .portfolio-editor .pe-actions { margin: 0; padding: 14px 22px; border: 0; }
+.portfolio-editor .pe-head { position: static; display: flex; align-items: center; justify-content: space-between; background: var(--s-panel-2); }
+.portfolio-editor h2, .portfolio-editor h3 { margin: 0; color: var(--s-text); }
+.portfolio-editor h2 { font-size: 16px; }
+.portfolio-editor h3 { font-size: 14px; }
+.portfolio-editor .pe-content { display: grid; gap: 24px; padding: 20px 22px; }
+.portfolio-editor label { display: grid; gap: 5px; align-content: start; margin: 0; color: var(--s-muted); font-size: 12px; font-weight: 500; }
+/* Filled wells match the shared app controls. */
 .portfolio-editor input, .portfolio-editor textarea {
-  width:100%; min-width:0; margin:0; border:1px solid #a8b4bf; border-radius:6px; background:#fff;
-  color:#192129; padding:8px; font:inherit; font-size:.9rem; box-sizing:border-box;
+  box-sizing: border-box; width: 100%; min-width: 0; min-height: 36px; margin: 0; padding: 7px 9px;
+  border: 0; border-radius: var(--s-radius-sm); background: var(--s-panel-3); color: var(--s-text);
+  font: inherit; font-size: 13.5px;
 }
-.portfolio-editor textarea { resize:vertical; font-family:monospace }
-.portfolio-editor input:focus-visible, .portfolio-editor textarea:focus-visible, .portfolio-editor button:focus-visible, .portfolio-editor summary:focus-visible { outline:2px solid #067acb; outline-offset:2px }
-.pe-basics { display:grid; grid-template-columns:3fr 2fr; gap:12px }
-.pe-position { display:grid; grid-template-columns:1fr 1fr 1.3fr auto; gap:8px; align-items:end; margin:8px 0 12px }
-.portfolio-editor button { border:1px solid #a8b4bf; border-radius:6px; background:transparent; color:#192129; padding:7px 11px; font:inherit; font-size:.85rem; cursor:pointer }
-.portfolio-editor .pe-add { margin:10px 0 0 }
-.portfolio-editor .pe-close { padding:0 8px; border:0; font-size:24px }
-.portfolio-editor .pe-remove { border:0; color:#ac2130 }
-.portfolio-editor .pe-history summary { cursor:pointer; font-weight:600 }
-.portfolio-editor .pe-history label { margin-top:10px }
-.portfolio-editor .pe-history p { margin:6px 0 0; font-size:.78rem; color:#52616c }
-.portfolio-editor .pe-actions { border-top:1px solid #d8dfe4 }
-.portfolio-editor .pe-actions>div { display:flex; gap:10px; justify-content:flex-end }
-.portfolio-editor .pe-actions p { margin:0 0 9px; font-size:.85rem; color:#b0222e }
-.portfolio-editor .pe-actions p:empty { display:none }
-.portfolio-editor .pe-save { color:#fff; background:#00744a; border-color:#00744a; font-weight:650 }
-@media(max-width:520px) {
-  .portfolio-editor .pe-basics { grid-template-columns:1fr }
-  .portfolio-editor .pe-position { grid-template-columns:1fr 1fr; border-bottom:1px solid #d8dfe4; padding-bottom:10px }
+.portfolio-editor input[type=file] { padding: 6px; }
+.portfolio-editor input:focus, .portfolio-editor textarea:focus { outline: 2px solid var(--s-focus); outline-offset: 1px; }
+.portfolio-editor textarea { resize: vertical; font-family: var(--s-mono); font-size: 12.5px; }
+.portfolio-editor :is(input, textarea, button, summary):focus-visible { outline: 2px solid var(--s-focus); outline-offset: 2px; }
+.portfolio-editor .hint { margin-top: 8px; }
+.pe-import-status:empty { display: none; }
+.pe-basics { display: grid; grid-template-columns: 3fr 2fr; gap: 12px; }
+.pe-rows { display: grid; gap: 4px; margin: 8px 0 0; }
+.pe-position { display: grid; grid-template-columns: 1fr 1fr 1.3fr auto; gap: 8px; align-items: end; padding: 10px; border-radius: var(--s-radius-sm); background: var(--s-panel-2); }
+.portfolio-editor button { min-height: 32px; padding: 0 12px; border: 0; border-radius: var(--s-radius-sm); background: var(--d-control); color: var(--s-text); font: inherit; font-size: 13px; font-weight: 500; cursor: pointer; transition: background-color .12s; }
+.portfolio-editor button:hover { background: var(--d-control-hover); }
+.portfolio-editor .pe-add { margin: 10px 0 0; }
+.portfolio-editor .pe-close { width: 32px; padding: 0; background: transparent; color: var(--s-muted); font-size: 22px; line-height: 1; }
+.portfolio-editor .pe-close:hover { color: var(--s-text); }
+.portfolio-editor .pe-remove { background: transparent; color: var(--d-down); }
+.portfolio-editor .pe-remove:hover { background: color-mix(in srgb, var(--s-down) 12%, transparent); }
+.portfolio-editor .pe-history summary { cursor: pointer; font-weight: 600; }
+.portfolio-editor .pe-history label { margin-top: 10px; }
+.portfolio-editor .pe-history p { margin: 6px 0 0; color: var(--s-muted); font-size: 12px; }
+.portfolio-editor .pe-actions { background: var(--s-panel-2); }
+.portfolio-editor .pe-actions > div { display: flex; justify-content: flex-end; gap: 8px; }
+.portfolio-editor .pe-actions p { margin: 0 0 9px; color: var(--d-down); font-size: 13px; }
+.portfolio-editor .pe-actions p:empty { display: none; }
+.portfolio-editor .pe-save { background: var(--s-accent); color: var(--d-on-accent); font-weight: 600; }
+.portfolio-editor .pe-save:hover { background: var(--s-accent); filter: brightness(1.08); }
+
+@media (max-width: 520px) {
+  .portfolio-editor .pe-basics { grid-template-columns: 1fr; }
+  .portfolio-editor .pe-position { grid-template-columns: 1fr 1fr; }
 }

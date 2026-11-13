@@ -5,23 +5,31 @@ const calendarDate = (date, options) => new Date(date + 'T12:00:00Z').toLocaleDa
 
 function renderCalendar() {
   const key = watchlist.join(',');
-  if (!calendarView || calendarView.key !== key || Date.now() - calendarView.loaded > 900000) {
-    const view = {key, loaded:Date.now(), month:'', day:''};
+  if (!calendarView || calendarView.key !== key || !calendarView.busy && Date.now() - calendarView.loaded > 900000) {
+    const previous = calendarView?.key === key ? calendarView : null;
+    const view = {key, loaded:Date.now(), month:previous?.month || '', day:previous?.day || '', data:previous?.data, busy:true};
     calendarView = view;
-    api('/api/calendar?tickers=' + encodeURIComponent(key)).then(result => {
-      view.data = result;
-      view.month = monthOf(result.from);
+    const supported = watchlist.filter(symbol => STOCK_SYMBOL.test(symbol));
+    batchData.mapSymbolBatches(supported, batch => api('/api/calendar?tickers=' + encodeURIComponent(batch.join(',')))).then(result => {
+      const merged = batchData.mergeCalendars(result, previous?.data);
+      merged.unavailable.push(...watchlist.filter(symbol => !STOCK_SYMBOL.test(symbol)));
+      view.data = merged;
+      if (!view.month) view.month = monthOf(merged.from);
     }).catch(() => { view.error = true; }).finally(() => {
+      view.busy = false;
       if (calendarView === view && location.hash === '#/calendar') renderCalendar();
     });
   }
   const view = calendarView;
   main.innerHTML = heading('Event calendar', 'Earnings for your stocks and related companies, plus selected market-wide events over the next three calendar months.', 'Your watchlist');
   if (!view.data) {
-    main.innerHTML += view.error ? '<div class="panel notice" role="alert">The calendar could not load. <button class="secondary button" id="calendar-retry">Retry</button></div>' : '<div class="panel notice" role="status">Loading upcoming events…</div>';
+    main.innerHTML += view.error ? '<div class="panel notice" role="alert">The calendar could not load. <button class="secondary button" id="calendar-retry">Retry</button></div>' : '<div class="panel notice loading" role="status">Loading upcoming events…</div>';
     bindCalendarRetry();
     return;
   }
+  if (view.busy) main.innerHTML += '<p class="hint" role="status">Refreshing events…</p>';
+  if (view.error) main.innerHTML += '<p class="hint" role="status">Refresh failed; previous events remain visible. <button class="button secondary" id="calendar-retry">Retry</button></p>';
+  if (view.data.staleSymbols?.length) main.innerHTML += `<p class="hint" role="status">Previously retrieved events remain visible for ${escapeHTML(view.data.staleSymbols.join(', '))}; their refresh is incomplete.</p>`;
   const {from,to,events,unlisted,unavailable} = view.data;
   const first = new Date(view.month + '-01T12:00:00Z');
   const last = new Date(first);
@@ -70,5 +78,5 @@ function renderCalendar() {
 }
 function bindCalendarRetry() {
   const retry = document.querySelector('#calendar-retry');
-  if (retry) retry.onclick = () => { calendarView = null; renderCalendar(); };
+  if (retry) retry.onclick = () => { if (calendarView) calendarView.loaded = 0; renderCalendar(); };
 }

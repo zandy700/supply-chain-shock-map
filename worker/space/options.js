@@ -199,7 +199,7 @@ export function nearTheMoney(rows, spot, n = 10) {
 }
 
 function expirationsFrom(rows, spot, today) {
-  return [...groupByExpiry(rows)].sort(([a], [b]) => a.localeCompare(b)).map(([e, list]) => summarizeExpiry(e, list, spot, today));
+  return [...groupByExpiry(rows)].filter(([e]) => e >= today).sort(([a], [b]) => a.localeCompare(b)).map(([e, list]) => summarizeExpiry(e, list, spot, today));
 }
 
 async function chainRoute(url, env) {
@@ -221,7 +221,7 @@ async function chainRoute(url, env) {
   if (type === 'puts') rows = rows.map(({ call, ...r }) => r);
   return json({
     symbol, expiry, moneyness, type, today, underlying,
-    expirations: expiries.map(e => ({ date: e, dte: daysBetween(today, e) })),
+    expirations: expiries.filter(e => e >= today || e === expiry).map(e => ({ date: e, dte: daysBetween(today, e) })),
     rows, ...providerMetadata(chain),
     ...(missingFromPartialCoverage ? { notices: [...(chain.notices || []), `Requested expiry ${expiry} is absent from limited snapshot coverage. This is not evidence that no contracts exist; the requested expiry has been preserved without substituting another date.`] } : {}),
     note: chain.provider === 'alpaca' ? 'Alpaca indicative quotes are modified, not OPRA. Latest trades are delayed 15 minutes. Underlying spot is a separately sourced Nasdaq quote, not an Alpaca option timestamp. IV and Greeks remain derived estimates.' : 'Option quotes are delayed. Underlying price is the last regular-session trade Nasdaq reports with this chain; `last` may include extended hours.'

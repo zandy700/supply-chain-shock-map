@@ -5,6 +5,7 @@ import {classify} from './classify.js';
 import {workspaceSyncRoute} from './space/workspace-sync.js';
 export {WorkspaceSync} from './space/workspace-sync.js';
 import {spaceRoute} from './space/router.js';
+import {providerStatus} from '../web/shared/api-providers.js';
 
 const MAX_TICKERS = 12;
 const SYMBOL = /^[A-Z]{1,5}(?:[.-][A-Z])?$/;
@@ -169,6 +170,9 @@ export default {
   async fetch(request,env,ctx) {
     const url=new URL(request.url);
     if (!url.pathname.startsWith('/api/')) return env.ASSETS.fetch(request);
+    if (url.pathname === '/api/setup/status') return request.method === 'GET'
+      ? json({ mode: 'server', writable: false, providers: providerStatus(env) }) : json({ error: 'Use GET.' }, 405);
+    if (url.pathname === '/api/setup/credentials') return json({ error: 'setup_local_only', message: 'API keys can be saved only in the downloaded local app. This server does not accept visitor credentials.' }, 403);
     if (url.pathname.startsWith('/api/broker/')) return brokerRoute(request,env);
     if (url.pathname === '/api/space/workspace') return workspaceSyncRoute(request,env);
     if (url.pathname.startsWith('/api/space/')) return spaceRoute(request,env,ctx);

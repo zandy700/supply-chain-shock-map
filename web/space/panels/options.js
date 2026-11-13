@@ -5,6 +5,8 @@ import { registerPanel, api, bus, fmt, esc, toCSV, state as ui } from '../core.j
 import { analyze, yearsToExpiry, etCloseMs, payoffStats, payoffAt, profitChance, expectedMove, RISK_FREE_RATE } from './options-math.js';
 import { createOptionRefresh, observePanel, refreshControls, refreshHTML, optionSource, optionSourceHTML } from './options-refresh.js';
 import { readPortfolios } from '../../portfolio-model.js';
+import { createWatchlistStore } from '../../shared/watchlist-store.js';
+import { loadOptionScanBatches } from '../../shared/feed-batches.js';
 
 // Option premiums trade in cents: always two decimals.
 const opx = v => fmt.num(v, 2);
@@ -203,7 +205,8 @@ registerPanel('options-chain', {
 
     function renderExpirations() {
       expList.innerHTML = (!data.expirations.some(e=>e.date===data.expiry)?`<button role="tab" class="p-opt-exp-chip" data-exp="${esc(data.expiry)}" aria-selected="true">${esc(expLabel(data.expiry,true))} · not in snapshot</button>`:'')+data.expirations.map(x => `<button role="tab" class="p-opt-exp-chip" data-exp="${x.date}" aria-selected="${x.date === data.expiry}">${esc(expLabel(x.date))} <small>${x.dte}D</small></button>`).join('');
-      expList.querySelector('[aria-selected=true]')?.scrollIntoView({ block: 'nearest', inline: 'center' });
+      const chip = expList.querySelector('[aria-selected=true]');
+      if (chip) expList.scrollLeft += chip.getBoundingClientRect().left - expList.getBoundingClientRect().left - (expList.clientWidth - chip.offsetWidth) / 2;
     }
 
     function compute() {
@@ -260,7 +263,9 @@ registerPanel('options-chain', {
         }).join('')}${spotIdx === -1 ? spotRow : ''}</tbody></table>`;
       }
       body.innerHTML = (live ? '' : '<p class="p-opt-warn">This expiration has closed; greeks and IV are not computed.</p>') + html;
-      body.querySelector('.p-opt-spot')?.scrollIntoView({ block: 'center' });
+      // Centre the spot row inside the chain's own scroller; scrollIntoView would also scroll the workspace grid.
+      const spot = body.querySelector('.p-opt-spot');
+      if (spot) body.scrollTop += spot.getBoundingClientRect().top - body.getBoundingClientRect().top - (body.clientHeight - spot.offsetHeight) / 2;
     }
 
     function openDetail(i, kind) {
@@ -424,9 +429,9 @@ registerPanel('options-overview', {
 });
 
 // ---------------------------------------------------------------- unusual-options
-function watchlistSymbols() {
-  try { const v = JSON.parse(localStorage.getItem('watchlist-pulse')); return Array.isArray(v) ? v.filter(s => typeof s === 'string') : []; } catch { return []; }
-}
+// The watchlist shared by the dashboard and the Analyzer (web/shared/watchlist-store.js).
+const watchlist = createWatchlistStore();
+function watchlistSymbols() { return watchlist.read(); }
 function portfolioSymbols() {
   try { return [...new Set(readPortfolios().flatMap(a => a.holdings.map(h => h.ticker)))]; } catch { return []; }
 }
@@ -461,24 +466,25 @@ registerPanel('unusual-options', {
       const s = st();
       for (const b of root.querySelectorAll('[data-scope]')) b.setAttribute('aria-pressed', b.dataset.scope === s.scope);
       for (const k of ['minVolume', 'minRatio', 'sort']) root.querySelector(`[data-k=${k}]`).value = String(s[k]);
+      ctrl?.abort(); ctrl = null;
       const all = symbols();
       if (!all.length) { data = null; count.textContent = ''; body.innerHTML = ui.empty(s.scope === 'watchlist' ? 'Your watchlist is empty. Add tickers on the Watchlist page.' : s.scope === 'portfolio' ? 'No portfolio holdings on this device.' : 'Pick a symbol.'); return; }
-      const syms = all.slice(0, 12);
-      ctrl?.abort(); ctrl = new AbortController(); const my = ctrl;
+      const syms = all;
+      ctrl = new AbortController(); const my = ctrl;
       body.innerHTML = ui.loading(`Scanning ${syms.join(', ')}…`); count.textContent = '';
       try {
-        const d = await api('options/unusual', { symbols: syms.join(','), minVolume: s.minVolume, minRatio: s.minRatio, sort: s.sort, limit: 150 }, { signal: my.signal });
-        if (my !== ctrl) return; data = d; render(all.length > 12);
+        const d = await loadOptionScanBatches(api, syms, { minVolume: s.minVolume, minRatio: s.minRatio, sort: s.sort }, { signal: my.signal });
+        if (my !== ctrl) return; data = d; render();
       } catch (e) {
         if (e.name === 'AbortError') return;
         data = null; body.innerHTML = ui.error(errText(e), e.status !== 400); bindRetry(body, load);
       }
     }
 
-    function render(truncated) {
+    function render() {
       const d = data;root.querySelector('[data-options-source]').innerHTML=optionSourceHTML(d);
       ctx.setSubtitle?.(d.symbols.length === 1 ? d.symbols[0] : `${d.symbols.length} symbols`);
-      count.textContent = `${d.contracts.length}${d.total > d.contracts.length ? ` of ${d.total}` : ''} contracts${d.unavailable.length ? ` · unavailable: ${d.unavailable.join(', ')}` : ''}${truncated ? ' · first 12 symbols' : ''}`;
+      count.textContent = `${d.contracts.length}${d.total > d.contracts.length ? ` of ${d.total}` : ''} contracts${d.unavailable.length ? ` · unavailable: ${d.unavailable.join(', ')}` : ''}`;
       if (!d.contracts.length) { body.innerHTML = ui.empty(d.unavailableMetrics?.length ? 'This feed does not publish volume/open interest, so this scan and its volume/OI thresholds are unavailable.' : d.notices?.length ? d.notices.join(' ') : 'No contracts match these thresholds.'); return; }
       body.innerHTML = `<table class="s-table"><thead><tr><th scope="col">Symbol</th><th scope="col">Contract</th><th class="s-num" scope="col">DTE</th><th class="s-num" scope="col">Spot</th><th class="s-num" scope="col">Bid–Ask</th><th class="s-num" scope="col">Last</th><th class="s-num" scope="col">Volume</th><th class="s-num" scope="col">Open Int.</th><th class="s-num" scope="col" title="Volume ÷ prior-day open interest (derived)">Vol/OI*</th><th class="s-num" scope="col" title="Volume × mid (or last) × 100 (derived)">Premium*</th><th class="s-num" scope="col" title="Distance from strike to spot (derived)">Moneyness*</th></tr></thead>
         <tbody>${d.contracts.map(c => `<tr data-symbol="${esc(c.symbol)}" tabindex="0"><th scope="row">${esc(c.symbol)}</th>
@@ -497,6 +503,7 @@ registerPanel('unusual-options', {
     root.addEventListener('keydown', e => { const tr = e.target.closest('tr[data-symbol]'); if (tr && e.key === 'Enter' && st().scope !== 'symbol') ctx.openSymbol(tr.dataset.symbol); });
     root.addEventListener('change', e => { const k = e.target.dataset.k; if (!k) return; ctx.setState({ [k]: k === 'sort' ? e.target.value : +e.target.value }); load(); });
     load();
+    const offWatchlist = watchlist.subscribe(() => { if (st().scope === 'watchlist') load(); });
     return {
       onSymbol() { if (st().scope === 'symbol') load(); },
       csv() { return data?.contracts.length ? toCSV(data.contracts.map(c => ({ symbol: c.symbol, expiry: c.expiry, dte: c.dte, strike: c.strike, side: c.side, spot: c.spot, bid: c.bid, ask: c.ask, last: c.last, volume: c.vol, open_interest: c.oi, vol_oi_derived: c.volOI?.toFixed(2), premium_derived: c.premium?.toFixed(0), moneyness_pct_derived: c.moneyness?.toFixed(2) }))) : null; },
@@ -505,7 +512,7 @@ registerPanel('unusual-options', {
         return `Unusual options scan (${optionSource(data)}; derived from reported volume vs prior-day open interest; not a trade flow feed) for ${data.symbols.join(', ')}, min volume ${data.minVolume}, min vol/OI ${data.minRatio}. Top contracts:\n` +
           data.contracts.slice(0, 15).map(c => `${c.symbol} ${c.strike} ${c.side} ${c.expiry} (${c.dte}d): vol ${c.vol}, OI ${c.oi ?? 'n/a'}, vol/OI ${c.volOI?.toFixed(1) ?? 'n/a'}, premium ~$${c.premium?.toFixed(0) ?? 'n/a'}, ${c.moneyness >= 0 ? 'ITM' : 'OTM'} ${Math.abs(c.moneyness ?? 0).toFixed(1)}%`).join('\n');
       },
-      destroy() { ctrl?.abort(); }
+      destroy() { ctrl?.abort(); offWatchlist(); }
     };
   }
 });

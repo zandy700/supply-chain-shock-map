@@ -1,0 +1,77 @@
+name: Publish complete local app
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'web/**'
+      - '!web/prediction-data/**'
+      - 'worker/**'
+      - 'scripts/local-app.mjs'
+      - 'scripts/build-local-app.mjs'
+      - 'scripts/smoke-local-app.mjs'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'wrangler.jsonc'
+      - 'docs/local-app.md'
+      - '.github/workflows/local-app.yml'
+permissions:
+  contents: write
+concurrency:
+  group: complete-local-app-release
+  cancel-in-progress: false
+jobs:
+  smoke:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run app:build
+      - name: Start a fresh local app and verify credential restarts
+        run: node scripts/smoke-local-app.mjs
+  release:
+    needs: smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - name: Validate Worker without deploying
+        run: npx wrangler deploy --dry-run --outdir /tmp/ultimater-build
+      - run: npm run app:build
+      - name: Publish public ZIP and checksum
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          tag="local-app-${GITHUB_SHA:0:12}"
+          sha256sum dist/ultimater-local-app.zip > dist/SHA256SUMS.txt
+          cat > /tmp/local-app-release.md <<'NOTES'
+          Download **ultimater-local-app.zip**, unzip it, and run `npm start` inside the extracted folder with Node.js 22+.
+
+          Includes the news tracker, manual/CSV portfolio, stock Analyzer, prediction events and in-app API setup. The first launch installs locked dependencies. Open **Setup & download** to configure your own optional provider keys. Credentials and personal portfolios are excluded from this release.
+
+          Internet is needed for installation and live feeds. Data access depends on your providers. No Cloudflare account or hosted deployment is required to run locally.
+
+          [Local app guide](https://github.com/zandy700/supply-chain-shock-map/blob/main/docs/local-app.md)
+          NOTES
+          if gh release view "$tag" > /dev/null 2>&1; then
+            gh release upload "$tag" dist/ultimater-local-app.zip dist/SHA256SUMS.txt --clobber
+            gh release edit "$tag" --latest --notes-file /tmp/local-app-release.md
+          else
+            gh release create "$tag" dist/ultimater-local-app.zip dist/SHA256SUMS.txt --target "$GITHUB_SHA" --title "Ultimater local app" --latest --notes-file /tmp/local-app-release.md
+          fi

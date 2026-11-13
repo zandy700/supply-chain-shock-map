@@ -1,23 +1,43 @@
-.pf-history{--chart-muted:#53616c;--chart-line:#dce4ea;color:#202b34;background:#fff;border:0;border-radius:0;padding:14px 0 0}
-.pf-history-head,.pf-history-readout,.pf-history-custom{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
-.pf-history-controls{display:flex;flex-wrap:wrap;gap:3px}
-.pf-history button,.pf-history-custom input{font:inherit}
-.pf-history button{cursor:pointer;border:1px solid transparent;background:transparent;color:#313c45;border-radius:5px;font-size:12px;line-height:1.4;padding:5px 8px}
-.pf-history button:hover,.pf-history button[aria-pressed=true]{background:#e6f2ff;color:#005da8}
-.pf-history :focus-visible{outline:2px solid #006ab8;outline-offset:2px}
-.pf-chart-title,.pf-history-readout{font-size:12px}
-.pf-history-custom{justify-content:flex-start;margin-top:12px}
-.pf-history-custom label{font-size:12px;color:var(--chart-muted);display:flex;gap:6px;align-items:center;margin:0}
-.pf-history-custom input,.pf-history-custom button{width:auto;color-scheme:light;background:#fff;color:#202b34;border:1px solid var(--chart-line);border-radius:4px;padding:4px 6px}
-.pf-history-readout{margin:10px 0 8px;color:var(--chart-muted)}
-.pf-history-readout output{color:#233b50;font-weight:600}
-.pf-chart-frame{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}
-.pf-chart-plot{position:relative;min-width:0;height:clamp(150px,21vw,235px);cursor:crosshair;background-color:#fff;background-image:linear-gradient(to bottom,var(--chart-line) 1px,transparent 1px);background-size:100% 50%;border-bottom:1px solid var(--chart-line);touch-action:pan-y}
-.pf-chart-plot svg{display:block;width:100%;height:100%;overflow:hidden}
-.pf-chart-dot,.pf-chart-guide{position:absolute;left:var(--position-x);pointer-events:none}
-.pf-chart-dot{top:var(--position-y);width:8px;height:8px;transform:translate(-50%,-50%);border-radius:50%;background:#0074dc;border:1px solid #fff}
-.pf-chart-guide{inset-block:0;border-left:1px dashed #3d8fc9;opacity:.6}
-.pf-chart-x,.pf-chart-y{display:flex;justify-content:space-between;color:var(--chart-muted);font-size:11px;font-variant-numeric:tabular-nums}
-.pf-chart-y{flex-direction:column;text-align:right}.pf-chart-x{grid-column:1;gap:6px}.pf-chart-x span:only-child{margin:auto}
-.pf-chart-empty{min-height:150px;display:grid;place-items:center;text-align:center;color:var(--chart-muted);font-size:13px}
-@media(max-width:600px){.pf-history{padding:12px 0 0}.pf-history button{padding:5px 7px}.pf-chart-title{order:-1;width:100%}.pf-chart-x,.pf-chart-y{font-size:10px}}
+/* Portfolio value chart. All colors come from --s-* tokens so the SVG follows the active theme without re-rendering. */
+.pf-history { --chart-muted: var(--s-muted); --chart-line: var(--s-border); padding: 14px 0 0; color: var(--s-text); }
+.pf-history-head, .pf-history-readout, .pf-history-custom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
+.pf-history-controls { display: flex; flex-wrap: wrap; gap: 2px; padding: 2px; border-radius: var(--s-radius-sm); background: var(--s-panel); }
+.pf-history button, .pf-history-custom input { font: inherit; }
+.pf-history button { padding: 5px 9px; border: 0; border-radius: 4px; background: transparent; color: var(--s-muted); font-size: 12px; font-weight: 500; line-height: 1.4; cursor: pointer; transition: background-color .12s, color .12s; }
+.pf-history button:hover { background: var(--d-control); color: var(--s-text); }
+.pf-history button[aria-pressed=true] { background: var(--s-accent); color: var(--d-on-accent); font-weight: 600; }
+.pf-chart-title { font-size: 12px; font-weight: 600; color: var(--s-muted); }
+.pf-history-custom { justify-content: flex-start; margin-top: 12px; }
+.pf-history-custom label { display: flex; align-items: center; gap: 6px; margin: 0; color: var(--chart-muted); font-size: 12px; font-weight: 500; }
+.pf-history-custom input { width: auto; min-height: 30px; padding: 0 8px; border: 0; border-radius: var(--s-radius-sm); background: var(--s-panel-3); color: var(--s-text); }
+.pf-history-custom button { min-height: 30px; padding: 0 12px; background: var(--d-control); color: var(--s-text); }
+.pf-history-readout { margin: 10px 0 8px; color: var(--chart-muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+.pf-history-readout output { color: var(--s-text); font-weight: 600; }
+
+.pf-chart-frame { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; }
+.pf-chart-plot {
+  position: relative; min-width: 0; height: clamp(150px, 21vw, 235px); border-radius: var(--s-radius-sm);
+  cursor: crosshair; touch-action: pan-y; background-color: var(--s-panel);
+  /* single mid-value gridline (data ink, not a frame) */
+  background-image: linear-gradient(to bottom, transparent calc(50% - .5px), var(--chart-line) calc(50% - .5px), var(--chart-line) calc(50% + .5px), transparent calc(50% + .5px));
+}
+.pf-chart-plot:focus-visible { outline: 2px solid var(--s-focus); outline-offset: 2px; }
+.pf-chart-plot svg { display: block; width: 100%; height: 100%; overflow: hidden; border-radius: inherit; }
+.pf-chart-stop { stop-color: var(--s-accent); stop-opacity: .26; }
+.pf-chart-stop-end { stop-opacity: .02; }
+.pf-chart-line { stroke: var(--s-accent); }
+.pf-chart-dot, .pf-chart-guide { position: absolute; left: var(--position-x); pointer-events: none; }
+.pf-chart-dot { top: var(--position-y); width: 9px; height: 9px; border-radius: 50%; transform: translate(-50%, -50%); background: var(--s-accent); box-shadow: 0 0 0 2px var(--s-panel); }
+.pf-chart-guide { inset-block: 0; border-left: 1px dashed var(--s-accent); opacity: .55; }
+.pf-chart-x, .pf-chart-y { display: flex; justify-content: space-between; color: var(--chart-muted); font: 11px var(--s-mono); font-variant-numeric: tabular-nums; }
+.pf-chart-y { flex-direction: column; text-align: right; }
+.pf-chart-x { grid-column: 1; gap: 6px; }
+.pf-chart-x span:only-child { margin: auto; }
+.pf-chart-empty { display: grid; place-items: center; min-height: 150px; padding: 16px; border-radius: var(--s-radius-sm); background: var(--s-panel); color: var(--chart-muted); font-size: 13px; text-align: center; }
+
+@media (max-width: 600px) {
+  .pf-history { padding: 12px 0 0; }
+  .pf-history button { padding: 5px 7px; }
+  .pf-chart-title { order: -1; width: 100%; }
+  .pf-chart-x, .pf-chart-y { font-size: 10px; }
+}

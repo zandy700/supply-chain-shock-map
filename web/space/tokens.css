@@ -1,10 +1,14 @@
-/* Shared design tokens for the Space workspace. Every Space stylesheet uses these. */
+/* Shared design tokens for the Space workspace. Every Space stylesheet uses these.
+   Surfaces carry the structure: boundaries come from background steps and spacing, not lines.
+   Ladder: --s-bg (page) → --s-surface (chrome, input wells) → --s-panel → --s-panel-2 → --s-panel-3,
+   with --s-sunken for recessed strips inside a panel and --s-hover for pointer feedback.
+   --s-border / --s-border-strong remain for functional marks only (chart axes, focus-adjacent affordances). */
 :root{
-  --s-bg:#0b0d10;--s-surface:#111418;--s-panel:#14181d;--s-panel-2:#1a1f26;--s-hover:#20262e;
+  --s-bg:#090b0e;--s-surface:#101317;--s-sunken:#121519;--s-panel:#181c22;--s-panel-2:#1f242c;--s-panel-3:#272d36;--s-hover:#252b34;
   --s-border:#252c35;--s-border-strong:#323b46;
-  --s-text:#e6e9ed;--s-muted:#8b95a1;--s-faint:#5c6672;
-  --s-accent:#4c8dff;--s-accent-soft:rgba(76,141,255,.16);--s-focus:#4c8dff;
-  --s-up:#2ebd85;--s-down:#f0616d;--s-warn:#e7b04a;--s-gold:#e1a73b;
+  --s-text:#e6e9ed;--s-muted:#929ca8;--s-faint:#838d99;
+  --s-on-accent:#08131f;--s-accent:#5094ff;--s-accent-soft:rgba(80,148,255,.16);--s-focus:#5094ff;
+  --s-up:#2ebd85;--s-down:#f2666f;--s-warn:#e7b04a;--s-gold:#e1a73b;
   --s-radius:10px;--s-radius-sm:6px;
   --s-font:Inter,system-ui,-apple-system,Segoe UI,sans-serif;
   --s-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -12,16 +16,16 @@
   color-scheme:dark;
 }
 :root[data-space-theme="light"]{
-  --s-bg:#f4f6f9;--s-surface:#ffffff;--s-panel:#ffffff;--s-panel-2:#f3f5f8;--s-hover:#eaeef3;
+  --s-bg:#e8ecf1;--s-surface:#f3f5f8;--s-sunken:#f6f8fa;--s-panel:#ffffff;--s-panel-2:#f1f4f7;--s-panel-3:#e6eaf0;--s-hover:#e9edf2;
   --s-border:#dfe4ea;--s-border-strong:#c9d1db;
-  --s-text:#111827;--s-muted:#5b6675;--s-faint:#8a94a3;
-  --s-accent:#2463eb;--s-accent-soft:rgba(36,99,235,.12);--s-focus:#2463eb;
-  --s-up:#0f9d63;--s-down:#d93848;--s-shadow:0 8px 30px rgba(15,23,42,.12);
+  --s-text:#111827;--s-muted:#525d6c;--s-faint:#636d7b;
+  --s-on-accent:#fff;--s-accent:#1f5cd9;--s-accent-soft:rgba(31,92,217,.12);--s-focus:#1f5cd9;
+  --s-up:#08744a;--s-down:#c22c3c;--s-warn:#8c5a00;--s-shadow:0 8px 30px rgba(15,23,42,.12);
   color-scheme:light;
 }
 .s-up{color:var(--s-up)}.s-down{color:var(--s-down)}.s-muted{color:var(--s-muted)}.s-num{font-variant-numeric:tabular-nums}
 :root[data-space-theme="blue-steel"]{
-  --s-bg:#0b1724;--s-surface:#102033;--s-panel:#14283d;--s-panel-2:#19334b;--s-hover:#234660;
-  --s-border:#2b435b;--s-border-strong:#45647e;--s-text:#e5eff8;--s-muted:#9bb1c5;--s-faint:#658198;
+  --s-bg:#08131f;--s-surface:#0e1d2e;--s-sunken:#0f2033;--s-panel:#142a40;--s-panel-2:#1a344d;--s-panel-3:#21405c;--s-hover:#1f3c57;
+  --s-border:#2b435b;--s-border-strong:#45647e;--s-text:#e5eff8;--s-muted:#a3b8cb;--s-faint:#88a2b8;
   --s-accent:#78b9f5;--s-accent-soft:rgba(120,185,245,.16);--s-focus:#8bc9ff;--s-up:#56d3ac;--s-down:#ff919f;--s-shadow:0 8px 30px rgba(0,9,21,.45);color-scheme:dark;
 }

@@ -1,0 +1,5 @@
+/* Position annotations share the app palette; they do not add panel outlines. */
+.pos-cell{font-variant-numeric:tabular-nums;white-space:nowrap}
+.pos-note{margin:10px 12px 0;color:var(--s-muted);font:11px/1.6 var(--s-font);max-width:75ch}
+.pos-note:empty{display:none}
+@media(max-width:650px){.pos-note{margin-inline:10px;font-size:10px}}

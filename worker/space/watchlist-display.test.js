@@ -8,20 +8,22 @@ test('saved watchlist stocks remain visible when the quote API is unavailable', 
   const before=Object.fromEntries(['fetch','location','document','window','localStorage'].map(k=>[k,globalThis[k]]));
   const toolbar=node(),body=node(),footer=node(),message=node(),live=node(),pause=node();toolbar.querySelector=()=>pause;
   const nodes={'.p-market-toolbar':toolbar,'.p-market-body':body,'.p-market-footer':footer,'.p-market-message':message,'.p-market-live':live};
-  const listeners={};let backupWrites=0;
+  const listeners={};let backupWrites=0, blocked=false;
+  const saved=new Map([['watchlist-pulse',JSON.stringify(['MSFT','BRK.B'])],['space:watchlist-migrated','1']]);
   const el={...node(),isConnected:true,querySelector:s=>nodes[s],addEventListener(name,fn){listeners[name]=fn;},removeEventListener(){}};
   let instance;
   try {
-    Object.assign(globalThis,{location:{origin:'http://localhost'},document:{visibilityState:'visible',activeElement:null,addEventListener(){},removeEventListener(){}},window:{navigator:{onLine:true},addEventListener(){},removeEventListener(){}},localStorage:{getItem:()=>null,setItem(){backupWrites++;}},fetch:async()=>Response.json({error:'Quote service unavailable'},{status:503})});
-    instance=getPanel('watchlist').mount(el,{state:{symbols:['MSFT','BRK.B']},setState(){return false;}});
+    Object.assign(globalThis,{location:{origin:'http://localhost'},document:{visibilityState:'visible',activeElement:null,addEventListener(){},removeEventListener(){}},window:{navigator:{onLine:true},addEventListener(){},removeEventListener(){}},localStorage:{getItem:k=>saved.get(k)??null,setItem(k,v){if(blocked)throw new Error('QuotaExceededError');backupWrites++;saved.set(k,v);}},fetch:async()=>Response.json({error:'Quote service unavailable'},{status:503})});
+    instance=getPanel('watchlist').mount(el,{state:{symbols:['MSFT','BRK.B'],sharedWatchlist:true},setState(){return false;}});
     await new Promise(resolve=>setImmediate(resolve));
     assert.match(body.innerHTML,/data-symbol="MSFT"/);assert.match(body.innerHTML,/data-symbol="BRK.B"/);
     assert.match(body.innerHTML,/Unavailable/);assert.match(message.textContent,/saved|watchlist/i);
+    blocked=true;const writesBefore=backupWrites;
     const input={value:'TSLA'};
     listeners.submit({preventDefault(){},target:{matches:()=>true,elements:{symbol:input}}});
-    assert.match(message.textContent,/not saved/);assert.equal(input.value,'TSLA');assert.equal(backupWrites,0);
+    assert.match(message.textContent,/not saved/);assert.equal(input.value,'TSLA');assert.equal(backupWrites,writesBefore);
     assert.doesNotMatch(body.innerHTML,/data-symbol="TSLA"/);
-    globalThis.fetch=async()=>Response.json({quotes:[{symbol:'MSFT',price:12.34}]});
+    blocked=false;globalThis.fetch=async()=>Response.json({quotes:[{symbol:'MSFT',price:12.34}]});
     const refresh={dataset:{},hasAttribute:name=>name==='data-refresh'};
     listeners.click({target:{closest:()=>refresh}});await new Promise(resolve=>setImmediate(resolve));
     assert.match(body.innerHTML,/12\.34/);assert.equal(message.textContent,'');

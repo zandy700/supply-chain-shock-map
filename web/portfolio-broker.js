@@ -60,6 +60,7 @@ export function brokerControls(node, state, reload, switchView, linkedView) {
     setup.textContent='Link a broker in SnapTrade';node.append(setup);
   } else if (!state.error) {
     message.textContent='Broker sign-in is awaiting setup on this site. You can import a holdings CSV now.';
+    const setup=document.createElement('a');setup.href='/setup#api-snaptrade';setup.textContent='API setup';node.append(setup);
   }
   if (state.error) { message.textContent=state.error; if (!state.connected) button('Retry broker link',reload); }
   if (state.message) message.textContent=state.message;

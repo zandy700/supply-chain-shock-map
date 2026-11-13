@@ -197,6 +197,26 @@ test('expirations route returns totals and derived fields', async () => {
   } finally { f.restore(); }
 });
 
+test('expiry menus omit old dates while an explicitly requested historical chain remains available', async () => {
+  reset();
+  const historical = { ...chainBody, data: { ...chainBody.data, table: { rows: [
+    { expirygroup: 'January 21, 2000', strike: null },
+    raw('Jan 21', 100, ['2', '0', '1.9', '2.1', '900000', '200'], ['2', '0', '1.9', '2.1', '800000', '200']),
+    ...nasdaqRows
+  ] } } };
+  const f = stubFetch(u => u.pathname.endsWith('/info') ? reply(infoBody) : reply(historical));
+  try {
+    const current = await (await route('chain?symbol=TEST')).json();
+    assert.ok(current.expirations.every(e => e.date >= current.today));
+    const summary = await (await route('expirations?symbol=TEST')).json();
+    assert.ok(summary.expirations.every(e => e.expiry >= summary.today));
+    assert.deepEqual(summary.totals.calls, { vol: 7010, oi: 2110 }, 'old volume is excluded from current totals');
+    const old = await (await route('chain?symbol=TEST&expiry=2000-01-21')).json();
+    assert.equal(old.expiry, '2000-01-21'); assert.equal(old.rows.length, 1);
+    assert.ok(old.expirations.some(e => e.date === '2000-01-21'));
+  } finally { f.restore(); }
+});
+
 test('unusual route validates input, reports unavailable symbols and sorts', async () => {
   reset();
   const f = stubFetch(u => u.pathname.includes('/BAD/') ? reply(notFound) : reply(chainBody));

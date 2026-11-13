@@ -38,7 +38,10 @@ export async function loadPortfolioData(force = false, { quotesOnly = false } = 
     }
     const anyFresh = Object.values(prices).some(q => q && !q.stale);
     const result = {manual, broker, prices, unavailable, quoteCheckedAt:Date.now(), quoteSuccessAt:anyFresh || !symbols.length ? Date.now() : cached?.quoteSuccessAt || null};
-    if (version === cacheVersion) { cached = result; cachedVersion = version; loadedAt = Date.now(); }
+    if (version === cacheVersion) {
+      cached = result; cachedVersion = version; loadedAt = Date.now();
+      bus.emit('portfolio:data', result);
+    }
     return result;
   })();
   pending = request; pendingVersion = version;
@@ -196,7 +199,7 @@ for (const [type,title,w,h] of types) registerPanel(type, {
       } else {
         if (totals.value==null || totals.value<=0) { body.innerHTML=ui.empty('Allocation requires a complete, positive portfolio value. Refresh quotes or review holdings.');return; }
         const rows=[...totals.rows.map(r=>({name:r.ticker,value:r.value})),{name:'Cash',value:totals.cash}].filter(r=>r.value>0).sort((a,b)=>b.value-a.value);
-        body.innerHTML=rows.map(r=>`<div class="p-portfolio-allocation"><span>${esc(r.name)}</span><strong>${money(r.value)} · ${fmt.num(r.value/totals.value*100,1)}%</strong><progress max="100" value="${r.value/totals.value*100}" aria-label="${esc(r.name)} allocation"></progress></div>`).join('');
+        body.innerHTML=rows.map(r=>`<div class="p-portfolio-allocation"><span>${esc(r.name)}</span><strong>${money(r.value)} · ${privateValues?'••••':fmt.num(r.value/totals.value*100,1)+'%'}</strong>${privateValues?'':`<progress max="100" value="${r.value/totals.value*100}" aria-label="${esc(r.name)} allocation"></progress>`}</div>`).join('');
       }
       if(type==='portfolio-holdings') addTabs(body);
     }
@@ -272,11 +275,18 @@ for (const [type,title,w,h] of types) registerPanel(type, {
     }
     const poll=createLiveRefresh({el,interval:60000,enabled:()=>!loading&&!editing(),refresh:signal=>update({silent:true,signal}),onState:state=>{liveState=state;updateStatus();}});
     const off=bus.on('portfolio:changed',()=>update());
-    const offPrivacy=bus.on('portfolio:privacy',()=>{privateValues=store.get('portfolio:private',false);if(data)render();});
-    const storage=e=>{if(e.key==='watchlist-pulse-portfolios-v1')refresh();};window.addEventListener('storage',storage);
+    const syncPrivacy=()=>{privateValues=store.get('portfolio:private',false);if(data)render();};
+    const offPrivacy=bus.on('portfolio:privacy',syncPrivacy);
+    const storage=e=>{if(e.key==='watchlist-pulse-portfolios-v1'||e.key===null)refresh();if(e.key==='space:portfolio:private'||e.key===null)syncPrivacy();};window.addEventListener('storage',storage);
     update();
-    return {csv(){return totals?.rows.length?toCSV(totals.rows):null;},scoutContext(){return totals?`Portfolio USD value: ${totals.value??'unavailable'}. Holdings: ${totals.rows.map(r=>r.ticker).join(', ')}.`:'';},destroy(){dead=true;poll.destroy();newsController?.abort();off();offPrivacy();window.removeEventListener('storage',storage);}};
+    return {csv(){return !privateValues&&totals?.rows.length?toCSV(totals.rows):null;},scoutContext(){return privateValues?'Portfolio values are hidden.':totals?`Portfolio USD value: ${totals.value??'unavailable'}. Holdings: ${totals.rows.map(r=>r.ticker).join(', ')}.`:'';},destroy(){dead=true;poll.destroy();newsController?.abort();off();offPrivacy();window.removeEventListener('storage',storage);}};
   }
 });
 
-export async function selectedPortfolioHoldings() { const d=await loadPortfolioData();const active=store.get('portfolio:active',{});const source=active.source||(d.broker.connected?'linked':'manual');return holdingsContext(portfolioSelection(d,source,active.account||'').accounts); }
+export async function selectedPortfolioHoldings() {
+  if (store.get('portfolio:private',false)) return [];
+  const d=await loadPortfolioData();
+  if (store.get('portfolio:private',false)) return [];
+  const active=store.get('portfolio:active',{}),source=active.source||(d.broker.connected?'linked':'manual');
+  return holdingsContext(portfolioSelection(d,source,active.account||'').accounts);
+}

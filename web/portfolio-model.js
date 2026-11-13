@@ -56,9 +56,13 @@ export function readPortfolios(storage = localStorage) {
   return saved === null ? [] : normalize(JSON.parse(saved));
 }
 
+// Same-tab notice after a successful write; other tabs receive the 'storage' event.
+export const PORTFOLIOS_EVENT = 'portfolios:changed';
+
 export function writePortfolios(accounts, storage = localStorage) {
   const clean = normalize(accounts);
   storage.setItem(STORAGE_KEY, JSON.stringify(clean));
+  try { globalThis.dispatchEvent?.(new CustomEvent(PORTFOLIOS_EVENT, {detail:{key:STORAGE_KEY}})); } catch { /* no event target */ }
   return clean;
 }
 

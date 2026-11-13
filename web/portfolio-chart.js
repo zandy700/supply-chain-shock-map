@@ -86,8 +86,8 @@ export function renderChart(container, points, state) {
     <div class="pf-chart-frame">
       <div class="pf-chart-plot" tabindex="0" role="slider" aria-label="Inspect recorded portfolio value" aria-orientation="horizontal" aria-valuemin="1" aria-valuemax="${selected.length}">
         <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-          <defs><linearGradient id="${id}" x1="0" x2="0" y1="0" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#2e9bff" stop-opacity=".22"/><stop offset="1" stop-color="#2e9bff" stop-opacity=".02"/></linearGradient></defs>
-          ${selected.length > 1 ? `<polygon points="0,100 ${coords} 100,100" fill="url(#${id})"/><polyline points="${coords}" fill="none" stroke="#0074dc" stroke-width="2.6" vector-effect="non-scaling-stroke"/>` : ''}
+          <defs><linearGradient id="${id}" x1="0" x2="0" y1="0" y2="1" gradientUnits="objectBoundingBox"><stop class="pf-chart-stop"/><stop class="pf-chart-stop pf-chart-stop-end" offset="1"/></linearGradient></defs>
+          ${selected.length > 1 ? `<polygon points="0,100 ${coords} 100,100" fill="url(#${id})"/><polyline class="pf-chart-line" points="${coords}" fill="none" stroke-width="2.6" vector-effect="non-scaling-stroke"/>` : ''}
         </svg>
         <i class="pf-chart-guide"></i><i class="pf-chart-dot"></i>
       </div>

@@ -4,6 +4,9 @@ import { THEME_CATALOG } from '../themes.js';
 import { registerPanel, store, esc, fmt, toCSV, bus, state as ui } from '../core.js';
 import { createLiveRefresh, refreshLabel } from '../live-refresh.js';
 import { NEWS_TOPIC_GROUPS, newsTopic, matchesNewsTopic } from './news-topics.js';
+import { createWatchlistStore } from '../../shared/watchlist-store.js';
+import { mapSymbolBatches, mergeBriefings } from '../../shared/watchlist-data.js';
+import { loadNewsBatches } from '../../shared/feed-batches.js';
 
 const REFRESH_MS = 120000;
 const SYMBOL = /^[A-Z0-9]{1,6}(?:[.-][A-Z0-9]{1,4})?$/;
@@ -13,14 +16,11 @@ const CATEGORIES = [['general', 'Top news'], ['stocks', 'Stocks'], ['earnings', 
   ['forex', 'Forex'], ['crypto', 'Crypto'], ['commodities', 'Commodities'], ['ipos', 'IPOs'], ['merger', 'Mergers (Finnhub)']];
 const MODES = [{ id: 'linked', label: 'Ticker News' }, { id: 'market', label: 'Top News' }, { id: 'watchlist', label: 'Watchlist News' }, { id: 'theme', label: 'Theme News' }];
 
-// Watchlist: the main app's list (localStorage 'watchlist-pulse') plus any Space watchlist (store 'watchlist').
-export function readWatchlist() {
-  const out = [];
-  const add = v => { const s = String((v && typeof v === 'object' ? v.symbol : v) || '').trim().toUpperCase(); if (SYMBOL.test(s) && !out.includes(s)) out.push(s); };
-  try { const a = JSON.parse(localStorage.getItem('watchlist-pulse')); if (Array.isArray(a)) a.forEach(add); } catch { /* storage unavailable */ }
-  const b = store.get('watchlist'); if (Array.isArray(b)) b.forEach(add); else if (Array.isArray(b?.symbols)) b.symbols.forEach(add);
-  return out;
-}
+// Watchlist: the one list shared by the dashboard and the Analyzer (web/shared/watchlist-store.js),
+// limited to symbols the news feeds accept.
+const watchlist = createWatchlistStore();
+export function readWatchlist() { return watchlist.read().filter(s => SYMBOL.test(s)); }
+export const onWatchlistChange = fn => watchlist.subscribe(fn);
 
 export function ago(iso, now = Date.now()) {
   const s = Math.max(0, (now - Date.parse(iso)) / 1000);
@@ -96,7 +96,7 @@ registerPanel('news', {
 
     function symbolsFor() {
       if (st.mode === 'linked') return [ctx.symbol, ...st.extra].filter(Boolean);
-      if (st.mode === 'watchlist') return [...readWatchlist(), ...st.extra].slice(0, 12);
+      if (st.mode === 'watchlist') return [...new Set([...readWatchlist(), ...st.extra])];
       if (st.mode === 'theme') return THEME_CATALOG.find(t=>t.id===st.theme)?.constituents.map(c=>c.symbol)||[];
       return [];
     }
@@ -124,8 +124,9 @@ registerPanel('news', {
           }
           params = { scope: st.mode === 'linked' ? 'symbol' : st.mode === 'theme' ? 'theme' : 'watchlist', symbols: syms.join(',') };
         }
-        const body = await ctx.api('news/feed', params, { signal });
+        const body = params.symbols ? await loadNewsBatches(ctx.api, params.symbols.split(','), { signal, scope: params.scope }) : await ctx.api('news/feed', params, { signal });
         if (dead || signal.aborted || ticket !== serial) return;
+        if (body.partial) body.note = (body.note || '') + ' Some symbols could not be checked; available headlines are shown.';
         const ids = new Set(body.items.map(i => i.id));
         fresh = silent ? new Set([...ids].filter(id => !lastIds.has(id))) : new Set();
         lastIds = ids; data = body;
@@ -267,6 +268,7 @@ registerPanel('news', {
     el.addEventListener('keydown', e => { if (e.key === 'Escape' && shareOpen) { shareOpen = false; renderReader(); reader.querySelector('[data-share]')?.focus(); e.stopPropagation(); } else if (e.key === 'Escape' && openId) { openId = null; renderReader(); } });
 
     const offTicker=bus.on('news:ticker',({id,symbol}={})=>{if(id!==ctx.id||!SYMBOL.test(symbol))return;save({extra:[...new Set([...st.extra,symbol])]});load({ reset: true });});
+    const offWatchlist=onWatchlistChange(()=>{if(!dead&&st.mode==='watchlist')load({ reset: true });});
     load({ reset: true });
 
     return {
@@ -282,7 +284,7 @@ registerPanel('news', {
         return `${label()} (${data.providers.join(' + ')}; keyword scenarios are unreviewed, not forecasts):\n` +
           items.map(i => `- ${ago(i.date)} · ${i.source}: ${i.title}${i.symbols.length ? ` [${i.symbols.slice(0, 4).join(', ')}]` : ''}${i.prediction ? ` (${i.prediction.direction} scenario: ${i.prediction.category})` : ''}`).join('\n');
       },
-      destroy() { dead = true; serial++; offTicker(); clearTimeout(qt); poll.destroy(); }
+      destroy() { dead = true; serial++; offTicker(); offWatchlist(); clearTimeout(qt); poll.destroy(); }
     };
   }
 });
@@ -306,7 +308,7 @@ registerPanel('predictions', {
       <p class="p-pred-disc">Keyword scenarios from the briefing pipeline: unreviewed, not forecasts. Not financial advice.</p>
     </div>`;
     const body = el.querySelector('.p-pred-body'), meta = el.querySelector('[data-pred-meta]'), live = el.querySelector('[data-pred-live]');
-    const tickers = () => st.scope === 'linked' ? [ctx.symbol].filter(Boolean) : readWatchlist().slice(0, 12);
+    const tickers = () => st.scope === 'linked' ? [ctx.symbol].filter(Boolean) : readWatchlist();
 
     async function fetchPredictions(signal) {
       const ticket = serial;
@@ -315,12 +317,14 @@ registerPanel('predictions', {
       if (!list.length) { render(st.scope === 'watchlist' ? 'Your watchlist is empty. Add companies in Ultimater.' : 'Link a symbol to see its predictions.'); return; }
       if (!data) body.innerHTML = ui.loading('Classifying recent headlines…');
       try {
-        const res = await fetch('/api/briefing?tickers=' + encodeURIComponent(list.join(',')), { signal, headers: { Accept: 'application/json' } });
+        const result = await mapSymbolBatches(list, async batch => {
+          const response = await fetch('/api/briefing?tickers=' + encodeURIComponent(batch.join(',')), { signal, headers: { Accept: 'application/json' } });
+          const payload = await response.json().catch(() => null);
+          if (!response.ok || !payload) throw new Error(payload?.error || 'Predictions unavailable');
+          return payload;
+        }, { signal });
         if (dead || signal.aborted || ticket !== serial) return;
-        const json = await res.json().catch(() => null);
-        if (dead || signal.aborted || ticket !== serial) return;
-        if (!res.ok) throw new Error(json?.error || `Request failed (${res.status})`);
-        data = json;
+        data = mergeBriefings(result);
       } catch (e) {
         if (dead || signal.aborted || ticket !== serial || e.name === 'AbortError') return;
         error = e;
@@ -374,6 +378,7 @@ registerPanel('predictions', {
       if (t.hasAttribute('data-pred-refresh')) return load();
     });
     load({ reset: true });
+    const offWatchlist = onWatchlistChange(() => { if (!dead && st.scope === 'watchlist') load({ reset: true }); });
     return {
       onSymbol() { if (st.scope === 'linked') load({ reset: true }); },
       csv() { const r = items().map(i => ({ date: i.date, tickers: (i.affected || []).join(' '), direction: i.direction, category: i.category, confidence: i.confidence, title: i.title, source: i.source, url: i.url })); return r.length ? toCSV(r) : null; },
@@ -381,7 +386,7 @@ registerPanel('predictions', {
         const list = items().slice(0, 15);
         return `Classified headline scenarios for ${tickers().join(', ') || 'none'} (keyword heuristic, unreviewed, not forecasts):\n` + (list.length ? list.map(i => `- ${i.direction} · ${i.category} · ${(i.affected || []).join(',')}: ${i.title} (${i.source})`).join('\n') : data?.notice || 'none');
       },
-      destroy() { dead = true; serial++; poll.destroy(); }
+      destroy() { dead = true; serial++; offWatchlist(); poll.destroy(); }
     };
   }
 });

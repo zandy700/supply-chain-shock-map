@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {brokerRoute,BrokerSession} from './broker.js';
+import {brokerRoute,BrokerSession,fetchBrokerAccounts} from './broker.js';
 import {brokerAccount} from '../web/portfolio-broker.js';
 
 function fixture() {
@@ -87,4 +87,17 @@ test('mixed instruments, unknown cash, and foreign balances cannot become comple
     balances:[{currency:'USD',cash:null},{currency:'CAD',cash:23}]};
   const account=brokerAccount(raw);
   assert.equal(account.complete,false);assert.equal(account.other.length,1);assert.equal(account.holdings.length,0);
+});
+
+
+test('top-level broker cost basis stays per-share for fractional holdings and ignores total tax-lot basis',async t=>{
+  t.mock.method(globalThis,'fetch',async (url,options)=>{
+    assert.equal(options.headers.Authorization,'Bearer fixture-token');
+    const path=new URL(url).pathname;
+    if(path==='/accounts')return Response.json([{id:'account-cost',name:'Cost fixture'}]);
+    if(path.endsWith('/balances'))return Response.json([{currency:{code:'USD'},cash:0}]);
+    return Response.json({results:[{instrument:{symbol:'MSFT',kind:'stock',exchange:'XNAS'},currency:'USD',units:'2.5',price:'150',cost_basis:'120',tax_lots:[{quantity:'2.5',purchased_price:'120',cost_basis:'300'}]}],data_freshness:{as_of:'2026-11-12T00:00:00Z'}});
+  });
+  const [raw]=await fetchBrokerAccounts('fixture-token'),normalized=brokerAccount(raw);
+  assert.equal(raw.positions[0].cost,120);assert.equal(normalized.holdings[0].shares,2.5);assert.equal(normalized.holdings[0].cost,120);
 });

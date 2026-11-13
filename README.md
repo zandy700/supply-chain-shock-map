@@ -4,9 +4,13 @@
 
 Ultimater builds on the original Supply Chain Shock Map project. The research dashboard keeps its Briefing, Watchlist, Portfolio, Calendar, and demonstration Ledger. The Python research engine, source evidence, historical data, and append-only research ledger remain separate from that demonstration UI.
 
-**Analyzer** is the additional workspace informed by the AlphaSpace interface audit. It brings charts, company financials, earnings, news, options, and thematic research into linked panels. Open it from the dashboard's **Analyzer** link; use **Research dashboard** in its sidebar to return.
+**Analyzer** is the additional workspace informed by the AlphaSpace interface audit. It brings charts, company financials, earnings, news, options, and thematic research into linked panels. Both workspaces share navigation: use **Views** for the Analyzer and **Research** to return to the original dashboard.
 
 Built by **Xingjian Zhang** with vanilla JavaScript, a Cloudflare Worker, and a Python research engine.
+
+**[Open Ultimater](https://supply-chain-shock-map.xingjianzhang700.workers.dev/#/home)** · **[Download the complete local app](https://github.com/zandy700/supply-chain-shock-map/releases/latest/download/ultimater-local-app.zip)** · [API setup](https://supply-chain-shock-map.xingjianzhang700.workers.dev/setup)
+
+The overview opens the **news tracker**, **portfolio**, and **stock Analyzer** from one place.
 
 ![Ultimater chart workspace with candlesticks, company research panels, and chart appearance controls](docs/screenshots/ultimater-chart-style-1200.png)
 
@@ -26,20 +30,31 @@ Built by **Xingjian Zhang** with vanilla JavaScript, a Cloudflare Worker, and a 
 
 Custom views support movable, resizable panels and linked ticker groups. Layouts and preferences persist in your browser. Workspace export/import and optional encrypted layout sync are available. Phone layouts stack panels and use a navigation drawer.
 
+The dashboard and Analyzer share one device-local watchlist of up to **40 symbols**. Changes sync between panels and tabs; sample mode keeps its own list. Feeds with smaller request limits use bounded batches, and incomplete refreshes are labeled. Previously retrieved dashboard/calendar data stays visible during an outage when the watchlist is unchanged.
+
+Analyzer watchlists and charts can show the share-weighted average purchase cost across supported manual and linked USD portfolios. Unknown costs are excluded and partial cost coverage is marked. Privacy mode masks position values and excludes holdings from new portfolio exports and AI context. Manual edits update immediately; linked holdings refresh every five minutes while the workspace is visible and online. Watchlists and holdings are never added to the public prediction-event snapshots.
+
 ## Run locally
 
-Requires **Node.js 22+** and npm. Python 3 is needed for the credential setup helpers; Python 3.11+ is needed only if you run the research engine.
+Requires **Node.js 22+** and npm. Download the [local app ZIP](https://github.com/zandy700/supply-chain-shock-map/releases/latest/download/ultimater-local-app.zip), unzip it, open Terminal in the extracted folder, and run:
+
+```sh
+npm start
+```
+
+The first launch installs locked dependencies, starts the local data server, and prints the local address (normally **[127.0.0.1:8820](http://127.0.0.1:8820/#/home)**). Open **Setup & download** in the app to add your own API keys. The download includes the news tracker, manual/CSV portfolio, Analyzer and API setup. Internet is required for installation and live feeds; keys are optional for manual portfolios and public data.
+
+You can also run the full repository:
 
 ```sh
 git clone https://github.com/zandy700/supply-chain-shock-map.git
 cd supply-chain-shock-map
-npm ci
-npm run dev -- --port 8820
+npm start
 ```
 
-Open the **[research dashboard](http://127.0.0.1:8820/#/briefing)** or the **[Analyzer](http://127.0.0.1:8820/space?view=analysis)**.
+Open the **[overview](http://127.0.0.1:8820/#/home)**, **[news tracker](http://127.0.0.1:8820/#/briefing)**, **[portfolio](http://127.0.0.1:8820/#/portfolio)**, or **[Analyzer](http://127.0.0.1:8820/space?view=analysis)**. See the [full local app guide](docs/local-app.md) for ports, privacy and troubleshooting. Python 3.11+ is needed only for the separate research engine; it is not required to start the local app.
 
-The workspace can start without provider keys. Public endpoints supply available data; features that need credentials show their setup or unavailable state. Use the Worker server above for the workspace APIs. A plain static file server does not provide the full workspace APIs. The prediction-event pack below works separately without a hosted Worker.
+The workspace can start without provider keys. Public endpoints supply available data; features that need credentials show their setup or unavailable state. The complete local launcher runs the Worker on your computer; no Cloudflare deployment is needed. A plain static file server does not provide the full workspace APIs. The smaller prediction-event pack below works separately without any Worker runtime.
 
 ### Prediction events without app hosting
 
@@ -60,7 +75,9 @@ Open `http://localhost:8000/?seed=demo#/briefing`. This mode uses the isolated `
 
 ## Connect optional providers
 
-Credentials belong in the ignored **`.dev.vars`** file for local development. Restart the Worker after changing them. Each fresh clone needs its own credentials; none are included in this repository.
+In the local app, open **[Setup & download](http://127.0.0.1:8820/setup)**. It explains where to obtain each provider key, saves it privately to the ignored **`.dev.vars`** file, and restarts the local data server. It can check Finnhub, Alpaca and flow data access after setup. API keys are never saved to browser storage or included in the downloadable ZIP. Each download or clone needs its own credentials.
+
+The hosted setup page is read-only: visitors cannot add keys to the public server. People hosting their own copy configure private server secrets. The existing CLI helpers and manual `.dev.vars` editing remain available for development; restart `npm run dev` after editing that file.
 
 | Provider | Configuration | Enables |
 | --- | --- | --- |
@@ -69,6 +86,8 @@ Credentials belong in the ignored **`.dev.vars`** file for local development. Re
 | **Anthropic** | `ANTHROPIC_API_KEY`; optional `PULSE_AI_MODEL` | Ultimater AI and AI recaps. API usage may incur charges. |
 | **Unusual Whales** | `UNUSUAL_WHALES_API_KEY` | Transaction Flow, with an eligible provider subscription. |
 | **SnapTrade** | `npm run broker:setup` | Read-only brokerage connection, subject to provider app approval and configuration. Manual/CSV portfolios work independently. |
+
+Setup status reports credential presence. A successful data check confirms that one provider request worked; it does not guarantee every symbol, subscription feature or future request is available. AI access is verified when you send a message; the setup page does not issue a paid AI request.
 
 For example, optional local settings can be added to `.dev.vars`:
 
@@ -113,6 +132,7 @@ The frontend uses native ES modules; there is no frontend compilation step. Clou
 
 ```sh
 npm test
+npm run app:build
 npx wrangler deploy --dry-run --outdir /tmp/ultimater-build
 ```
 

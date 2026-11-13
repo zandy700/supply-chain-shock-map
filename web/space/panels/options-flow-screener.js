@@ -49,6 +49,16 @@ registerPanel('options-flow', { title: 'Options Flow Screener', category: 'Optio
   }
   function render() {
     const scroll = el.querySelector('.p-flow-table')?.scrollLeft || 0;
+    if (!data && error?.body?.error === 'flow_not_configured') {
+      el.innerHTML = `<section class="p-flow p-flow-unavailable" role="status"><div><h3>Options flow isn’t connected</h3><p>This panel shows individual options trades and needs a separate data subscription.</p><p>Use the Options Chain to explore contracts and quotes.</p><button type="button" class="s-btn" data-open-chain>Open Options Chain</button><details><summary>Connection details</summary><p>This site’s flow feed uses Unusual Whales. A subscription with API access must be connected by the site owner. Alpaca chain quotes don’t include this transaction feed.</p><a class="s-btn s-btn-sm" href="/setup#api-unusual-whales">API setup</a> <button type="button" class="s-btn s-btn-sm" data-check-flow>Check connection</button></details></div></section>`;
+      el.querySelector('[data-check-flow]').onclick = load;
+      el.querySelector('[data-open-chain]').onclick = () => {
+        const chain = document.querySelector('.sp-panel[data-type="options-chain"]');
+        if (chain) { chain.scrollIntoView({ block: 'start', behavior: 'smooth' }); chain.querySelector('button')?.focus({ preventScroll: true }); }
+        else bus.emit('panel:add', { type: 'options-chain' });
+      };
+      return;
+    }
     el.innerHTML = `<div class="p-flow"><form class="p-flow-tools"><input class="s-input" name="symbol" aria-label="Flow ticker" placeholder="All tickers" value="${esc(st.symbol)}" maxlength="8"><select class="s-select" name="preset" aria-label="Flow filter">${presets.map(([v, label]) => `<option value="${v}" ${st.preset === v ? 'selected' : ''}>${label}</option>`).join('')}</select><label>Min premium<input class="s-input" name="minPremium" aria-label="Minimum trade premium" type="number" min="0" value="${esc(st.minPremium)}"></label><label>Min volume<input class="s-input" name="minVolume" aria-label="Minimum contract volume" type="number" min="0" value="${esc(st.minVolume)}"></label><select class="s-select" aria-label="Flow volume preset" data-volume-preset>${[0, 100, 1000].map(n => `<option value="${n}" ${+st.minVolume === n ? 'selected' : ''}>${n ? n + '+' : 'All volumes'}</option>`).join('')}${[0, 100, 1000].includes(+st.minVolume) ? '' : '<option value="custom" selected>Custom minimum</option>'}</select><select class="s-select" name="limit" aria-label="Flow result count">${[25, 50, 100, 200].map(n => `<option ${+st.limit === n ? 'selected' : ''}>${n}</option>`).join('')}</select><select class="s-select" name="sort" aria-label="Flow sort">${sorts.map(([v, label]) => `<option value="${v}" ${st.sort === v ? 'selected' : ''}>${label}</option>`).join('')}</select><button class="s-btn">Apply</button></form><div class="p-flow-tools"><button class="s-btn" data-pause>${paused ? 'Resume updates' : 'Pause updates'}</button><button class="s-btn" data-refresh>Refresh</button><button class="s-btn" data-columns aria-expanded="${columnsOpen}">Columns</button><button class="s-btn" data-newer ${previous.length ? '' : 'disabled'}>Newer</button><button class="s-btn" data-older ${data?.hasMore && st.sort === 'time' ? '' : 'disabled'}>Older</button></div>${columnsOpen ? columnSettings() : ''}<div data-flow-body></div><p class="p-portfolio-note">Transaction tape · Checks every 60 seconds while visible during regular US market hours. Flow access requires a configured provider subscription. Execution tags do not establish trade intent. DTE uses the execution date in New York; fill position is derived from the reported trade and bid/ask spread. Stock is the reported underlying price; Spot is the option trade price. Chain-specific quotes and leg counts remain unavailable. Volume sorts highest first and DTE shortest first within the loaded page.</p>${data ? `<p class="p-portfolio-note">${esc(data.source || 'Source unavailable')} · Latest trade ${esc(data.asOf || 'unavailable')} · Checked ${esc(data.checkedAt || 'unavailable')}</p>` : ''}</div>`;
     const form = el.querySelector('form');
     form.onsubmit = event => { event.preventDefault(); save(Object.fromEntries(PARAMS.map(key => [key, form.elements[key].value]))); cursor = null; previous = []; load(); };
@@ -78,7 +88,11 @@ registerPanel('options-flow', { title: 'Options Flow Screener', category: 'Optio
       const result = await ctx.api('options/flow', { ...Object.fromEntries(PARAMS.map(key => [key, st[key]])), older_than: cursor }, { signal });
       if (signal.aborted || ticket !== generation) return;
       data = result; error = null; poll.update(result);
-    } catch (failure) { if (signal.aborted || dead || ticket !== generation) return; error = failure; }
+    } catch (failure) {
+      if (signal.aborted || dead || ticket !== generation) return;
+      error = failure;
+      if (failure.body?.error === 'flow_not_configured') poll.update({ refreshAllowed: false });
+    }
     if (!dead && !signal.aborted) render();
   }
   const keydown = event => { if (event.key === 'Escape' && columnsOpen) { columnsOpen = false; render(); el.querySelector('[data-columns]')?.focus(); event.preventDefault(); event.stopPropagation(); } };

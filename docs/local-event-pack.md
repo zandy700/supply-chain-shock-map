@@ -1,5 +1,7 @@
 # Ultimater local event pack
 
+Want the news tracker, portfolio, Analyzer and in-app API setup too? Download the **[complete local app](https://github.com/zandy700/supply-chain-shock-map/releases/latest/download/ultimater-local-app.zip)** and follow the [full app guide](local-app.md). This page describes the smaller prediction-events-only pack.
+
 Prediction events work without deploying or paying for a hosted Worker. GitHub Actions re-discovers open stock-relevant Polymarket and Kalshi events on a 15-minute schedule, saves public normalized snapshots in the repository, and builds this downloadable pack. Your computer does not need to stay on for the GitHub job.
 
 ## Start the downloaded pack

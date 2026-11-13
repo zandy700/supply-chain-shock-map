@@ -1,3 +1,4 @@
+import { loadNewsBatches } from '../shared/feed-batches.js';
 // Device-local price alerts. Checks run while Ultimater is open and visible.
 import { registerPanel, api, bus, store, esc, fmt, toCSV } from './core.js';
 const SYMBOL = /^[A-Z0-9]{1,6}(?:[.-][A-Z0-9]{1,4})?$/;
@@ -29,20 +30,27 @@ function notify(input) {
 }
 async function sourceEvents(force = false) {
   if (eventsBusy || document.visibilityState !== 'visible' || (!force && Date.now() - eventsAt < 15 * 60000)) return;
-  const symbols = readWatchlist().slice(0, 12); if (!symbols.length || (!preferences.news && !preferences.earnings)) return;
+  const symbols = readWatchlist(); if (!symbols.length || (!preferences.news && !preferences.earnings)) return;
   eventsBusy = true; eventsAt = Date.now();
+  const failures = [];
   try {
     if (preferences.news) {
-      const d = await api('news/feed', { scope: 'watchlist', symbols: symbols.join(',') });
+      try {
+      const d = await loadNewsBatches(api, symbols);
+      if (d.partial) failures.push('Some watchlist news sources could not be refreshed.');
       for (const item of d.items || []) notify({ id: 'news:' + item.id, category: 'news', title: item.title, message: item.summary, source: item.source || item.provider || 'Company news feed', date: item.date, symbol: item.symbols?.[0], url: item.url });
+      } catch { failures.push('Company news could not be refreshed.'); }
     }
     if (preferences.earnings) {
+      try {
       const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
       const to = new Date(Date.parse(today + 'T12:00:00Z') + 6 * 86400000).toISOString().slice(0, 10);
       const d = await api('earnings/calendar', { from: today, to });
       for (const row of d.rows || []) if (symbols.includes(row.symbol)) notify({ id: `earnings:${row.symbol}:${row.date}:${row.epsActual == null ? 'scheduled' : 'reported'}`, category: 'earnings', title: `${row.symbol} earnings ${row.epsActual == null ? 'scheduled' : 'reported'}`, message: `Report date ${row.date}${row.time ? ' · ' + row.time : ''}${row.epsActual == null ? '' : ' · Actual EPS ' + row.epsActual}${row.epsEstimate == null ? '' : ' · Consensus EPS ' + row.epsEstimate}`, source: row.sources?.join(' / ') || d.sources?.join(' / ') || 'Earnings calendar', symbol: row.symbol });
+      } catch { failures.push('Earnings events could not be refreshed.'); }
     }
-  } catch { failure = 'Some event sources could not be refreshed. Existing notifications remain available.'; }
+    failure = failures.length ? failures.join(' ') + ' Existing notifications remain available.' : '';
+  }
   finally { eventsBusy = false; bus.emit('alerts:changed'); }
 }
 async function browserPermission() {

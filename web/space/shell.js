@@ -6,6 +6,7 @@ import { searchThemes } from './themes.js';
 import { initTour } from './tour.js';
 import { createLiveRefresh } from './live-refresh.js';
 import { csvToXlsx, collectWorkspace, replaceWorkspace, validateWorkspaceFile, moveItem, sharedPanel } from './workspace-tools.js';
+import { ANALYZER_NAV, FEATURED_THEMES, researchSectionHTML } from '../shared/nav.js';
 
 /* ------------------------------------------------------------------ icons */
 const ICONS = {
@@ -107,12 +108,15 @@ export function marketSession(date = new Date()) {
 
 /* ------------------------------------------------------------------ prefs + persistence */
 const DEFAULT_PREFS = { theme: 'dark', density: 'comfortable', sidebarCollapsed: false, dock: 'open', dockWidth: 380, themesExpanded: false, sections: { views: true, themes: true, mine: true }, region: 'us', themeOrder: null, onboarded: false, noticeDismissed: false, singleKeyShortcuts: true, sectionOrder: ['views','themes','mine'], sidebarLocked: false };
-const savedPrefs = store.get('prefs') || {};
-let prefs = { ...DEFAULT_PREFS, ...savedPrefs };
-if (!Object.hasOwn(savedPrefs, 'dock') && matchMedia('(max-width: 1023px)').matches) prefs.dock = 'collapsed';
-prefs.sections = { ...DEFAULT_PREFS.sections, ...(prefs.sections || {}) };
-prefs.themeOrder=Array.isArray(prefs.themeOrder)?prefs.themeOrder.filter(s=>typeof s==='string'):[];
-prefs.sectionOrder=Array.isArray(prefs.sectionOrder)?prefs.sectionOrder.filter(s=>['views','themes','mine'].includes(s)):['views','themes','mine'];
+function readShellPrefs() {
+  const saved = store.get('prefs') || {};
+  const next = { ...DEFAULT_PREFS, ...saved, sections: { ...DEFAULT_PREFS.sections, ...(saved.sections || {}) } };
+  if (!Object.hasOwn(saved, 'dock') && matchMedia('(max-width: 1023px)').matches) next.dock = 'collapsed';
+  next.themeOrder = Array.isArray(next.themeOrder) ? next.themeOrder.filter(s => typeof s === 'string') : [];
+  next.sectionOrder = Array.isArray(next.sectionOrder) ? next.sectionOrder.filter(s => ['views','themes','mine'].includes(s)) : ['views','themes','mine'];
+  return next;
+}
+let prefs = readShellPrefs();
 const savePrefs = () => store.set('prefs', prefs);
 
 const LINK_GROUPS = ['A', 'B', 'C', 'D', 'E', 'F'];
@@ -158,7 +162,7 @@ function loadDoc(id) {
 let saveTimer = null;
 function saveDoc(now = false) {
   clearTimeout(saveTimer);
-  const doc = cur.doc; if (!doc) return;
+  const doc = cur.doc; if (!doc) return false;
   const write = () => {
     const { id } = doc;
     const data = { ...doc, panels: doc.panels.map(({ id: pid, type, x, y, w, h, group, state, variant, locked, pinned }) => ({ id: pid, type, x, y, w, h, group, state, variant, locked, pinned })) };
@@ -335,6 +339,12 @@ export function start(rootEl) {
   };
   applyTheme(); applyDensity(); applyDock(); applySidebar();
   wireTopBar(); startClock(); renderSidebar(); loadTape(); wireDock(); wireKeys(); wireBus(); wireResponsive();
+  window.addEventListener('storage', e => {
+    if (e.key === 'space:prefs' || e.key === null) {
+      prefs = readShellPrefs();
+      applyTheme(); applyDensity(); applySidebar(); applyDock(); renderSidebar();
+    } else if (e.key === 'space:myviews') renderSidebar();
+  });
   setUnread(unread);
 
   tour = initTour({ openCatalog, openView: (id) => navigate(id), createFromTemplate, getDoc: () => cur.doc, prefs: () => prefs, savePrefs: (patch) => { Object.assign(prefs, patch); savePrefs(); }, openDialog, icon, getBuiltin, VIEWS, THEMES, GOALS });
@@ -343,7 +353,8 @@ export function start(rootEl) {
   openView(routeId(), { push: false, replace: true });
   bus.emit('shell:ready', { dock: getDock() });
   const q = new URLSearchParams(location.search);
-  if(q.has('panel')){try{const spec=JSON.parse(q.get('panel'));if(!getPanel(spec.type)||JSON.stringify(spec)!==JSON.stringify(sharedPanel(spec,spec.symbol)))throw new Error('Invalid shared panel');confirmDialog({title:'Open shared panel',text:'Create a local view containing '+getPanel(spec.type).title+(spec.symbol?' for '+spec.symbol:'')+'?',ok:'Open panel'}).then(ok=>{if(ok)createCustom('Shared '+getPanel(spec.type).title,[{type:spec.type,variant:spec.variant,x:0,y:0,w:12,h:14}],spec.symbol?[spec.symbol]:undefined);});}catch{toast('This shared panel link is invalid.');}const clean=new URL(location.href);clean.searchParams.delete('panel');history.replaceState({},'',clean);}else if (!prefs.onboarded && q.get('onboarding') !== '0') setTimeout(() => tour.onboard(), 400);
+  if(q.has('panel')){try{const spec=JSON.parse(q.get('panel'));if(!getPanel(spec.type)||JSON.stringify(spec)!==JSON.stringify(sharedPanel(spec,spec.symbol)))throw new Error('Invalid shared panel');confirmDialog({title:'Open shared panel',text:'Create a local view containing '+getPanel(spec.type).title+(spec.symbol?' for '+spec.symbol:'')+'?',ok:'Open panel'}).then(ok=>{if(ok)createCustom('Shared '+getPanel(spec.type).title,[{type:spec.type,variant:spec.variant,x:0,y:0,w:12,h:14}],spec.symbol?[spec.symbol]:undefined);});}catch{toast('This shared panel link is invalid.');}const clean=new URL(location.href);clean.searchParams.delete('panel');history.replaceState({},'',clean);}else if (q.get('open') === 'themes') { const clean = new URL(location.href); clean.searchParams.delete('open'); history.replaceState(history.state, '', clean); openThemeBrowser(); }
+  else if (!prefs.onboarded && q.get('onboarding') !== '0') setTimeout(() => tour.onboard(), 400);
   window.__spaceShell = { navigate, addPanel, openSearch, marketSession, cur };
 }
 
@@ -357,7 +368,7 @@ export function navigate(id) { saveDoc(true); openView(id, { push: true }); }
 const mql = matchMedia('(prefers-color-scheme: light)');
 function applyTheme() {
   const t = prefs.theme === 'system' ? (mql.matches ? 'light' : 'dark') : prefs.theme;
-  document.documentElement.dataset.spaceTheme = t;
+  document.documentElement.dataset.spaceTheme = ['dark', 'light', 'blue-steel'].includes(t) ? t : 'dark';
 }
 mql.addEventListener?.('change', () => prefs.theme === 'system' && applyTheme());
 function applyDensity() { document.documentElement.dataset.spaceDensity = prefs.density; }
@@ -497,6 +508,8 @@ function themeList() {
   return out;
 }
 let reorderMode = false;
+// Built-in views in the shared nav order (web/shared/nav.js), plus any view that list does not name yet.
+const navViews = () => [...ANALYZER_NAV.map(n => VIEWS.find(v => v.id === n.id)).filter(Boolean), ...VIEWS.filter(v => !ANALYZER_NAV.some(n => n.id === v.id))];
 function renderSidebar() {
   const s = prefs.sections;
   const item = (m, extra = '') => `<li><button type="button" class="sp-nav-item" data-view="${esc(m.id)}" title="${esc(m.name)}"${m.id === cur.id ? ' aria-current="page"' : ''}>${icon(m.icon)}<span class="sp-nav-label">${esc(m.name)}</span></button>${extra}</li>`;
@@ -506,16 +519,15 @@ function renderSidebar() {
   const mine = myViews();
   els.side.innerHTML = `
     <div class="sp-side-scroll">
-      <a class="sp-research-home" href="/#/briefing" aria-label="Back to research dashboard" title="Back to research dashboard">${icon('back')}<span>Research dashboard</span></a>
+      ${researchSectionHTML({ expanded: s.research !== false, collapsed: prefs.sidebarCollapsed })}
       <section class="sp-sec" data-section="views">
-        <div class="sp-sec-head"><button type="button" class="sp-sec-toggle" data-sec="views" aria-expanded="${s.views}">${icon('chevron', 'sp-caret')}<span>VIEWS</span></button>
-          <button type="button" class="s-icon-btn s-icon-btn-sm sp-collapse" data-act="collapse-side" aria-label="${prefs.sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}" aria-pressed="${prefs.sidebarCollapsed}">${icon('sidebar')}</button></div>
-        <ul class="sp-nav" ${s.views ? '' : 'hidden'}>${VIEWS.map(v => item(v)).join('')}</ul>
+        <div class="sp-sec-head"><button type="button" class="sp-sec-toggle" data-sec="views" aria-expanded="${s.views}">${icon('chevron', 'sp-caret')}<span>VIEWS</span></button></div>
+        <ul class="sp-nav" ${s.views ? '' : 'hidden'}>${navViews().map(v => item(v)).join('')}</ul>
       </section>
       <section class="sp-sec" data-section="themes">
         <div class="sp-sec-head"><button type="button" class="sp-sec-toggle" data-sec="themes" aria-expanded="${s.themes}">${icon('chevron', 'sp-caret')}<span>THEMES</span></button>
           <button type="button" class="s-icon-btn s-icon-btn-sm sp-sec-action" data-act="reorder" aria-label="Reorder Themes section" aria-pressed="${reorderMode}">${icon(reorderMode ? 'x' : 'swap')}</button></div>
-        <div class="sp-theme-discovery"><button class="s-btn s-btn-sm" data-act="browse-themes">${icon('search')} Browse all ${THEMES.length} themes</button><div class="sp-theme-featured">${['housing-rates','gambling'].map(id=>{const t=THEMES.find(t=>t.id===id);return `<button data-view="${id}" class="sp-featured-theme">${icon(t.icon)}${esc(t.name)}</button>`;}).join('')}<button data-view="prediction-board" class="sp-featured-theme">${icon('target')}Market events</button></div></div>
+        <div class="sp-theme-discovery"><button class="s-btn s-btn-sm" data-act="browse-themes">${icon('search')} Browse all ${THEMES.length} themes</button><div class="sp-theme-featured">${FEATURED_THEMES.map(f=>{const t=THEMES.find(t=>t.id===f.id);return `<button data-view="${f.id}" class="sp-featured-theme">${icon(t?.icon||f.icon)}${esc(t?.name||f.name)}</button>`;}).join('')}</div></div>
         <ul class="sp-nav${reorderMode ? ' is-reorder' : ''}" ${s.themes ? '' : 'hidden'}>${shown.map((t, i) => item(t, reorderMode ? `<span class="sp-reorder"><button type="button" class="s-icon-btn s-icon-btn-sm" data-move="-1" data-theme="${t.id}" aria-label="Move ${esc(t.name)} up" ${i === 0 ? 'disabled' : ''}>${icon('up')}</button><button type="button" class="s-icon-btn s-icon-btn-sm" data-move="1" data-theme="${t.id}" aria-label="Move ${esc(t.name)} down" ${i === shown.length - 1 ? 'disabled' : ''}>${icon('down')}</button></span>` : '')).join('')}
           ${reorderMode ? '' : `<li><button type="button" class="sp-more-link" data-act="themes-more" aria-expanded="${prefs.themesExpanded}">${prefs.themesExpanded ? 'Show less' : `View more (${themes.length - 5})`}</button></li>`}</ul>
       </section>
@@ -532,7 +544,7 @@ function renderSidebar() {
   const container=$('.sp-side-scroll',els.side);
   const order=[...new Set([...(Array.isArray(prefs.sectionOrder)?prefs.sectionOrder:[]),'views','themes','mine'])];
   for(const id of order){const section=$(`[data-section="${id}"]`,container);if(section)container.append(section);}
-  const arrange=h(`<div class="sp-sidebar-arrange"><button class="s-btn s-btn-sm s-btn-ghost" data-sidebar-settings>${icon(prefs.sidebarLocked?'lock':'swap')} Sidebar layout</button></div>`);container.prepend(arrange);
+  const arrange=h(`<div class="sp-sidebar-arrange"><button class="s-btn s-btn-sm s-btn-ghost" data-sidebar-settings>${icon(prefs.sidebarLocked?'lock':'swap')} Sidebar layout</button></div>`);const research=$('[data-section="research"]',container);research?research.after(arrange):container.prepend(arrange);
   wireSidebar();
 }
 function wireSidebar() {
@@ -540,7 +552,7 @@ function wireSidebar() {
   $('[data-sidebar-settings]',side).onclick=sidebarSettings;
   $('[data-act=browse-themes]',side).onclick=openThemeBrowser;
   side.querySelectorAll('[data-view]').forEach(b => b.addEventListener('click', () => { navigate(b.dataset.view); setDrawer(false); }));
-  side.querySelectorAll('[data-sec]').forEach(b => b.addEventListener('click', () => { prefs.sections[b.dataset.sec] = !prefs.sections[b.dataset.sec]; savePrefs(); renderSidebar(); $(`[data-sec=${b.dataset.sec}]`, side).focus(); }));
+  side.querySelectorAll('[data-sec]').forEach(b => b.addEventListener('click', () => { prefs.sections[b.dataset.sec] = prefs.sections[b.dataset.sec] === false; savePrefs(); renderSidebar(); $(`[data-sec=${b.dataset.sec}]`, side).focus(); }));
   $('[data-act=collapse-side]', side).onclick = () => { prefs.sidebarCollapsed = !prefs.sidebarCollapsed; savePrefs(); applySidebar(); renderSidebar(); $('[data-act=collapse-side]', side).focus(); };
   $('[data-act=reorder]', side).disabled=!!prefs.sidebarLocked;
   $('[data-act=reorder]', side).onclick = () => { reorderMode = !reorderMode; renderSidebar(); $('[data-act=reorder]', side).focus(); };
@@ -555,7 +567,7 @@ function wireSidebar() {
   $('[data-act=create-mine]', side).onclick = createFromScratch;
   side.querySelectorAll('[data-sidebar-view-lock]').forEach(b=>b.onclick=()=>toggleViewLayout(b.dataset.sidebarViewLock));
   side.querySelectorAll('[data-more]').forEach(b => b.addEventListener('click', () => openMenu(b, myViewMenu(b.dataset.more), { label: 'View actions' })));
-  side.querySelectorAll('.sp-nav-item').forEach(b => b.addEventListener('contextmenu', (e) => {
+  side.querySelectorAll('.sp-nav-item[data-view]').forEach(b => b.addEventListener('contextmenu', (e) => {
     const id = b.dataset.view; e.preventDefault();
     const items = myViews().some(v => v.id === id) ? myViewMenu(id) : [{ label: 'Open', icon: 'chevronR', onSelect: () => navigate(id) }, { label: 'Clone view', icon: 'copy', onSelect: () => cloneView(id) }];
     openMenu(b, items, { label: 'View actions' });
@@ -607,9 +619,13 @@ function sidebarSettings() {
 }
 function applySidebar() { root.classList.toggle('side-collapsed', !!prefs.sidebarCollapsed); }
 function setDrawer(open) {
+  const closingFocus = !open && els.side.contains(document.activeElement);
   root.classList.toggle('drawer-open', open); els.backdrop.hidden = !open;
-  $('[data-act=drawer]', root).setAttribute('aria-expanded', String(open));
+  const button = $('[data-act=drawer]', root);
+  button.setAttribute('aria-expanded', String(open));
+  button.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
   if (open) $('.sp-nav-item', els.side)?.focus();
+  else if (closingFocus) button.focus();
 }
 
 /* ------------------------------------------------------------------ workspace file ops */
@@ -701,6 +717,13 @@ function wireResponsive() {
   };
   check(); addEventListener('resize', check);
   els.backdrop.addEventListener('click', () => { setDrawer(false); if (root.classList.contains('is-narrow') && prefs.dock !== 'collapsed') setDock('collapsed'); });
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Tab' || !root.classList.contains('drawer-open')) return;
+    const items = [...els.side.querySelectorAll('a[href],button:not(:disabled)')].filter(el => el.getClientRects().length);
+    const first = items[0], last = items.at(-1);
+    if (e.shiftKey && (document.activeElement === first || !els.side.contains(document.activeElement))) { e.preventDefault(); last?.focus(); }
+    else if (!e.shiftKey && (document.activeElement === last || !els.side.contains(document.activeElement))) { e.preventDefault(); first?.focus(); }
+  });
 }
 
 /* ------------------------------------------------------------------ keyboard */

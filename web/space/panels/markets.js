@@ -1,7 +1,9 @@
 // Market research panels. Quotes are provider data; theme membership is editorial.
-import { registerPanel, api, esc, fmt, toCSV, state as ui, store } from '../core.js';
+import { registerPanel, api, esc, fmt, toCSV, state as ui } from '../core.js';
 import { THEMES } from '../views.js';
 import { createLiveRefresh } from '../live-refresh.js';
+import { createWatchlistStore, migrateLegacyWatchlist, WATCHLIST_LIMIT } from '../../shared/watchlist-store.js';
+import { positionFor, positionValue, positionsPrivate, onPositions, ensurePositionStyles } from '../positions.js';
 
 const finite = v => v !== null && v !== undefined && v !== '' && Number.isFinite(+v);
 const price = v => finite(v) ? fmt.price(+v) : '—';
@@ -56,19 +58,39 @@ function table(rows, columns, sort, { remove = false } = {}) {
     const value = r[c.key];
     if(c.key==='role'){let source='';try{const u=new URL(r.exposureSource);if(['https:','http:'].includes(u.protocol))source=u.href;}catch{}return `<td class="p-market-role">${esc(value||'Editorial theme constituent')}${r.exposure?`<small>${esc(r.exposure)}</small>`:''}${source?`<a href="${esc(source)}" target="_blank" rel="noopener noreferrer">Issuer / fund source</a>`:''}</td>`;}
     if (c.key === 'symbol') return `<th scope="row"><button class="p-market-symbol" data-symbol="${esc(r.symbol)}">${esc(r.symbol)}</button>${r.missing ? '<span class="p-market-missing">Unavailable</span>' : ''}</th>`;
-    return `<td class="${c.text ? 'p-market-name' : 's-num'} ${c.color ? dir(value) : ''}"${c.text ? ` title="${esc(value)}"` : ''}>${c.format ? c.format(value) : esc(value ?? '—')}</td>`;
+    return `<td class="${c.text ? 'p-market-name' : 's-num'} ${c.color ? dir(value) : ''}${c.cls ? ' ' + c.cls : ''}"${c.text ? ` title="${esc(value)}"` : ''}>${c.format ? c.format(value, r) : esc(value ?? '—')}</td>`;
   }).join('')}${remove ? `<td><button class="s-icon-btn s-icon-btn-sm" data-remove="${esc(r.symbol)}" aria-label="Remove ${esc(r.symbol)}">×</button></td>` : ''}</tr>`).join('')}</tbody></table>`;
+}
+
+// Watchlist rows the user holds gain the combined avg cost and unrealized P&L % (web/shared/position.js).
+// Values stay out of `rows`, so CSV and Scout context never carry them; hidden values are masked and unsortable.
+function watchlistTable(rows, sort) {
+  const hidden = positionsPrivate();
+  const enriched = rows.map(r => {
+    const position = positionFor(r.symbol); if (!position) return r;
+    return { ...r, position, avgCost: hidden ? null : position.avgCost, pnlPercent: hidden ? null : positionValue(position, finite(r.price) ? +r.price : null)?.pnlPercent ?? null };
+  });
+  if (!enriched.some(r => r.position)) return table(rows, baseColumns, sort, { remove: true });
+  const columns = [...baseColumns,
+    { key: 'avgCost', name: 'Avg cost', cls: 'pos-cell', format: (v, r) => !r.position ? '' : hidden ? '••••' : v == null ? '—' : '$' + fmt.price(v) + (r.position.partial ? '*' : '') },
+    { key: 'pnlPercent', name: 'P&L %', cls: 'pos-cell', color: true, format: (v, r) => !r.position ? '' : hidden ? '••••' : pct(v) }];
+  const partial = !hidden && enriched.some(r => r.position?.partial);
+  return table(enriched, columns, sort, { remove: true }) + `<p class="p-market-note pos-note">Avg cost and P&amp;L % combine your portfolios on this device.${partial ? ' * Some lots have no recorded cost; the average uses lots with a cost.' : ''}</p>`;
 }
 
 // All async loads are cancellable; a late response cannot replace a newer filter/symbol selection.
 function mountMarket(el, ctx, config) {
   let data = null, rows = [], revision = 0, dead = false;
   let settings = { ...config.defaults, ...ctx.state };
-  if (config.watchlist && !Array.isArray(ctx.state.symbols)) {
-    let existing = [];
-    try { existing = JSON.parse(localStorage.getItem('watchlist-pulse')) || []; } catch { /* unavailable */ }
-    const saved = store.get('watchlist', []);
-    settings.symbols = [...new Set([...(Array.isArray(existing) ? existing : []), ...(Array.isArray(saved) ? saved : saved?.symbols || [])].map(s => typeof s === 'string' ? s : s?.symbol).filter(s => typeof s === 'string' && /^\^?[A-Z0-9]{1,7}(?:[.-][A-Z0-9]{1,4})?$/.test(s)))].slice(0, 40);
+  // Every watchlist panel shows the one shared list ('watchlist-pulse', also used by the dashboard).
+  // A panel saved before the shared list merges its own symbols in once, then follows the shared list.
+  const watchStore = config.watchlist ? createWatchlistStore() : null;
+  let writingWatchlist = false;
+  if (watchStore) {
+    migrateLegacyWatchlist(watchStore);
+    if (!ctx.state.sharedWatchlist && (!Array.isArray(ctx.state.symbols) || watchStore.merge(ctx.state.symbols))) ctx.setState({ sharedWatchlist: true });
+    settings.symbols = watchStore.read();
+    ensurePositionStyles();
   }
   const currentAsset = () => settings.asset || config.moverAsset;
   const allVariants = () => !config.moverAsset ? config.variants || [] : currentAsset()==='stocks' ? stockVariants : currentAsset()==='crypto' ? cryptoVariants : [];
@@ -82,12 +104,18 @@ function mountMarket(el, ctx, config) {
   el.innerHTML = `<div class="p-market"><div class="p-market-toolbar"></div><div class="p-market-live" role="status" aria-live="off"></div><div class="p-market-message" role="status"></div><div class="p-market-body" id="${esc(resultsId)}"${config.variants || config.moverAsset ? ` role="tabpanel" aria-label="${esc(config.title)} results"` : ''}></div><div class="p-market-footer"></div></div>`;
   const toolbar = el.querySelector('.p-market-toolbar'), body = el.querySelector('.p-market-body'), footer = el.querySelector('.p-market-footer'), message = el.querySelector('.p-market-message'), live = el.querySelector('.p-market-live');
   const save = patch => {
-    if (ctx.setState(patch) === false && config.watchlist && Array.isArray(patch.symbols)) {
-      message.textContent = 'Browser storage is unavailable. Your watchlist change was not saved. Enable local storage and try again.';
-      return false;
+    if (watchStore && Array.isArray(patch.symbols)) {
+      const { symbols, ...rest } = patch;
+      writingWatchlist = true; const saved = watchStore.write(symbols); writingWatchlist = false;
+      if (!saved) {
+        message.textContent = 'Browser storage is unavailable. Your watchlist change was not saved. Enable local storage and try again.';
+        return false;
+      }
+      settings = { ...settings, symbols: saved };
+      patch = rest; if (!Object.keys(patch).length) return true;
     }
+    ctx.setState(patch);
     settings = { ...settings, ...patch };
-    if (config.watchlist && patch.symbols) store.set('watchlist', patch.symbols);
     return true;
   };
   function controls() {
@@ -124,7 +152,7 @@ function mountMarket(el, ctx, config) {
     } catch (e) {
       if (dead || signal.aborted || current !== revision || e.name === 'AbortError') return;
       const detail = ({ provider_unavailable: 'The market data provider is unavailable. Try again shortly.', rate_limited: 'The data provider’s request limit was reached. Try again shortly.', provider_access_denied: 'The data provider could not serve this request.' })[e.message] || e.message || 'Market data could not be loaded.';
-      if (data) message.textContent = `Update failed; showing previous data. ${detail} Retrying automatically.`;
+      if (data && (!config.watchlist || data.quotes?.some(row => finite(row.price)))) message.textContent = `Update failed; showing previous data. ${detail} Retrying automatically.`;
       else if (config.watchlist) {
         data = { quotes: [], missing: settings.symbols || [] };
         message.textContent = `Your watchlist is saved. Quotes are unavailable. ${detail} Retrying automatically.`;
@@ -194,16 +222,19 @@ function mountMarket(el, ctx, config) {
     if (!/^\^?[A-Z0-9]{1,7}(?:[.-][A-Z0-9]{1,4})?$/.test(symbol)) { message.textContent = 'Enter a valid ticker, such as NVDA or BTC-USD.'; return; }
     const symbols = settings.symbols || [];
     if (symbols.includes(symbol)) { message.textContent = `${symbol} is already on this watchlist.`; return; }
-    if (symbols.length >= 40) { message.textContent = 'This watchlist holds up to 40 instruments.'; return; }
+    if (symbols.length >= WATCHLIST_LIMIT) { message.textContent = `Your watchlist holds up to ${WATCHLIST_LIMIT} symbols and is shared with the dashboard. Remove one to add another.`; return; }
     if (save({ symbols: [...symbols, symbol] })) { input.value = ''; load(); }
   }
   el.addEventListener('click', click); el.addEventListener('change', change); el.addEventListener('submit', submit); el.addEventListener('keydown', keydown);
   load();
+  // Changes from the dashboard, another tab or another watchlist panel.
+  const offWatch = watchStore?.subscribe(list => { if (dead || writingWatchlist || list.join() === (settings.symbols || []).join()) return; settings = { ...settings, symbols: list }; message.textContent = ''; load(); });
+  const offPositions = watchStore ? onPositions(() => { if (!dead && data && !data.unavailable) render(); }) : null;
   return {
     onVariant: chooseVariant,
     csv() { return rows.length ? toCSV(rows.map(r => Object.fromEntries(Object.entries(r).filter(([, v]) => v == null || typeof v !== 'object')))) : null; },
     scoutContext() { return `${config.title}\n${footer.textContent}\n${JSON.stringify(rows.slice(0, 20))}`; },
-    destroy() { dead = true; revision++; poll.destroy(); el.removeEventListener('click', click); el.removeEventListener('change', change); el.removeEventListener('submit', submit); el.removeEventListener('keydown', keydown); }
+    destroy() { dead = true; revision++; offWatch?.(); offPositions?.(); poll.destroy(); el.removeEventListener('click', click); el.removeEventListener('change', change); el.removeEventListener('submit', submit); el.removeEventListener('keydown', keydown); }
   };
 }
 const get = (path, params, signal) => api('markets/' + path, params, { signal });
@@ -223,7 +254,7 @@ register({ type: 'watchlist', title: 'Watchlist', watchlist: true, defaults: { s
   controls: () => '<form data-watch-add class="p-market-add"><input class="s-input" name="symbol" aria-label="Ticker to watch" placeholder="Add ticker" maxlength="14" required><button class="s-btn s-btn-sm" type="submit">Add</button></form>',
   load: (s, _, signal) => s.symbols.length ? get('quotes', { symbols: s.symbols.join(',') }, signal) : Promise.resolve({ quotes: [] }),
   rows: (d, s) => s.symbols.map(symbol => d.quotes.find(r => r.symbol === symbol) || { symbol, missing: true }),
-  render: (_, rows, __, sort) => rows.length ? table(rows, baseColumns, sort, { remove: true }) : ui.empty('Add a ticker to build a watchlist saved with this panel.') });
+  render: (_, rows, __, sort) => rows.length ? watchlistTable(rows, sort) : ui.empty('Add a ticker to build your watchlist. It is shared with the dashboard.') });
 register({ type: 'sector-performance', title: 'Sector Performance', defaults: { period: '1D' },
   controls: (s, d) => select('period', 'Period', d?.periods || PERIODS, s.period), load: (_, __, s) => get('sectors', {}, s),
   rows: (d, s) => d.rows.map(r => ({ ...r, changePercent: r.perf?.[s.period] ?? null })),
