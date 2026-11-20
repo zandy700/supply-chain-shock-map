@@ -1,0 +1,2 @@
+{"actual_car_pct":8.475160033937348,"anchor_date":"2026-11-18","hit":false,"horizon":1,"predicted_pct":-2,"prediction_hash":"8bf67369cfff27048723638c1dda742da9ca4fe157dd9a78bb883c83278728b7","ticker":"INTC","timestamp_utc":"2026-11-20T03:28:10Z","window_end":"2026-11-19"}
+{"actual_car_pct":0.02539296637629599,"anchor_date":"2026-11-18","hit":false,"horizon":1,"predicted_pct":-2,"prediction_hash":"657f4b18daa7f97ddd5b77fd4d7f1479c0d380de93920fa621b3aa917da28393","ticker":"EG","timestamp_utc":"2026-11-20T03:28:10Z","window_end":"2026-11-19"}

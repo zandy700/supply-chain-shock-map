@@ -1,0 +1,2668 @@
+{
+  "retrieved_at": "2026-11-20T03:27:52.130210+00:00",
+  "source": "GDELT DOC 2.0 via gdelt-doc-api",
+  "query": "(fire OR explosion OR strike OR lawsuit OR recall OR \"export ban\" OR sanctions OR cyberattack OR \"earnings beat\" OR \"product launch\" OR \"raises guidance\" OR \"major contract\" OR \"rate cut\" OR \"supplier expansion\") sourcecountry:US &timespan=1w&maxrecords=250",
+  "events": [
+    {
+      "id": "73843f8c52169179650f",
+      "date": "2026-11-19",
+      "title": "J . P . Morgan , Visa , Mastercard say third - party vendors targeted in cyberattack",
+      "url": "https://www.fox29.com/news/jp-morgan-service-providers-cyberattack-what-we-know",
+      "tickers": [
+        "MA",
+        "V"
+      ],
+      "event_type": "cyberattack",
+      "sign": -1,
+      "severity": 0.7,
+      "classification_method": "headline keyword heuristic v1",
+      "source": "GDELT DOC 2.0",
+      "retrieved_at": "2026-11-20T03:27:52.130210+00:00",
+      "date_basis": "GDELT seendate; incident timing unverified",
+      "review_status": "unreviewed"
+    },
+    {
+      "id": "6908933cb861539fe06a",
+      "date": "2026-11-20",
+      "title": "JPMorgan Chase Reports Cyberattack on Third - Party Provider",
+      "url": "https://lamag.com/crimeinla/jpmorgan-chase-reports-third-party-cyberattack-days-after-service-disruption/",
+      "tickers": [
+        "JPM"
+      ],
+      "event_type": "cyberattack",
+      "sign": -1,
+      "severity": 0.7,
+      "classification_method": "headline keyword heuristic v1",
+      "source": "GDELT DOC 2.0",
+      "retrieved_at": "2026-11-20T03:27:52.130210+00:00",
+      "date_basis": "GDELT seendate; incident timing unverified",
+      "review_status": "unreviewed"
+    },
+    {
+      "id": "f2b72190f7ac1824d958",
+      "date": "2026-11-19",
+      "title": "Visa , Mastercard , and JPMorgan Chase customer data reportedly compromised in cyberattack",
+      "url": "https://www.wmur.com/article/visa-mastercard-and-jpmorgan-chase-cyberattack/74478458",
+      "tickers": [
+        "JPM",
+        "MA",
+        "V"
+      ],
+      "event_type": "cyberattack",
+      "sign": -1,
+      "severity": 0.7,
+      "classification_method": "headline keyword heuristic v1",
+      "source": "GDELT DOC 2.0",
+      "retrieved_at": "2026-11-20T03:27:52.130210+00:00",
+      "date_basis": "GDELT seendate; incident timing unverified",
+      "review_status": "unreviewed"
+    },
+    {
+      "id": "9bee22b51448e6c48860",
+      "date": "2026-11-19",
+      "title": "Visa , Mastercard , and JPMorgan Chase customer data reportedly compromised in cyberattack",
+      "url": "https://www.kcci.com/article/visa-mastercard-and-jpmorgan-chase-cyberattack/74478458",
+      "tickers": [
+        "JPM",
+        "MA",
+        "V"
+      ],
+      "event_type": "cyberattack",
+      "sign": -1,
+      "severity": 0.7,
+      "classification_method": "headline keyword heuristic v1",
+      "source": "GDELT DOC 2.0",
+      "retrieved_at": "2026-11-20T03:27:52.130210+00:00",
+      "date_basis": "GDELT seendate; incident timing unverified",
+      "review_status": "unreviewed"
+    },
+    {
+      "id": "9d4194e17ceb1fe38be2",
+      "date": "2026-11-13",
+      "title": "Costco whipped cream recalled in 12 states over chemical contamination risk",
+      "url": "https://www.fox26houston.com/news/costco-whipped-cream-recalled-12-states-over-chemical-contamination-risk",
+      "tickers": [
+        "COST"
+      ],
+      "event_type": "recall",
+      "sign": -1,
+      "severity": 0.6,
+      "classification_method": "headline keyword heuristic v1",
+      "source": "GDELT DOC 2.0",
+      "retrieved_at": "2026-11-20T03:27:52.130210+00:00",
+      "date_basis": "GDELT seendate; incident timing unverified",
+      "review_status": "unreviewed"
+    },
+    {
+      "id": "7f297e5b058bac2e1713",
+      "date": "2026-11-13",
+      "title": "Costco whipped cream recalled in 12 states over chemical contamination risk",
+      "url": "https://www.fox32chicago.com/news/costco-whipped-cream-recalled-12-states-over-chemical-contamination-risk",
+      "tickers": [
+        "COST"
+      ],
+      "event_type": "recall",
+      "sign": -1,
+      "severity": 0.6,
+      "classification_method": "headline keyword heuristic v1",
+      "source": "GDELT DOC 2.0",
+      "retrieved_at": "2026-11-20T03:27:52.130210+00:00",
+      "date_basis": "GDELT seendate; incident timing unverified",
+      "review_status": "unreviewed"
+    },
+    {
+      "id": "6be29197a4aab73fe64e",
+      "date": "2026-11-18",
+      "title": "EG Shareholder Alert : Everest Group , Ltd . Securities Class Action Lawsuit ... ",
+      "url": "https://www.pr-inside.com/eg-shareholder-alert-everest-group-ltd-securities-class-action-lawsuit-r5244915.htm",
+      "tickers": [
+        "EG"
+      ],
+      "event_type": "lawsuit",
+      "sign": -1,
+      "severity": 0.4,
+      "classification_method": "headline keyword heuristic v1",
+      "source": "GDELT DOC 2.0",
+      "retrieved_at": "2026-11-20T03:27:52.130210+00:00",
+      "date_basis": "GDELT seendate; incident timing unverified",
+      "review_status": "unreviewed"
+    },
+    {
+      "id": "7ad1531bca36714fc320",
+      "date": "2026-11-20",
+      "title": "Securities Lawsuit Alert : Everest Group , Ltd . ( EG ) - Contact Levi & ... ",
+      "url": "https://www.pr-inside.com/securities-lawsuit-alert-everest-group-ltd-eg-contact-levi-r5245754.htm",
+      "tickers": [
+        "EG"
+      ],
+      "event_type": "lawsuit",
+      "sign": -1,
+      "severity": 0.4,
+      "classification_method": "headline keyword heuristic v1",
+      "source": "GDELT DOC 2.0",
+      "retrieved_at": "2026-11-20T03:27:52.130210+00:00",
+      "date_basis": "GDELT seendate; incident timing unverified",
+      "review_status": "unreviewed"
+    },
+    {
+      "id": "74518b72d551c37f019d",
+      "date": "2026-11-18",
+      "title": "Securities Lawsuit Alert : Intel Corporation ( INTC ) Investors May Contact ... ",
+      "url": "https://www.pr-inside.com/securities-lawsuit-alert-intel-corporation-intc-investors-may-contact-r5244910.htm",
+      "tickers": [
+        "INTC"
+      ],
+      "event_type": "lawsuit",
+      "sign": -1,
+      "severity": 0.4,
+      "classification_method": "headline keyword heuristic v1",
+      "source": "GDELT DOC 2.0",
+      "retrieved_at": "2026-11-20T03:27:52.130210+00:00",
+      "date_basis": "GDELT seendate; incident timing unverified",
+      "review_status": "unreviewed"
+    }
+  ],
+  "status": "ok",
+  "raw_articles": [
+    {
+      "url": "https://newsradio710.iheart.com/content/2026-11-19-ecuadorian-fishermen-sue-united-states-over-pacific-drone-strike/",
+      "url_mobile": "",
+      "title": "Ecuadorian Fishermen Sue United States Over Pacific Drone Strike",
+      "seendate": "20261119T171500Z",
+      "socialimage": "https://i.iheart.com/v3/re/new_assets/69459f7a23d24c230e518c05?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "newsradio710.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wowt.com/2026/11/19/lawsuit-filed-halt-planned-detonation-ammunition-plant/",
+      "url_mobile": "https://www.wowt.com/2026/11/19/lawsuit-filed-halt-planned-detonation-ammunition-plant/?outputType=amp",
+      "title": "Lawsuit filed to halt planned detonation at ammunition plant",
+      "seendate": "20261120T011500Z",
+      "socialimage": "https://gray-wowt-prod.gtv-cdn.com/resizer/v2/DLAHJPPDWRDTPKHK4ITA7DEERI.jpg?auth=aef73ee7d5bacfc761e5af9d0be4d03845b368350e75b6f742ca959d7d3fa96f&smart=true",
+      "domain": "wowt.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://targetednews.com/pr_disp.php?pr_id=9851046",
+      "url_mobile": "",
+      "title": "Targeted News Service",
+      "seendate": "20261118T173000Z",
+      "socialimage": "",
+      "domain": "targetednews.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://247wallst.com/cards/tokyo-opened-0-79-higher-even-after-japan-s-economy-unexpec-n225-market-bell-01m7p162m9d2p90kyq1616s14b",
+      "url_mobile": "",
+      "title": "Nikkei 225 Opens Higher Despite Japan Surprise Economic Contraction",
+      "seendate": "20261118T011500Z",
+      "socialimage": "https://247wallst.com/og/card/01m7p162m9d2p90kyq1616s14b.png",
+      "domain": "247wallst.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://13wham.com/news/local/family-of-deaf-man-fatally-shot-by-deputies-at-henrietta-hotel-sues-monroe-county-sheriff-deputies-fatal-shooting-greg-kase-super-8-lehigh-station-road",
+      "url_mobile": "",
+      "title": "Widow of deaf man fatally shot by deputies at Henrietta hotel sues Monroe County",
+      "seendate": "20261113T180000Z",
+      "socialimage": "https://13wham.com/resources/media2/16x9/1280/1320/center/90/17801935-4a64-4a63-904f-6f80048a608a-10PPKGMCSOPRESSER.transferrender_frame_5287.jpeg",
+      "domain": "13wham.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.rawstory.com/trump-arch-airport-shutdown/",
+      "url_mobile": "https://www.rawstory.com/amp/trump-arch-airport-shutdown-2678404577",
+      "title": "Trump urgently told judge DC Arch will  mitigate  air disasters as FAA crisis raged",
+      "seendate": "20261114T200000Z",
+      "socialimage": "https://www.rawstory.com/media-library/transportation-secretary-sean-duffy-speaks-next-to-u-s-president-donald-trump-during-a-freedom-250-grand-prix-showcase-at-the-w.jpg?id=67599053&coordinates=0%2C166%2C0%2C167",
+      "domain": "rawstory.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/rosen-top-ranked-global-counsel-encourages-bank-of-america-corporation-r5245719.htm",
+      "url_mobile": "",
+      "title": "ROSEN , TOP RANKED GLOBAL COUNSEL , Encourages Bank of America Corporation ... ",
+      "seendate": "20261120T011500Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.knopnews2.com/2026/11/19/father-son-die-after-explosion-fire-home-southwest-lincoln/",
+      "url_mobile": "https://www.knopnews2.com/2026/11/19/father-son-die-after-explosion-fire-home-southwest-lincoln/?outputType=amp",
+      "title": "Father and son die after explosion , fire at home southwest of Lincoln",
+      "seendate": "20261119T193000Z",
+      "socialimage": "https://gray-knop-prod.gtv-cdn.com/resizer/v2/IRDRYH5RVJB2PIM2KQPIP6MJ5I.jfif?auth=af4faee2bb0c3e154254790d70f023dd14a59e8bf946d7cdbe1ff9eaa2adce30&smart=true",
+      "domain": "knopnews2.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.nbcsandiego.com/news/national-international/chase-third-party-vendors-targeted-in-cyberattack-bank-says/4104176/",
+      "url_mobile": "https://www.nbcsandiego.com/news/national-international/chase-third-party-vendors-targeted-in-cyberattack-bank-says/4104176/?amp=1",
+      "title": "Chase third - party vendors were targeted in cyberattack , bank says",
+      "seendate": "20261119T193000Z",
+      "socialimage": "https://media.nbcsandiego.com/2026/11/2305014738-Getty.jpg?quality=85&strip=all&crop=0px%2C482px%2C4609px%2C2592px",
+      "domain": "nbcsandiego.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://news.bigmir.net/ua/ukraine/10466208-nichna-ataka-rf-je-vluchannya-na-19-lokatsiyakh",
+      "url_mobile": "https://news.bigmir.net/ua/amp-page/ukraine/10466208-nichna-ataka-rf-je-vluchannya-na-19-lokatsiyakh",
+      "title": "\u041d\u0456\u0447\u043d\u0430 \u0430\u0442\u0430\u043a\u0430 \u0420\u0424 : \u0454 \u0432\u043b\u0443\u0447\u0430\u043d\u043d\u044f \u043d\u0430 19 \u043b\u043e\u043a\u0430\u0446\u0456\u044f\u0445",
+      "seendate": "20261116T081500Z",
+      "socialimage": "https://news.bigmir.net/i/10/46/62/08/10466208/7a7f07ef7c56750a6030ed66218e4c33-resize_crop_1Xquality_100Xallow_enlarge_0Xw_1200Xh_630.jpg",
+      "domain": "news.bigmir.net",
+      "language": "Ukrainian",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://newsradio710.iheart.com/content/2026-11-19-jpmorganchase-says-vendor-cyberattack-exposed-customer-data/",
+      "url_mobile": "",
+      "title": "JPMorganChase Says Vendor Cyberattack Exposed Customer Data",
+      "seendate": "20261119T171500Z",
+      "socialimage": "https://i.iheart.com/v3/re/assets.getty/6aff187a5f6204fad4e8467e?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "newsradio710.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://55krc.iheart.com/content/2026-11-19-jpmorganchase-says-vendor-cyberattack-exposed-customer-data/",
+      "url_mobile": "",
+      "title": "JPMorganChase Says Vendor Cyberattack Exposed Customer Data",
+      "seendate": "20261119T193000Z",
+      "socialimage": "https://i.iheart.com/v3/re/assets.getty/6aff187a5f6204fad4e8467e?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "55krc.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wjdx.iheart.com/content/2026-11-19-jpmorganchase-says-vendor-cyberattack-exposed-customer-data/",
+      "url_mobile": "",
+      "title": "JPMorganChase Says Vendor Cyberattack Exposed Customer Data",
+      "seendate": "20261119T193000Z",
+      "socialimage": "https://i.iheart.com/v3/re/assets.getty/6aff187a5f6204fad4e8467e?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "wjdx.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://klvi.iheart.com/content/2026-11-19-jpmorganchase-says-vendor-cyberattack-exposed-customer-data/",
+      "url_mobile": "",
+      "title": "JPMorganChase Says Vendor Cyberattack Exposed Customer Data",
+      "seendate": "20261119T193000Z",
+      "socialimage": "https://i.iheart.com/v3/re/assets.getty/6aff187a5f6204fad4e8467e?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "klvi.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wspd.iheart.com/content/2026-11-19-jpmorganchase-says-vendor-cyberattack-exposed-customer-data/",
+      "url_mobile": "",
+      "title": "JPMorganChase Says Vendor Cyberattack Exposed Customer Data | NewsRadio 1370 AM & 92 . 9 FM WSPD",
+      "seendate": "20261119T193000Z",
+      "socialimage": "https://i.iheart.com/v3/re/assets.getty/6aff187a5f6204fad4e8467e?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "wspd.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://newsradio1170.iheart.com/content/2026-11-19-jpmorganchase-says-vendor-cyberattack-exposed-customer-data/",
+      "url_mobile": "",
+      "title": "JPMorganChase Says Vendor Cyberattack Exposed Customer Data",
+      "seendate": "20261119T193000Z",
+      "socialimage": "https://i.iheart.com/v3/re/assets.getty/6aff187a5f6204fad4e8467e?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "newsradio1170.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.tmz.com/2026/11/19/stephen-baldwin-sued-over-hotel-sprinkler/",
+      "url_mobile": "",
+      "title": "Hailey Bieber Dad Stephen Baldwin Sued For Allegedly Causing $6 Million In Damages to Fancy Hotel",
+      "seendate": "20261120T001500Z",
+      "socialimage": "https://imagez.tmz.com/image/88/16by9/2026/11/19/88f15656c0c649c4998318e61b3efb1d_xl.jpg",
+      "domain": "tmz.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.ketv.com/article/nebraska-woodstove-explosion-kills-father-son/74478495",
+      "url_mobile": "",
+      "title": "Nebraska woodstove explosion kills father and son",
+      "seendate": "20261119T233000Z",
+      "socialimage": "https://kubrick.htvapps.com/vidthumb/1e0c6d24-e5f7-4ebf-a268-d604a67ee412/161a2f6f-c66e-4e3e-a443-0fb91db30270.jpg?crop=0.736xw%3A0.734xh%3B0.208xw%2C0.0231xh",
+      "domain": "ketv.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.aljazeera.com/news/2026/11/13/sixth-victim-found-in-dc-condo-related-shooting-police-confirm",
+      "url_mobile": "https://www.aljazeera.com/amp/news/2026/11/13/sixth-victim-found-in-dc-condo-related-shooting-police-confirm",
+      "title": "Sixth victim confirmed in DC condo - related shooting in US , police say",
+      "seendate": "20261113T180000Z",
+      "socialimage": "https://www.aljazeera.com/wp-content/uploads/2026/11/afp_6af72daada0d-1794583978.jpg",
+      "domain": "aljazeera.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://news.bigmir.net/ua/ukraine/10465941-stalo-vidomo-yak-vidpratsyuvala-ppo-v-nich-na-nedilyu",
+      "url_mobile": "https://news.bigmir.net/ua/amp-page/ukraine/10465941-stalo-vidomo-yak-vidpratsyuvala-ppo-v-nich-na-nedilyu",
+      "title": "\u0421\u0442\u0430\u043b\u043e \u0432\u0456\u0434\u043e\u043c\u043e , \u044f\u043a \u0432\u0456\u0434\u043f\u0440\u0430\u0446\u044e\u0432\u0430\u043b\u0430 \u041f\u041f\u041e \u0432 \u043d\u0456\u0447 \u043d\u0430 \u043d\u0435\u0434\u0456\u043b\u044e",
+      "seendate": "20261115T074500Z",
+      "socialimage": "https://api2.phnx.click/storage/redirect/remote?cid=19&site=bmnews&data=AM%2ByyaNTCL9h%2FnY5Q%2Bd9MTE2NWE2YmJkMjE2ODFmYzdiODAxMDBhZGFkYmY4YTk3ZDdjNDIxYzc3ZjYzM2EwYjdjMzkxZTI3ZjQyNWNlNTGZ8Sz1LyyZXJQg3GvhLv5Kmf62xpNDCWkXsyOXTWqguevWDcgoHCzQ3gdlm310N0D0Up3t0oEXQUNclk9clgDH34il%2BUj8%2F6Y8R3vQ6euDI6yYtGagEjeG8GHtofzRCXE%3D",
+      "domain": "news.bigmir.net",
+      "language": "Ukrainian",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.fox29.com/news/jp-morgan-service-providers-cyberattack-what-we-know",
+      "url_mobile": "https://www.fox29.com/news/jp-morgan-service-providers-cyberattack-what-we-know.amp",
+      "title": "J . P . Morgan , Visa , Mastercard say third - party vendors targeted in cyberattack",
+      "seendate": "20261119T193000Z",
+      "socialimage": "",
+      "domain": "fox29.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.fox32chicago.com/news/medline-updates-recall-all-bed-related-products-reported-deaths-climb",
+      "url_mobile": "https://www.fox32chicago.com/news/medline-updates-recall-all-bed-related-products-reported-deaths-climb.amp",
+      "title": "Medline updates recall on all bed - related products as reported deaths climb",
+      "seendate": "20261115T074500Z",
+      "socialimage": "https://images.foxtv.com/static.livenowfox.com/www.livenowfox.com/content/uploads/2026/10/1280/720/recall-generic-gettyimages-2068479506.jpg?ve=1&tl=1",
+      "domain": "fox32chicago.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://politifact.com/article/2026/nov/19/army-lead-azide-explosion-iowa-risks-middletown/",
+      "url_mobile": "",
+      "title": "The Army is going to detonate toxic lead azide in Iowa . Here what we know about safety concerns . \u2013 PolitiFact",
+      "seendate": "20261120T024500Z",
+      "socialimage": "https://politifact.com/wp-content/uploads/2026/11/iowaplant.jpeg",
+      "domain": "politifact.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wjla.com/news/nation-world/serious-for-many-reasons-national-security-analyst-reacts-to-widespread-tech-issues-network-dirty-bomb",
+      "url_mobile": "",
+      "title": "  Serious for many reason : National security analyst reacts to widespread tech issues",
+      "seendate": "20261118T011500Z",
+      "socialimage": "https://wjla.com/resources/media2/16x9/7646/1320/0x395/90/b7f5559d-c91b-4b2c-93e5-f0c9b2082bb6-GettyImages23048407701.jpg",
+      "domain": "wjla.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.oann.com/newsroom/nsas-classified-communications-network-hit-by-major-outage/",
+      "url_mobile": "",
+      "title": "NSA classified communications network hit by major outage",
+      "seendate": "20261118T011500Z",
+      "socialimage": "https://www.oann.com/wp-content/uploads/2026/11/FOR-WEBSITE-ARTICLES-2026-11-17T114557.288.png",
+      "domain": "oann.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.superherohype.com/movies/706897-avengers-doomsday-kevin-feige-shares-surprising-detail-mcu-movie-opens",
+      "url_mobile": "https://www.superherohype.com/movies/706897-avengers-doomsday-kevin-feige-shares-surprising-detail-mcu-movie-opens/amp",
+      "title": "Avengers : Doomsday Kevin Feige Shares Surprising Detail About How MCU Movie Opens - Comic Book Movies and Superhero Movie News",
+      "seendate": "20261118T011500Z",
+      "socialimage": "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/Avengers-Doomsday.jpg",
+      "domain": "superherohype.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wjla.com/news/local/students-sue-baltimore-co-schools-and-ai-company-after-bag-of-chips-mistaken-for-a-gun",
+      "url_mobile": "",
+      "title": "Students sue Baltimore Co . schools and AI company after bag of chips mistaken for a gun",
+      "seendate": "20261120T024500Z",
+      "socialimage": "https://wjla.com/resources/media2/16x9/1920/1320/center/90/0719b250-0d52-459d-b5dc-f274bfb3a5a3-52ccfceb5edb4039862d92700164f55e.png",
+      "domain": "wjla.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.kxxv.com/science-and-tech/data-privacy-and-cybersecurity/chase-bank-customers-may-be-affected-after-hackers-access-marketing-data",
+      "url_mobile": "",
+      "title": "Chase Bank customers may be affected after hackers access marketing data",
+      "seendate": "20261119T171500Z",
+      "socialimage": "https://ewscripps.brightspotcdn.com/3e/ae/0e63353b4dd7a00a8252808e3368/ap26007102774970.jpg",
+      "domain": "kxxv.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://lamag.com/crimeinla/jpmorgan-chase-reports-third-party-cyberattack-days-after-service-disruption/",
+      "url_mobile": "",
+      "title": "JPMorgan Chase Reports Cyberattack on Third - Party Provider",
+      "seendate": "20261120T023000Z",
+      "socialimage": "https://lamag.com/wp-content/uploads/2026/11/AdobeStock_533714907_Editorial_Use_Only-scaled.jpeg",
+      "domain": "lamag.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.ketv.com/article/iowa-deputy-saves-homeowner-house-explosion/74481368",
+      "url_mobile": "",
+      "title": "Iowa authorities investigate house explosion",
+      "seendate": "20261119T233000Z",
+      "socialimage": "https://kubrick.htvapps.com/vidthumb/d5919988-d8b6-4480-b38b-54891f5c5ccc/thumb_1920x1080.0000001.jpg?crop=1xw%3A1xh%3Bcenter%2Ctop",
+      "domain": "ketv.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.theepochtimes.com/us/hacker-leaks-details-of-visa-jpmorgan-chases-cardholders-online-6127088",
+      "url_mobile": "",
+      "title": "Hacker Leaks Details of Visa , JPMorgan Chase Cardholders Online",
+      "seendate": "20261120T004500Z",
+      "socialimage": "https://img.theepochtimes.com/assets/uploads/2026/08/03/id6070712-GettyImages-2246002314-1080x720.jpg",
+      "domain": "theepochtimes.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://whyy.org/articles/vineland-data-center-noise-lawsuit/",
+      "url_mobile": "",
+      "title": "Vineland data center lawsuit advances",
+      "seendate": "20261120T001500Z",
+      "socialimage": "https://d1fw4rghwibahr.cloudfront.net/wp-content/uploads/2026/09/09-03-2026-k-paynter-data-center-file-3.jpg",
+      "domain": "whyy.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.aljazeera.com/news/2026/11/19/six-killed-in-suspected-gas-explosion-at-georgia-apartment-building",
+      "url_mobile": "https://www.aljazeera.com/amp/news/2026/11/19/six-killed-in-suspected-gas-explosion-at-georgia-apartment-building",
+      "title": "Six killed in suspected gas explosion at Georgia apartment building",
+      "seendate": "20261120T011500Z",
+      "socialimage": "https://www.aljazeera.com/wp-content/uploads/2026/11/AFP__20261119__D7ZP3JR__v2__HighRes__GeorgiaAccidentGasExplosion-1795124833.jpg",
+      "domain": "aljazeera.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://kpic.com/news/local/dryer-fire-breaks-out-in-cave-junction-single-story-home-crews-extinguish-it",
+      "url_mobile": "",
+      "title": "Dryer fire breaks out in Cave Junction single - story home ; crews extinguish it",
+      "seendate": "20261119T193000Z",
+      "socialimage": "https://kpic.com/resources/media2/16x9/2048/1320/0x192/90/57a59aa0-838b-4817-8782-3f68b8dcd9d6-914555243_1889116453251356_5227789563164750687.jpg",
+      "domain": "kpic.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://katv.com/news/nation-world/nationwide-disruptions-expose-risks-of-technology-dependence",
+      "url_mobile": "",
+      "title": "Nationwide disruptions expose risks of technology dependence",
+      "seendate": "20261114T200000Z",
+      "socialimage": "https://katv.com/resources/media2/16x9/1536/1320/25x0/90/d7983671-2e6d-475c-8435-dca6499e0858-george3.png",
+      "domain": "katv.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.capitalgazette.com/2026/11/14/ap-news-summary-at-1011-p-m-est/",
+      "url_mobile": "",
+      "title": "AP News Summary at 10 : 11 p . m . EST",
+      "seendate": "20261115T074500Z",
+      "socialimage": "https://www.capitalgazette.com/wp-content/uploads/2023/10/capital-gazette-fallback.png",
+      "domain": "capitalgazette.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://intouchweekly.com/mormon-wives-star-dakota-mortensen-takes-legal-action-against-hulu-producers/",
+      "url_mobile": "",
+      "title": "Mormon Wives Star Dakota Mortensen Sues Hulu Producers",
+      "seendate": "20261114T210000Z",
+      "socialimage": "https://intouchweekly.com/wp-content/uploads/2026/11/Dakota-SLOMW-Hulu-Press-1000x600.jpg",
+      "domain": "intouchweekly.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wsws.org/en/articles/2026/11/19/rlow-n19.html",
+      "url_mobile": "",
+      "title": "Workers Struggles : Europe , Middle East & Africa",
+      "seendate": "20261119T233000Z",
+      "socialimage": "",
+      "domain": "wsws.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.ubergizmo.com/2026/11/outlook-teams-and-copilot-are-down-heres-what-we-know/",
+      "url_mobile": "",
+      "title": "Outlook , Teams , And Copilot Are Down : Here What We Know",
+      "seendate": "20261113T180000Z",
+      "socialimage": "",
+      "domain": "ubergizmo.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.whidbeynewstimes.com/2026/11/14/letter-merger-of-fire-districts-make-sense/",
+      "url_mobile": "",
+      "title": "Letter : Merger of fire districts make sense | Whidbey News - Times",
+      "seendate": "20261120T023000Z",
+      "socialimage": "",
+      "domain": "whidbeynewstimes.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.breitbart.com/middle-east/2026/11/13/muslim-student-suing-school-district-after-his-teacher-told-him-i-dont-negotiate-with-terrorists/",
+      "url_mobile": "",
+      "title": "Muslim Student Suing School District After His Teacher Told Him  I Dont Negotiate with Terrorists  ",
+      "seendate": "20261113T180000Z",
+      "socialimage": "https://media.breitbart.com/media/2026/11/GettyImages-1414080215-640x335.png",
+      "domain": "breitbart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wmur.com/article/visa-mastercard-and-jpmorgan-chase-cyberattack/74478458",
+      "url_mobile": "",
+      "title": "Visa , Mastercard , and JPMorgan Chase customer data reportedly compromised in cyberattack",
+      "seendate": "20261119T193000Z",
+      "socialimage": "https://kubrick.htvapps.com/htv-prod/images/a89774f9-ab89-44fe-af8f-1761cf719d1a.jpg?crop=1.00xw%3A0.846xh%3B0%2C0.154xh",
+      "domain": "wmur.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://radaronline.com/p/trump-rfk-jr-federal-court-battle-over-transgender-hiv-care/",
+      "url_mobile": "",
+      "title": "Trump and RFK Jr . Hit With Court Setback Over Transgender HIV Care",
+      "seendate": "20261120T024500Z",
+      "socialimage": "https://media.radaronline.com/brand-img/84UlGSNft/1200x628/exclusive-trump-and-rfk-jr-dealt-legal-setback-in-federal-court-battle-over-transgender-hiv-care-1795120315760.jpg",
+      "domain": "radaronline.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.kcci.com/article/visa-mastercard-and-jpmorgan-chase-cyberattack/74478458",
+      "url_mobile": "",
+      "title": "Visa , Mastercard , and JPMorgan Chase customer data reportedly compromised in cyberattack",
+      "seendate": "20261119T193000Z",
+      "socialimage": "https://kubrick.htvapps.com/htv-prod/images/a89774f9-ab89-44fe-af8f-1761cf719d1a.jpg?crop=1.00xw%3A0.846xh%3B0%2C0.154xh",
+      "domain": "kcci.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.nbcnews.com/politics/2026-election/doj-seeks-dismissal-lawsuit-alaska-senate-dan-sullivan-mary-peltola-rcna610343",
+      "url_mobile": "",
+      "title": "DOJ seeks dismissal of its lawsuit in the Alaska Senate race",
+      "seendate": "20261120T024500Z",
+      "socialimage": "https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/rockcms/2026-11/261119-mary-peltola-ww-1718-f423d7.jpg",
+      "domain": "nbcnews.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://nypost.com/2026/11/17/tech/experts-warn-gta-vi-scramble-could-cause-more-cyber-chaos-and-open-door-for-scams/",
+      "url_mobile": "",
+      "title": "Experts warn GTA VI scramble could cause more cyber chaos",
+      "seendate": "20261118T011500Z",
+      "socialimage": "https://nypost.com/wp-content/uploads/sites/2/2026/11/Comp-GTA.jpg?quality=75&strip=all",
+      "domain": "nypost.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wbap.com/2026/11/13/265000-sharper-image-fire-pits-recalled-after-reports-of-severe-burns/",
+      "url_mobile": "",
+      "title": "265 , 000 Sharper Image Fire Pits Recalled After Reports Of Severe Burns",
+      "seendate": "20261113T180000Z",
+      "socialimage": "https://dallasexpress.com/wp-content/uploads/2026/11/Sharper-Image-Tabletop-Fire-Pit-and-Sharper-Image-Tabletop-Infinity-Fire-Pit-Images-by-CPSCrecall-alert.jpg",
+      "domain": "wbap.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.klif.com/2026/11/13/265000-sharper-image-fire-pits-recalled-after-reports-of-severe-burns/",
+      "url_mobile": "",
+      "title": "265 , 000 Sharper Image Fire Pits Recalled After Reports Of Severe Burns",
+      "seendate": "20261113T180000Z",
+      "socialimage": "https://dallasexpress.com/wp-content/uploads/2026/11/Sharper-Image-Tabletop-Fire-Pit-and-Sharper-Image-Tabletop-Infinity-Fire-Pit-Images-by-CPSCrecall-alert.jpg",
+      "domain": "klif.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://radaronline.com/p/stephen-miller-pulls-markwayne-mullin-from-tv-fox-news-interview/",
+      "url_mobile": "",
+      "title": "Stephen Miller Pulls Markwayne Mullin From TV After Off - Script Interviews",
+      "seendate": "20261120T024500Z",
+      "socialimage": "https://media.radaronline.com/brand-img/cPpn4CY9r/1200x628/white-house-reportedly-sidelines-markwayne-mullin-after-off-script-interviews-1795119378165.jpg",
+      "domain": "radaronline.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://nbcmontana.com/news/local/cybersecurity-expert-urges-businesses-to-take-inventory-of-digital-risks",
+      "url_mobile": "",
+      "title": "Cybersecurity Expert Urges Businesses to Take Inventory of Digital Risks",
+      "seendate": "20261119T233000Z",
+      "socialimage": "https://nbcmontana.com/resources/media2/16x9/924/1320/4x0/90/aaed0f04-d68f-41fd-aa5e-6d14a1a77b82-cybersecurity.png",
+      "domain": "nbcmontana.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.prnewswire.com/news-releases/intc-investor-alert-hagens-berman-urges-intel-corporation-nasdaq-intc-investors-with-substantial-losses-to-contact-firm-ahead-of-january-12-2027-lead-plaintiff-deadline-302945637.html",
+      "url_mobile": "",
+      "title": "INTC INVESTOR ALERT : Hagens Berman Urges Intel Corporation ( NASDAQ : INTC ) Investors with Substantial Losses to Contact Firm Ahead of January 12 , 2027 Lead Plaintiff Deadline",
+      "seendate": "20261119T171500Z",
+      "socialimage": "",
+      "domain": "prnewswire.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://whdh.com/news/apple-joins-a-parade-of-technology-hiccups-in-recent-days/",
+      "url_mobile": "",
+      "title": "Apple joins a parade of technology hiccups in recent days - Boston News , Weather , Sports",
+      "seendate": "20261118T011500Z",
+      "socialimage": "",
+      "domain": "whdh.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.aol.com/articles/travelers-face-hundreds-delays-cancellations-024555000.html",
+      "url_mobile": "",
+      "title": "Travelers face hundreds of delays , cancellations at Austin airport after FAA ground stop",
+      "seendate": "20261115T074500Z",
+      "socialimage": "https://hermes.media.static.aol.com/media/2026/11/15/f1eb4cc7-47f8-3dc1-8d37-acc8c1db8021/e3a9eecc-5640-4565-b6a7-bf54dea7aa83.png",
+      "domain": "aol.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.adn.com/business-economy/2026/11/17/apple-joins-a-parade-of-technology-hiccups-in-recent-days/",
+      "url_mobile": "",
+      "title": "Apple joins a parade of technology hiccups in recent days",
+      "seendate": "20261118T011500Z",
+      "socialimage": "https://www.adn.com/resizer/v2/USEMNQFUBSTLQICYL4EFT4FFYA.jpg?smart=true&auth=fd9653fb96b65246b4ab3c99b993cb58ce57a024b86a3e3d2ba95d64d74d3b3e",
+      "domain": "adn.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://news.harvard.edu/gazette/story/2020/12/how-neurons-form-long-term-memories/",
+      "url_mobile": "",
+      "title": "How neurons form long - term memories",
+      "seendate": "20261113T180000Z",
+      "socialimage": "https://news.harvard.edu/gazette/wp-content/uploads/2020/12/iStock-neurons_2500.jpg",
+      "domain": "news.harvard.edu",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.kcci.com/article/iowa-lead-azide-explosion-officials-react/74482485",
+      "url_mobile": "",
+      "title": "Iowa officials react to planned detonation at ammunition plant on Friday",
+      "seendate": "20261120T003000Z",
+      "socialimage": "https://kubrick.htvapps.com/vidthumb/da728f1d-021d-4aea-9b76-bb924d60388e/ab1d1b45-f761-4155-9430-eedc93a44d9d.jpg?crop=1xw%3A1.0xh%3Bcenter%2Ctop",
+      "domain": "kcci.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.rawstory.com/sean-duffy-2678404798/",
+      "url_mobile": "https://www.rawstory.com/amp/sean-duffy-2678404798-2678404798",
+      "title": "Sean Duffy bewilders as  embarrassing  press conference goes awry :  Beyond parody  ",
+      "seendate": "20261114T200000Z",
+      "socialimage": "https://www.rawstory.com/media-library/image.jpg?id=68684282&coordinates=0%2C417%2C0%2C417",
+      "domain": "rawstory.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.nbcnews.com/politics/rcna610261",
+      "url_mobile": "",
+      "title": "Classified NSA network is still down , leaving some staff working from home",
+      "seendate": "20261120T013000Z",
+      "socialimage": "https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/rockcms/2026-11/261119-nsa-ch-1143-638ce7.jpg",
+      "domain": "nbcnews.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.theepochtimes.com/us/oregon-sues-openai-in-2-billion-lawsuit-over-child-safety-6126933",
+      "url_mobile": "",
+      "title": "Oregon Sues OpenAI in $2 Billion Lawsuit Over Child Safety",
+      "seendate": "20261120T024500Z",
+      "socialimage": "https://img.theepochtimes.com/assets/uploads/2025/09/09/id5912477-GettyImages-2218344194-1080x720.jpg",
+      "domain": "theepochtimes.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.nbcchicago.com/news/local/citing-grave-concerns-illinois-lawmakers-call-for-delay-of-iowa-explosion/4019215/",
+      "url_mobile": "https://www.nbcchicago.com/news/local/citing-grave-concerns-illinois-lawmakers-call-for-delay-of-iowa-explosion/4019215/?amp=1",
+      "title": "  Grave concerns : Illinois lawmakers request delay to Iowa explosion \u2013 NBC Chicago",
+      "seendate": "20261120T004500Z",
+      "socialimage": "https://media.nbcchicago.com/2026/11/AP26322823699168.jpg?quality=85&strip=all&crop=0px%2C92px%2C5546px%2C3120px",
+      "domain": "nbcchicago.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.mercurynews.com/2026/11/17/lebron-james-trademark-lawsuit/",
+      "url_mobile": "",
+      "title": "LeBron James sues makers of AI sports - betting app , saying they used his likeness and nickname",
+      "seendate": "20261118T011500Z",
+      "socialimage": "https://www.mercurynews.com/wp-content/uploads/2026/11/76ers_Pistons_Basketball_67832.jpg",
+      "domain": "mercurynews.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.billboard.com/pro/travis-scott-don-toliver-lawsuit-jackboys-song-sample/",
+      "url_mobile": "",
+      "title": "Travis Scott and Don Toliver Face Lawsuit Over JACKBOYS Song Sample",
+      "seendate": "20261118T011500Z",
+      "socialimage": "https://www.billboard.com/wp-content/uploads/2026/10/P118CD4S-e1791578282706.jpg",
+      "domain": "billboard.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.marinij.com/2026/11/17/apple-marriott-technology-outages/",
+      "url_mobile": "",
+      "title": "Apple joins a parade of technology hiccups in recent days",
+      "seendate": "20261118T173000Z",
+      "socialimage": "https://www.marinij.com/wp-content/uploads/2026/11/Apple_Lake_Ontario__246_f35595.jpg",
+      "domain": "marinij.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.superherohype.com/comics/706896-batman-static-new-comics-series-2027",
+      "url_mobile": "https://www.superherohype.com/comics/706896-batman-static-new-comics-series-2027/amp",
+      "title": "Batman New Series Gets Exciting Preview , Beloved DC Hero Gets Stunning White Costume - Comic Book Movies and Superhero Movie News",
+      "seendate": "20261118T011500Z",
+      "socialimage": "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/Batmans-New-Series-Gets-Exciting-Preview-Beloved-DC-Hero-Gets-Stunning-White-Costume.jpg",
+      "domain": "superherohype.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.fox6now.com/news/wisconsin-ag-suing-tiktok-damaging-youth-mental-health",
+      "url_mobile": "https://www.fox6now.com/news/wisconsin-ag-suing-tiktok-damaging-youth-mental-health.amp",
+      "title": "Wisconsin AG suing TikTok for damaging youth mental health",
+      "seendate": "20261120T013000Z",
+      "socialimage": "https://images.foxtv.com/static.fox6now.com/www.fox6now.com/content/uploads/2026/11/1280/720/gettyimages-2235153614-scaled-e1795127977382.jpg?ve=1&tl=1",
+      "domain": "fox6now.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://bakersfieldnow.com/news/nation-world/israeli-drone-strike-kills-2-palestinians-in-gaza-and-other-mideast-news",
+      "url_mobile": "",
+      "title": "Israeli drone strike kills 2 Palestinians in Gaza , and other Mideast news",
+      "seendate": "20261114T200000Z",
+      "socialimage": "https://bakersfieldnow.com/resources/media2/16x9/5574/1320/0x291/90/7082035d-8183-4b5e-abe1-ca41b169f6a7-AP26318649302462.jpg",
+      "domain": "bakersfieldnow.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://bakersfieldnow.com/news/nation-world/nationwide-disruptions-expose-risks-of-technology-dependence",
+      "url_mobile": "",
+      "title": "Nationwide disruptions expose risks of technology dependence",
+      "seendate": "20261114T200000Z",
+      "socialimage": "https://bakersfieldnow.com/resources/media2/16x9/1536/1320/25x0/90/d7983671-2e6d-475c-8435-dca6499e0858-george3.png",
+      "domain": "bakersfieldnow.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.fool.com/coverage/stock-market-today/2026/11/19/stock-market-today-nov-19-nvidia-slides-as-investors-weigh-ceo-transition-fallout-despite-strong-q3-results/",
+      "url_mobile": "",
+      "title": "Stock Market Today , Nov . 19 : Nvidia Slides as Investors Weigh CEO Transition Fallout Despite Strong Q3 Results",
+      "seendate": "20261120T001500Z",
+      "socialimage": "https://cdn.content.foolcdn.com/images/1umn9qeh/production/1a4bae1da4a05d0d0e00a764e0d498057cecc411-3240x2160.jpg",
+      "domain": "fool.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wtvr.com/life/travel/what-caused-the-faa-ground-stop-officials-point-to-router-failure",
+      "url_mobile": "",
+      "title": "What caused the FAA ground stop ? Officials point to router failure during update",
+      "seendate": "20261114T210000Z",
+      "socialimage": "https://ewscripps.brightspotcdn.com/d2/ad/e9c9af894e199e2cfb3e3105f84d/ap26318580748162.jpg",
+      "domain": "wtvr.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.prnewswire.com/news-releases/what-should-gildan-activewear-inc-investors-know-after-18-8-stock-drop-the-law-offices-of-frank-r-cruz-outlines-securities-fraud-class-action-lead-plaintiff-deadline-302945773.html",
+      "url_mobile": "",
+      "title": "What Should Gildan Activewear Inc . Investors Know After 18 . 8 % Stock Drop ? The Law Offices of Frank R . Cruz Outlines Securities Fraud Class Action Lead Plaintiff Deadline",
+      "seendate": "20261119T193000Z",
+      "socialimage": "",
+      "domain": "prnewswire.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://newrepublic.com/post/218188/trump-january-6-slush-fund-irs-doj-maga",
+      "url_mobile": "",
+      "title": "Trump January 6 Slush Fund Is Still Alive",
+      "seendate": "20261119T193000Z",
+      "socialimage": "https://images.newrepublic.com/491f9290a4614cdc168dd420b33203d4ebf5dcaf.jpeg?&crop=faces&fit=crop&fm=jpg",
+      "domain": "newrepublic.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.bignewsnetwork.com/news/279444164/lsu-prez-instructs-will-wade-not-to-play-rj-luis-jr-amid-sec-battle",
+      "url_mobile": "",
+      "title": "LSU prez instructs Will Wade not to play RJ Luis Jr . amid SEC battle",
+      "seendate": "20261120T023000Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/4cea56c/301ac4c6-14bd-416c-bb5c-5f2a8dc0c63a/0/MGFjNjJiZjUtY2R-600x315.jpg",
+      "domain": "bignewsnetwork.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.batonrougepost.com/news/279444164/lsu-prez-instructs-will-wade-not-to-play-rj-luis-jr-amid-sec-battle",
+      "url_mobile": "",
+      "title": "LSU prez instructs Will Wade not to play RJ Luis Jr . amid SEC battle",
+      "seendate": "20261120T023000Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/4cea56c/301ac4c6-14bd-416c-bb5c-5f2a8dc0c63a/0/MGFjNjJiZjUtY2R-600x315.jpg",
+      "domain": "batonrougepost.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.heraldglobe.com/news/279444164/lsu-prez-instructs-will-wade-not-to-play-rj-luis-jr-amid-sec-battle",
+      "url_mobile": "",
+      "title": "LSU prez instructs Will Wade not to play RJ Luis Jr . amid SEC battle",
+      "seendate": "20261120T023000Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/4cea56c/301ac4c6-14bd-416c-bb5c-5f2a8dc0c63a/0/MGFjNjJiZjUtY2R-600x315.jpg",
+      "domain": "heraldglobe.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://nationalenquirer.com/karoline-leavitt-calls-on-the-trump-administration-for-transparency-amid-tech-faa-and-bank-outages/",
+      "url_mobile": "",
+      "title": "Karoline Leavitt Urges Trump Admin for Transparency Amid Major Outages",
+      "seendate": "20261118T011500Z",
+      "socialimage": "https://nationalenquirer.com/wp-content/uploads/2026/11/Featured-4-Karoline-Leavitt-1000x600.jpeg",
+      "domain": "nationalenquirer.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.prnewswire.com/news-releases/labor--employment-law-firm-zakay-law-group-aplc-files-a-class-action-lawsuit-against-a-mcdonalds-franchise-alleging-failure-to-pay-overtime-wages-302945176.html",
+      "url_mobile": "",
+      "title": "Labor & Employment Law Firm Zakay Law Group APLC Files a Class Action Lawsuit Against a McDonald franchise , Alleging Failure to Pay Overtime Wages",
+      "seendate": "20261119T171500Z",
+      "socialimage": "",
+      "domain": "prnewswire.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.fox32chicago.com/news/port-new-orleans-sues-tanker-owner-hours-after-riverboat-crash",
+      "url_mobile": "https://www.fox32chicago.com/news/port-new-orleans-sues-tanker-owner-hours-after-riverboat-crash.amp",
+      "title": "Port of New Orleans sues tanker owner hours after riverboat crash",
+      "seendate": "20261115T074500Z",
+      "socialimage": "https://images.foxtv.com/static.livenowfox.com/www.livenowfox.com/content/uploads/2026/11/1280/720/cruise-ship-on-side.jpg?ve=1&tl=1",
+      "domain": "fox32chicago.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.nbcdfw.com/news/local/grand-prairie-sued-over-canceled-muslim-holiday-event-at-epic-waters-water-park/4107438/",
+      "url_mobile": "https://www.nbcdfw.com/news/local/grand-prairie-sued-over-canceled-muslim-holiday-event-at-epic-waters-water-park/4107438/?amp=1",
+      "title": "Grand Prairie faces lawsuit over canceled Muslim Eid event \u2013 NBC 5 Dallas - Fort Worth",
+      "seendate": "20261118T011500Z",
+      "socialimage": "https://media.nbcdfw.com/2026/11/Epic-Waters.png",
+      "domain": "nbcdfw.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pilotonline.com/2026/11/19/column-whitehurst-made-a-difference-throughout-an-impressive-life/",
+      "url_mobile": "",
+      "title": "Column : Whitehurst made a difference throughout an impressive life",
+      "seendate": "20261120T001500Z",
+      "socialimage": "https://www.pilotonline.com/wp-content/uploads/2026/11/TVP-FILE-Bill-Whitehurst-TS-002.jpg",
+      "domain": "pilotonline.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wdbj7.com/2026/11/19/nuclear-arms-ending-wars-iran-ukraine-top-agenda-trump-xi-putin-meeting/",
+      "url_mobile": "https://www.wdbj7.com/2026/11/19/nuclear-arms-ending-wars-iran-ukraine-top-agenda-trump-xi-putin-meeting/?outputType=amp",
+      "title": "Trump , Xi and Putin hold historic trilateral meeting",
+      "seendate": "20261119T171500Z",
+      "socialimage": "https://gray-wdbj-prod.gtv-cdn.com/resizer/v2/44DAHUCFORCCRGJH2BRC2M4J2I.jpg?auth=dd312020376fd480a01ca478834b49cb7c1e16f23984671af6972b6698a90476&smart=true",
+      "domain": "wdbj7.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.dailybreeze.com/2026/11/18/legal-challenge-to-la-county-measure-er-dropped-when-sales-tax-funds-flow-to-healthcare-agencies/",
+      "url_mobile": "",
+      "title": "Legal challenge to LA County Measure ER dropped . When sales tax funds flow to healthcare agencies ? ",
+      "seendate": "20261119T193000Z",
+      "socialimage": "https://www.dailybreeze.com/wp-content/uploads/2026/02/PAS-L-HEALTHCARE-TAX-0211-04-SR.jpg",
+      "domain": "dailybreeze.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.billboard.com/pro/distrokid-ai-data-umg-sony-lawsuit-suno/",
+      "url_mobile": "",
+      "title": "DistroKid Provides AI Upload Data for UMG , Sony Lawsuit Against Suno",
+      "seendate": "20261118T011500Z",
+      "socialimage": "",
+      "domain": "billboard.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.healio.com/news/optometry/20261119/hubble-faces-class-action-lawsuit-over-online-contact-lens-sales",
+      "url_mobile": "",
+      "title": "Hubble faces class action lawsuit over online contact lens sales",
+      "seendate": "20261120T001500Z",
+      "socialimage": "https://www.healio.com/~/media/slack-news/optometry/misc/stock-images/person-inserting-contact-lens.jpg",
+      "domain": "healio.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.nbclosangeles.com/news/national-international/blood-pressure-medication-recall-metal-contamination-breckenridge-pharmaceutical-propranolol-hydrochloride-extended-release-capsules/3971853/",
+      "url_mobile": "https://www.nbclosangeles.com/news/national-international/blood-pressure-medication-recall-metal-contamination-breckenridge-pharmaceutical-propranolol-hydrochloride-extended-release-capsules/3971853/?amp=1",
+      "title": "Blood pressure medication recalled because capsules could contain metal \u2013 NBC Los Angeles",
+      "seendate": "20261118T011500Z",
+      "socialimage": "https://media.nbclosangeles.com/2026/11/GettyImages-1132937001.jpg?quality=85&strip=all",
+      "domain": "nbclosangeles.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.foxnews.com/media/trump-clears-hurdle-15-billion-lawsuit-against-new-york-times",
+      "url_mobile": "https://www.foxnews.com/media/trump-clears-hurdle-15-billion-lawsuit-against-new-york-times.amp",
+      "title": "Judge Merryday denies motion to dismiss Trump $15 billion defamation suit",
+      "seendate": "20261120T004500Z",
+      "socialimage": "https://static.foxnews.com/foxnews.com/content/uploads/2021/03/Trump-New-York-Times.jpg",
+      "domain": "foxnews.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.foxbusiness.com/lifestyle/over-314k-older-toyota-lexus-vehicles-recalled-potentially-dangerous-airbag-issue",
+      "url_mobile": "https://www.foxbusiness.com/lifestyle/over-314k-older-toyota-lexus-vehicles-recalled-potentially-dangerous-airbag-issue.amp",
+      "title": "Toyota recalls 314 , 000 US vehicles over potential airbag danger",
+      "seendate": "20261120T024500Z",
+      "socialimage": "https://a57.foxnews.com/static.foxbusiness.com/foxbusiness.com/content/uploads/2026/11/0/0/toyota-4runner.jpg?ve=1&tl=1",
+      "domain": "foxbusiness.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.theyeshivaworld.com/news/israel-news/2623104/iran-showdown-trump-weighs-halting-new-strikes-despite-israeli-pressure-as-u-s-tightens-economic-blockade.html",
+      "url_mobile": "",
+      "title": "IRAN SHOWDOWN : Trump Weighs Halting New Strikes Despite Israeli Pressure As U . S . Tightens Economic Blockade",
+      "seendate": "20261114T210000Z",
+      "socialimage": "https://www.theyeshivaworld.com/wp-content/uploads/2026/11/shutterstock_1099946876.jpg",
+      "domain": "theyeshivaworld.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.dailypress.com/2026/11/19/column-whitehurst-made-a-difference-throughout-an-impressive-life/",
+      "url_mobile": "",
+      "title": "Column : Whitehurst made a difference throughout an impressive life",
+      "seendate": "20261120T004500Z",
+      "socialimage": "https://www.dailypress.com/wp-content/uploads/2026/11/TVP-FILE-Bill-Whitehurst-TS-002.jpg",
+      "domain": "dailypress.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/medical-device-correction-update-lunar-g3-bpap-system-model-lg3800-30vt",
+      "url_mobile": "",
+      "title": "Medical Device Correction Update Luna\u00ae G3 BPAP System ( Model LG3800 - 30VT ) ",
+      "seendate": "20261120T011500Z",
+      "socialimage": "https://www.fda.gov/themes/custom/preview/img/FDA-Social-Graphic.png",
+      "domain": "fda.gov",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.tmz.com/2026/11/18/thomas-massie-urges-americans-live-off-grid/",
+      "url_mobile": "",
+      "title": "Rep . Thomas Massie Urges Americans to Live Off Grid Amid Widespread Tech Outages",
+      "seendate": "20261118T173000Z",
+      "socialimage": "https://imagez.tmz.com/image/85/16by9/2026/11/18/85c7e9ddab3e4069bf3cbd0da87e1333_xl.png",
+      "domain": "tmz.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wral.com/consumer/5onyourside/protecting-your-digital-life-after-major-outages-november-2026/",
+      "url_mobile": "",
+      "title": "How to protect your digital life in the wake of multiple tech outages",
+      "seendate": "20261118T011500Z",
+      "socialimage": "https://assets.wral.com/9bdbce5f-65c2-4eb2-a550-1dbfb8d9946a",
+      "domain": "wral.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.fox26houston.com/news/costco-whipped-cream-recalled-12-states-over-chemical-contamination-risk",
+      "url_mobile": "https://www.fox26houston.com/news/costco-whipped-cream-recalled-12-states-over-chemical-contamination-risk.amp",
+      "title": "Costco whipped cream recalled in 12 states over chemical contamination risk",
+      "seendate": "20261113T180000Z",
+      "socialimage": "https://images.foxtv.com/static.livenowfox.com/www.livenowfox.com/content/uploads/2026/11/1280/720/gettyimages-2159943717-scaled.jpg?ve=1&tl=1",
+      "domain": "fox26houston.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.kcci.com/article/toyota-recall-due-to-takata-airbag-degradation/74479922",
+      "url_mobile": "",
+      "title": "Toyota issues recall for thousands of vehicles due to airbag degradation",
+      "seendate": "20261120T003000Z",
+      "socialimage": "https://kubrick.htvapps.com/htv-prod/images/8e0e39d2-ba93-4bc9-ada3-816f3d9952da.jpg?crop=1xw%3A0.8433382137628112xh%3Bcenter%2Ctop",
+      "domain": "kcci.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/rosen-trusted-investor-counsel-encourages-kinross-gold-corporation-r5243759.htm",
+      "url_mobile": "",
+      "title": "ROSEN , TRUSTED INVESTOR COUNSEL , Encourages Kinross Gold Corporation ... ",
+      "seendate": "20261114T200000Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.fox32chicago.com/news/costco-whipped-cream-recalled-12-states-over-chemical-contamination-risk",
+      "url_mobile": "https://www.fox32chicago.com/news/costco-whipped-cream-recalled-12-states-over-chemical-contamination-risk.amp",
+      "title": "Costco whipped cream recalled in 12 states over chemical contamination risk",
+      "seendate": "20261113T180000Z",
+      "socialimage": "https://images.foxtv.com/static.livenowfox.com/www.livenowfox.com/content/uploads/2026/11/1280/720/gettyimages-2159943717-scaled.jpg?ve=1&tl=1",
+      "domain": "fox32chicago.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wcpo.com/news/local-news/still-no-pay-for-restaurant-workers-after-sudden-closures-across-greater-cincinnati",
+      "url_mobile": "",
+      "title": "Still no pay for restaurant workers after sudden closures across Greater Cincy",
+      "seendate": "20261120T024500Z",
+      "socialimage": "http://ewscripps-brightspot.s3.amazonaws.com/73/e7/9fecde5b4fe1a154d058d587945a/poster-image.jpg",
+      "domain": "wcpo.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.newscientist.com/article/2599970-big-tech-may-finally-face-legal-consequences-for-their-ais-actions/",
+      "url_mobile": "",
+      "title": "Big tech may finally face legal consequences for AI actions",
+      "seendate": "20261119T233000Z",
+      "socialimage": "https://www.newscientist.com/wp-content/uploads/2026/11/SEI_321287518.jpg",
+      "domain": "newscientist.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://news.bigmir.net/ua/ukraine/10468849-dvi-krayini-viklikali-posliv-rf-pislya-udariv-po-posolstvakh-u-kijevi",
+      "url_mobile": "https://news.bigmir.net/ua/amp-page/ukraine/10468849-dvi-krayini-viklikali-posliv-rf-pislya-udariv-po-posolstvakh-u-kijevi",
+      "title": "\u0414\u0432\u0456 \u043a\u0440\u0430\u0457\u043d\u0438 \u0432\u0438\u043a\u043b\u0438\u043a\u0430\u043b\u0438 \u043f\u043e\u0441\u043b\u0456\u0432 \u0420\u0424 \u043f\u0456\u0441\u043b\u044f \u0443\u0434\u0430\u0440\u0456\u0432 \u043f\u043e \u043f\u043e\u0441\u043e\u043b\u044c\u0441\u0442\u0432\u0430\u0445 \u0443 \u041a\u0438\u0454\u0432\u0456",
+      "seendate": "20261120T004500Z",
+      "socialimage": "https://news.bigmir.net/i/10/46/88/49/10468849/19a0d18abebb92bf2e43e551aa9bd31c-resize_crop_1Xquality_100Xallow_enlarge_0Xw_1200Xh_630.jpg",
+      "domain": "news.bigmir.net",
+      "language": "Ukrainian",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wdio.com/ap-top-news/trump-administration-auctions-deep-sea-mining-leases-near-american-samoa-in-first-sale-of-its-kind/",
+      "url_mobile": "",
+      "title": "Trump administration auctions deep - sea mining leases near American Samoa in first sale of its kind",
+      "seendate": "20261120T004500Z",
+      "socialimage": "https://www.wdio.com/wp-content/uploads/apimg/2026/11/Deep_Sea_Mining_Auction_48748.jpg",
+      "domain": "wdio.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://1450wkip.iheart.com/content/2026-11-16-airlines-still-playing-catch-up-after-faa-ground-stop/",
+      "url_mobile": "",
+      "title": "Airlines Still Playing Catch - Up After FAA Ground Stop | NewsRadio 1450 / 1370 WKIP",
+      "seendate": "20261116T081500Z",
+      "socialimage": "https://i.iheart.com/v3/re/assets.getty/6afab4133c966f91683762c3?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "1450wkip.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pilotonline.com/2026/11/19/chase-data-breach/",
+      "url_mobile": "",
+      "title": "Cyberattack leaks thousands of Chase customer emails , phone numbers",
+      "seendate": "20261120T001500Z",
+      "socialimage": "https://www.pilotonline.com/wp-content/uploads/2026/11/Bank_Outage_55_8__0315db.jpg",
+      "domain": "pilotonline.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://econotimes.com/Trump-Says-He-ll-Discuss-Possible-Iran-Strikes-After-Jan-1-1780005",
+      "url_mobile": "",
+      "title": "Trump Says Hell Discuss Possible Iran Strikes After Jan . 1",
+      "seendate": "20261120T023000Z",
+      "socialimage": "https://f1.econotimes.com/article-media/articles/73d4dc18f4dbad648a805e68083c6894815694df5c7f697f4c662bd708fc4117.webp",
+      "domain": "econotimes.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wral.com/news/local/ncstate-athletics-robert-murphy-former-trainer-some-charges-dismissed-november-2026/",
+      "url_mobile": "",
+      "title": "Several charges dismissed against NC State team doctor accused of sexual assault . Here why",
+      "seendate": "20261118T011500Z",
+      "socialimage": "https://assets.wral.com/42e73bfa-4d3b-4e7d-965b-7ed1bc1fd041",
+      "domain": "wral.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.tmz.com/2026/11/13/inside-pete-hegseth-impeachment-push/",
+      "url_mobile": "",
+      "title": "TMZ , NYP  The Low Down : Inside Pete Hegseth Looming Impeachment",
+      "seendate": "20261113T180000Z",
+      "socialimage": "https://imagez.tmz.com/image/c1/16by9/2026/11/13/c10c9f16f0774a54a8ebf1782125dbef_xl.png",
+      "domain": "tmz.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.outsideonline.com/outdoor-adventure/exploration-survival/105-pound-dog-rescued-virginia-mountain/",
+      "url_mobile": "",
+      "title": "105 - Pound Lab Rescued From Virginia Mountainside",
+      "seendate": "20261113T180000Z",
+      "socialimage": "https://cdn.outsideonline.com/wp-content/uploads/2026/11/archie-virginia-dog-SAR_h.jpeg",
+      "domain": "outsideonline.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.baltimoresun.com/2026/11/14/new-orleans-port-sues-to-get-control-of-tanker-that-crashed-into-cruise-ship-on-mississippi-river/",
+      "url_mobile": "",
+      "title": "New Orleans port sues to get control of tanker that crashed into cruise ship on Mississippi River",
+      "seendate": "20261114T200000Z",
+      "socialimage": "https://www.baltimoresun.com/wp-content/uploads/2026/11/APTOPIX_US_New_Orleans_Cruise_Ship_62198_5682c5-1.jpg",
+      "domain": "baltimoresun.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://arabic.euronews.com/2026/11/13/government-schools-and-ministry-of-health-services-affected-by-global-microsoft-outage",
+      "url_mobile": "",
+      "title": "\u062a\u0639\u0637\u0644 \u0639\u0627\u0644\u0645\u064a \u0641\u064a \u062e\u062f\u0645\u0627\u062a \u0645\u0627\u064a\u0643\u0631\u0648\u0633\u0648\u0641\u062a \u064a\u0624\u062b\u0631 \u0641\u064a \u0627\u0644\u062d\u0643\u0648\u0645\u0629 \u0648\u0627\u0644\u0645\u062f\u0627\u0631\u0633 \u0648\u0627\u0644\u062e\u062f\u0645\u0627\u062a \u0627\u0644\u0635\u062d\u064a\u0629 \u0641\u064a \u0627\u0644\u0628\u0631\u062a\u063a\u0627\u0644",
+      "seendate": "20261113T180000Z",
+      "socialimage": "https://images.euronews.com/articles/stories/09/99/14/81/1200x675_cmsv2_dbd77d80-92eb-5f4c-8074-609534c0981c-9991481.jpg",
+      "domain": "arabic.euronews.com",
+      "language": "Arabic",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://abcnews.com/US/timeline-faa-nationwide-ground-stop-developed/story?id=138141388",
+      "url_mobile": "https://abcnews.com/amp/US/timeline-faa-nationwide-ground-stop-developed/story?id=138141388",
+      "title": "Timeline of the FAA nationwide ground stop : How it developed",
+      "seendate": "20261114T200000Z",
+      "socialimage": "https://i.abcnewsfe.com/a/847e9487-c6ff-457e-9959-80c4a172724f/luggage-rt-jt-261114_1794665894932_hpMain_16x9.jpg",
+      "domain": "abcnews.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.stripes.com/branches/air_force/2026-11-19/lawsuit-105-families-mold-macdill-housing-23519839.html",
+      "url_mobile": "",
+      "title": "MacDill Air Force Base private housing lawsuit over mold and unsafe conditions grows to 105 families",
+      "seendate": "20261120T024500Z",
+      "socialimage": "https://www.stripes.com/incoming/hdcikz-9103250.jpg/alternates/LANDSCAPE_480/9103250.jpg",
+      "domain": "stripes.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.rawstory.com/group-stop-ai/",
+      "url_mobile": "https://www.rawstory.com/amp/group-stop-ai-2678404276",
+      "title": "  Wasnt supposed to tell the truth : Duffy nudge at Mullin sparks cover - up questions",
+      "seendate": "20261114T200000Z",
+      "socialimage": "https://www.rawstory.com/media-library/image.png?id=68684200&coordinates=0%2C25%2C0%2C25",
+      "domain": "rawstory.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.citizensvoice.com/2026/11/19/chase-data-breach/",
+      "url_mobile": "",
+      "title": "Cyberattack leaks thousands of Chase customer emails , phone numbers",
+      "seendate": "20261120T001500Z",
+      "socialimage": "https://www.citizensvoice.com/wp-content/uploads/2026/11/Bank_Outage_55_8__0315db.jpg",
+      "domain": "citizensvoice.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.lowellsun.com/2026/11/19/chase-data-breach/",
+      "url_mobile": "",
+      "title": "Cyberattack leaks thousands of Chase customer emails , phone numbers",
+      "seendate": "20261120T004500Z",
+      "socialimage": "https://www.lowellsun.com/wp-content/uploads/2026/11/Bank_Outage_55_8__0315db.jpg",
+      "domain": "lowellsun.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.thegazette.com/news/national/new-orleans-port-sues-to-get-control-of-tanker-that-crashed-into-cruise-ship-on/article_ccaad5a6-a245-5752-9daa-6fef04511853.html",
+      "url_mobile": "",
+      "title": "New Orleans port sues to get control of tanker that crashed into cruise ship on Mississippi River",
+      "seendate": "20261114T200000Z",
+      "socialimage": "https://bloximages.chicago2.vip.townnews.com/thegazette.com/content/tncms/assets/v3/editorial/f/7b/f7ba8a37-9c3c-559a-bfa3-3598b8f0bf35/6af7995c54520.image.jpg?crop=4096%2C2150%2C0%2C299",
+      "domain": "thegazette.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pressdemocrat.com/2026/11/14/new-orleans-port-sues-to-get-control-of-tanker-that-crashed-into-cruise-ship-on-mississippi-river/",
+      "url_mobile": "",
+      "title": "New Orleans port sues to get control of tanker that hit cruise ship",
+      "seendate": "20261114T210000Z",
+      "socialimage": "https://www.pressdemocrat.com/wp-content/uploads/2026/11/APTOPIX_US_New_Orleans_Cruise_Ship_62198_5682c5-1-1.jpg",
+      "domain": "pressdemocrat.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.dailynews.com/2026/11/19/chase-data-breach/",
+      "url_mobile": "",
+      "title": "Cyberattack leaks thousands of Chase customer emails , phone numbers",
+      "seendate": "20261119T233000Z",
+      "socialimage": "https://www.dailynews.com/wp-content/uploads/2026/11/Bank_Outage_55_8__0315db.jpg",
+      "domain": "dailynews.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://deadline.com/print-article/1237227159/",
+      "url_mobile": "",
+      "title": "Deadline",
+      "seendate": "20261118T011500Z",
+      "socialimage": "https://s0.wp.com/_si/?t=eyJpbWciOiJodHRwczpcL1wvZGVhZGxpbmUuY29tXC93cC1jb250ZW50XC91cGxvYWRzXC8yMDE5XC8wNFwvY3JvcHBlZC1pY29uLTUxMng1MTIucG5nIiwidHh0IjoiRGVhZGxpbmUiLCJ0ZW1wbGF0ZSI6ImVkZ2UiLCJmb250IjoiIiwiYmxvZ19pZCI6MTc5MjkwMTQ5fQ.IHL7P_bYC7Sr4W2XvHh7kLwSO5arBq8LoHSjTj-l-uAMQ",
+      "domain": "deadline.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.thegazette.com/news/world/a-bomb-rips-through-a-damascus-suburb-killing-2-including-a-child/article_13f032c4-103c-5853-ba03-0b280d19f3c6.html",
+      "url_mobile": "",
+      "title": "A bomb rips through a Damascus suburb killing 2 including a child",
+      "seendate": "20261114T200000Z",
+      "socialimage": "https://bloximages.chicago2.vip.townnews.com/thegazette.com/content/tncms/assets/v3/editorial/9/e7/9e7ea2d0-e90e-587d-bccc-0a4aa0f8ce6f/6af8b48947358.image.jpg?crop=6000%2C3150%2C0%2C425",
+      "domain": "thegazette.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.foxnews.com/us/charlotte-wants-iryna-zarutska-murder-lawsuit-tossed-says-cant-held-responsible",
+      "url_mobile": "https://www.foxnews.com/us/charlotte-wants-iryna-zarutska-murder-lawsuit-tossed-says-cant-held-responsible.amp",
+      "title": "Charlotte seeks dismissal of Iryna Zarutska wrongful death lawsuit",
+      "seendate": "20261118T173000Z",
+      "socialimage": "https://static.foxnews.com/foxnews.com/content/uploads/2025/09/fatal-light-rail-stabbing-4.jpg",
+      "domain": "foxnews.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.sandiegouniontribune.com/2026/11/19/maine-rooster-fight-lawsuit/",
+      "url_mobile": "",
+      "title": "Maine parents sue town over autistic daughter metal rooster statues",
+      "seendate": "20261120T011500Z",
+      "socialimage": "https://www.sandiegouniontribune.com/wp-content/uploads/2026/11/US_Maine_Chicken_Fight_39571.jpg",
+      "domain": "sandiegouniontribune.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.thetimes-tribune.com/2026/11/19/chase-data-breach/",
+      "url_mobile": "",
+      "title": "Cyberattack leaks thousands of Chase customer emails , phone numbers",
+      "seendate": "20261119T233000Z",
+      "socialimage": "https://www.thetimes-tribune.com/wp-content/uploads/2026/11/Bank_Outage_55_8__0315db.jpg",
+      "domain": "thetimes-tribune.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/rosen-skilled-investor-counsel-encourages-nuscale-power-corporation-r5244921.htm",
+      "url_mobile": "",
+      "title": "ROSEN , SKILLED INVESTOR COUNSEL , Encourages NuScale Power Corporation ... ",
+      "seendate": "20261118T011500Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.adn.com/politics/2026/11/19/trump-administration-moves-to-have-lawsuit-dismissed-in-challenge-to-alaskas-us-senate-race/",
+      "url_mobile": "",
+      "title": "Trump administration moves to have lawsuit dismissed in challenge to Alaska U . S . Senate race",
+      "seendate": "20261120T024500Z",
+      "socialimage": "https://www.adn.com/resizer/v2/4P7XJTC34JFSROKICEKEMMSDQA.jpg?smart=true&auth=c0d70cc904c57f7ced3505720658f60c68c0de53bd7d8d5f13f7f6e99562136a",
+      "domain": "adn.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pressdemocrat.com/2026/11/19/maine-rooster-fight-lawsuit/",
+      "url_mobile": "",
+      "title": "Maine parents sue town over autistic daughter metal rooster statues",
+      "seendate": "20261120T023000Z",
+      "socialimage": "https://www.pressdemocrat.com/wp-content/uploads/2026/11/US_Maine_Chicken_Fight_39571.jpg",
+      "domain": "pressdemocrat.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wcti12.com/news/local/shore-drive-camper-fire-controlled-before-reaching-nearby-home",
+      "url_mobile": "",
+      "title": "Shore Drive camper fire controlled before reaching nearby home",
+      "seendate": "20261120T011500Z",
+      "socialimage": "https://wcti12.com/resources/media2/16x9/2048/1320/0x107/90/826150b5-e504-459c-838d-cc9037be2ea9-913845036_1588282129992397_4105689251161423500_n.jpg",
+      "domain": "wcti12.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wcti12.com/news/local/fire-destroys-rv-sheds-and-mobile-home-12-animals-die",
+      "url_mobile": "",
+      "title": "Fire destroys RV , sheds and mobile home ; 12 animals die",
+      "seendate": "20261120T011500Z",
+      "socialimage": "https://wcti12.com/resources/media2/16x9/916/1320/0x90/90/4fa20c10-da79-4a12-a989-e633715b4d80-Screenshot20261119181454.png",
+      "domain": "wcti12.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/tenx-deadline-levi-korsinsky-reminds-tenax-therapeutics-inc-investors-r5244914.htm",
+      "url_mobile": "",
+      "title": "TENX DEADLINE : Levi & Korsinsky Reminds Tenax Therapeutics , Inc . Investors ... ",
+      "seendate": "20261118T011500Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/levi-korsinsky-notifies-up-fintech-holding-limited-tigr-investors-r5245700.htm",
+      "url_mobile": "",
+      "title": "Levi & Korsinsky Notifies UP Fintech Holding Limited ( TIGR ) Investors ... ",
+      "seendate": "20261120T001500Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.knopnews2.com/2026/11/19/chase-bank-announces-cyberattack-says-hackers-may-have-obtained-customers-personal-information/",
+      "url_mobile": "https://www.knopnews2.com/2026/11/19/chase-bank-announces-cyberattack-says-hackers-may-have-obtained-customers-personal-information/?outputType=amp",
+      "title": "Chase Bank says cyberattack may have exposed some customer information",
+      "seendate": "20261119T193000Z",
+      "socialimage": "https://gray-knop-prod.gtv-cdn.com/resizer/v2/66GNITFNNBCKZGLNUMUNZOHWLE.png?auth=a9dbcfdf5dc68356872f92a13a57a90f12bffcfa0c212362c1b72bb6c09ce3c9&smart=true",
+      "domain": "knopnews2.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.washingtonexaminer.com/news/justice/4809200/judge-allows-15-billion-trump-suit-against-new-york-times-press-forward/",
+      "url_mobile": "",
+      "title": "Judge allows Trump $15 billion suit against New York Times to press forward",
+      "seendate": "20261120T024500Z",
+      "socialimage": "http://www.washingtonexaminer.com/wp-content/uploads/2026/11/AP26242649807825.jpg",
+      "domain": "washingtonexaminer.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://abc7ny.com/post/mineola-fire-forces-resident-jump-2nd-floor-window-overnight-long-island/20055627/",
+      "url_mobile": "https://abc7ny.com/amp/post/mineola-fire-forces-resident-jump-2nd-floor-window-overnight-long-island/20055627/",
+      "title": "Mineola fire forces resident to jump from 2nd - floor window overnight on Long Island",
+      "seendate": "20261119T193000Z",
+      "socialimage": "https://cdn.abcotvs.com/dip/images/20055815_111926-wabc-mineola-fire-img.jpg",
+      "domain": "abc7ny.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/rosen-recognized-investor-counsel-encourages-portillo-s-inc-investors-r5244922.htm",
+      "url_mobile": "",
+      "title": "ROSEN , RECOGNIZED INVESTOR COUNSEL , Encourages Portillo Inc . Investors ... 2026 - 11 - 18",
+      "seendate": "20261118T011500Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/betr-deadline-alert-levi-korsinsky-reminds-better-home-finance-r5244916.htm",
+      "url_mobile": "",
+      "title": "BETR Deadline Alert : Levi & Korsinsky Reminds Better Home & Finance ... ",
+      "seendate": "20261118T011500Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/eg-shareholder-alert-everest-group-ltd-securities-class-action-lawsuit-r5244915.htm",
+      "url_mobile": "",
+      "title": "EG Shareholder Alert : Everest Group , Ltd . Securities Class Action Lawsuit ... ",
+      "seendate": "20261118T011500Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/class-action-lawsuit-filed-portillo-s-inc-ptlo-lead-plaintiff-r5245117.htm",
+      "url_mobile": "",
+      "title": "Class Action Lawsuit Filed : Portillo Inc ( PTLO ) - Lead Plaintiff ... ",
+      "seendate": "20261118T173000Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/class-action-lawsuit-filed-better-home-finance-holding-company-betr-r5245624.htm",
+      "url_mobile": "",
+      "title": "Class Action Lawsuit Filed : Better Home & Finance Holding Company ( BETR ) ... ",
+      "seendate": "20261119T193000Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/nvda-shareholder-alert-investors-with-losses-may-seek-to-lead-the-r5245698.htm",
+      "url_mobile": "",
+      "title": "NVDA Shareholder Alert : Investors With Losses May Seek to Lead The ... ",
+      "seendate": "20261120T001500Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/securities-lawsuit-alert-everest-group-ltd-eg-contact-levi-r5245754.htm",
+      "url_mobile": "",
+      "title": "Securities Lawsuit Alert : Everest Group , Ltd . ( EG ) - Contact Levi & ... ",
+      "seendate": "20261120T024500Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/betr-shareholder-alert-investors-with-losses-may-seek-to-lead-the-r5245720.htm",
+      "url_mobile": "",
+      "title": "BETR Shareholder Alert : Investors With Losses May Seek to Lead The ... ",
+      "seendate": "20261120T011500Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/levi-korsinsky-notifies-honeywell-aerospace-inc-hona-shareholders-r5245721.htm",
+      "url_mobile": "",
+      "title": "Levi & Korsinsky Notifies Honeywell Aerospace Inc . ( HONA ) Shareholders ... ",
+      "seendate": "20261120T011500Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/ptlo-shareholder-alert-portillo-s-inc-securities-class-action-lawsuit-r5245711.htm",
+      "url_mobile": "",
+      "title": "PTLO Shareholder Alert : Portillo Inc Securities Class Action Lawsuit ... ",
+      "seendate": "20261120T004500Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/cc-deadline-levi-korsinsky-reminds-the-chemours-company-investors-r5245709.htm",
+      "url_mobile": "",
+      "title": "CC DEADLINE : Levi & Korsinsky Reminds The Chemours Company Investors ... ",
+      "seendate": "20261120T004500Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/bbw-investor-alert-build-a-bear-workshop-inc-securities-class-action-r5245706.htm",
+      "url_mobile": "",
+      "title": "BBW Investor Alert : Build - A - Bear Workshop , Inc . Securities Class Action ... ",
+      "seendate": "20261120T004500Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/levi-korsinsky-notifies-the-chemours-company-cc-investors-of-lead-r5245752.htm",
+      "url_mobile": "",
+      "title": "Levi & Korsinsky Notifies The Chemours Company ( CC ) Investors of Lead ... ",
+      "seendate": "20261120T024500Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://newrepublic.com/post/218174/trump-icc-international-criminal-court-xi-putin-china-russia-israel",
+      "url_mobile": "",
+      "title": "Trump Threatens to Take on the ICC With Xi and Putin",
+      "seendate": "20261119T193000Z",
+      "socialimage": "https://images.newrepublic.com/d300689860ad88966bb6b5be019b9032a65e92e3.jpeg?&crop=faces&fit=crop&fm=jpg",
+      "domain": "newrepublic.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.thetruthaboutcars.com/cars/news-blog/acura-zdx-recall-14-648-evs-may-dump-brake-pressure-45137092",
+      "url_mobile": "",
+      "title": "Acura ZDX Recall : 14 , 648 EVs May Dump Brake Pressure",
+      "seendate": "20261114T200000Z",
+      "socialimage": "",
+      "domain": "thetruthaboutcars.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://abcnews.com/International/wireStory/bomb-rips-damascus-suburb-killing-2-including-child-138145860",
+      "url_mobile": "https://abcnews.com/amp/International/wireStory/bomb-rips-damascus-suburb-killing-2-including-child-138145860",
+      "title": "Bomb rips through Damascus suburb killing 2 including a child",
+      "seendate": "20261114T200000Z",
+      "socialimage": "https://i.abcnewsfe.com/a/ed2594ab-8950-4ba5-9396-83c97be54153/wirestory_5d37a9bb4c4176986ff198c0766151b3_16x9.jpg",
+      "domain": "abcnews.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wctv.tv/2026/11/19/failed-do-basics-florida-state-hospital-patient-allegedly-strangled-lawsuit-claims-staff-negligence/",
+      "url_mobile": "https://www.wctv.tv/2026/11/19/failed-do-basics-florida-state-hospital-patient-allegedly-strangled-lawsuit-claims-staff-negligence/?outputType=amp",
+      "title": "  Failed to do the basic : Florida State Hospital patient allegedly strangled , lawsuit claims staff negligence",
+      "seendate": "20261120T004500Z",
+      "socialimage": "https://gray-wctv-prod.gtv-cdn.com/resizer/v2/EFHUWI45WZFSTEDXNRCVHMKIZY.png?auth=762ea83e9910a8cdfee7a0aad9374b0f52524db4f31b974ecad486545e1f5d2c&smart=true",
+      "domain": "wctv.tv",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/bull-deadline-alert-levi-korsinsky-reminds-webull-corporation-bull-r5244909.htm",
+      "url_mobile": "",
+      "title": "BULL Deadline Alert : Levi & Korsinsky Reminds Webull Corporation ( BULL ) ... ",
+      "seendate": "20261118T011500Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/cvrx-inc-cvrx-class-action-lawsuit-levi-korsinsky-reminds-investors-r5245632.htm",
+      "url_mobile": "",
+      "title": "CVRx , Inc . ( CVRX ) Class Action Lawsuit : Levi & Korsinsky Reminds Investors ... ",
+      "seendate": "20261119T193000Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/lost-money-on-millrose-properties-inc-mrp-contact-levi-korsinsky-r5245625.htm",
+      "url_mobile": "",
+      "title": "Lost Money on Millrose Properties , Inc . ( MRP )? Contact Levi & Korsinsky ... ",
+      "seendate": "20261119T193000Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/levi-korsinsky-notifies-fmc-corporation-fmc-investors-of-lead-plaintiff-r5245696.htm",
+      "url_mobile": "",
+      "title": "Levi & Korsinsky Notifies FMC Corporation ( FMC ) Investors of Lead Plaintiff ... ",
+      "seendate": "20261120T001500Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/cvrx-shareholder-alert-cvrx-inc-securities-class-action-lawsuit-r5245701.htm",
+      "url_mobile": "",
+      "title": "CVRX Shareholder Alert : CVRx , Inc . Securities Class Action Lawsuit ... ",
+      "seendate": "20261120T001500Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/lululemon-athletica-inc-lulu-shareholder-alert-lead-plaintiff-deadline-r5245702.htm",
+      "url_mobile": "",
+      "title": "lululemon athletica inc . ( LULU ) Shareholder Alert : Lead Plaintiff Deadline ... ",
+      "seendate": "20261120T001500Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/lululemon-athletica-inc-lulu-securities-class-action-investors-r5245631.htm",
+      "url_mobile": "",
+      "title": "lululemon athletica inc . ( LULU ) Securities Class Action : Investors ... ",
+      "seendate": "20261119T193000Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/levi-korsinsky-notifies-cvrx-inc-cvrx-shareholders-of-class-action-r5245749.htm",
+      "url_mobile": "",
+      "title": "Levi & Korsinsky Notifies CVRx , Inc . ( CVRX ) Shareholders of Class Action ... ",
+      "seendate": "20261120T024500Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.prnewswire.com/news-releases/nvda-investor-alert-hagens-berman-updates-nvidia-corporation-nasdaq-nvda-securities-class-action-investigation-following-reports-of-sec-civil-probe-amid-ceo-jensen-huangs-departure-302945623.html",
+      "url_mobile": "",
+      "title": "NVDA INVESTOR ALERT : Hagens Berman Updates NVIDIA Corporation ( NASDAQ : NVDA ) Securities Class Action Investigation Following Reports of SEC Civil Probe Amid CEO Jensen Huang Departure",
+      "seendate": "20261119T171500Z",
+      "socialimage": "",
+      "domain": "prnewswire.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.nbclosangeles.com/news/california-wildfires/palisades-arson-fire-trial-jonathan-rinderknecht/3971766/",
+      "url_mobile": "https://www.nbclosangeles.com/news/california-wildfires/palisades-arson-fire-trial-jonathan-rinderknecht/3971766/?amp=1",
+      "title": "Closing arguments scheduled in Palisades Fire arson re - trial",
+      "seendate": "20261118T011500Z",
+      "socialimage": "https://media.nbclosangeles.com/2025/10/rinderknecht-jonathan-palisades-fire-suspect-october-9-2025.png",
+      "domain": "nbclosangeles.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wcti12.com/news/local/brush-fire-reported-on-nash-joyner-road-in-pitt-county",
+      "url_mobile": "",
+      "title": "Brush fire reported on Nash Joyner Road in Pitt County",
+      "seendate": "20261120T011500Z",
+      "socialimage": "https://wcti12.com/resources/media2/16x9/1269/1320/0x66/90/f5f1e7e9-0a76-483a-92f9-a52bbd212fc3-Screenshot20261119175831.png",
+      "domain": "wcti12.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.clickorlando.com/news/politics/2026/11/20/trump-administration-moves-to-have-lawsuit-dismissed-in-challenge-to-alaskas-us-senate-race/",
+      "url_mobile": "",
+      "title": "Trump administration moves to have lawsuit dismissed in challenge to Alaska US Senate race",
+      "seendate": "20261120T013000Z",
+      "socialimage": "https://bc.gmg.io/image/upload/c_thumb,q_auto,w_700,f_jpg/media/gmg/PAH6F3XOVJANDKIX2CBXBYHWJM.jpg?api_key=clickorlando_488cff2bcc157b2e",
+      "domain": "clickorlando.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://nypost.com/2026/11/19/us-news/head-of-white-house-cyber-office-sean-cairncross-stepping-down/",
+      "url_mobile": "",
+      "title": "Head of White House cyber office Sean Cairncross stepping down",
+      "seendate": "20261120T011500Z",
+      "socialimage": "https://nypost.com/wp-content/uploads/sites/2/2026/11/newspress-collage-dlm881j8n-1795135184299.jpg?quality=75&strip=all&1795117215",
+      "domain": "nypost.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://abc7ny.com/post/paterson-house-fire-leaves-hospitalized-10-dogs-rescued/20056972/",
+      "url_mobile": "https://abc7ny.com/amp/post/paterson-house-fire-leaves-hospitalized-10-dogs-rescued/20056972/",
+      "title": "Paterson house fire leaves one hospitalized , 10 dogs rescued",
+      "seendate": "20261120T001500Z",
+      "socialimage": "https://cdn.abcotvs.com/dip/images/20056980_111926-wabc-paterson-house-fire-img.png",
+      "domain": "abc7ny.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.boston.com/news/local-news/2026/11/19/maine-parents-sue-town-over-autistic-daughters-metal-rooster-statues/",
+      "url_mobile": "",
+      "title": "Maine parents sue town over autistic daughter metal rooster statues",
+      "seendate": "20261119T193000Z",
+      "socialimage": "https://bdc2020.o0bc.com/wp-content/uploads/2026/11/US_Maine_Chicken_Fight_39571-6aff3386f157a-768x432.jpg",
+      "domain": "boston.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.lowellsun.com/2026/11/19/single-alarm-blaze-damages-multifamily-home-in-lowell/",
+      "url_mobile": "",
+      "title": "Single - alarm blaze damages multifamily home in Lowell",
+      "seendate": "20261120T004500Z",
+      "socialimage": "https://www.lowellsun.com/wp-content/uploads/2026/11/LOW-L-FIRE-111926-1.jpg",
+      "domain": "lowellsun.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.alternet.org/everything-is-breaking/",
+      "url_mobile": "https://www.alternet.org/amp/everything-is-breaking-2678461560",
+      "title": "Everything is breaking all at once and the media is faking confidence",
+      "seendate": "20261119T233000Z",
+      "socialimage": "https://www.alternet.org/media-library/us-president-donald-trump-speaks-to-the-press-before-departing-for-chillicothe-ohio-at-joint-base-andrews-in-maryland-us-oc.jpg?id=68671207&coordinates=0%2C416%2C0%2C417",
+      "domain": "alternet.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.nydailynews.com/2026/11/19/woman-killed-in-brooklyn-apartment-fire-caused-by-lit-cigarette-sources/",
+      "url_mobile": "",
+      "title": "Woman killed in Brooklyn apartment fire caused by lit cigarette : sources",
+      "seendate": "20261119T233000Z",
+      "socialimage": "https://www.nydailynews.com/wp-content/uploads/2026/11/TNY-P36-20261119-113648.jpg",
+      "domain": "nydailynews.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.macombdaily.com/2026/11/19/six-people-three-pets-rescued-from-shelby-twp-house-fire/",
+      "url_mobile": "",
+      "title": "Six people , three pets rescued from Shelby Twp . house fire",
+      "seendate": "20261119T171500Z",
+      "socialimage": "https://www.macombdaily.com/wp-content/uploads/2026/11/tmd-l-ShelbyTwphousefire-01-e1795101256131.jpg",
+      "domain": "macombdaily.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://mynewsla.com/life/2026/11/19/judge-grants-man-limited-bid-to-remain-anonymous-in-suit-vs-ye/",
+      "url_mobile": "",
+      "title": "Judge Grants Man Limited Bid to Remain Anonymous in Suit vs . Ye",
+      "seendate": "20261119T193000Z",
+      "socialimage": "https://i0.wp.com/mynewsla.com/wp-content/uploads/2021/10/MNLA-Facebook.jpg?fit=640%2C360&ssl=1",
+      "domain": "mynewsla.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.theyeshivaworld.com/news/general/2625584/intelligence-disrupted-nsa-outage-hits-middle-east-operations-as-officials-point-to-security-update.html",
+      "url_mobile": "",
+      "title": "INTELLIGENCE DISRUPTED : NSA Outage Hits Middle East Operations As Officials Point To Security Update",
+      "seendate": "20261120T011500Z",
+      "socialimage": "https://www.theyeshivaworld.com/wp-content/uploads/2026/11/shutterstock_2487700611-National-Security-Agency.jpg",
+      "domain": "theyeshivaworld.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/illr-shareholder-alert-december-14-2026-lead-plaintiff-deadline-in-r5244911.htm",
+      "url_mobile": "",
+      "title": "ILLR Shareholder Alert : December 14 , 2026 Lead Plaintiff Deadline in ... ",
+      "seendate": "20261118T011500Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/levi-korsinsky-notifies-duolingo-inc-duol-investors-of-lead-plaintiff-r5245750.htm",
+      "url_mobile": "",
+      "title": "Levi & Korsinsky Notifies Duolingo , Inc . ( DUOL ) Investors of Lead Plaintiff ... ",
+      "seendate": "20261120T024500Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/duol-upcoming-deadline-levi-korsinsky-alerts-duolingo-inc-stockholders-r5245716.htm",
+      "url_mobile": "",
+      "title": "DUOL UPCOMING DEADLINE : Levi & Korsinsky Alerts Duolingo , Inc . Stockholders ... ",
+      "seendate": "20261120T011500Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/lost-money-on-fluence-energy-inc-flnc-contact-levi-korsinsky-r5245717.htm",
+      "url_mobile": "",
+      "title": "Lost Money on Fluence Energy , Inc . ( FLNC )? Contact Levi & Korsinsky ... ",
+      "seendate": "20261120T011500Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/securities-lawsuit-alert-fluence-energy-inc-flnc-investors-may-r5245748.htm",
+      "url_mobile": "",
+      "title": "Securities Lawsuit Alert : Fluence Energy , Inc . ( FLNC ) Investors May ... ",
+      "seendate": "20261120T024500Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pressdemocrat.com/2026/11/19/us-election-2026-alaska-senate-lawsuit/",
+      "url_mobile": "",
+      "title": "Trump administration moves to have lawsuit dismissed in challenge to Alaska US Senate race",
+      "seendate": "20261120T023000Z",
+      "socialimage": "https://www.pressdemocrat.com/wp-content/uploads/2026/11/Election_2_26_Alaska_Senate_79841-1.jpg",
+      "domain": "pressdemocrat.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wishtv.com/news/local-news/fbi-offers-50000-reward-for-tips-in-flora-arson-that-killed-four-sisters/",
+      "url_mobile": "",
+      "title": "FBI offers $50 , 000 reward for tips in Flora arson that killed four sisters",
+      "seendate": "20261119T193000Z",
+      "socialimage": "https://www.wishtv.com/wp-content/uploads/2026/11/19/Flora-Reward-Poster.jpg",
+      "domain": "wishtv.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.taylorvilledailynews.com/new-york-sues-ihg-others-over-holiday-inn-accused-of-exploiting-immigrant-workers/",
+      "url_mobile": "",
+      "title": "New York sues IHG , others over Holiday Inn accused of exploiting immigrant workers",
+      "seendate": "20261120T011500Z",
+      "socialimage": "https://www.taylorvilledailynews.com/wp-content/uploads/2026/11/1795122313483690RmioKly2aZ.jpg",
+      "domain": "taylorvilledailynews.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/kaplan-fox-reminds-investors-of-bank-of-america-corporation-nyse-r5245755.htm",
+      "url_mobile": "",
+      "title": "Kaplan Fox Reminds Investors of Bank of America Corporation ( NYSE : ... ",
+      "seendate": "20261120T024500Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wandtv.com/2026/11/19/tractor-fire-causes-250000-damage-near-savoy/",
+      "url_mobile": "https://www.wandtv.com/2026/11/19/tractor-fire-causes-250000-damage-near-savoy/?outputType=amp",
+      "title": "Tractor fire causes $250 , 000 in damage near Savoy",
+      "seendate": "20261119T233000Z",
+      "socialimage": "https://gray-wand-prod.gtv-cdn.com/resizer/v2/DYH7J3RBSJBLTB53NUAF4W6NUU.jfif?auth=86ee990cd6f9b150ace7526d16a29d9244cf25fe290e20c4222939c1909c5fd1&smart=true",
+      "domain": "wandtv.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.dailyadvance.com/news/world/a-bomb-rips-through-a-damascus-suburb-killing-2-including-a-child/article_94c98f10-4833-53cf-b519-63a4adb41d2d.html",
+      "url_mobile": "",
+      "title": "A bomb rips through a Damascus suburb killing 2 including a child",
+      "seendate": "20261115T074500Z",
+      "socialimage": "https://bloximages.newyork1.vip.townnews.com/dailyadvance.com/content/tncms/assets/v3/editorial/7/dc/7dc6fa84-5b79-50b2-91b5-7d2545d5b9ca/6af8b404ab703.image.jpg?crop=1763%2C926%2C0%2C124",
+      "domain": "dailyadvance.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/kinross-gold-corporation-kgc-shareholder-alert-lead-plaintiff-deadline-r5245113.htm",
+      "url_mobile": "",
+      "title": "Kinross Gold Corporation ( KGC ) Shareholder Alert : Lead Plaintiff Deadline ... ",
+      "seendate": "20261118T173000Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/levi-korsinsky-notifies-kinross-gold-corporation-kgc-shareholders-r5245710.htm",
+      "url_mobile": "",
+      "title": "Levi & Korsinsky Notifies Kinross Gold Corporation ( KGC ) Shareholders ... ",
+      "seendate": "20261120T004500Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/kgc-investor-alert-kinross-gold-corporation-securities-class-action-r5245753.htm",
+      "url_mobile": "",
+      "title": "KGC Investor Alert : Kinross Gold Corporation Securities Class Action ... ",
+      "seendate": "20261120T024500Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://radaronline.com/p/trump-ice-federal-judge-ruling-exposes-secretive-rearrest-policy/",
+      "url_mobile": "",
+      "title": "Trump ICE Officials Found in Contempt Over Immigrant Rearrests",
+      "seendate": "20261120T024500Z",
+      "socialimage": "https://media.radaronline.com/brand-img/UEyxMt8w8/1200x628/exclusive-trumps-ice-caught-defying-federal-judge-as-explosive-ruling-exposes-secretive-rearrest-policy-1-1795122647272.jpg",
+      "domain": "radaronline.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wbig.iheart.com/content/2026-11-18-gene-simmons-recalls-terrifying-kiss-pyro-accident-that-nearly-ended-the-band/",
+      "url_mobile": "",
+      "title": "Gene Simmons Recalls Terrifying KISS Pyro Accident That Nearly Ended The Band",
+      "seendate": "20261118T173000Z",
+      "socialimage": "https://i.iheart.com/v3/re/assets.getty/6afdc3cfd73d4bc11a9b27e4?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "wbig.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://cool102.iheart.com/content/2026-11-18-gene-simmons-recalls-terrifying-kiss-pyro-accident-that-nearly-ended-the-band/",
+      "url_mobile": "",
+      "title": "Gene Simmons Recalls Terrifying KISS Pyro Accident That Nearly Ended The Band",
+      "seendate": "20261118T173000Z",
+      "socialimage": "https://i.iheart.com/v3/re/assets.getty/6afdc3cfd73d4bc11a9b27e4?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "cool102.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wxii12.com/article/crews-respond-10-acre-fire-uwharrie-national-forest/74430569",
+      "url_mobile": "",
+      "title": "Crews respond to 10 - acre fire in Uwharrie National Forest",
+      "seendate": "20261114T200000Z",
+      "socialimage": "https://kubrick.htvapps.com/htv-prod/images/c58f8f74-8994-45b9-9206-00288807741e.png?crop=1.00xw%3A0.654xh%3B0%2C0.161xh",
+      "domain": "wxii12.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://local12.com/news/local/coroner-at-tri-state-house-and-brush-fire",
+      "url_mobile": "",
+      "title": "Coroner at Tri - State house and brush fire",
+      "seendate": "20261120T004500Z",
+      "socialimage": "https://local12.com/resources/media2/16x9/4000/1320/0x375/90/e82e2e34-b67b-4c1a-80b9-1f177deefa26-GMCBRIGHTFIRE3.jpg",
+      "domain": "local12.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wxii12.com/article/faa-ground-stop-when-flight-delays-return-to-normal/74430323",
+      "url_mobile": "",
+      "title": "FAA ground stop aftermath : When will flights be back to normal ? ",
+      "seendate": "20261114T200000Z",
+      "socialimage": "https://kubrick.htvapps.com/htv-prod/images/4751df59-6e0f-4537-ac81-4f8243456e85.jpg?crop=0.982725527831094xw%3A1xh%3Bcenter%2Ctop",
+      "domain": "wxii12.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.timescall.com/2026/11/19/maine-rooster-fight-lawsuit/",
+      "url_mobile": "",
+      "title": "Maine parents sue town over autistic daughter metal rooster statues",
+      "seendate": "20261120T023000Z",
+      "socialimage": "https://www.timescall.com/wp-content/uploads/2026/11/US_Maine_Chicken_Fight_39571.jpg",
+      "domain": "timescall.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://newsradiori.iheart.com/content/2026-11-18-us-launches-unarmed-icbm-test-during-president-trumps-trip-to-asia/",
+      "url_mobile": "",
+      "title": "US Launches Unarmed ICBM Test During President Trump Trip To Asia | News Radio 920 AM & 104 . 7 FM",
+      "seendate": "20261118T173000Z",
+      "socialimage": "https://i.iheart.com/v3/re/assets.getty/6afdca6cb713df529f53c16f?ops=gravity(%22north%22),fit(1200,675),quality(65)",
+      "domain": "newsradiori.iheart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://ujszo.com/kulfold/zelenszkij-europa-reszt-vesz-majd-oroszorszaggal-folytatott-targyalasokon",
+      "url_mobile": "",
+      "title": "Zelenszkij : Eur\u00f3pa r\u00e9szt vesz majd az Oroszorsz\u00e1ggal folytatott t\u00e1rgyal\u00e1sokon",
+      "seendate": "20261119T193000Z",
+      "socialimage": "https://ujszo.com/sites/default/files/styles/image_16_10_w1400_jpg/public/lead_image/2026-08/russia_ukraine_war609200238586.jpg",
+      "domain": "ujszo.com",
+      "language": "Hungarian",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wsmv.com/2026/11/19/indian-hills-elementary-students-return-school-after-gas-leak-prompts-evacuation/",
+      "url_mobile": "",
+      "title": "Gas leak prompts evacuation of Indian Hills Elementary in Hopkinsville",
+      "seendate": "20261120T001500Z",
+      "socialimage": "https://gray-wsmv-prod.gtv-cdn.com/resizer/v2/P2UBSFPA2JCWFE4N5LABSDDM4E.png?auth=1fff9e3d82eba9b19fcc9c89e0598eca1f6b3599c6d4962b625ad24657dd0a12&smart=true",
+      "domain": "wsmv.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wjla.com/news/local/fairfax-county-fire-officials-demonstrate-turkey-fryer-dangers-ahead-of-thanksgiving",
+      "url_mobile": "",
+      "title": "Fairfax County fire officials demonstrate turkey fryer dangers ahead of Thanksgiving",
+      "seendate": "20261118T011500Z",
+      "socialimage": "https://wjla.com/resources/media2/16x9/1280/1320/center/90/a265f38f-1046-4ead-8880-95be5fbe9b97-frame.png",
+      "domain": "wjla.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.orlandoecho.com/news/279444060/jpmorgan-says-third-party-vendors-targeted-in-cyberattack-customer-data-potentially-accessed",
+      "url_mobile": "",
+      "title": "JPMorgan says third - party vendors targeted in cyberattack , customer data potentially accessed",
+      "seendate": "20261120T001500Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/cce97ba/a94b4561-9350-47ba-88e7-021cfdfa5888/0/ANI-20261119225537-600x315.jpg",
+      "domain": "orlandoecho.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.cincinnatisun.com/news/279444060/jpmorgan-says-third-party-vendors-targeted-in-cyberattack-customer-data-potentially-accessed",
+      "url_mobile": "",
+      "title": "JPMorgan says third - party vendors targeted in cyberattack , customer data potentially accessed",
+      "seendate": "20261120T023000Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/cce97ba/a94b4561-9350-47ba-88e7-021cfdfa5888/0/ANI-20261119225537-600x315.jpg",
+      "domain": "cincinnatisun.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.batonrougepost.com/news/279444060/jpmorgan-says-third-party-vendors-targeted-in-cyberattack-customer-data-potentially-accessed",
+      "url_mobile": "",
+      "title": "JPMorgan says third - party vendors targeted in cyberattack , customer data potentially accessed",
+      "seendate": "20261120T023000Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/cce97ba/a94b4561-9350-47ba-88e7-021cfdfa5888/0/ANI-20261119225537-600x315.jpg",
+      "domain": "batonrougepost.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.oklahomastar.com/news/279444060/jpmorgan-says-third-party-vendors-targeted-in-cyberattack-customer-data-potentially-accessed",
+      "url_mobile": "",
+      "title": "JPMorgan says third - party vendors targeted in cyberattack , customer data potentially accessed",
+      "seendate": "20261120T013000Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/cce97ba/a94b4561-9350-47ba-88e7-021cfdfa5888/0/ANI-20261119225537-600x315.jpg",
+      "domain": "oklahomastar.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.texasguardian.com/news/279444060/jpmorgan-says-third-party-vendors-targeted-in-cyberattack-customer-data-potentially-accessed",
+      "url_mobile": "",
+      "title": "JPMorgan says third - party vendors targeted in cyberattack , customer data potentially accessed",
+      "seendate": "20261120T004500Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/cce97ba/a94b4561-9350-47ba-88e7-021cfdfa5888/0/ANI-20261119225537-600x315.jpg",
+      "domain": "texasguardian.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wowt.com/2026/11/19/iowa-leaders-lawmakers-react-planned-detonation-ammunition-plant-friday/",
+      "url_mobile": "",
+      "title": "Iowa leaders and lawmakers react to planned detonation at ammunition plant on Friday",
+      "seendate": "20261120T011500Z",
+      "socialimage": "https://gray-wowt-prod.gtv-cdn.com/resizer/v2/2TTH4BEAQFAWTMI5D2O57WKP4U.jpg?auth=cf4056ea00749a3a7d27c93a292f6df97875f3862d3097b3fa921f140dea14a2&smart=false&focal=3331%2C1455",
+      "domain": "wowt.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.tmz.com/2026/11/13/clavicular-wants-judge-to-force-state-to-hand-over-discovery/",
+      "url_mobile": "",
+      "title": "Clavicular To Judge : I Want To See Rape Accuser Interview With Cops",
+      "seendate": "20261113T180000Z",
+      "socialimage": "https://imagez.tmz.com/image/32/16by9/2026/07/22/326400d8d2924d31bc1a56fb6b8ff0e1_xl.jpg",
+      "domain": "tmz.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.insurancejournal.com/news/midwest/2026/11/13/892603.htm",
+      "url_mobile": "https://amp.insurancejournal.com/news/midwest/2026/11/13/892603.htm",
+      "title": "Trucking Company Settles Pregnancy Discrimination Lawsuit",
+      "seendate": "20261113T180000Z",
+      "socialimage": "https://www.insurancejournal.com/img/social/opengraph/ij-social-lawsuits-1200x630.png",
+      "domain": "insurancejournal.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.nbclosangeles.com/news/local/arrest-made-in-connection-with-two-downtown-burbank-fires/3971987/",
+      "url_mobile": "https://www.nbclosangeles.com/news/local/arrest-made-in-connection-with-two-downtown-burbank-fires/3971987/?amp=1",
+      "title": "Burbank police arrest man suspected of setting 2 apartment fires \u2013 NBC Los Angeles",
+      "seendate": "20261118T011500Z",
+      "socialimage": "https://media.nbclosangeles.com/2026/09/burbank-police-generic-e1789504431490.jpg?quality=85&strip=all",
+      "domain": "nbclosangeles.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.nbcphiladelphia.com/news/local/michael-patrick-takacs-sets-off-explosive-under-boss-car-new-jersey-pennsylvania/4500353/",
+      "url_mobile": "https://www.nbcphiladelphia.com/news/local/michael-patrick-takacs-sets-off-explosive-under-boss-car-new-jersey-pennsylvania/4500353/?amp=1",
+      "title": "Man in prison after detonating explosive device under bos car \u2013 NBC10 Philadelphia",
+      "seendate": "20261120T023000Z",
+      "socialimage": "https://media.nbcphiladelphia.com/2019/09/prison6.jpg?quality=85&strip=all",
+      "domain": "nbcphiladelphia.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wgal.com/article/faa-ground-stop-when-flight-delays-return-to-normal/74430323",
+      "url_mobile": "",
+      "title": "FAA ground stop aftermath : When will flights be back to normal ? ",
+      "seendate": "20261114T200000Z",
+      "socialimage": "https://kubrick.htvapps.com/htv-prod/images/4751df59-6e0f-4537-ac81-4f8243456e85.jpg?crop=0.982725527831094xw%3A1xh%3Bcenter%2Ctop",
+      "domain": "wgal.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wsbradio.com/news/politics/trump-administration/MMV2LA5UTA2UDKXVZ64FHWWK7U/",
+      "url_mobile": "https://www.wsbradio.com/news/politics/trump-administration/MMV2LA5UTA2UDKXVZ64FHWWK7U/?outputType=amp",
+      "title": "Justice Department moves to drop its challenge to Alaska Senate outcome",
+      "seendate": "20261120T013000Z",
+      "socialimage": "https://cmg-cmg-rd-20021-prod.cdn.arcpublishing.com/resizer/v2/https%3A%2F%2Fcloudfront-us-east-1.images.arcpublishing.com%2Fcmg%2F2Y3IB5HJ5I757J7YCZC6SDWENA.jpg?auth=aa1b6c3daff6584ca1301fb9ba84f152e958c447a598878aab989bd35dc1af86&smart=true",
+      "domain": "wsbradio.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.nbcbayarea.com/news/local/multi-vehicle-crash-building-san-francisco/4178890/",
+      "url_mobile": "https://www.nbcbayarea.com/news/local/multi-vehicle-crash-building-san-francisco/4178890/?amp=1",
+      "title": "6 taken to hospital after multi - vehicle crash in San Francisco",
+      "seendate": "20261120T011500Z",
+      "socialimage": "https://media.nbcbayarea.com/2026/11/SF-Crash-Building.jpg?quality=85&strip=all",
+      "domain": "nbcbayarea.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/securities-lawsuit-alert-intel-corporation-intc-investors-may-contact-r5244910.htm",
+      "url_mobile": "",
+      "title": "Securities Lawsuit Alert : Intel Corporation ( INTC ) Investors May Contact ... ",
+      "seendate": "20261118T011500Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/intc-upcoming-deadline-levi-korsinsky-alerts-intel-corporation-stockholders-r5245697.htm",
+      "url_mobile": "",
+      "title": "INTC UPCOMING DEADLINE : Levi & Korsinsky Alerts Intel Corporation Stockholders ... ",
+      "seendate": "20261120T001500Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.nbcwashington.com/news/national-international/classified-nsa-network-still-leaving-staff-working-home/4185707/",
+      "url_mobile": "https://www.nbcwashington.com/news/national-international/classified-nsa-network-still-leaving-staff-working-home/4185707/?amp=1",
+      "title": "Classified NSA network is still down , some staff work from home \u2013 NBC4 Washington",
+      "seendate": "20261119T234500Z",
+      "socialimage": "https://media.nbcwashington.com/2026/11/Inside-the-National-Security-Administration-NSA-525617474-Getty.jpg?quality=85&strip=all",
+      "domain": "nbcwashington.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://fox23.com/news/local/first-responders-train-at-oneok-field-in-advanced-emergency-care",
+      "url_mobile": "",
+      "title": "First responders train at ONEOK Field in advanced emergency care",
+      "seendate": "20261119T234500Z",
+      "socialimage": "https://fox23.com/resources/media2/16x9/1240/1320/8x0/90/996e97b8-66ff-42e3-a6de-4382344e7c12-Screenshot20261119154855.png",
+      "domain": "fox23.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.fox5atlanta.com/news/could-your-smart-home-devices-be-hacked-how-keep-them-secure",
+      "url_mobile": "https://www.fox5atlanta.com/news/could-your-smart-home-devices-be-hacked-how-keep-them-secure.amp",
+      "title": "Could your smart home devices be hacked ? How to keep them secure",
+      "seendate": "20261120T004500Z",
+      "socialimage": "https://images.foxtv.com/static.livenowfox.com/www.livenowfox.com/content/uploads/2026/11/1280/720/smart-device.jpg?ve=1&tl=1",
+      "domain": "fox5atlanta.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wtvr.com/news/local-news/virginia-senator-mark-warner-on-recent-tech-outages-nov-19-2026",
+      "url_mobile": "",
+      "title": "Warner on recent tech outages :  No evidence this is an AI - generated attack  ",
+      "seendate": "20261120T011500Z",
+      "socialimage": "http://ewscripps-brightspot.s3.amazonaws.com/74/8f/4504c9614c03a018e3bc953d2b45/a-featured-image-youtube-16x9-51.png",
+      "domain": "wtvr.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://gr.euronews.com/2026/11/14/zefyri-synelhfthhsan-34xronh-kai-oi-dyo-anhlikes-kores-ths-gia-th-fwtia-me-toys-dyo-nekroy",
+      "url_mobile": "",
+      "title": "\u0396\u03b5\u03c6\u03cd\u03c1\u03b9 : \u03a3\u03c5\u03bd\u03b5\u03bb\u03ae\u03c6\u03b8\u03b7\u03c3\u03b1\u03bd 34\u03c7\u03c1\u03bf\u03bd\u03b7 \u03ba\u03b1\u03b9 \u03bf\u03b9 \u03b4\u03cd\u03bf \u03b1\u03bd\u03ae\u03bb\u03b9\u03ba\u03b5\u03c2 \u03ba\u03cc\u03c1\u03b5\u03c2 \u03c4\u03b7\u03c2 \u03b3\u03b9\u03b1 \u03c4\u03b7 \u03c6\u03c9\u03c4\u03b9\u03ac \u03bc\u03b5 \u03c4\u03bf\u03c5\u03c2 \u03b4\u03cd\u03bf \u03bd\u03b5\u03ba\u03c1\u03bf\u03cd\u03c2 \u03c0\u03c5\u03c1\u03bf\u03c3\u03b2\u03ad\u03c3\u03c4\u03b5\u03c2",
+      "seendate": "20261114T210000Z",
+      "socialimage": "https://static.euronews.com/articles/stories/09/37/90/33/1200x675_cmsv2_de1e0ae6-4b4b-5b5c-bc4f-0d1c2b580bb5-9379033.jpg",
+      "domain": "gr.euronews.com",
+      "language": "Greek",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.nbclosangeles.com/news/national-international/classified-nsa-network-down-no-indication-attack/3971889/",
+      "url_mobile": "https://www.nbclosangeles.com/news/national-international/classified-nsa-network-down-no-indication-attack/3971889/?amp=1",
+      "title": "Classified NSA network went down , no indication it was an attack \u2013 NBC Los Angeles",
+      "seendate": "20261118T011500Z",
+      "socialimage": "https://media.nbclosangeles.com/2026/11/261117-nsa-getty.jpg?quality=85&strip=all",
+      "domain": "nbclosangeles.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.baltimoresun.com/2026/11/14/microsoft-says-services-fully-restored-after-hourslong-global-outage/",
+      "url_mobile": "",
+      "title": "Microsoft says services fully restored after hourslong global outage",
+      "seendate": "20261114T200000Z",
+      "socialimage": "https://www.baltimoresun.com/wp-content/uploads/2026/11/Microsoft-Outage__9733_a71775.jpg",
+      "domain": "baltimoresun.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.10news.com/business/company-news/apple-launches-health-ai-study-with-app-that-answers-medical-questions",
+      "url_mobile": "",
+      "title": "Apple launches health AI study with app that answers medical questions",
+      "seendate": "20261118T011500Z",
+      "socialimage": "https://ewscripps.brightspotcdn.com/05/2d/71ef64264130ad2156a61df05582/ap25050594650703.jpg",
+      "domain": "10news.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.fox10phoenix.com/news/could-your-smart-home-devices-be-hacked-how-keep-them-secure",
+      "url_mobile": "https://www.fox10phoenix.com/news/could-your-smart-home-devices-be-hacked-how-keep-them-secure.amp",
+      "title": "Could your smart home devices be hacked ? How to keep them secure",
+      "seendate": "20261120T011500Z",
+      "socialimage": "https://images.foxtv.com/static.livenowfox.com/www.livenowfox.com/content/uploads/2026/11/1280/720/smart-device.jpg?ve=1&tl=1",
+      "domain": "fox10phoenix.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wfmz.com/news/area/lehighvalley/northampton-county/wwi-military-mortar-found-in-catasauqua-prompts-response-from-bomb-squad/article_901f1a20-f478-492e-a18b-1937a505fb41.html",
+      "url_mobile": "",
+      "title": "WWI military mortar found in Catasauqua prompts response from bomb squad",
+      "seendate": "20261120T011500Z",
+      "socialimage": "https://bloximages.newyork1.vip.townnews.com/wfmz.com/content/tncms/assets/v3/editorial/b/a0/ba0fa64a-a856-5935-a7e9-a8f2894cf951/6aff86b1cb41c.image.jpg?crop=1280%2C672%2C0%2C23",
+      "domain": "wfmz.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.theyeshivaworld.com/news/general/2623128/faa-shutdown-faulty-router-suspected-l3harris-responds-as-thousands-of-flights-canceled.html",
+      "url_mobile": "",
+      "title": "FAA SHUTDOWN : Faulty Router Suspected , L3Harris Responds as Thousands of Flights Canceled",
+      "seendate": "20261114T210000Z",
+      "socialimage": "https://www.theyeshivaworld.com/wp-content/uploads/2026/11/8QTKqL2KWNQw7bNg.webp",
+      "domain": "theyeshivaworld.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.dailyadvance.com/news/national/could-everything-be-broken-grounded-jets-microsoft-outage-ai-chaos-make-some-wonder/article_2d690647-3e99-5e64-ae1e-72ed9b03814e.html",
+      "url_mobile": "",
+      "title": "Could everything be broken ? Grounded jets , Microsoft outage , AI chaos make some wonder",
+      "seendate": "20261115T074500Z",
+      "socialimage": "https://bloximages.newyork1.vip.townnews.com/dailyadvance.com/content/tncms/assets/v3/editorial/9/f5/9f513de1-c3cb-5b68-afd4-50ce23a14a34/6af8a6346dacc.image.jpg?crop=1765%2C927%2C0%2C123",
+      "domain": "dailyadvance.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.usmagazine.com/crime-news/news/dad-killed-son-by-setting-car-on-fire-shot-the-boys-mother/",
+      "url_mobile": "",
+      "title": "Dad Killed Son by Setting Car on Fire , Shot the Boy Mother",
+      "seendate": "20261120T001500Z",
+      "socialimage": "https://www.usmagazine.com/wp-content/uploads/2026/11/dad-killed-son-car-fire-shot-mom.jpg?&crop=1&quality=86&strip=all",
+      "domain": "usmagazine.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pasadenastarnews.com/2026/11/19/chase-data-breach/",
+      "url_mobile": "",
+      "title": "Cyberattack leaks thousands of Chase customer emails , phone numbers",
+      "seendate": "20261120T011500Z",
+      "socialimage": "https://www.pasadenastarnews.com/wp-content/uploads/2026/11/Bank_Outage_55_8__0315db.jpg",
+      "domain": "pasadenastarnews.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://fortune.com/2026/11/16/florida-property-tax-cuts-amendment-3-towns-budget-holes-fee-revenue-state-bailout/",
+      "url_mobile": "",
+      "title": "Florida voters push for lower property taxes may force local governments to rely more on the state",
+      "seendate": "20261116T081500Z",
+      "socialimage": "https://fortune.com/img-assets/wp-content/uploads/2026/11/GettyImages-2302921880-e1794613795448.jpg",
+      "domain": "fortune.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/grand-strand-sandwich-company-recalls-lunch-box-bacon-egg-and-cheese-biscuit-lunch-box-jumbo-sausage",
+      "url_mobile": "",
+      "title": "Grand Strand Sandwich Company Recalls Lunch Box Bacon Egg and Cheese Biscuit , Lunch Box Jumbo Sausage Biscuit , Lunch Box Sausage Egg and Cheese Biscuit , Lunch Box Chicken Sausage Biscuit Due to Listeria Monocytogenes Contamination",
+      "seendate": "20261120T011500Z",
+      "socialimage": "https://www.fda.gov/themes/custom/preview/img/FDA-Social-Graphic.png",
+      "domain": "fda.gov",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://radaronline.com/p/trump-court-victory-new-york-times-tax-fraud-defamation-claims-to-proceed/",
+      "url_mobile": "",
+      "title": "Trump Scores Court Victory Against New York Times in Defamation Battle",
+      "seendate": "20261120T024500Z",
+      "socialimage": "https://media.radaronline.com/brand-img/PfbkXcJfN/1200x628/exclusive-trump-scores-major-court-victory-against-new-york-times-as-judge-allows-explosive-tax-fraud-defamation-claims-to-proceed-2-1795117116541.jpg",
+      "domain": "radaronline.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.zerohedge.com/markets/austrian-dutch-embassies-damaged-drone-strikes-ukrainian-capital",
+      "url_mobile": "",
+      "title": "Dutch & Austrian Embassies Damaged In Russian Drone Strikes On Ukrainian Capital",
+      "seendate": "20261119T193000Z",
+      "socialimage": "https://cms.zerohedge.com/sites/default/files/styles/16_9_max_700/public/2026-11/droneskv.jpg?itok=ehYlxLz3",
+      "domain": "zerohedge.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wect.com/2026/11/19/demolition-fire-damaged-surf-city-home-impact-traffic/",
+      "url_mobile": "https://www.wect.com/2026/11/19/demolition-fire-damaged-surf-city-home-impact-traffic/?outputType=amp",
+      "title": "Demolition of fire - damaged Surf City home to impact traffic",
+      "seendate": "20261119T233000Z",
+      "socialimage": "https://gray-wect-prod.gtv-cdn.com/resizer/v2/3B4RCUC5LFCC5LLXBCOUWHRQBM.png?auth=ddcbabc80bea55701e779e0184c64a6973ebfd159369572c6b0dd07fe0003d29&smart=true",
+      "domain": "wect.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.timescall.com/2026/11/19/us-election-2026-alaska-senate-lawsuit/",
+      "url_mobile": "",
+      "title": "Trump administration moves to have lawsuit dismissed in challenge to Alaska US Senate race",
+      "seendate": "20261120T023000Z",
+      "socialimage": "https://www.timescall.com/wp-content/uploads/2026/11/Election_2_26_Alaska_Senate_79841-1.jpg",
+      "domain": "timescall.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.boredpanda.com/lance-broadway-marvel-actor-and-mets-pitcher-passes-away/",
+      "url_mobile": "",
+      "title": "Marvel Actor And Former Mets Pitcher Passes Away At 43 , After He Was Found In An Apartment Stairwell",
+      "seendate": "20261119T233000Z",
+      "socialimage": "https://static.boredpanda.com/blog/wp-content/uploads/2026/11/fb_image_6aff75baac7f2.png",
+      "domain": "boredpanda.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.torquenews.com/3768/when-his-2026-chevrolet-silverado-1500-62l-truck-s-engine-failed-5000-chevy-let-him-order-2026",
+      "url_mobile": "",
+      "title": "When His 2026 Chevrolet Silverado 1500 6 . 2L Truck Engine Failed at 5000 Miles , Chevy Let Him Order a 2026 Duramax 2500 as a Replacement",
+      "seendate": "20261120T004500Z",
+      "socialimage": "https://www.torquenews.com/sites/default/files/styles/hero_standard/public/images/2026-chevrolet-silverado-hd.jpg",
+      "domain": "torquenews.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.cincinnatisun.com/news/279444165/trump-national-cyber-director-sean-cairncross-steps-down-amid-repeated-tech-outages-report",
+      "url_mobile": "",
+      "title": "Trump National Cyber Director Sean Cairncross steps down amid repeated tech outages : Report",
+      "seendate": "20261120T023000Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/a01eaf8/fa52ea14-71b0-45a5-b3e8-7982d31157f0/0/ANI-20261120002535-600x315.jpg",
+      "domain": "cincinnatisun.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.heraldglobe.com/news/279444165/trump-national-cyber-director-sean-cairncross-steps-down-amid-repeated-tech-outages-report",
+      "url_mobile": "",
+      "title": "Trump National Cyber Director Sean Cairncross steps down amid repeated tech outages : Report",
+      "seendate": "20261120T023000Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/a01eaf8/fa52ea14-71b0-45a5-b3e8-7982d31157f0/0/ANI-20261120002535-600x315.jpg",
+      "domain": "heraldglobe.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.batonrougepost.com/news/279444165/trump-national-cyber-director-sean-cairncross-steps-down-amid-repeated-tech-outages-report",
+      "url_mobile": "",
+      "title": "Trump National Cyber Director Sean Cairncross steps down amid repeated tech outages : Report",
+      "seendate": "20261120T023000Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/a01eaf8/fa52ea14-71b0-45a5-b3e8-7982d31157f0/0/ANI-20261120002535-600x315.jpg",
+      "domain": "batonrougepost.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.tucsonpost.com/news/279444165/trump-national-cyber-director-sean-cairncross-steps-down-amid-repeated-tech-outages-report",
+      "url_mobile": "",
+      "title": "Trump National Cyber Director Sean Cairncross steps down amid repeated tech outages : Report",
+      "seendate": "20261120T013000Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/a01eaf8/fa52ea14-71b0-45a5-b3e8-7982d31157f0/0/ANI-20261120002535-600x315.jpg",
+      "domain": "tucsonpost.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wcvb.com/article/it-just-kind-of-goes-wild-atf-boston-warns-of-device-that-turns-handguns-into-automatic-weapons/74468959",
+      "url_mobile": "",
+      "title": "ATF Boston warns of device that turns handguns into automatic weapons",
+      "seendate": "20261120T011500Z",
+      "socialimage": "https://kubrick.htvapps.com/htv-prod/images/9bcb0ef9-cb5c-4b5a-ba04-1dded8347cb1.jpg?crop=1.00xw%3A1.00xh%3B0%2C0",
+      "domain": "wcvb.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.pr-inside.com/rosen-leading-investor-counsel-encourages-gildan-activewear-inc-r5244918.htm",
+      "url_mobile": "",
+      "title": "ROSEN , LEADING INVESTOR COUNSEL , Encourages Gildan Activewear Inc . ... ",
+      "seendate": "20261118T011500Z",
+      "socialimage": "",
+      "domain": "pr-inside.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.andhrajyothy.com/2026/telangana/hyderabad/adilabad-rims-hospital-fire-rats-chewed-wires-five-newborns-death-1578095.html",
+      "url_mobile": "",
+      "title": "\u0c0e\u0c32\u0c41\u0c15\u0c32\u0c41 \u0c35\u0c48\u0c30\u0c4d\u0c32\u0c41 \u0c15\u0c4a\u0c30\u0c15\u0c21\u0c02 \u0c35\u0c32\u0c4d\u0c32\u0c47 \u0c06\u0c26\u0c3f\u0c32\u0c3e\u0c2c\u0c3e\u0c26\u0c4d\u200c \u0c30\u0c3f\u0c2e\u0c4d\u0c38\u0c4d\u200c\u0c32\u0c4b \u0c05\u0c17\u0c4d\u0c28\u0c3f\u0c2a\u0c4d\u0c30\u0c2e\u0c3e\u0c26\u0c02 | adilabad rims hospital fire rats chewed wires five newborns death",
+      "seendate": "20261120T024500Z",
+      "socialimage": "https://media.andhrajyothy.com/media/2026/20260822/TG_copy_06953b601d_v_jpg.webp",
+      "domain": "andhrajyothy.com",
+      "language": "Telugu",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://de.euronews.com/2026/11/13/wollen-usa-iran-krieg-beenden-revolutionsgarden-melden-angriff-auf-us-radar-in-bahrain",
+      "url_mobile": "",
+      "title": "Wollen united states Iran - Krieg beenden ? Revolutionsgarden melden Angriff auf US - Radar in Bahrain",
+      "seendate": "20261113T180000Z",
+      "socialimage": "https://images.euronews.com/articles/stories/09/99/08/46/1200x675_cmsv2_013f3e3e-9e4a-58dc-add6-599b8b6bb279-9990846.jpg",
+      "domain": "de.euronews.com",
+      "language": "German",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wbng.com/2026/11/19/broome-county-fire-departments-celebrate-recent-graduates-after-15-week-academy/",
+      "url_mobile": "https://www.wbng.com/2026/11/19/broome-county-fire-departments-celebrate-recent-graduates-after-15-week-academy/?outputType=amp",
+      "title": "Broome County fire departments celebrate recent graduates after 15 - week academy",
+      "seendate": "20261120T004500Z",
+      "socialimage": "https://gray-wbng-prod.gtv-cdn.com/resizer/v2/VU74F7WT3BCYBKHNZKIPB6ZDHI.jfif?auth=6c8d8fceb534501941134d762a6fea61c620c7cb56b7575243e51432b5166a23&smart=true",
+      "domain": "wbng.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://nypost.com/2026/11/19/opinion/california-citys-deal-with-thirsty-chinese-company-rings-alarm-bells-heres-whats-at-risk/",
+      "url_mobile": "",
+      "title": "California city deal with thirsty Chinese company rings alarm bells here what at risk",
+      "seendate": "20261120T024500Z",
+      "socialimage": "https://nypost.com/wp-content/uploads/sites/2/2026/11/COMP002-1.jpg?quality=75&strip=all",
+      "domain": "nypost.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.kcbd.com/2026/11/14/microsoft-says-services-fully-restored-after-hourslong-global-outage/",
+      "url_mobile": "https://www.kcbd.com/2026/11/14/microsoft-says-services-fully-restored-after-hourslong-global-outage/?outputType=amp",
+      "title": "Microsoft says services fully restored after hourslong global outage",
+      "seendate": "20261114T200000Z",
+      "socialimage": "https://gray-kcbd-prod.gtv-cdn.com/resizer/v2/5VZXFCOF3REUTLME7B5M6UGK5I.jpg?auth=b89f899f402d360f5678e795056026dad210c631c0b14956afc59fe93033d493&smart=true",
+      "domain": "kcbd.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.kcra.com/article/propane-leak-prompts-shelter-in-place-in-colfax/74432163",
+      "url_mobile": "",
+      "title": "Propane leak prompts shelter - in - place in Colfax",
+      "seendate": "20261115T074500Z",
+      "socialimage": "https://kubrick.htvapps.com/htv-prod/images/e9cb4a9d-b43a-4a5a-ba0d-51dbb8c4a9f0.png?crop=1.00xw%3A0.325xh%3B0%2C0.325xh",
+      "domain": "kcra.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://dailycaller.com/2026/11/19/west-virginia-lawsuits-new-jersey-dc-solar-credits-jb-mccuskey-muriel-bowser/",
+      "url_mobile": "",
+      "title": "West Virginia Sues New Jersey , DC Over Local Solar Rules It Says Drive Up Power Bills",
+      "seendate": "20261119T233000Z",
+      "socialimage": "https://images.dailycaller.com/image/width=1280,height=549,fit=cover,format=webp,f=auto/https://cdn01.dailycaller.com/wp-content/uploads/2026/10/rooftop-solar-panels-washington-dc-reagan-building-getty.jpg",
+      "domain": "dailycaller.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.actionnewsjax.com/news/local/we-are-incredibly-grateful-salt-life-food-shack-reopens-after-electrical-fire-water-damage/PKDLZ35BUNHVHLEKSBZABCNFFY/",
+      "url_mobile": "https://www.actionnewsjax.com/news/local/we-are-incredibly-grateful-salt-life-food-shack-reopens-after-electrical-fire-water-damage/PKDLZ35BUNHVHLEKSBZABCNFFY/?outputType=amp",
+      "title": "Salt Life Food Shack reopens after fire and water damage",
+      "seendate": "20261114T200000Z",
+      "socialimage": "https://cmg-cmg-tv-10050-prod.cdn.arcpublishing.com/resizer/v2/https%3A%2F%2Fd1hfln2sfez66z.cloudfront.net%2F11-14-2026%2Ft_27c6a64558fd41e6aefdec13f56433a3_name_file_1920x1080_5400_v4_.jpg?auth=7f8c3bba71291e5ad3e0841f78a760b1dda1d571bfb3e522f535c0c1ce40cfa4&smart=true",
+      "domain": "actionnewsjax.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://news.bigmir.net/ua/ukraine/10468864-u-kerivnitstvi-derzhaviasluzhbi-vidbulisya-obshuki",
+      "url_mobile": "https://news.bigmir.net/ua/amp-page/ukraine/10468864-u-kerivnitstvi-derzhaviasluzhbi-vidbulisya-obshuki",
+      "title": "\u0423 \u043a\u0435\u0440\u0456\u0432\u043d\u0438\u0446\u0442\u0432\u0456 \u0414\u0435\u0440\u0436\u0430\u0432\u0456\u0430\u0441\u043b\u0443\u0436\u0431\u0438 \u0432\u0456\u0434\u0431\u0443\u043b\u0438\u0441\u044f \u043e\u0431\u0448\u0443\u043a\u0438",
+      "seendate": "20261120T024500Z",
+      "socialimage": "https://api2.phnx.click/storage/redirect/remote?cid=19&site=bmnews&data=xoHcXS8M0JAWU4LMf7RIfjk4ZjEwMjA3ZWRkYjA3MDQ3NjIzZWNhNTkzOTNmNWI2YzZmMzhjNWJmMjhlODUwOTlkMjM4OGQwYjkwMDcxZmEl2szljXAOaYZ6cw3WZoAsZkInqllQQRw2mtoFz5Xo2v5hUpKuN5oONMLZjSRv7YTkFBuRi%2F8aHR7s9yZoa3y%2BRKgT2GDxQIKPICzcFZ%2Fg3r8aEd9asYrGJbrEXVEsk9k%3D",
+      "domain": "news.bigmir.net",
+      "language": "Ukrainian",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wibw.com/2026/11/20/topeka-fires-fill-boot-event-raises-thousands-muscular-dystrophy-association/",
+      "url_mobile": "https://www.wibw.com/2026/11/20/topeka-fires-fill-boot-event-raises-thousands-muscular-dystrophy-association/?outputType=amp",
+      "title": "Topeka Fire  Fill the Boot  event raises thousands for Muscular Dystrophy Association",
+      "seendate": "20261120T011500Z",
+      "socialimage": "https://gray-wibw-prod.gtv-cdn.com/resizer/v2/EK5QIAOTCBFDXOWOOZXVCBMNUE.jpg?auth=7c438e66381fca79b86193ef75f205661313be91189cf39c394e111af9e33eb3&smart=true",
+      "domain": "wibw.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.kxly.com/news/eight-people-including-2-children-displaced-by-fire-in-pullman-apartment-building-wednesday-evening/article_6a369bff-f6fb-4695-a3b9-dfc033762f64.html",
+      "url_mobile": "",
+      "title": "Eight people , including 2 children , displaced by fire in Pullman apartment building Wednesday evening",
+      "seendate": "20261120T011500Z",
+      "socialimage": "https://bloximages.newyork1.vip.townnews.com/kxly.com/content/tncms/assets/v3/editorial/9/93/9935f66e-5f8c-4814-9b88-571c49e236da/6aff8638a7658.image.png?crop=1600%2C840%2C0%2C29",
+      "domain": "kxly.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.dailyherald.com/2026/11/18/parents-unaware-orange-daycare-was-giving-sleeping-gummies-to-preschoolers-lawsuit-claims/",
+      "url_mobile": "",
+      "title": "Parents unaware California daycare was giving  sleeping gummie to preschoolers , lawsuit claims \u2013 Daily Herald",
+      "seendate": "20261118T173000Z",
+      "socialimage": "https://www.dailyherald.com/wp-content/uploads/2026/11/OCR-L-GUMMIES-07-copy.jpg",
+      "domain": "dailyherald.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://news.bigmir.net/ua/ukraine/10466215-okupanti-zayavili-pro-udar-po-krimskomu-mostu",
+      "url_mobile": "https://news.bigmir.net/ua/amp-page/ukraine/10466215-okupanti-zayavili-pro-udar-po-krimskomu-mostu",
+      "title": "\u041e\u043a\u0443\u043f\u0430\u043d\u0442\u0438 \u0437\u0430\u044f\u0432\u0438\u043b\u0438 \u043f\u0440\u043e \u0443\u0434\u0430\u0440 \u043f\u043e \u041a\u0440\u0438\u043c\u0441\u044c\u043a\u043e\u043c\u0443 \u043c\u043e\u0441\u0442\u0443",
+      "seendate": "20261116T081500Z",
+      "socialimage": "https://api2.phnx.click/storage/redirect/remote?cid=19&site=bmnews&data=BLaYI4ET3MdUWevL7%2FCaM2M4YjUxNjVlODQyM2JiYzcxYWQ5ZTZiODVmZjg0ODhkOGUxNmI4YTE1OTFmODg2NzIwZmQzODA1Y2VkMTA0MjT7l2fYQe7Q8daXeoA2FQdV%2BHNWaZs7NfuRilc4no7W4v39tXYWW%2F4qYzABKieo5kC3tQlKtha344paM2k7KNwl6EbmIs%2FqeIMWsBVeTeaKkbIPc0qV19aNO0erPCMkyxU%3D",
+      "domain": "news.bigmir.net",
+      "language": "Ukrainian",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://almomento.net/delito-de-terrorismo-no-sanciona-la-planificacion-sino-la-ejecucion/",
+      "url_mobile": "",
+      "title": "Delito de terrorismo no sanciona la planificaci\u00f3n sino la ejecuci\u00f3n",
+      "seendate": "20261115T074500Z",
+      "socialimage": "https://almomento.net/wp-content/uploads/2025/10/John-Garrido-e1755080956870.jpg",
+      "domain": "almomento.net",
+      "language": "Spanish",
+      "sourcecountry": "United States"
+    }
+  ]
+}
