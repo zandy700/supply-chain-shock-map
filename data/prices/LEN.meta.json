@@ -2,9 +2,9 @@
   "ticker": "LEN",
   "source": "Yahoo Finance via yfinance",
   "auto_adjust": true,
-  "retrieved_at": "2026-11-24T06:09:08.170112+00:00",
+  "retrieved_at": "2026-11-25T04:56:57.627639+00:00",
   "requested_start": "2020-01-01",
-  "requested_end_exclusive": "2026-11-25",
-  "n": 1733,
+  "requested_end_exclusive": "2026-11-26",
+  "n": 1734,
   "warning": "Retrospectively adjusted prices; vendor revisions possible."
 }
