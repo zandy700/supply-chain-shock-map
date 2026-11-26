@@ -2,9 +2,9 @@
   "ticker": "JPM",
   "source": "Yahoo Finance via yfinance",
   "auto_adjust": true,
-  "retrieved_at": "2026-11-25T04:56:57.249422+00:00",
+  "retrieved_at": "2026-11-26T04:12:53.984672+00:00",
   "requested_start": "2020-01-01",
-  "requested_end_exclusive": "2026-11-26",
-  "n": 1734,
+  "requested_end_exclusive": "2026-11-27",
+  "n": 1735,
   "warning": "Retrospectively adjusted prices; vendor revisions possible."
 }
