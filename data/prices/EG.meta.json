@@ -2,9 +2,9 @@
   "ticker": "EG",
   "source": "Yahoo Finance via yfinance",
   "auto_adjust": true,
-  "retrieved_at": "2026-11-27T04:19:15.093196+00:00",
+  "retrieved_at": "2026-11-28T03:59:00.154208+00:00",
   "requested_start": "2020-01-01",
-  "requested_end_exclusive": "2026-11-28",
-  "n": 1735,
+  "requested_end_exclusive": "2026-11-29",
+  "n": 1736,
   "warning": "Retrospectively adjusted prices; vendor revisions possible."
 }
